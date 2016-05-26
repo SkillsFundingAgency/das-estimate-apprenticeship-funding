@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -76,6 +81,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -85,6 +94,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -92,6 +105,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -117,22 +134,170 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="assets\images\apple-touch-icon-120x120.png" />
+    <Content Include="assets\images\apple-touch-icon-152x152.png" />
+    <Content Include="assets\images\apple-touch-icon-60x60.png" />
+    <Content Include="assets\images\apple-touch-icon-76x76.png" />
+    <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\gov.uk_logotype_crown_invert.png" />
+    <Content Include="assets\images\gov.uk_logotype_crown_invert_trans.png" />
+    <Content Include="assets\images\opengraph-image.png" />
+    <Content Include="assets\javascripts\govuk-template.js" />
+    <Content Include="assets\javascripts\ie.js" />
+    <Content Include="assets\javascripts\vendor\goog\webfont-debug.js" />
+    <Content Include="assets\stylesheets\elements.css" />
+    <Content Include="assets\stylesheets\external-links\external-link-24x24.png" />
+    <Content Include="assets\stylesheets\external-links\external-link-black-12x12.png" />
+    <Content Include="assets\stylesheets\external-links\external-link-black-24x24.png" />
+    <Content Include="assets\stylesheets\external-links\external-link.png" />
+    <Content Include="assets\stylesheets\fonts-ie8.css" />
+    <Content Include="assets\stylesheets\fonts.css" />
+    <Content Include="assets\stylesheets\govuk-template-ie6.css" />
+    <Content Include="assets\stylesheets\govuk-template-ie7.css" />
+    <Content Include="assets\stylesheets\govuk-template-ie8.css" />
+    <Content Include="assets\stylesheets\govuk-template-print.css" />
+    <Content Include="assets\stylesheets\govuk-template.css" />
+    <Content Include="assets\stylesheets\images\close.png" />
+    <Content Include="assets\stylesheets\images\gov.uk_logotype_crown-1x.png" />
+    <Content Include="assets\stylesheets\images\gov.uk_logotype_crown.png" />
+    <Content Include="assets\stylesheets\images\govuk-crest-2x.png" />
+    <Content Include="assets\stylesheets\images\govuk-crest-ie.png" />
+    <Content Include="assets\stylesheets\images\govuk-crest.png" />
+    <Content Include="assets\stylesheets\images\open-government-licence.png" />
+    <Content Include="assets\stylesheets\images\open-government-licence_2x.png" />
+    <Content Include="assets\stylesheets\patterns.css" />
+    <Content Include="Content\images\accordian-arrow-2x.png" />
+    <Content Include="Content\images\accordian-arrow.png" />
+    <Content Include="Content\images\arrow-sprite.png" />
+    <Content Include="Content\images\crests\bis_crest_13px.png" />
+    <Content Include="Content\images\crests\bis_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\bis_crest_18px.png" />
+    <Content Include="Content\images\crests\bis_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\bis_crest_27px.png" />
+    <Content Include="Content\images\crests\bis_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\coastguard_13px.png" />
+    <Content Include="Content\images\crests\coastguard_13px_x2.png" />
+    <Content Include="Content\images\crests\coastguard_18px.png" />
+    <Content Include="Content\images\crests\coastguard_18px_x2.png" />
+    <Content Include="Content\images\crests\coastguard_27px.png" />
+    <Content Include="Content\images\crests\coastguard_27px_x2.png" />
+    <Content Include="Content\images\crests\hmrc_crest_13px.png" />
+    <Content Include="Content\images\crests\hmrc_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\hmrc_crest_18px.png" />
+    <Content Include="Content\images\crests\hmrc_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\hmrc_crest_27px.png" />
+    <Content Include="Content\images\crests\hmrc_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\ho_crest_13px.png" />
+    <Content Include="Content\images\crests\ho_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\ho_crest_18px.png" />
+    <Content Include="Content\images\crests\ho_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\ho_crest_27px.png" />
+    <Content Include="Content\images\crests\ho_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\mod_crest_13px.png" />
+    <Content Include="Content\images\crests\mod_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\mod_crest_18px.png" />
+    <Content Include="Content\images\crests\mod_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\mod_crest_27px.png" />
+    <Content Include="Content\images\crests\mod_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\org_crest_13px.png" />
+    <Content Include="Content\images\crests\org_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\org_crest_18px.png" />
+    <Content Include="Content\images\crests\org_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\org_crest_27px.png" />
+    <Content Include="Content\images\crests\org_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\portcullis_13px.png" />
+    <Content Include="Content\images\crests\portcullis_13px_x2.png" />
+    <Content Include="Content\images\crests\portcullis_18px.png" />
+    <Content Include="Content\images\crests\portcullis_18px_x2.png" />
+    <Content Include="Content\images\crests\portcullis_27px.png" />
+    <Content Include="Content\images\crests\portcullis_27px_x2.png" />
+    <Content Include="Content\images\crests\so_crest_13px.png" />
+    <Content Include="Content\images\crests\so_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\so_crest_18px.png" />
+    <Content Include="Content\images\crests\so_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\so_crest_27px.png" />
+    <Content Include="Content\images\crests\so_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\ukaea_crest_13px.png" />
+    <Content Include="Content\images\crests\ukaea_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\ukaea_crest_18px.png" />
+    <Content Include="Content\images\crests\ukaea_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\ukaea_crest_27px.png" />
+    <Content Include="Content\images\crests\ukaea_crest_27px_x2.png" />
+    <Content Include="Content\images\crests\ukho_13px.png" />
+    <Content Include="Content\images\crests\ukho_13px_x2.png" />
+    <Content Include="Content\images\crests\ukho_18px.png" />
+    <Content Include="Content\images\crests\ukho_18px_x2.png" />
+    <Content Include="Content\images\crests\ukho_27px.png" />
+    <Content Include="Content\images\crests\ukho_27px_x2.png" />
+    <Content Include="Content\images\crests\wales_crest_13px.png" />
+    <Content Include="Content\images\crests\wales_crest_13px_x2.png" />
+    <Content Include="Content\images\crests\wales_crest_18px.png" />
+    <Content Include="Content\images\crests\wales_crest_18px_x2.png" />
+    <Content Include="Content\images\crests\wales_crest_27px.png" />
+    <Content Include="Content\images\crests\wales_crest_27px_x2.png" />
+    <Content Include="Content\images\external-links\external-link-24x24.png" />
+    <Content Include="Content\images\external-links\external-link-black-12x12.png" />
+    <Content Include="Content\images\external-links\external-link-black-24x24.png" />
+    <Content Include="Content\images\external-links\external-link.png" />
+    <Content Include="Content\images\icon-arrow-left.png" />
+    <Content Include="Content\images\icon-calendar-2x.png" />
+    <Content Include="Content\images\icon-calendar.png" />
+    <Content Include="Content\images\icon-file-download-2x.png" />
+    <Content Include="Content\images\icon-file-download.png" />
+    <Content Include="Content\images\icon-important-2x.png" />
+    <Content Include="Content\images\icon-important.png" />
+    <Content Include="Content\images\icon-information-2x.png" />
+    <Content Include="Content\images\icon-information.png" />
+    <Content Include="Content\images\icon-locator-2x.png" />
+    <Content Include="Content\images\icon-locator.png" />
+    <Content Include="Content\images\icon-pointer-2x.png" />
+    <Content Include="Content\images\icon-pointer-black-2x.png" />
+    <Content Include="Content\images\icon-pointer-black.png" />
+    <Content Include="Content\images\icon-pointer-indexed.png" />
+    <Content Include="Content\images\icon-pointer.png" />
+    <Content Include="Content\images\icon-search-2x.png" />
+    <Content Include="Content\images\icon-search.png" />
+    <Content Include="Content\images\icon-steps\icon-step-1-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-1.png" />
+    <Content Include="Content\images\icon-steps\icon-step-10-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-10.png" />
+    <Content Include="Content\images\icon-steps\icon-step-11-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-11.png" />
+    <Content Include="Content\images\icon-steps\icon-step-12-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-12.png" />
+    <Content Include="Content\images\icon-steps\icon-step-13-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-13.png" />
+    <Content Include="Content\images\icon-steps\icon-step-14-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-14.png" />
+    <Content Include="Content\images\icon-steps\icon-step-2-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-2.png" />
+    <Content Include="Content\images\icon-steps\icon-step-3-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-3.png" />
+    <Content Include="Content\images\icon-steps\icon-step-4-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-4.png" />
+    <Content Include="Content\images\icon-steps\icon-step-5-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-5.png" />
+    <Content Include="Content\images\icon-steps\icon-step-6-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-6.png" />
+    <Content Include="Content\images\icon-steps\icon-step-7-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-7.png" />
+    <Content Include="Content\images\icon-steps\icon-step-8-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-8.png" />
+    <Content Include="Content\images\icon-steps\icon-step-9-2x.png" />
+    <Content Include="Content\images\icon-steps\icon-step-9.png" />
+    <Content Include="Content\images\player-icon-forward.png" />
+    <Content Include="Content\images\player-icon-pause.png" />
+    <Content Include="Content\images\player-icon-play.png" />
+    <Content Include="Content\images\player-icon-rewind.png" />
+    <Content Include="Content\images\player-icon-volume.png" />
+    <Content Include="Content\images\separator-2x.png" />
+    <Content Include="Content\images\separator.png" />
     <Content Include="Content\Site.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="scripts\ai.0.15.0-build58334.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
-    <None Include="scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="scripts\jquery-1.10.2.js" />
-    <Content Include="scripts\jquery-1.10.2.min.js" />
-    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -149,10 +314,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="assets\stylesheets\fonts\GDSTransportTabular-Bold.eot" />
+    <Content Include="assets\stylesheets\fonts\GDSTransportTabular-Light.eot" />
+    <Content Include="assets\stylesheets\fonts\GDSTransportWebsite-Bold.eot" />
+    <Content Include="assets\stylesheets\fonts\GDSTransportWebsite.eot" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

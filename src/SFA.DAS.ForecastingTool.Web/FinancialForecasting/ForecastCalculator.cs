@@ -26,8 +26,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
         {
             var standard = await _standardsRepository.GetByCodeAsync(standardCode);
             var duration = 12;
-
-            var totalTrainingCost = standard.Price * standardQty;
+            var totalTrainingCost = standard?.Price * standardQty ?? 0;
             var monthlyTrainingFraction = totalTrainingCost / 15m;
 
             var startDate = new DateTime(2017, 4, 1);
@@ -52,6 +51,12 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
                     CoPayment = rollingBalance < 0 ? Math.Round(rollingBalance * -1, 2) : 0
                 };
+
+                // Have we just balanced the account
+                if (rollingBalance < 0)
+                {
+                    rollingBalance = 0;
+                }
             }
             return months;
         }

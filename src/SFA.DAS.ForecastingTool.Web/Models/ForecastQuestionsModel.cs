@@ -5,11 +5,4 @@
         public int Paybill { get; set; }
         public StandardModel SelectedStandard { get; set; }
     }
-
-    public class StandardModel
-    {
-        public int Code { get; set; }
-        public string Name { get; set; }
-        public int Qty { get; set; }
-    }
 }

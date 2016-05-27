@@ -1,7 +1,4 @@
-﻿@model SFA.DAS.ForecastingTool.Web.Models.ForecastQuestionsModel
-@{
-    var startDate = new DateTime(2017, 4, 1);
-}
+﻿@model SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel
 
 <h2 class="heading-xlarge">Results</h2>
 <p>Here is your forecasted levy cashflow</p>
@@ -9,21 +6,21 @@
     <thead>
     <tr>
         <th>Month</th>
-        <th>Levy Payments In</th>
-        <th>Training Payments Out</th>
-        <th>Balance</th>
-        <th>Co-Payment</th>
+        <th class="financial">Levy Payments In</th>
+        <th class="financial">Training Payments Out</th>
+        <th class="financial">Balance</th>
+        <th class="financial">Co-Payment</th>
     </tr>
     </thead>
     <tbody>
-    @for (var i = 0; i < 12; i++)
+    @foreach (var month in Model.Results)
     {
         <tr>
-            <td>@startDate.AddMonths(i).ToString("MMMM")</td>
-            <td>£1,000</td>
-            <td>£900</td>
-            <td>£100</td>
-            <td>-</td>
+            <td>@month.Date.ToString("MMMM")</td>
+            <td class="financial">@Html.FinancialText(month.LevyIn)</td>
+            <td class="financial">@Html.FinancialText(month.TrainingOut)</td>
+            <td class="financial">@Html.FinancialText(month.Balance)</td>
+            <td class="financial">@Html.FinancialText(month.CoPayment)</td>
         </tr>
     }
     </tbody>

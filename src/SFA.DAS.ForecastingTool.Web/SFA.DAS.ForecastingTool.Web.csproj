@@ -309,9 +309,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="FinancialForecasting\ForecastCalculator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="Infrastructure\Caching\CacheKeys.cs" />
     <Compile Include="Infrastructure\Caching\ICacheProvider.cs" />
     <Compile Include="Infrastructure\Caching\InProcessCacheProvider.cs" />
@@ -324,6 +326,8 @@
     <Compile Include="Infrastructure\Routing\PostToUrlRedirectHandler.cs" />
     <Compile Include="Infrastructure\Routing\UrlParser.cs" />
     <Compile Include="Models\ForecastQuestionsModel.cs" />
+    <Compile Include="Models\ResultsViewModel.cs" />
+    <Compile Include="Models\StandardModel.cs" />
     <Compile Include="Models\TrainingCourseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Standards\CachedStandardsRepository.cs" />

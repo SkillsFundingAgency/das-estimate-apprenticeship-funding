@@ -58,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardsTests\CachedStandardsRepositoryTests\CachedStandardsRepositoryTestsBase.cs" />
+    <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingAll.cs" />
+    <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingByCode.cs" />
     <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingAll.cs" />
     <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingByCode.cs" />
   </ItemGroup>

@@ -312,6 +312,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Caching\CacheKeys.cs" />
     <Compile Include="Infrastructure\Caching\ICacheProvider.cs" />
     <Compile Include="Infrastructure\Caching\InProcessCacheProvider.cs" />
     <Compile Include="Infrastructure\FileSystem\DiskFileInfo.cs" />
@@ -320,6 +321,9 @@
     <Compile Include="Infrastructure\FileSystem\IFileSystem.cs" />
     <Compile Include="Models\ForecastQuestionsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Standards\CachedStandardsRepository.cs" />
+    <Compile Include="Standards\IStandardsRepository.cs" />
+    <Compile Include="Standards\Standard.cs" />
     <Compile Include="Standards\StandardsRepository.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ using SFA.DAS.ForecastingTool.Web.Infrastructure.FileSystem;
 
 namespace SFA.DAS.ForecastingTool.Web.Standards
 {
-    public class StandardsRepository
+    public class StandardsRepository : IStandardsRepository
     {
         private readonly IFileSystem _fileSystem;
 
@@ -43,13 +43,5 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
             var standards = await GetAllAsync();
             return standards.SingleOrDefault(s => s.Code == code);
         }
-    }
-
-    public class Standard
-    {
-        public int Code { get; set; }
-        public string Name { get; set; }
-        public int Price { get; set; }
-        public int Duration { get; set; }
     }
 }

@@ -1,0 +1,34 @@
+﻿@model SFA.DAS.ForecastingTool.Web.Models.ForecastQuestionsModel
+
+<h2 class="heading-xlarge">What training courses will you use?</h2>
+<p>Please select the training standard you would like to use and enter the number or apprentices you would like to take on</p>
+<form>
+    <div class="form-group">
+        <input type="number" class="form-control-1-4" aria-label="Number of apprentices"/>
+        <span>x</span>
+        <select class="form-control-1-3" aria-label="Training standard">
+            <option>Standard 1</option>
+            <option>Standard 2</option>
+            <option>Standard 3</option>
+        </select>
+    </div>
+    <a href="@Url.Action("Results")" class="button">Calculate</a>
+    <a href="@Url.Action("Results")" class="button">Skip</a>
+</form>
+
+
+<h3 class="heading-medium">Previous answers</h3>
+<div>
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <a href="@Url.Action("Welcome")">Start again</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Annual Paybill of £5,000,000</td>
+            <td><a href="@Url.Action("Paybill")">Change</a></td>
+        </tr>
+    </table>
+</div>

@@ -1,13 +1,28 @@
 ﻿using System.Web.Mvc;
+using SFA.DAS.ForecastingTool.Web.Models;
 
 namespace SFA.DAS.ForecastingTool.Web.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        public ActionResult Welcome()
         {
-            return View();
+            return View(new ForecastQuestionsModel());
+        }
+
+        public ActionResult Paybill(ForecastQuestionsModel model)
+        {
+            return View(model);
+        }
+
+        public ActionResult TrainingCourse(ForecastQuestionsModel model)
+        {
+            return View(model);
+        }
+
+        public ActionResult Results(ForecastQuestionsModel model)
+        {
+            return View(model);
         }
     }
 }

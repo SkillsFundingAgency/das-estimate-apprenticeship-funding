@@ -303,6 +303,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ForecastQuestionsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -313,11 +314,14 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="assets\stylesheets\fonts\GDSTransportTabular-Bold.eot" />
     <Content Include="assets\stylesheets\fonts\GDSTransportTabular-Light.eot" />
     <Content Include="assets\stylesheets\fonts\GDSTransportWebsite-Bold.eot" />
     <Content Include="assets\stylesheets\fonts\GDSTransportWebsite.eot" />
+    <Content Include="Views\Home\Paybill.cshtml" />
+    <Content Include="Views\Home\TrainingCourse.cshtml" />
+    <Content Include="Views\Home\Results.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -327,7 +331,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

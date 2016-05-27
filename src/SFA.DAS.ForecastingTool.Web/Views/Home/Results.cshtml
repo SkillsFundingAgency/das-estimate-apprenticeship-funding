@@ -1,0 +1,50 @@
+﻿@model SFA.DAS.ForecastingTool.Web.Models.ForecastQuestionsModel
+@{
+    var startDate = new DateTime(2017, 4, 1);
+}
+
+<h2 class="heading-xlarge">Results</h2>
+<p>Here is your forecasted levy cashflow</p>
+<table>
+    <thead>
+    <tr>
+        <th>Month</th>
+        <th>Levy Payments In</th>
+        <th>Training Payments Out</th>
+        <th>Balance</th>
+        <th>Co-Payment</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (var i = 0; i < 12; i++)
+    {
+        <tr>
+            <td>@startDate.AddMonths(i).ToString("MMMM")</td>
+            <td>£1,000</td>
+            <td>£900</td>
+            <td>£100</td>
+            <td>-</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h3 class="heading-medium">Previous answers</h3>
+<div>
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <a href="@Url.Action("Welcome")">Start again</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Annual Paybill of £5,000,000</td>
+            <td><a href="@Url.Action("Paybill")">Change</a></td>
+        </tr>
+        <tr>
+            <td>4 apprentices on Butcher training course</td>
+            <td><a href="@Url.Action("TrainingCourse")">Change</a></td>
+        </tr>
+    </table>
+</div>

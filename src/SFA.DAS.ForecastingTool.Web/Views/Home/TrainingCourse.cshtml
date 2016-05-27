@@ -2,19 +2,19 @@
 
 <h2 class="heading-xlarge">What training courses will you use?</h2>
 <p>Please select the training standard you would like to use and enter the number or apprentices you would like to take on</p>
-<form>
+<form method="post">
     <div class="form-group">
-        <input type="number" class="form-control-1-4" aria-label="Number of apprentices"/>
+        <input name="cohorts" type="number" class="form-control-1-4" aria-label="Number of apprentices"/>
         <span>x</span>
-        <select class="form-control-1-3" aria-label="Training standard">
+        <select name="standard" class="form-control-1-3" aria-label="Training standard">
             @foreach (var standard in Model.Standards)
             {
                 <option value="@standard.Code">@standard.Name</option>
             }
         </select>
     </div>
-    <a href="@Url.Action("Results")" class="button">Calculate</a>
-    <a href="@Url.Action("Results")" class="button">Skip</a>
+    <input name="trainingCourseSubmit" type="submit" class="button" value="Calculate" />
+    <input name="trainingCourseSkip" type="submit" class="button" value="Calculate" />
 </form>
 
 

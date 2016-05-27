@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Routing;
 
 namespace SFA.DAS.ForecastingTool.Web
 {
@@ -8,6 +9,12 @@ namespace SFA.DAS.ForecastingTool.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            RouteValueDictionary defaults = new RouteValueDictionary();
+            defaults.Add("controller", "Home");
+            defaults.Add("action", "Paybill");
+            var customRoute = new Route("forecast/{*prms}", defaults, new ForecastingRouteHandler());
+            routes.Add(customRoute);
 
             routes.MapRoute(
                 name: "Default",

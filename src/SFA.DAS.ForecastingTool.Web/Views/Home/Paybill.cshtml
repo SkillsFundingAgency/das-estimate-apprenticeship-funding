@@ -2,10 +2,10 @@
 
 <h2 class="heading-xlarge">How much is your Paybill?</h2>
 <p>Please enter your total annual PAYE bill:</p>
-<form>
+<form method="post">
     <div class="form-group">
         <span>£</span>
-        <input type="number" class="form-control-1-3" aria-label="Annual PAYE bill in whole pounds" />
+        <input name="paybill" type="number" class="form-control-1-3" aria-label="Annual PAYE bill in whole pounds" />
     </div>
-    <a href="@Url.Action("TrainingCourse")" class="button">Next</a>
+    <input name="paybillSubmit" type="submit" class="button" value="Next"/>
 </form>

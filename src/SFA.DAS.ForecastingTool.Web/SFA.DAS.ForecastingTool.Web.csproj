@@ -319,6 +319,10 @@
     <Compile Include="Infrastructure\FileSystem\DiskFileSystem.cs" />
     <Compile Include="Infrastructure\FileSystem\IFileInfo.cs" />
     <Compile Include="Infrastructure\FileSystem\IFileSystem.cs" />
+    <Compile Include="Infrastructure\Routing\ForecastingMvcHandler.cs" />
+    <Compile Include="Infrastructure\Routing\ForecastingRouteHandler.cs" />
+    <Compile Include="Infrastructure\Routing\PostToUrlRedirectHandler.cs" />
+    <Compile Include="Infrastructure\Routing\UrlParser.cs" />
     <Compile Include="Models\ForecastQuestionsModel.cs" />
     <Compile Include="Models\TrainingCourseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

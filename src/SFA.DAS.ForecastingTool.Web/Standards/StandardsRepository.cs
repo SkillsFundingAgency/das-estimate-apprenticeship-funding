@@ -1,0 +1,55 @@
+﻿using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.FileSystem;
+
+namespace SFA.DAS.ForecastingTool.Web.Standards
+{
+    public class StandardsRepository
+    {
+        private readonly IFileSystem _fileSystem;
+
+        public StandardsRepository(IFileSystem fileSystem)
+        {
+            _fileSystem = fileSystem;
+        }
+
+        public async Task<Standard[]> GetAllAsync()
+        {
+            var standardsFile = _fileSystem.GetFile("~/App_Data/Standards.json");
+            if (!standardsFile.Exists)
+            {
+                throw new FileNotFoundException("Could not find Standards file");
+            }
+
+            using (var stream = standardsFile.OpenRead())
+            using (var reader = new StreamReader(stream))
+            {
+                var json = await reader.ReadToEndAsync();
+                try
+                {
+                    return JsonConvert.DeserializeObject<Standard[]>(json);
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new InvalidDataException("Standards data is corrupt", ex);
+                }
+            }
+        }
+
+        public async Task<Standard> GetByCodeAsync(int code)
+        {
+            var standards = await GetAllAsync();
+            return standards.SingleOrDefault(s => s.Code == code);
+        }
+    }
+
+    public class Standard
+    {
+        public int Code { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public int Duration { get; set; }
+    }
+}

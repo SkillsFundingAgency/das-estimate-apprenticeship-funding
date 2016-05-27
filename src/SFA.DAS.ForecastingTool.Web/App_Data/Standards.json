@@ -1,0 +1,44 @@
+﻿[
+  {
+    "Code": 34,
+    "Name": "Able Seafarer (Deck)",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 17,
+    "Name": "Actuarial Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 37,
+    "Name": "Aerospace Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 3,
+    "Name": "Aerospace Manufacturing Fitter",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 56,
+    "Name": "Aerospace Manufacturing, Electrical, Mechanical and Systems Fitter",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 26,
+    "Name": "Dual Fuel Smart Meter Installer",
+    "Price": 8000,
+    "Duration": 12
+  },
+  {
+    "Code": 64,
+    "Name": "Housing Property Management Assistant",
+    "Price": 2000,
+    "Duration": 12
+  }
+]

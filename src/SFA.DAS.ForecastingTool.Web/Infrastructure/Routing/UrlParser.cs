@@ -47,8 +47,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         {
             var result = ProcessTrainingCoursePath(parts);
             result.ActionName = "Results";
-            result.RouteValues.Add("SelectedStandard.Code", int.Parse(parts[2].Substring(0, 1)));
-            result.RouteValues.Add("SelectedStandard.Qty", int.Parse(parts[2].Substring(2)));
+            result.RouteValues.Add("SelectedStandard.Qty", int.Parse(parts[2].Substring(0, 1)));
+            result.RouteValues.Add("SelectedStandard.Code", int.Parse(parts[2].Substring(2)));
             return result;
         }
     }

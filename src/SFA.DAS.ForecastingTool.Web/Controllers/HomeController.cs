@@ -42,8 +42,14 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Results(ForecastQuestionsModel model)
+        public async Task<ActionResult> Results(ForecastQuestionsModel model)
         {
+            //TODO: This belongs in the routing really
+            if (model.SelectedStandard.Qty > 0)
+            {
+                var standard = await _standardsRepository.GetByCodeAsync(model.SelectedStandard.Code);
+                model.SelectedStandard.Name = standard.Name;
+            }
             return View(model);
         }
     }

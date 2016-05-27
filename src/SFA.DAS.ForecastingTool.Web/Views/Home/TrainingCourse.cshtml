@@ -14,22 +14,8 @@
         </select>
     </div>
     <input name="trainingCourseSubmit" type="submit" class="button" value="Calculate" />
-    <input name="trainingCourseSkip" type="submit" class="button" value="Calculate" />
+    <input name="trainingCourseSkip" type="submit" class="button" value="Skip" />
 </form>
 
 
-<h3 class="heading-medium">Previous answers</h3>
-<div>
-    <table>
-        <tr>
-            <td></td>
-            <td>
-                <a href="@Url.Action("Welcome")">Start again</a>
-            </td>
-        </tr>
-        <tr>
-            <td>Annual Paybill of £5,000,000</td>
-            <td><a href="@Url.Action("Paybill")">Change</a></td>
-        </tr>
-    </table>
-</div>
+@Html.Partial("_PreviousAnswers", Model)

@@ -348,6 +348,7 @@
     <Content Include="Views\Home\TrainingCourse.cshtml" />
     <Content Include="Views\Home\Results.cshtml" />
     <Content Include="App_Data\Standards.json" />
+    <Content Include="Views\Home\_PreviousAnswers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

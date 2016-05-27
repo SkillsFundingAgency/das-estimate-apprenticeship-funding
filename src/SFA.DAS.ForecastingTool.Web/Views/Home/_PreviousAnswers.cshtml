@@ -1,0 +1,31 @@
+﻿@model SFA.DAS.ForecastingTool.Web.Models.ForecastQuestionsModel
+
+<h3 class="heading-medium">Previous answers</h3>
+<div>
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <a href="@Url.Action("Welcome")">Start again</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Annual Paybill of @Model.Paybill.ToString("C")</td>
+            <td><a href="@Url.Content($"~/forecast")">Change</a></td>
+        </tr>
+        @if (Model.SelectedStandard != null)
+        {
+            <tr>
+                @if (Model.SelectedStandard.Qty == 0)
+                {
+                    <td>No apprentices selected</td>
+                }
+                else
+                {
+                    <td>@Model.SelectedStandard.Qty apprentices on @Model.SelectedStandard.Name training course</td>
+                }
+                <td><a href="@Url.Content($"~/forecast/{Model.Paybill}")">Change</a></td>
+            </tr>
+        }
+    </table>
+</div>

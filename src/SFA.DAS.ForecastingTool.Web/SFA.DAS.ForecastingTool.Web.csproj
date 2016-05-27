@@ -168,6 +168,10 @@
     <Content Include="assets\stylesheets\patterns.css" />
     <Content Include="Content\images\accordian-arrow-2x.png" />
     <Content Include="Content\images\accordian-arrow.png" />
+    <Content Include="Content\images\apple-touch-icon-120x120.png" />
+    <Content Include="Content\images\apple-touch-icon-152x152.png" />
+    <Content Include="Content\images\apple-touch-icon-60x60.png" />
+    <Content Include="Content\images\apple-touch-icon-76x76.png" />
     <Content Include="Content\images\arrow-sprite.png" />
     <Content Include="Content\images\crests\bis_crest_13px.png" />
     <Content Include="Content\images\crests\bis_crest_13px_x2.png" />
@@ -239,6 +243,9 @@
     <Content Include="Content\images\external-links\external-link-black-12x12.png" />
     <Content Include="Content\images\external-links\external-link-black-24x24.png" />
     <Content Include="Content\images\external-links\external-link.png" />
+    <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\gov.uk_logotype_crown_invert.png" />
+    <Content Include="Content\images\gov.uk_logotype_crown_invert_trans.png" />
     <Content Include="Content\images\icon-arrow-left.png" />
     <Content Include="Content\images\icon-calendar-2x.png" />
     <Content Include="Content\images\icon-calendar.png" />
@@ -285,6 +292,7 @@
     <Content Include="Content\images\icon-steps\icon-step-8.png" />
     <Content Include="Content\images\icon-steps\icon-step-9-2x.png" />
     <Content Include="Content\images\icon-steps\icon-step-9.png" />
+    <Content Include="Content\images\opengraph-image.png" />
     <Content Include="Content\images\player-icon-forward.png" />
     <Content Include="Content\images\player-icon-pause.png" />
     <Content Include="Content\images\player-icon-play.png" />

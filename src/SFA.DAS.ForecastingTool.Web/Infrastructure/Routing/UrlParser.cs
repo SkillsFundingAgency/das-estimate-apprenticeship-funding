@@ -101,19 +101,23 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 return result;
             }
 
-            var standard = _standardsRepository.GetByCodeAsync(standardCode).Result;
-            if (standard == null)
+            Standard standard = null;
+            if (standardQty > 0 || standardCode > 0)
             {
-                result.IsErrored = true;
-                result.RouteValues.Add("ErrorMessage", "Number of apprentices or training standard invalid");
-                result.ActionName = "TrainingCourse";
-                return result;
+                standard = _standardsRepository.GetByCodeAsync(standardCode).Result;
+                if (standard == null)
+                {
+                    result.IsErrored = true;
+                    result.RouteValues.Add("ErrorMessage", "Number of apprentices or training standard invalid");
+                    result.ActionName = "TrainingCourse";
+                    return result;
+                }
             }
 
             result.ActionName = "Results";
             result.RouteValues.Add("SelectedStandard.Qty", standardQty);
             result.RouteValues.Add("SelectedStandard.Code", standardCode);
-            result.RouteValues.Add("SelectedStandard.Name", standard.Name);
+            result.RouteValues.Add("SelectedStandard.Name", standard?.Name);
             return result;
         }
     }

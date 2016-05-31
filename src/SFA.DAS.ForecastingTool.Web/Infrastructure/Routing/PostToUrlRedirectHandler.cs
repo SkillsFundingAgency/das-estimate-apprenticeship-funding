@@ -20,7 +20,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             }
             else if (form.AllKeys.Contains("trainingCourseSkip"))
             {
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}0x0");
+                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}/0x0");
             }
         }
 

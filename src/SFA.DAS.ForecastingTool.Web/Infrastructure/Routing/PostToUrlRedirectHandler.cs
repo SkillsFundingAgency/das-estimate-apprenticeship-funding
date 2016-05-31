@@ -12,7 +12,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             var currentUrl = context.Request.Url.LocalPath;
             if (form.AllKeys.Contains("paybillSubmit"))
             {
-                Redirect(context, $"{currentUrl}/{form["paybill"]}");
+                Redirect(context, $"forecast/{form["paybill"]}");
             }
             else if (form.AllKeys.Contains("trainingCourseSubmit"))
             {

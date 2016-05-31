@@ -6,6 +6,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 {
     public class UrlParser
     {
+        private const int LevyLimit = 3000000;
+
         private readonly IStandardsRepository _standardsRepository;
 
         public UrlParser(IStandardsRepository standardsRepository)
@@ -17,7 +19,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         {
             var parts = url.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             var result = new ParsedUrl { RouteValues = new Dictionary<string, object>() };
-            
+
             if (parts.Length == 1)
             {
                 return ProcessPaybillPath(parts);
@@ -41,19 +43,51 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         private ParsedUrl ProcessPaybillPath(string[] parts)
         {
             var result = ProcessWelcomePath(parts);
+            if (result.IsErrored)
+            {
+                return result;
+            }
+
             result.ActionName = "Paybill";
             return result;
         }
         private ParsedUrl ProcessTrainingCoursePath(string[] parts)
         {
             var result = ProcessPaybillPath(parts);
-            result.ActionName = "TrainingCourse";
-            result.RouteValues.Add("Paybill", int.Parse(parts[1]));
+            if (result.IsErrored)
+            {
+                return result;
+            }
+
+            int paybill;
+            if (!int.TryParse(parts[1], out paybill))
+            {
+                result.IsErrored = true;
+                result.RouteValues.Add("ErrorMessage", "Paybill is not a valid entry");
+                result.ActionName = "Paybill";
+            }
+            else if (paybill < LevyLimit)
+            {
+                result.IsErrored = true;
+                result.RouteValues.Add("ErrorMessage", $"You paybill indicates you will not be a levy payer. You will not pay levy until your paybill is {LevyLimit.ToString("C0")} or more");
+                result.ActionName = "Paybill";
+            }
+            else
+            {
+                result.ActionName = "TrainingCourse";
+            }
+
+            result.RouteValues.Add("Paybill", paybill);
             return result;
         }
         private ParsedUrl ProcessResultsPath(string[] parts)
         {
             var result = ProcessTrainingCoursePath(parts);
+            if (result.IsErrored)
+            {
+                return result;
+            }
+
             var standardQty = int.Parse(parts[2].Substring(0, 1));
             var standardCode = int.Parse(parts[2].Substring(2));
             var standard = _standardsRepository.GetByCodeAsync(standardCode).Result;

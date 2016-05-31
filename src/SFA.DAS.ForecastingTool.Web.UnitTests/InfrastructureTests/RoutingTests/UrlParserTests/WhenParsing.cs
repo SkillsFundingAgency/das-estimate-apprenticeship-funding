@@ -9,6 +9,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
     public class WhenParsing
     {
         private const string BasePath = "Forecast";
+        private const string ErrorMessageRouteValueKey = "ErrorMessage";
         private const string PaybillRouteValueKey = "Paybill";
         private const string StandardQtyRouteValueKey = "SelectedStandard.Qty";
         private const string StandardCodeRouteValueKey = "SelectedStandard.Code";
@@ -73,7 +74,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnTrainingCourseIfPathHasOnlyAmount()
         {
             // Act
-            var actual = _parser.Parse($"{BasePath}/987654");
+            var actual = _parser.Parse($"{BasePath}/987654321");
 
             // Assert
             Assert.AreEqual("TrainingCourse", actual.ActionName);
@@ -116,6 +117,68 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
 
             Assert.IsTrue(actual.RouteValues.ContainsKey(StandardNameRouteValueKey));
             Assert.AreEqual("Unit tester", actual.RouteValues[StandardNameRouteValueKey]);
+        }
+        
+        [TestCase(BasePath + "/abc")]
+        [TestCase(BasePath + "/abc/4x34")]
+        [TestCase(BasePath + "/2147483648")]
+        [TestCase(BasePath + "/2147483648/4x34")]
+        public void ThenItShouldReturnPaybillIfValueInPathIsNotValidInt(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.AreEqual("Paybill", actual.ActionName);
+        }
+
+        [TestCase(BasePath + "/abc")]
+        [TestCase(BasePath + "/abc/4x34")]
+        [TestCase(BasePath + "/2147483648")]
+        [TestCase(BasePath + "/2147483648/4x34")]
+        public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsNotValidInt(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
+            Assert.AreEqual("Paybill is not a valid entry", actual.RouteValues[ErrorMessageRouteValueKey]);
+        }
+
+        [TestCase(BasePath + "/2999999")]
+        [TestCase(BasePath + "/2999999/4x34")]
+        public void ThenItShouldReturnPaybillIfValueInPathIsBelowLevyLimit(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.AreEqual("Paybill", actual.ActionName);
+        }
+
+        [TestCase(BasePath + "/2999999")]
+        [TestCase(BasePath + "/2999999/4x34")]
+        public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsBelowLevyLimit(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
+            Assert.AreEqual("You paybill indicates you will not be a levy payer. You will not pay levy until your paybill is £3,000,000 or more", actual.RouteValues[ErrorMessageRouteValueKey]);
+        }
+
+        [TestCase(BasePath + "/2999999")]
+        [TestCase(BasePath + "/2999999/4x34")]
+        public void ThenItShouldIncludeThePaybillInRouteValuesIfValueInPathIsBelowLevyLimit(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(PaybillRouteValueKey));
+            Assert.AreEqual(2999999, actual.RouteValues[PaybillRouteValueKey]);
         }
     }
 }

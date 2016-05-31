@@ -2,6 +2,7 @@
 {
     public class ForecastQuestionsModel
     {
+        public string ErrorMessage { get; set; }
         public int Paybill { get; set; }
         public StandardModel SelectedStandard { get; set; }
     }

@@ -2456,6 +2456,9 @@ td.financial, th.financial {
     text-align: right;
 }
 
+.error {
+    margin-bottom: 20px;
+}
 
 
 

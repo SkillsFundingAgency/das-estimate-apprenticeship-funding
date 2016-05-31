@@ -2455,3 +2455,15 @@ input[type=number] {
 td.financial, th.financial {
     text-align: right;
 }
+
+
+
+
+.disclaimer {
+    padding-top: 10px;
+}
+.disclaimer strong {
+    font-weight: bold;
+    color: #b10e1e;
+    margin-right: 10px;
+}

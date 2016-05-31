@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
 namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 {
-    public interface IForecastCalculator
-    {
-        Task<MonthlyCashflow[]> ForecastAsync(int paybill, int standardCode, int standardQty);
-    }
-
     public class ForecastCalculator : IForecastCalculator
     {
-        private const decimal LevyPercentage = 0.005m;
-        private const int LevyAllowance = 15000;
-        private const decimal LevyTopupPercentage = 1.1m;
-
         private readonly IStandardsRepository _standardsRepository;
+        private readonly IConfigurationProvider _configurationProvider;
 
-        public ForecastCalculator(IStandardsRepository standardsRepository)
+        public ForecastCalculator(IStandardsRepository standardsRepository, IConfigurationProvider configurationProvider)
         {
             _standardsRepository = standardsRepository;
+            _configurationProvider = configurationProvider;
         }
 
         public async Task<MonthlyCashflow[]> ForecastAsync(int paybill, int standardCode, int standardQty)
@@ -31,14 +25,14 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
             var startDate = new DateTime(2017, 4, 1);
 
-            var annualLevy = (paybill * LevyPercentage) - LevyAllowance;
+            var annualLevy = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
             var monthlyLevy = annualLevy / 12m;
 
             var rollingBalance = 0m;
             var months = new MonthlyCashflow[duration];
             for (var i = 0; i < duration; i++)
             {
-                var levyIn = monthlyLevy * LevyTopupPercentage;
+                var levyIn = monthlyLevy * _configurationProvider.LevyTopupPercentage;
                 var trainingOut = i == duration - 1 ? monthlyTrainingFraction * 4 : monthlyTrainingFraction;
 
                 rollingBalance += levyIn - trainingOut;
@@ -49,7 +43,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     LevyIn = Math.Round(levyIn, 2),
                     TrainingOut = Math.Round(trainingOut, 2),
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
-                    CoPayment = rollingBalance < 0 ? Math.Round(rollingBalance * -1, 2) : 0
+                    CoPayment = rollingBalance < 0 ? Math.Round((rollingBalance * -1) * _configurationProvider.CopaymentPercentage, 2) : 0
                 };
 
                 // Have we just balanced the account
@@ -60,14 +54,5 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             }
             return months;
         }
-    }
-
-    public class MonthlyCashflow
-    {
-        public DateTime Date { get; set; }
-        public decimal LevyIn { get; set; }
-        public decimal TrainingOut { get; set; }
-        public decimal Balance { get; set; }
-        public decimal CoPayment { get; set; }
     }
 }

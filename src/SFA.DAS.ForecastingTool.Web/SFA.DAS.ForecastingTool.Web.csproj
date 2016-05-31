@@ -310,6 +310,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="FinancialForecasting\ForecastCalculator.cs" />
+    <Compile Include="FinancialForecasting\IForecastCalculator.cs" />
+    <Compile Include="FinancialForecasting\MonthlyCashflow.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -317,6 +319,8 @@
     <Compile Include="Infrastructure\Caching\CacheKeys.cs" />
     <Compile Include="Infrastructure\Caching\ICacheProvider.cs" />
     <Compile Include="Infrastructure\Caching\InProcessCacheProvider.cs" />
+    <Compile Include="Infrastructure\Configuration\ConfigurationProvider.cs" />
+    <Compile Include="Infrastructure\Configuration\IConfigurationProvider.cs" />
     <Compile Include="Infrastructure\FileSystem\DiskFileInfo.cs" />
     <Compile Include="Infrastructure\FileSystem\DiskFileSystem.cs" />
     <Compile Include="Infrastructure\FileSystem\IFileInfo.cs" />

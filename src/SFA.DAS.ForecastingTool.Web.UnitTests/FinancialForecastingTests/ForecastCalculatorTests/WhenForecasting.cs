@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
 namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.ForecastCalculatorTests
@@ -15,6 +16,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
 
         private Mock<IStandardsRepository> _standardsRepository;
         private ForecastCalculator _calculator;
+        private Mock<IConfigurationProvider> _configurationProvider;
 
         [SetUp]
         public void Arrange()
@@ -25,7 +27,13 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                 Price = 6000
             }));
 
-            _calculator = new ForecastCalculator(_standardsRepository.Object);
+            _configurationProvider = new Mock<IConfigurationProvider>();
+            _configurationProvider.Setup(cp => cp.LevyPercentage).Returns(0.005m);
+            _configurationProvider.Setup(cp => cp.LevyAllowance).Returns(15000);
+            _configurationProvider.Setup(cp => cp.LevyTopupPercentage).Returns(1.1m);
+            _configurationProvider.Setup(cp => cp.CopaymentPercentage).Returns(0.1m);
+
+            _calculator = new ForecastCalculator(_standardsRepository.Object, _configurationProvider.Object);
         }
 
         [Test]
@@ -121,7 +129,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         }
 
         [Test]
-        public async Task ThenItShouldHaveCopaymentOfInverseOfANegativeBalance()
+        public async Task ThenItShouldHaveCopaymentOfTheDeficitAtCopaymentRate()
         {
             // Act
             var actual = await _calculator.ForecastAsync(Paybill, StandardCode, StandardQty);
@@ -138,7 +146,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             Assert.AreEqual(0m, actual[8].CoPayment);
             Assert.AreEqual(0m, actual[9].CoPayment);
             Assert.AreEqual(0m, actual[10].CoPayment);
-            Assert.AreEqual(500m, actual[11].CoPayment);
+            Assert.AreEqual(50m, actual[11].CoPayment);
         }
     }
 }

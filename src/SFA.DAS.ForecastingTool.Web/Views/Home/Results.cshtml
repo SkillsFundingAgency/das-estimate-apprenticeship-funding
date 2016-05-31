@@ -1,7 +1,9 @@
 ﻿@model SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel
 
-<h2 class="heading-xlarge">Results</h2>
-<p>Here is your forecasted levy cashflow</p>
+<h2 class="heading-xlarge">Your levy amount</h2>
+<p>The amount of levy you will pay is: @Model.LevyAmount.ToString("C")</p>
+<p>Here is your levy cash flow forecast</p>
+
 <table>
     <thead>
     <tr>

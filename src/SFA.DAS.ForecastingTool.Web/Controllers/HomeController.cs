@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
 using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -11,11 +12,16 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
     {
         private readonly IStandardsRepository _standardsRepository;
         private readonly IForecastCalculator _forecastCalculator;
+        private readonly IConfigurationProvider _configurationProvider;
 
-        public HomeController(IStandardsRepository standardsRepository, IForecastCalculator forecastCalculator)
+        public HomeController(
+            IStandardsRepository standardsRepository,
+            IForecastCalculator forecastCalculator,
+            IConfigurationProvider configurationProvider)
         {
             _standardsRepository = standardsRepository;
             _forecastCalculator = forecastCalculator;
+            _configurationProvider = configurationProvider;
         }
 
         public ActionResult Welcome()
@@ -39,6 +45,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
 
         public async Task<ActionResult> Results(ResultsViewModel model)
         {
+            model.LevyAmount = (model.Paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
             model.Results = await _forecastCalculator.ForecastAsync(model.Paybill, model.SelectedStandard.Code, model.SelectedStandard.Qty);
             return View(model);
         }

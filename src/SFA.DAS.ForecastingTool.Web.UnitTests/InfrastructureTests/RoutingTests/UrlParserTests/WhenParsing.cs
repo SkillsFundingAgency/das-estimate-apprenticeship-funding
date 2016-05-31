@@ -167,7 +167,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
-            Assert.AreEqual("You paybill indicates you will not be a levy payer. You will not pay levy until your paybill is £3,000,000 or more", actual.RouteValues[ErrorMessageRouteValueKey]);
+            Assert.AreEqual("Your paybill amount indicates you will not pay the levy. You will be able to take apprentices on using co-funding.", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
         [TestCase(BasePath + "/2999999")]

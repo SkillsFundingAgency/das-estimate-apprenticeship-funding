@@ -69,7 +69,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             else if (paybill < LevyLimit)
             {
                 result.IsErrored = true;
-                result.RouteValues.Add("ErrorMessage", $"You paybill indicates you will not be a levy payer. You will not pay levy until your paybill is {LevyLimit.ToString("C0")} or more");
+                result.RouteValues.Add("ErrorMessage", "Your paybill amount indicates you will not pay the levy. You will be able to take apprentices on using co-funding.");
                 result.ActionName = "Paybill";
             }
             else

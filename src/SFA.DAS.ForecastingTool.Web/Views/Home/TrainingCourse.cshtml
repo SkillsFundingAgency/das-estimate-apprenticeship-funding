@@ -1,26 +1,55 @@
 ﻿@model SFA.DAS.ForecastingTool.Web.Models.TrainingCourseViewModel
 
-<h2 class="heading-xlarge">What training courses will you use?</h2>
+<h2 class="heading-xlarge">Apprentices and training</h2>
 @if (!string.IsNullOrEmpty(Model.ErrorMessage))
 {
     <div class="error">
         <p class="error-message">@Model.ErrorMessage</p>
     </div>
 }
-<p>Please select the training standard you would like to use and enter the number or apprentices you would like to take on</p>
+<p>Enter the number of apprentices you are taking on and the apprenticeship training you'll be using.</p>
+<p>You can skip this step if you wish.</p>
 <form method="post">
-    <div class="form-group">
-        <input name="cohorts" type="number" class="form-control-1-4" aria-label="Number of apprentices"/>
-        <span>x</span>
-        <select name="standard" class="form-control-1-3" aria-label="Training standard">
-            @foreach (var standard in Model.Standards)
-            {
-                <option value="@standard.Code">@standard.Name</option>
-            }
-        </select>
+    <table>
+        <thead>
+        <tr>
+            <th>Number of apprentices</th>
+            <th>Type of apprenticeship training</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <input name="cohorts" type="number" class="form-control-1-4" aria-label="Number of apprentices"/>
+            </td>
+            <td>
+                <select name="standard" class="form-control-1-3" aria-label="Training standard">
+                    @foreach (var standard in Model.Standards)
+                    {
+                        <option value="@standard.Code">@standard.Name</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="form-group" style="margin-top:15px;">
+        <input name="trainingCourseSubmit" type="submit" class="button" value="Calculate" />
+        <input name="trainingCourseSkip" type="submit" class="button" value="Skip" />
     </div>
-    <input name="trainingCourseSubmit" type="submit" class="button" value="Calculate" />
-    <input name="trainingCourseSkip" type="submit" class="button" value="Skip" />
+    
+    @*<div class="form-group">
+            <input name="cohorts" type="number" class="form-control-1-4" aria-label="Number of apprentices"/>
+            <span>x</span>
+            <select name="standard" class="form-control-1-3" aria-label="Training standard">
+                @foreach (var standard in Model.Standards)
+                {
+                    <option value="@standard.Code">@standard.Name</option>
+                }
+            </select>
+        </div>
+        <input name="trainingCourseSubmit" type="submit" class="button" value="Calculate" />
+        <input name="trainingCourseSkip" type="submit" class="button" value="Skip" />*@
 </form>
 
 

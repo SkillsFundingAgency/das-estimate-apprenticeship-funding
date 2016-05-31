@@ -27,7 +27,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
             _standardsRepository = new Mock<IStandardsRepository>();
             _standardsRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(_standards));
 
-            _controller = new HomeController(_standardsRepository.Object, null);
+            _controller = new HomeController(_standardsRepository.Object, null, null);
 
             _model = new TrainingCourseViewModel();
         }

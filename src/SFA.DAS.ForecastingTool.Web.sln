@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{D79EC262
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFileProcessor", "DataFileProcessor\DataFileProcessor.csproj", "{596ECDA4-4509-4153-A9A4-6DC6966D400A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A0A2D285-A103-4157-A2E1-991EF07E70EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{1118545F-A7DF-4C37-B8D3-8C49487CE188} = {A0A2D285-A103-4157-A2E1-991EF07E70EC}
 		{596ECDA4-4509-4153-A9A4-6DC6966D400A} = {D79EC262-A7DA-474F-9EFB-DA2B2FB89875}
 	EndGlobalSection
 EndGlobal

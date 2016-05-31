@@ -102,18 +102,19 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual("Results", actual.ActionName);
         }
 
-        [Test]
-        public void ThenItShouldIncludeTheStandardInfoInRouteValuesIfInPath()
+        [TestCase(BasePath + "/987654321/4x34", 4, 34)]
+        [TestCase(BasePath + "/987654321/12x34", 12, 34)]
+        public void ThenItShouldIncludeTheStandardInfoInRouteValuesIfInPath(string path, int expectedQty, int expectedCode)
         {
             // Act
-            var actual = _parser.Parse($"{BasePath}/987654321/4x34");
+            var actual = _parser.Parse(path);
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(StandardQtyRouteValueKey));
-            Assert.AreEqual(4, actual.RouteValues[StandardQtyRouteValueKey]);
+            Assert.AreEqual(expectedQty, actual.RouteValues[StandardQtyRouteValueKey]);
 
             Assert.IsTrue(actual.RouteValues.ContainsKey(StandardCodeRouteValueKey));
-            Assert.AreEqual(34, actual.RouteValues[StandardCodeRouteValueKey]);
+            Assert.AreEqual(expectedCode, actual.RouteValues[StandardCodeRouteValueKey]);
 
             Assert.IsTrue(actual.RouteValues.ContainsKey(StandardNameRouteValueKey));
             Assert.AreEqual("Unit tester", actual.RouteValues[StandardNameRouteValueKey]);
@@ -179,6 +180,35 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(PaybillRouteValueKey));
             Assert.AreEqual(2999999, actual.RouteValues[PaybillRouteValueKey]);
+        }
+
+        [TestCase(BasePath + "/987654321/ax34")]
+        [TestCase(BasePath + "/987654321/2xa")]
+        [TestCase(BasePath + "/987654321/axa")]
+        [TestCase(BasePath + "/987654321/abc")]
+        [TestCase(BasePath + "/987654321/4x99")]
+        public void ThenItShouldReturnTrainingCourseIfStandardIsNotValidOrStandardNotFound(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.AreEqual("TrainingCourse", actual.ActionName);
+        }
+
+        [TestCase(BasePath + "/987654321/ax34")]
+        [TestCase(BasePath + "/987654321/2xa")]
+        [TestCase(BasePath + "/987654321/axa")]
+        [TestCase(BasePath + "/987654321/abc")]
+        [TestCase(BasePath + "/987654321/4x99")]
+        public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardIsNotValidOrStandardNotFound(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
+            Assert.AreEqual("Number of apprentices or training standard invalid", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
     }
 }

@@ -88,14 +88,32 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 return result;
             }
 
-            var standardQty = int.Parse(parts[2].Substring(0, 1));
-            var standardCode = int.Parse(parts[2].Substring(2));
+            var splitPoint = parts[2].IndexOf('x');
+            int standardQty;
+            int standardCode;
+            if (splitPoint < 1
+                || !int.TryParse(parts[2].Substring(0, splitPoint), out standardQty)
+                || !int.TryParse(parts[2].Substring(splitPoint + 1), out standardCode))
+            {
+                result.IsErrored = true;
+                result.RouteValues.Add("ErrorMessage", "Number of apprentices or training standard invalid");
+                result.ActionName = "TrainingCourse";
+                return result;
+            }
+
             var standard = _standardsRepository.GetByCodeAsync(standardCode).Result;
+            if (standard == null)
+            {
+                result.IsErrored = true;
+                result.RouteValues.Add("ErrorMessage", "Number of apprentices or training standard invalid");
+                result.ActionName = "TrainingCourse";
+                return result;
+            }
 
             result.ActionName = "Results";
             result.RouteValues.Add("SelectedStandard.Qty", standardQty);
             result.RouteValues.Add("SelectedStandard.Code", standardCode);
-            result.RouteValues.Add("SelectedStandard.Name", standard?.Name);
+            result.RouteValues.Add("SelectedStandard.Name", standard.Name);
             return result;
         }
     }

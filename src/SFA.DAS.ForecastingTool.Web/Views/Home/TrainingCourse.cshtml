@@ -1,6 +1,12 @@
 ﻿@model SFA.DAS.ForecastingTool.Web.Models.TrainingCourseViewModel
 
 <h2 class="heading-xlarge">What training courses will you use?</h2>
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="error">
+        <p class="error-message">@Model.ErrorMessage</p>
+    </div>
+}
 <p>Please select the training standard you would like to use and enter the number or apprentices you would like to take on</p>
 <form method="post">
     <div class="form-group">

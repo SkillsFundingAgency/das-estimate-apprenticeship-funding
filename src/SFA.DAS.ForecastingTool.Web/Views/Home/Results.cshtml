@@ -19,7 +19,7 @@
             <td>@month.Date.ToString("MMMM")</td>
             <td class="financial">@Html.FinancialText(month.LevyIn)</td>
             <td class="financial">@Html.FinancialText(month.TrainingOut)</td>
-            <td class="financial">@Html.FinancialText(month.Balance)</td>
+            <td class="financial">@month.Balance.ToString("C")</td>
             <td class="financial">@Html.FinancialText(month.CoPayment)</td>
         </tr>
     }

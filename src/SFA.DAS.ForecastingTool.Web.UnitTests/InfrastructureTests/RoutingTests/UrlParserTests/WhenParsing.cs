@@ -210,5 +210,16 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
             Assert.AreEqual("Number of apprentices or training standard invalid", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
+
+        [Test]
+        public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardSelectedButCohortSizeIs0()
+        {
+            // Act
+            var actual = _parser.Parse($"{BasePath}/987654321/0x34");
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
+            Assert.AreEqual("Must have at least 1 apprentice to calculate. Alternatively you can skip this step", actual.RouteValues[ErrorMessageRouteValueKey]);
+        }
     }
 }

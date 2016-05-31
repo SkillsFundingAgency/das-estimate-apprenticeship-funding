@@ -101,6 +101,14 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 return result;
             }
 
+            if (standardCode > 0 && standardQty == 0)
+            {
+                result.IsErrored = true;
+                result.RouteValues.Add("ErrorMessage", "Must have at least 1 apprentice to calculate. Alternatively you can skip this step");
+                result.ActionName = "TrainingCourse";
+                return result;
+            }
+
             Standard standard = null;
             if (standardQty > 0 || standardCode > 0)
             {

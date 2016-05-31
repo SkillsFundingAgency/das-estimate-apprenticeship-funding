@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 
@@ -12,17 +13,21 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             var currentUrl = context.Request.Url;
             if (form.AllKeys.Contains("paybillSubmit"))
             {
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 1)}{form["paybill"]}");
+                var paybillEntry = GetFormValue(form, "paybill", "0");
+                Redirect(context, $"{GetUrlToSegment(currentUrl, 1)}{paybillEntry}");
             }
             else if (form.AllKeys.Contains("trainingCourseSubmit"))
             {
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}{form["cohorts"]}x{form["standard"]}");
+                var cohortsEntry = GetFormValue(form, "cohorts", "0");
+                var standardSelection = GetFormValue(form, "standard", "0");
+                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}{cohortsEntry}x{standardSelection}");
             }
             else if (form.AllKeys.Contains("trainingCourseSkip"))
             {
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}/0x0");
+                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}0x0");
             }
         }
+
 
         public bool IsReusable { get; } = false;
 
@@ -35,7 +40,13 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         }
         private string GetUrlToSegment(Uri url, int segments)
         {
-            return url.Segments.Take(segments + 1).Aggregate((x, y) => x + y);
+            var result = url.Segments.Take(segments + 1).Aggregate((x, y) => x + y);
+            return result.EndsWith("/") ? result : result + "/";
+        }
+        private string GetFormValue(NameValueCollection form, string name, string defaultValue = "")
+        {
+            var value = form[name];
+            return string.IsNullOrEmpty(value) ? defaultValue : value;
         }
     }
 }

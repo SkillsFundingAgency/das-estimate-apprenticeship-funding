@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "Code": 34,
     "Name": "Able Seafarer (Deck)",
@@ -30,15 +30,465 @@
     "Duration": 12
   },
   {
+    "Code": 38,
+    "Name": "Aerospace Software Development Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 72,
+    "Name": "Bespoke Tailor and Cutter",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 76,
+    "Name": "Boatbuilder",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 54,
+    "Name": "Butcher",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 41,
+    "Name": "Chartered Legal Executive",
+    "Price": 8000,
+    "Duration": 12
+  },
+  {
+    "Code": 55,
+    "Name": "Chartered Manager Degree Apprenticeship",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 50,
+    "Name": "Chartered Surveyor",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 9,
+    "Name": "Control /Technical Support Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 39,
+    "Name": "Conveyancing Technician",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 77,
+    "Name": "Credit Controller/Collector",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 79,
+    "Name": "Cyber Intrusion Analyst",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 80,
+    "Name": "Data Analyst",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 19,
+    "Name": "Dental Laboratory Assistant",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 61,
+    "Name": "Dental Nurse",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 20,
+    "Name": "Dental Practice Manager",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 18,
+    "Name": "Dental Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 25,
+    "Name": "Digital & Technology Solutions Professional",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 78,
+    "Name": "Digital Marketer",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
     "Code": 26,
     "Name": "Dual Fuel Smart Meter Installer",
     "Price": 8000,
     "Duration": 12
   },
   {
+    "Code": 10,
+    "Name": "Electrical /Electronic Technical Support Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 8,
+    "Name": "Financial Services Administrator",
+    "Price": 8000,
+    "Duration": 12
+  },
+  {
+    "Code": 28,
+    "Name": "Financial Services Customer Adviser",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 16,
+    "Name": "Food and Drink Maintenance Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 74,
+    "Name": "Gas Engineering",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 57,
+    "Name": "Gas Network Craftsperson",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 58,
+    "Name": "Gas Network Team Leader",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 21,
+    "Name": "Golf Greenkeeper",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 65,
+    "Name": "Housing Property Management",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
     "Code": 64,
     "Name": "Housing Property Management Assistant",
     "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 82,
+    "Name": "Infrastructure Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 5,
+    "Name": "Installation Electrician/Maintenance Electrician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 60,
+    "Name": "Insurance Practitioner",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 63,
+    "Name": "Insurance Professional",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 29,
+    "Name": "Investment Operations Administrator",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 30,
+    "Name": "Investment Operations Specialist",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 33,
+    "Name": "Investment Operations Technician",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 68,
+    "Name": "Junior Energy Manager",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 22,
+    "Name": "Junior Journalist",
+    "Price": 8000,
+    "Duration": 12
+  },
+  {
+    "Code": 44,
+    "Name": "Laboratory Scientist",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 14,
+    "Name": "Laboratory Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 69,
+    "Name": "Land Based Service Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 70,
+    "Name": "Land Based Service Engineering Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 40,
+    "Name": "Licensed Conveyancer",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 71,
+    "Name": "Live Event Rigger",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 11,
+    "Name": "Manufacturing Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 4,
+    "Name": "Mechatronics Maintenance Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 62,
+    "Name": "Mortgage Advisor",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 59,
+    "Name": "Motor Vehicle Service and Maintenance Technician [light vehicle]",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 1,
+    "Name": "Network Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 67,
+    "Name": "Non-destructive Testing Engineering Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 46,
+    "Name": "Nuclear Health Physics Monitor",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 47,
+    "Name": "Nuclear Scientist and Nuclear Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 35,
+    "Name": "Nuclear Welding Inspection Technician",
+    "Price": 8000,
+    "Duration": 12
+  },
+  {
+    "Code": 75,
+    "Name": "Outside Broadcasting Engineer",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 42,
+    "Name": "Paralegal",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 48,
+    "Name": "Paraplanner",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 6,
+    "Name": "Power Network Craftsperson",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 12,
+    "Name": "Product Design and Development Engineer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 13,
+    "Name": "Product Design and Development Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 23,
+    "Name": "Property Maintenance Operative",
+    "Price": 8000,
+    "Duration": 12
+  },
+  {
+    "Code": 73,
+    "Name": "Public Sector Commercial Professional",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 36,
+    "Name": "Public Service Operational Delivery Officer",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 24,
+    "Name": "Railway Engineering Design Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 49,
+    "Name": "Refrigeration Air Conditioning and Heat Pump Engineering Technician",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 7,
+    "Name": "Relationship Manager (Banking)",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 45,
+    "Name": "Science Industry Maintenance Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 15,
+    "Name": "Science Manufacturing Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 31,
+    "Name": "Senior Financial Services Customer Adviser",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 66,
+    "Name": "Senior Housing Property Management",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 2,
+    "Name": "Software Developer",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 43,
+    "Name": "Solicitor",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 51,
+    "Name": "Surveying Technician",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 52,
+    "Name": "Systems Engineering Masters Level",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 81,
+    "Name": "Unified Communications Trouble Shooter",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 53,
+    "Name": "Utilities Engineering Technician",
+    "Price": 18000,
+    "Duration": 12
+  },
+  {
+    "Code": 27,
+    "Name": "Water Process Technician",
+    "Price": 8000,
+    "Duration": 12
+  },
+  {
+    "Code": 32,
+    "Name": "Workplace Pensions (Administrator or Consultant)",
+    "Price": 6000,
     "Duration": 12
   }
 ]

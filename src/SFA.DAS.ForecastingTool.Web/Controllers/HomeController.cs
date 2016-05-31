@@ -39,12 +39,6 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
 
         public async Task<ActionResult> Results(ResultsViewModel model)
         {
-            //TODO: This belongs in the routing really
-            if (model.SelectedStandard.Qty > 0)
-            {
-                var standard = await _standardsRepository.GetByCodeAsync(model.SelectedStandard.Code);
-                model.SelectedStandard.Name = standard.Name;
-            }
             model.Results = await _forecastCalculator.ForecastAsync(model.Paybill, model.SelectedStandard.Code, model.SelectedStandard.Qty);
             return View(model);
         }

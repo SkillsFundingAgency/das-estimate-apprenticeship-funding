@@ -9,9 +9,9 @@ namespace SFA.DAS.ForecastingTool.Web
     {
         protected void Application_Start()
         {
-            DependencyConfig.RegisterDependencies();
+            var container = DependencyConfig.RegisterDependencies();
             AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            RouteConfig.RegisterRoutes(RouteTable.Routes, container);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 

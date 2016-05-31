@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using SFA.DAS.ForecastingTool.Web.Standards;
 
 namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 {
-    public static class UrlParser
+    public class UrlParser
     {
-        public static ParsedUrl Parse(string url)
+        private readonly IStandardsRepository _standardsRepository;
+
+        public UrlParser(IStandardsRepository standardsRepository)
+        {
+            _standardsRepository = standardsRepository;
+        }
+
+        public ParsedUrl Parse(string url)
         {
             var parts = url.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             var result = new ParsedUrl { RouteValues = new Dictionary<string, object>() };
@@ -26,36 +34,35 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             return ProcessWelcomePath(parts);
         }
 
-        private static ParsedUrl ProcessWelcomePath(string[] parts)
+        private ParsedUrl ProcessWelcomePath(string[] parts)
         {
             return new ParsedUrl { ActionName = "Welcome", RouteValues = new Dictionary<string, object>() };
         }
-        private static ParsedUrl ProcessPaybillPath(string[] parts)
+        private ParsedUrl ProcessPaybillPath(string[] parts)
         {
             var result = ProcessWelcomePath(parts);
             result.ActionName = "Paybill";
             return result;
         }
-        private static ParsedUrl ProcessTrainingCoursePath(string[] parts)
+        private ParsedUrl ProcessTrainingCoursePath(string[] parts)
         {
             var result = ProcessPaybillPath(parts);
             result.ActionName = "TrainingCourse";
             result.RouteValues.Add("Paybill", int.Parse(parts[1]));
             return result;
         }
-        private static ParsedUrl ProcessResultsPath(string[] parts)
+        private ParsedUrl ProcessResultsPath(string[] parts)
         {
             var result = ProcessTrainingCoursePath(parts);
+            var standardQty = int.Parse(parts[2].Substring(0, 1));
+            var standardCode = int.Parse(parts[2].Substring(2));
+            var standard = _standardsRepository.GetByCodeAsync(standardCode).Result;
+
             result.ActionName = "Results";
-            result.RouteValues.Add("SelectedStandard.Qty", int.Parse(parts[2].Substring(0, 1)));
-            result.RouteValues.Add("SelectedStandard.Code", int.Parse(parts[2].Substring(2)));
+            result.RouteValues.Add("SelectedStandard.Qty", standardQty);
+            result.RouteValues.Add("SelectedStandard.Code", standardCode);
+            result.RouteValues.Add("SelectedStandard.Name", standard?.Name);
             return result;
         }
-    }
-
-    public class ParsedUrl
-    {
-        public string ActionName { get; set; }
-        public Dictionary<string, object> RouteValues { get; set; }
     }
 }

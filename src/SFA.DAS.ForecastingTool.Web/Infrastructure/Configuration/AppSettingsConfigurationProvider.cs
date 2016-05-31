@@ -2,7 +2,7 @@
 
 namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration
 {
-    public class ConfigurationProvider : IConfigurationProvider
+    public class AppSettingsConfigurationProvider : IConfigurationProvider
     {
         public string GetSetting(string key)
         {

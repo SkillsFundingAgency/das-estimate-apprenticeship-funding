@@ -2,9 +2,6 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
-using SFA.DAS.ForecastingTool.Web.Infrastructure.Caching;
-using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
-using SFA.DAS.ForecastingTool.Web.Infrastructure.FileSystem;
 using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -19,12 +16,6 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
         {
             _standardsRepository = standardsRepository;
             _forecastCalculator = forecastCalculator;
-        }
-
-        public HomeController()
-        {
-            _standardsRepository = new CachedStandardsRepository(new StandardsRepository(new DiskFileSystem()), new InProcessCacheProvider());
-            _forecastCalculator = new ForecastCalculator(_standardsRepository, new ConfigurationProvider());
         }
 
         public ActionResult Welcome()

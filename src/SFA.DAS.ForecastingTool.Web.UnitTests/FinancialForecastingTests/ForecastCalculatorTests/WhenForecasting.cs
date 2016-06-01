@@ -12,6 +12,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
     {
         private const int Paybill = 4250000;
         private const int CoPayPaybill = 4000000;
+        private const int NonLevyPaybill = 1000000;
         private const int StandardCode = 1;
         private const int StandardQty = 1;
 
@@ -78,7 +79,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                 var actualLevyIn = actual[i].LevyIn;
 
                 Assert.AreEqual(572.92m, actualLevyIn,
-                    $"Expected actual[{i}].LevyIn to be 458.33 but was {actualLevyIn}");
+                    $"Expected actual[{i}].LevyIn to be 572.92 but was {actualLevyIn}");
             }
         }
 
@@ -94,7 +95,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                 var actualTrainingOut = actual[i].TrainingOut;
 
                 Assert.AreEqual(500, actualTrainingOut,
-                    $"Expected actual[{i}].TrainingOut to be 400 but was {actualTrainingOut}");
+                    $"Expected actual[{i}].TrainingOut to be 500 but was {actualTrainingOut}");
             }
         }
 
@@ -138,6 +139,22 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             Assert.AreEqual(4.17m, actual[9].CoPayment);
             Assert.AreEqual(4.17m, actual[10].CoPayment);
             Assert.AreEqual(4.17m, actual[11].CoPayment);
+        }
+
+        [Test]
+        public async Task ThenItShouldReturnEveryMonthsLevyInAs0IfPaybillApplicableForLevy()
+        {
+            // Act
+            var actual = await _calculator.ForecastAsync(NonLevyPaybill, StandardCode, StandardQty);
+
+            // Assert
+            for (var i = 0; i < 12; i++)
+            {
+                var actualLevyIn = actual[i].LevyIn;
+
+                Assert.AreEqual(0m, actualLevyIn,
+                    $"Expected actual[{i}].LevyIn to be 0 but was {actualLevyIn}");
+            }
         }
     }
 }

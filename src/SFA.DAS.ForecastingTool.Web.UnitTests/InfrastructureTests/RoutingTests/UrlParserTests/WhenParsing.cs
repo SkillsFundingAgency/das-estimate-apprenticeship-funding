@@ -147,39 +147,18 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual("Paybill is not a valid entry", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
-        [TestCase(BasePath + "/2999999")]
-        [TestCase(BasePath + "/2999999/4x34")]
-        public void ThenItShouldReturnPaybillIfValueInPathIsBelowLevyLimit(string path)
-        {
-            // Act
-            var actual = _parser.Parse(path);
-
-            // Assert
-            Assert.AreEqual("Paybill", actual.ActionName);
-        }
-
-        [TestCase(BasePath + "/2999999")]
-        [TestCase(BasePath + "/2999999/4x34")]
-        public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsBelowLevyLimit(string path)
+        [TestCase(BasePath + "/0")]
+        [TestCase(BasePath + "/0/4x34")]
+        [TestCase(BasePath + "/-1")]
+        [TestCase(BasePath + "/-1/4x34")]
+        public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsNotPositive(string path)
         {
             // Act
             var actual = _parser.Parse(path);
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
-            Assert.AreEqual("Your paybill amount indicates you will not pay the levy. You will be able to take apprentices on using co-funding.", actual.RouteValues[ErrorMessageRouteValueKey]);
-        }
-
-        [TestCase(BasePath + "/2999999")]
-        [TestCase(BasePath + "/2999999/4x34")]
-        public void ThenItShouldIncludeThePaybillInRouteValuesIfValueInPathIsBelowLevyLimit(string path)
-        {
-            // Act
-            var actual = _parser.Parse(path);
-
-            // Assert
-            Assert.IsTrue(actual.RouteValues.ContainsKey(PaybillRouteValueKey));
-            Assert.AreEqual(2999999, actual.RouteValues[PaybillRouteValueKey]);
+            Assert.AreEqual("Paybill is not a valid entry", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
         [TestCase(BasePath + "/987654321/ax34")]

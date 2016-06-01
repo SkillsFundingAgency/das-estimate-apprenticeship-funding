@@ -6,8 +6,6 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 {
     public class UrlParser
     {
-        private const int LevyLimit = 3000000;
-
         private readonly IStandardsRepository _standardsRepository;
 
         public UrlParser(IStandardsRepository standardsRepository)
@@ -60,16 +58,10 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             }
 
             int paybill;
-            if (!int.TryParse(parts[1], out paybill))
+            if (!int.TryParse(parts[1], out paybill) || paybill <= 0)
             {
                 result.IsErrored = true;
                 result.RouteValues.Add("ErrorMessage", "Paybill is not a valid entry");
-                result.ActionName = "Paybill";
-            }
-            else if (paybill < LevyLimit)
-            {
-                result.IsErrored = true;
-                result.RouteValues.Add("ErrorMessage", "Your paybill amount indicates you will not pay the levy. You will be able to take apprentices on using co-funding.");
                 result.ActionName = "Paybill";
             }
             else

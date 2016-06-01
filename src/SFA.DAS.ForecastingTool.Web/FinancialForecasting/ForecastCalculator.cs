@@ -26,6 +26,10 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var startDate = new DateTime(2017, 4, 1);
 
             var annualLevy = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
+            if (annualLevy < 0) // Non-levy payer
+            {
+                annualLevy = 0;
+            }
             var monthlyLevy = annualLevy / 12m;
 
             var rollingBalance = 0m;

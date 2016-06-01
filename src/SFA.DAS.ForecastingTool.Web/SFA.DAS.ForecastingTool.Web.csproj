@@ -186,6 +186,7 @@
     <Content Include="Content\images\apple-touch-icon-60x60.png" />
     <Content Include="Content\images\apple-touch-icon-76x76.png" />
     <Content Include="Content\images\arrow-sprite.png" />
+    <Content Include="Content\images\close.png" />
     <Content Include="Content\images\crests\bis_crest_13px.png" />
     <Content Include="Content\images\crests\bis_crest_13px_x2.png" />
     <Content Include="Content\images\crests\bis_crest_18px.png" />
@@ -257,8 +258,13 @@
     <Content Include="Content\images\external-links\external-link-black-24x24.png" />
     <Content Include="Content\images\external-links\external-link.png" />
     <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\gov.uk_logotype_crown-1x.png" />
+    <Content Include="Content\images\gov.uk_logotype_crown.png" />
     <Content Include="Content\images\gov.uk_logotype_crown_invert.png" />
     <Content Include="Content\images\gov.uk_logotype_crown_invert_trans.png" />
+    <Content Include="Content\images\govuk-crest-2x.png" />
+    <Content Include="Content\images\govuk-crest-ie.png" />
+    <Content Include="Content\images\govuk-crest.png" />
     <Content Include="Content\images\icon-arrow-left.png" />
     <Content Include="Content\images\icon-calendar-2x.png" />
     <Content Include="Content\images\icon-calendar.png" />
@@ -305,6 +311,8 @@
     <Content Include="Content\images\icon-steps\icon-step-8.png" />
     <Content Include="Content\images\icon-steps\icon-step-9-2x.png" />
     <Content Include="Content\images\icon-steps\icon-step-9.png" />
+    <Content Include="Content\images\open-government-licence.png" />
+    <Content Include="Content\images\open-government-licence_2x.png" />
     <Content Include="Content\images\opengraph-image.png" />
     <Content Include="Content\images\player-icon-forward.png" />
     <Content Include="Content\images\player-icon-pause.png" />

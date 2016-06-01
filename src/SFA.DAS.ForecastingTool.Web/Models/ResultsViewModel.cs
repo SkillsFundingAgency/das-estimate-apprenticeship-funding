@@ -9,5 +9,7 @@ namespace SFA.DAS.ForecastingTool.Web.Models
     {
         public MonthlyCashflow[] Results { get; set; }
         public decimal LevyAmount { get; set; }
+        public decimal LevyFundingReceived { get; set; }
+        public string TopPercentageForDisplay { get; set; }
     }
 }

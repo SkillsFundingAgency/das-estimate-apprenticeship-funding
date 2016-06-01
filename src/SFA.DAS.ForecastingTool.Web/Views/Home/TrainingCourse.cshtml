@@ -1,56 +1,48 @@
 ﻿@model SFA.DAS.ForecastingTool.Web.Models.TrainingCourseViewModel
 
-<h2 class="heading-xlarge">Apprentices and training</h2>
-@if (!string.IsNullOrEmpty(Model.ErrorMessage))
-{
-    <div class="error">
-        <p class="error-message">@Model.ErrorMessage</p>
-    </div>
-}
-<p>Enter the number of apprentices you are taking on and the apprenticeship training you'll be using.</p>
-<p>You can skip this step if you wish.</p>
-<form method="post">
-    <table>
-        <thead>
-        <tr>
-            <th>Number of apprentices</th>
-            <th>Type of apprenticeship training</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <input name="cohorts" type="number" class="form-control-1-4" aria-label="Number of apprentices"/>
-            </td>
-            <td>
-                <select name="standard" class="form-control-1-3" aria-label="Training standard">
-                    @foreach (var standard in Model.Standards)
-                    {
-                        <option value="@standard.Code">@standard.Name</option>
-                    }
-                </select>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="form-group" style="margin-top:15px;">
-        <input name="trainingCourseSubmit" type="submit" class="button" value="Calculate" />
-        <input name="trainingCourseSkip" type="submit" class="button" value="Skip" />
-    </div>
-    
-    @*<div class="form-group">
-            <input name="cohorts" type="number" class="form-control-1-4" aria-label="Number of apprentices"/>
-            <span>x</span>
-            <select name="standard" class="form-control-1-3" aria-label="Training standard">
-                @foreach (var standard in Model.Standards)
-                {
-                    <option value="@standard.Code">@standard.Name</option>
-                }
-            </select>
-        </div>
-        <input name="trainingCourseSubmit" type="submit" class="button" value="Calculate" />
-        <input name="trainingCourseSkip" type="submit" class="button" value="Skip" />*@
-</form>
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <h2 class="heading-xlarge">Apprentices and training</h2>
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="error">
+                <p class="error-message">@Model.ErrorMessage</p>
+            </div>
+        }
+        <p>Enter the type of apprenticeship training and number of apprentices you are taking on.</p>
+        <p>You can skip this step if you wish.</p>
+        <form method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 70%;">Type of apprenticeship training</th>
+                        <th style="width: 30%;">Number of apprentices</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="standard" class="form-control-1-3" style="width: 100%;" aria-label="Training standard">
+                                <option value="noselection">Please choose...</option>
+                                @foreach (var standard in Model.Standards)
+                                {
+                                    <option value="@standard.Code">@standard.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <input name="cohorts" type="number" class="form-control-1-4" aria-label="Number of apprentices" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group" style="margin-top: 15px;">
+                <input name="trainingCourseSubmit" type="submit" class="button" value="Estimate" />
+                <input name="trainingCourseSkip" type="submit" class="button" style="border: none; background: none; color: blue; text-decoration: underline; box-shadow: none" value="Skip" />
+            </div>
+        </form>
 
 
-@Html.Partial("_PreviousAnswers", Model)
+        @Html.Partial("_PreviousAnswers", Model)
+    </div>
+</div>

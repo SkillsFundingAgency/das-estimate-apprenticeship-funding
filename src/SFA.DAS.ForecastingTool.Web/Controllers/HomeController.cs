@@ -50,6 +50,8 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             {
                 model.LevyAmount = 0;
             }
+            model.LevyFundingReceived = model.LevyAmount * _configurationProvider.LevyTopupPercentage;
+            model.TopPercentageForDisplay = ((_configurationProvider.LevyTopupPercentage - 1) * 100).ToString("0");
             model.Results = await _forecastCalculator.ForecastAsync(model.Paybill, model.SelectedStandard.Code, model.SelectedStandard.Qty);
             return View(model);
         }

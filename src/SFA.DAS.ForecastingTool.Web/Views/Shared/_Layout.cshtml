@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOV.UK DAS ALPHA</title>
+    <title>Estimate my apprenticeship funding</title>
     @Styles.Render("~/Content/css")
 
 </head>
@@ -19,12 +19,6 @@
                     </a>
                 </div>
             </div>
-            <div class="header-proposition">
-                <div class="content">
-                    <a href="#" class="js-header-toggle menu">Menu</a>
-
-                </div>
-            </div>
         </div>
 
     </header>
@@ -36,7 +30,7 @@
         <div class="phase-banner-alpha">
             <p>
                 <strong class="phase-tag">ALPHA</strong>
-                <span>This is a new service – your <a href="https://designpatterns.hackpad.com/GOV.UK-elements-feedback-sKrDyQxcfA2">feedback</a> will help us to improve it.</span>
+                <span>This is a new service – your <a href="https://www.surveymonkey.co.uk/r/VRPG2W2" target="_blank">feedback</a> will help us to improve it.</span>
             </p>
         </div>
         <div class="disclaimer">
@@ -45,11 +39,8 @@
                 <span>All figures in this tool are indicative.</span>
             </p>
         </div>
-        <div class="grid-row">
-            <div class="column-full-width">
-                @RenderBody()
-            </div>
-        </div>
+
+        @RenderBody()
     </main><!-- / #content -->
 
     <footer class="group js-footer" id="footer" role="contentinfo">

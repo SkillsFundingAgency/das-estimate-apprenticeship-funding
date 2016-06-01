@@ -1,31 +1,39 @@
 ﻿@model SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel
 
-<h2 class="heading-xlarge">Your levy amount</h2>
-<p>The amount of levy you will pay is: @Model.LevyAmount.ToString("C")</p>
-<p>Here is your levy cash flow forecast</p>
+<div class="grid-row">
+    <div class="column-full-width">
+        <h2 class="heading-xlarge">Your estimated apprenticeship funding</h2>
+        <p>You will receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy apprenticeship funding, which includes the government @Model.TopPercentageForDisplay% top up. You will pay @Model.LevyAmount.ToString("C0") in levy.</p>
+        <p>Here is your monthly funding breakdown.</p>
 
-<table>
-    <thead>
-    <tr>
-        <th>Month</th>
-        <th class="financial">Funding Received</th>
-        <th class="financial">Training Paid</th>
-        <th class="financial">Balance</th>
-        <th class="financial">Co-Payment</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var month in Model.Results)
-    {
-        <tr>
-            <td>@month.Date.ToString("MMMM")</td>
-            <td class="financial">@Html.FinancialText(month.LevyIn)</td>
-            <td class="financial">@Html.FinancialText(month.TrainingOut)</td>
-            <td class="financial">@month.Balance.ToString("C")</td>
-            <td class="financial">@Html.FinancialText(month.CoPayment)</td>
-        </tr>
-    }
-    </tbody>
-</table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th class="financial">Funding Received</th>
+                    <th class="financial">Estimated training cost</th>
+                    <th class="financial">Available funds</th>
+                    <th class="financial" style="max-width: 150px;">
+                        Employer Contribution
+                        <br/>
+                        <span style="font-weight:400;">Amount you'll need to pay for training this month (The govt will pay the rest)</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var month in Model.Results)
+            {
+                    <tr>
+                        <td>@month.Date.ToString("MMMM")</td>
+                        <td class="financial">@Html.FinancialText(month.LevyIn)</td>
+                        <td class="financial">@Html.FinancialText(month.TrainingOut)</td>
+                        <td class="financial">@month.Balance.ToString("C")</td>
+                        <td class="financial">@Html.FinancialText(month.CoPayment)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-@Html.Partial("_PreviousAnswers", Model)
+        @Html.Partial("_PreviousAnswers", Model)
+    </div>
+</div>

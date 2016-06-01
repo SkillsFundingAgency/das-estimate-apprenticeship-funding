@@ -324,7 +324,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="favicon.ico" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />

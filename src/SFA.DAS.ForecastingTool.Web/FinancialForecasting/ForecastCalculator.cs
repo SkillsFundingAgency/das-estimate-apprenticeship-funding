@@ -21,7 +21,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var standard = await _standardsRepository.GetByCodeAsync(standardCode);
             var duration = 12;
             var totalTrainingCost = standard?.Price * standardQty ?? 0;
-            var monthlyTrainingFraction = totalTrainingCost / 15m;
+            var monthlyTrainingFraction = totalTrainingCost / 12m;
 
             var startDate = new DateTime(2017, 4, 1);
 
@@ -33,15 +33,14 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             for (var i = 0; i < duration; i++)
             {
                 var levyIn = monthlyLevy * _configurationProvider.LevyTopupPercentage;
-                var trainingOut = i == duration - 1 ? monthlyTrainingFraction * 4 : monthlyTrainingFraction;
 
-                rollingBalance += levyIn - trainingOut;
+                rollingBalance += levyIn - monthlyTrainingFraction;
 
                 months[i] = new MonthlyCashflow
                 {
                     Date = startDate.AddMonths(i),
                     LevyIn = Math.Round(levyIn, 2),
-                    TrainingOut = Math.Round(trainingOut, 2),
+                    TrainingOut = Math.Round(monthlyTrainingFraction, 2),
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
                     CoPayment = rollingBalance < 0 ? Math.Round((rollingBalance * -1) * _configurationProvider.CopaymentPercentage, 2) : 0
                 };

@@ -45,14 +45,12 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
 
         public async Task<ActionResult> Results(ResultsViewModel model)
         {
-            model.LevyAmount = (model.Paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
-            if (model.LevyAmount < 0)
-            {
-                model.LevyAmount = 0;
-            }
-            model.LevyFundingReceived = model.LevyAmount * _configurationProvider.LevyTopupPercentage;
-            model.TopPercentageForDisplay = ((_configurationProvider.LevyTopupPercentage - 1) * 100).ToString("0");
-            model.Results = await _forecastCalculator.ForecastAsync(model.Paybill, model.SelectedStandard.Code, model.SelectedStandard.Qty);
+            var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.SelectedStandard.Code, model.SelectedStandard.Qty);
+
+            model.LevyAmount = forecastResult.LevyPaid;
+            model.LevyFundingReceived = forecastResult.FundingReceived;
+            model.TopPercentageForDisplay = forecastResult.UserFriendlyTopupPercentage.ToString("0");
+            model.Results = forecastResult.Breakdown;
             return View(model);
         }
     }

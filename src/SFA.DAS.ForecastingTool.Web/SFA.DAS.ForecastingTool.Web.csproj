@@ -334,6 +334,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="FinancialForecasting\ForecastCalculator.cs" />
+    <Compile Include="FinancialForecasting\ForecastResult.cs" />
     <Compile Include="FinancialForecasting\IForecastCalculator.cs" />
     <Compile Include="FinancialForecasting\MonthlyCashflow.cs" />
     <Compile Include="Global.asax.cs">

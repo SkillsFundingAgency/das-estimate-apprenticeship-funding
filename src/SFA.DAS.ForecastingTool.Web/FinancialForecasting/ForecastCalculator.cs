@@ -16,7 +16,28 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             _configurationProvider = configurationProvider;
         }
 
-        public async Task<MonthlyCashflow[]> ForecastAsync(int paybill, int standardCode, int standardQty)
+        public async Task<ForecastResult> ForecastAsync(int paybill, int standardCode, int standardQty)
+        {
+            var levyPaid = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
+            if (levyPaid < 0) // Non-levy payer
+            {
+                levyPaid = 0;
+            }
+
+            var fundingReceived = levyPaid * _configurationProvider.LevyTopupPercentage;
+
+            var breakdown = await CalculateBreakdown(standardCode, standardQty, fundingReceived);
+
+            return new ForecastResult
+            {
+                FundingReceived = fundingReceived,
+                LevyPaid = levyPaid,
+                UserFriendlyTopupPercentage = (int)Math.Round((_configurationProvider.LevyTopupPercentage - 1) * 100, 0),
+                Breakdown = breakdown
+            };
+        }
+
+        private async Task<MonthlyCashflow[]> CalculateBreakdown(int standardCode, int standardQty, decimal fundingReceived)
         {
             var standard = await _standardsRepository.GetByCodeAsync(standardCode);
             var duration = 12;
@@ -25,31 +46,25 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
             var startDate = new DateTime(2017, 4, 1);
 
-            var annualLevy = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
-            if (annualLevy < 0) // Non-levy payer
-            {
-                annualLevy = 0;
-            }
-            var monthlyLevy = annualLevy / 12m;
+            var monthlyFunding = fundingReceived / 12m;
 
             var rollingBalance = 0m;
             var months = new MonthlyCashflow[duration];
             for (var i = 0; i < duration; i++)
             {
-                var levyIn = monthlyLevy * _configurationProvider.LevyTopupPercentage;
-
-                rollingBalance += levyIn - monthlyTrainingFraction;
+                rollingBalance += monthlyFunding - monthlyTrainingFraction;
 
                 months[i] = new MonthlyCashflow
                 {
                     Date = startDate.AddMonths(i),
-                    LevyIn = Math.Round(levyIn, 2),
+                    LevyIn = Math.Round(monthlyFunding, 2),
                     TrainingOut = Math.Round(monthlyTrainingFraction, 2),
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
-                    CoPayment = rollingBalance < 0 ? Math.Round((rollingBalance * -1) * _configurationProvider.CopaymentPercentage, 2) : 0
+                    CoPayment =
+                        rollingBalance < 0 ? Math.Round((rollingBalance * -1) * _configurationProvider.CopaymentPercentage, 2) : 0
                 };
 
-                // Have we just balanced the account
+                // Have we just balanced the account?
                 if (rollingBalance < 0)
                 {
                     rollingBalance = 0;
@@ -57,5 +72,6 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             }
             return months;
         }
+
     }
 }

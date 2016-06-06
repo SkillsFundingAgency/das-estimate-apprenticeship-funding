@@ -4,6 +4,6 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 {
     public interface IForecastCalculator
     {
-        Task<ForecastResult> ForecastAsync(int paybill, int standardCode, int standardQty);
+        Task<ForecastResult> ForecastAsync(int paybill, int englishFraction, int standardCode, int standardQty);
     }
 }

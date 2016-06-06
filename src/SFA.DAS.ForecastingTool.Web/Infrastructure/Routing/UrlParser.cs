@@ -24,9 +24,13 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             }
             if (parts.Length == 2)
             {
-                return ProcessTrainingCoursePath(parts);
+                return ProcessEnglishFractionPath(parts);
             }
             if (parts.Length == 3)
+            {
+                return ProcessTrainingCoursePath(parts);
+            }
+            if (parts.Length == 4)
             {
                 return ProcessResultsPath(parts);
             }
@@ -49,7 +53,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             result.ActionName = "Paybill";
             return result;
         }
-        private ParsedUrl ProcessTrainingCoursePath(string[] parts)
+        private ParsedUrl ProcessEnglishFractionPath(string[] parts)
         {
             var result = ProcessPaybillPath(parts);
             if (result.IsErrored)
@@ -66,10 +70,33 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             }
             else
             {
-                result.ActionName = "TrainingCourse";
+                result.ActionName = "EnglishFraction";
             }
 
             result.RouteValues.Add("Paybill", paybill);
+            return result;
+        }
+        private ParsedUrl ProcessTrainingCoursePath(string[] parts)
+        {
+            var result = ProcessEnglishFractionPath(parts);
+            if (result.IsErrored)
+            {
+                return result;
+            }
+
+            int englishFraction;
+            if (!int.TryParse(parts[2], out englishFraction) || englishFraction <= 0 || englishFraction > 100)
+            {
+                result.IsErrored = true;
+                result.RouteValues.Add("ErrorMessage", "English fraction is not a valid entry");
+                result.ActionName = "EnglishFraction";
+            }
+            else
+            {
+                result.ActionName = "TrainingCourse";
+            }
+
+            result.RouteValues.Add("EnglishFraction", englishFraction);
             return result;
         }
         private ParsedUrl ProcessResultsPath(string[] parts)
@@ -80,12 +107,12 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 return result;
             }
 
-            var splitPoint = parts[2].IndexOf('x');
+            var splitPoint = parts[3].IndexOf('x');
             int standardQty;
             int standardCode;
             if (splitPoint < 1
-                || !int.TryParse(parts[2].Substring(0, splitPoint), out standardQty)
-                || !int.TryParse(parts[2].Substring(splitPoint + 1), out standardCode))
+                || !int.TryParse(parts[3].Substring(0, splitPoint), out standardQty)
+                || !int.TryParse(parts[3].Substring(splitPoint + 1), out standardCode))
             {
                 result.IsErrored = true;
                 result.RouteValues.Add("ErrorMessage", "Number of apprentices or training standard invalid");

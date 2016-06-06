@@ -1,0 +1,25 @@
+﻿@model SFA.DAS.ForecastingTool.Web.Models.ForecastQuestionsModel
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <h2 class="heading-xlarge">Please enter the proportion of your pay bill is attributable to your English workforce?</h2>
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="error">
+                <p class="error-message">@Model.ErrorMessage</p>
+            </div>
+        }
+        <p>If you don't know, you can skip this step for now but the result may not accurately reflect your future levy funding.</p>
+        <form method="post">
+            <div class="form-group">
+                <label>
+                    <span>Estimate</span>
+                    <input name="englishFraction" type="number" class="form-control-1-4" aria-label="Estimate of percentage of workforce in England (1-100)"
+                           value="@(Model.EnglishFraction > 0 ? Model.EnglishFraction.ToString() : "")"/>
+                    <span>%</span>
+                </label>
+            </div>
+            <input name="englishFractionSubmit" type="submit" class="button" value="Next" />
+        </form>
+    </div>
+</div>

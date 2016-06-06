@@ -187,6 +187,7 @@
     <Content Include="Content\images\player-icon-volume.png" />
     <Content Include="Content\images\separator-2x.png" />
     <Content Include="Content\images\separator.png" />
+    <Content Include="Content\stylesheets\das-controls.css" />
     <Content Include="Content\stylesheets\elements.css" />
     <Content Include="Content\stylesheets\external-links\external-link-24x24.png" />
     <Content Include="Content\stylesheets\external-links\external-link-black-12x12.png" />
@@ -269,6 +270,7 @@
     <Content Include="Views\Home\Results.cshtml" />
     <Content Include="App_Data\Standards.json" />
     <Content Include="Views\Home\_PreviousAnswers.cshtml" />
+    <Content Include="Views\Home\EnglishFraction.cshtml" />
     <Content Include="Content\stylesheets\fonts\GDSTransportWebsite.eot" />
     <Content Include="Content\stylesheets\fonts\GDSTransportWebsite-Bold.eot" />
     <Content Include="Content\stylesheets\fonts\GDSTransportTabular-Light.eot" />

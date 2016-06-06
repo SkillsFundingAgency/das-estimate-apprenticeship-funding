@@ -16,15 +16,20 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 var paybillEntry = GetFormValue(form, "paybill", "0");
                 Redirect(context, $"{GetUrlToSegment(currentUrl, 1)}{paybillEntry}");
             }
+            else if (form.AllKeys.Contains("englishFractionSubmit"))
+            {
+                var englishFractionEntry = GetFormValue(form, "englishFraction", "0");
+                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}{englishFractionEntry}");
+            }
             else if (form.AllKeys.Contains("trainingCourseSubmit"))
             {
                 var cohortsEntry = GetFormValue(form, "cohorts", "0");
                 var standardSelection = GetFormValue(form, "standard", "0");
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}{cohortsEntry}x{standardSelection}");
+                Redirect(context, $"{GetUrlToSegment(currentUrl, 3)}{cohortsEntry}x{standardSelection}");
             }
             else if (form.AllKeys.Contains("trainingCourseSkip"))
             {
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}0x0");
+                Redirect(context, $"{GetUrlToSegment(currentUrl, 4)}0x0");
             }
         }
 

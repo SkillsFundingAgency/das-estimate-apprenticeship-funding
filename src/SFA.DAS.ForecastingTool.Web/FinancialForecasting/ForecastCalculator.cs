@@ -16,7 +16,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             _configurationProvider = configurationProvider;
         }
 
-        public async Task<ForecastResult> ForecastAsync(int paybill, int standardCode, int standardQty)
+        public async Task<ForecastResult> ForecastAsync(int paybill, int englishFraction, int standardCode, int standardQty)
         {
             var levyPaid = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
             if (levyPaid < 0) // Non-levy payer
@@ -24,7 +24,8 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 levyPaid = 0;
             }
 
-            var fundingReceived = levyPaid * _configurationProvider.LevyTopupPercentage;
+            var decimalEnglishFraction = englishFraction / 100m;
+            var fundingReceived = (levyPaid * decimalEnglishFraction) * _configurationProvider.LevyTopupPercentage;
 
             var breakdown = await CalculateBreakdown(standardCode, standardQty, fundingReceived);
 

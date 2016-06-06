@@ -34,6 +34,11 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             return View(model);
         }
 
+        public ActionResult EnglishFraction(ForecastQuestionsModel model)
+        {
+            return View(model);
+        }
+
         public async Task<ActionResult> TrainingCourse(TrainingCourseViewModel model)
         {
             var standards = await _standardsRepository.GetAllAsync();
@@ -45,7 +50,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
 
         public async Task<ActionResult> Results(ResultsViewModel model)
         {
-            var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.SelectedStandard.Code, model.SelectedStandard.Qty);
+            var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction, model.SelectedStandard.Code, model.SelectedStandard.Qty);
 
             model.LevyAmount = forecastResult.LevyPaid;
             model.LevyFundingReceived = forecastResult.FundingReceived;

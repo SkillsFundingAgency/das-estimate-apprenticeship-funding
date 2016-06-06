@@ -20,6 +20,10 @@
                 </label>
             </div>
             <input name="englishFractionSubmit" type="submit" class="button" value="Next" />
+            <input name="englishFractionSkip" type="submit" class="button button-secondary" value="Skip" />
         </form>
+
+
+        @Html.Partial("_PreviousAnswers", Model)
     </div>
 </div>

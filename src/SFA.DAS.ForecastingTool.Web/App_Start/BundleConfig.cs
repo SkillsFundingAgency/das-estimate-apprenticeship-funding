@@ -7,13 +7,12 @@ namespace SFA.DAS.ForecastingTool.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
-                "~/assets/javascripts/govuk-template.js"));
+                "~/scripts/govuk-template.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/assets/stylesheets/govuk-template.css",
-                      "~/assets/stylesheets/fonts.css",
-                      "~/Content/Site.css"
-                      ));
+            bundles.Add(new StyleBundle("~/Content/stylesheets/bundled-css").Include(
+                "~/Content/stylesheets/govuk-template.css",
+                "~/Content/stylesheets/fonts.css",
+                "~/Content/stylesheets/forecasting-main.css"));
         }
     }
 }

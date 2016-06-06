@@ -47,7 +47,7 @@ version:"3.6.2",shivCSS:!1!==r.shivCSS,supportsUnknownElements:e,shivMethods:!1!
 
             replacer    an optional parameter that determines how object
                         values are stringified for objects. It can be a
-                        function or an array of dasAccounts.
+                        function or an array of strings.
 
             space       an optional parameter that specifies the indentation
                         of nested structures. If it is omitted, the text will
@@ -66,7 +66,7 @@ version:"3.6.2",shivCSS:!1!==r.shivCSS,supportsUnknownElements:e,shivMethods:!1!
             will be passed the key associated with the value, and this will be
             bound to the value
 
-            For example, this would serialize Dates as ISO dasAccounts.
+            For example, this would serialize Dates as ISO strings.
 
                 Date.prototype.toJSON = function (key) {
                     function f(n) {
@@ -88,7 +88,7 @@ version:"3.6.2",shivCSS:!1!==r.shivCSS,supportsUnknownElements:e,shivMethods:!1!
             serialized. If your method returns undefined, then the member will
             be excluded from the serialization.
 
-            If the replacer parameter is an array of dasAccounts, then it will be
+            If the replacer parameter is an array of strings, then it will be
             used to select the members to be serialized. It filters the results
             such that only members with keys listed in the replacer array are
             stringified.
@@ -135,7 +135,7 @@ version:"3.6.2",shivCSS:!1!==r.shivCSS,supportsUnknownElements:e,shivMethods:!1!
 
             Example:
 
-            // Parse the text. Values that look like ISO date dasAccounts will
+            // Parse the text. Values that look like ISO date strings will
             // be converted to Date objects.
 
             myData = JSON.parse(text, function (key, value) {
@@ -384,7 +384,7 @@ if (!JSON) {
 
 // The stringify method takes a value and an optional replacer, and an optional
 // space parameter, and returns a JSON text. The replacer can be a function
-// that can replace values, or an array of dasAccounts that will select the keys.
+// that can replace values, or an array of strings that will select the keys.
 // A default replacer method can be provided. Use of the space parameter can
 // produce text that is more easily readable.
 

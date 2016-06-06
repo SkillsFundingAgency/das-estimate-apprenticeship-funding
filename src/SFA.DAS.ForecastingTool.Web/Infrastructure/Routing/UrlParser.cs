@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
 namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
@@ -107,15 +108,32 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 return result;
             }
 
-            var splitPoint = parts[3].IndexOf('x');
             int standardQty;
             int standardCode;
-            if (splitPoint < 1
-                || !int.TryParse(parts[3].Substring(0, splitPoint), out standardQty)
-                || !int.TryParse(parts[3].Substring(splitPoint + 1), out standardCode))
+            DateTime standardStartDate;
+            var standardMatch = Regex.Match(parts[3], @"^(\d+)x(\d+)-(\d{4})-(\d{2})-(\d{2})$");
+            if (standardMatch.Success)
+            {
+                standardQty = int.Parse(standardMatch.Groups[1].Value);
+                standardCode = int.Parse(standardMatch.Groups[2].Value);
+                try
+                {
+                    standardStartDate = new DateTime(int.Parse(standardMatch.Groups[3].Value),
+                        int.Parse(standardMatch.Groups[4].Value),
+                        int.Parse(standardMatch.Groups[5].Value));
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    result.IsErrored = true;
+                    result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
+                    result.ActionName = "TrainingCourse";
+                    return result;
+                }
+            }
+            else
             {
                 result.IsErrored = true;
-                result.RouteValues.Add("ErrorMessage", "Number of apprentices or training standard invalid");
+                result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
                 result.ActionName = "TrainingCourse";
                 return result;
             }
@@ -135,7 +153,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 if (standard == null)
                 {
                     result.IsErrored = true;
-                    result.RouteValues.Add("ErrorMessage", "Number of apprentices or training standard invalid");
+                    result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
                     result.ActionName = "TrainingCourse";
                     return result;
                 }
@@ -145,6 +163,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             result.RouteValues.Add("SelectedStandard.Qty", standardQty);
             result.RouteValues.Add("SelectedStandard.Code", standardCode);
             result.RouteValues.Add("SelectedStandard.Name", standard?.Name);
+            result.RouteValues.Add("SelectedStandard.StartDate", standardStartDate);
             return result;
         }
     }

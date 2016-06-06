@@ -16,7 +16,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             _configurationProvider = configurationProvider;
         }
 
-        public async Task<ForecastResult> ForecastAsync(int paybill, int englishFraction, int standardCode, int standardQty)
+        public async Task<ForecastResult> ForecastAsync(int paybill, int englishFraction, int standardCode, int standardQty, DateTime standardStartDate)
         {
             var levyPaid = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
             if (levyPaid < 0) // Non-levy payer
@@ -27,7 +27,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var decimalEnglishFraction = englishFraction / 100m;
             var fundingReceived = (levyPaid * decimalEnglishFraction) * _configurationProvider.LevyTopupPercentage;
 
-            var breakdown = await CalculateBreakdown(standardCode, standardQty, fundingReceived);
+            var breakdown = await CalculateBreakdown(standardCode, standardQty, standardStartDate, fundingReceived);
 
             return new ForecastResult
             {
@@ -38,14 +38,16 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             };
         }
 
-        private async Task<MonthlyCashflow[]> CalculateBreakdown(int standardCode, int standardQty, decimal fundingReceived)
+        private async Task<MonthlyCashflow[]> CalculateBreakdown(int standardCode, int standardQty, DateTime standardStartDate, decimal fundingReceived)
         {
             var standard = await _standardsRepository.GetByCodeAsync(standardCode);
             var duration = 12;
             var totalTrainingCost = standard?.Price * standardQty ?? 0;
-            var monthlyTrainingFraction = totalTrainingCost / 12m;
+            var monthlyTrainingFraction = totalTrainingCost / (decimal)(standard?.Duration ?? 1);
 
             var startDate = new DateTime(2017, 4, 1);
+            var trainingStartDate = new DateTime(standardStartDate.Year, standardStartDate.Month, 1);
+            var trainingEndDate = trainingStartDate.AddMonths(standard?.Duration ?? 1);
 
             var monthlyFunding = fundingReceived / 12m;
 
@@ -53,16 +55,20 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var months = new MonthlyCashflow[duration];
             for (var i = 0; i < duration; i++)
             {
-                rollingBalance += monthlyFunding - monthlyTrainingFraction;
+                var monthDate = startDate.AddMonths(i);
+                var trainingHasStarted = monthDate.CompareTo(trainingStartDate) >= 0;
+                var trainingHasFinished = monthDate.CompareTo(trainingEndDate) > 0;
+                var trainingCostForMonth = trainingHasStarted && !trainingHasFinished ? monthlyTrainingFraction : 0;
+
+                rollingBalance += monthlyFunding - trainingCostForMonth;
 
                 months[i] = new MonthlyCashflow
                 {
-                    Date = startDate.AddMonths(i),
+                    Date = monthDate,
                     LevyIn = Math.Round(monthlyFunding, 2),
-                    TrainingOut = Math.Round(monthlyTrainingFraction, 2),
+                    TrainingOut = trainingHasStarted ? Math.Round(trainingCostForMonth, 2) : 0,
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
-                    CoPayment =
-                        rollingBalance < 0 ? Math.Round((rollingBalance * -1) * _configurationProvider.CopaymentPercentage, 2) : 0
+                    CoPayment = rollingBalance < 0 ? Math.Round((rollingBalance * -1) * _configurationProvider.CopaymentPercentage, 2) : 0
                 };
 
                 // Have we just balanced the account?

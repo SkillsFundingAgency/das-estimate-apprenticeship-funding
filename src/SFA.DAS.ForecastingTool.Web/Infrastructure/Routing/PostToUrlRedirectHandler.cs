@@ -36,7 +36,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             {
                 var cohortsEntry = GetFormValue(form, "cohorts", "0");
                 var standardSelection = GetFormValue(form, "standard", "0");
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 3)}{cohortsEntry}x{standardSelection}");
+                var startDateEntry = GetFormValue(form, "startDate", "2017-04-01");
+                Redirect(context, $"{GetUrlToSegment(currentUrl, 3)}{cohortsEntry}x{standardSelection}-{startDateEntry}");
             }
             else if (form.AllKeys.Contains("trainingCourseSkip"))
             {

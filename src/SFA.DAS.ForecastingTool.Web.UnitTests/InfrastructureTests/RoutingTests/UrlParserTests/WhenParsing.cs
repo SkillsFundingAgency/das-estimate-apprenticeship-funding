@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Routing;
@@ -15,6 +16,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         private const string StandardQtyRouteValueKey = "SelectedStandard.Qty";
         private const string StandardCodeRouteValueKey = "SelectedStandard.Code";
         private const string StandardNameRouteValueKey = "SelectedStandard.Name";
+        private const string StandardStartDateRouteValueKey = "SelectedStandard.StartDate";
 
         private Mock<IStandardsRepository> _standardsRepo;
         private UrlParser _parser;
@@ -72,7 +74,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         }
 
         [TestCase(BasePath + "/987654321/80")]
-        [TestCase(BasePath + "/987654321/80/4x34")]
+        [TestCase(BasePath + "/987654321/80/4x34-2017-04-01")]
         public void ThenItShouldIncludeThePaybillInRouteValuesIfInPath(string path)
         {
             // Act
@@ -87,15 +89,15 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnResultsIfPathHasAmountAndFractionAndStandard()
         {
             // Act
-            var actual = _parser.Parse($"{BasePath}/987654321/80/4x34");
+            var actual = _parser.Parse($"{BasePath}/987654321/80/4x34-2017-04-01");
 
             // Assert
             Assert.AreEqual("Results", actual.ActionName);
         }
 
-        [TestCase(BasePath + "/987654321/80/4x34", 4, 34)]
-        [TestCase(BasePath + "/987654321/80/12x34", 12, 34)]
-        public void ThenItShouldIncludeTheStandardInfoInRouteValuesIfInPath(string path, int expectedQty, int expectedCode)
+        [TestCase(BasePath + "/987654321/80/4x34-2017-04-01", 4, 34, "2017-04-01")]
+        [TestCase(BasePath + "/987654321/80/12x34-2018-02-20", 12, 34, "2018-02-20")]
+        public void ThenItShouldIncludeTheStandardInfoInRouteValuesIfInPath(string path, int expectedQty, int expectedCode, string expectedStartDate)
         {
             // Act
             var actual = _parser.Parse(path);
@@ -109,14 +111,17 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
 
             Assert.IsTrue(actual.RouteValues.ContainsKey(StandardNameRouteValueKey));
             Assert.AreEqual("Unit tester", actual.RouteValues[StandardNameRouteValueKey]);
+
+            Assert.IsTrue(actual.RouteValues.ContainsKey(StandardStartDateRouteValueKey));
+            Assert.AreEqual(DateTime.Parse(expectedStartDate), actual.RouteValues[StandardStartDateRouteValueKey]);
         }
         
         [TestCase(BasePath + "/abc")]
         [TestCase(BasePath + "/abc/80")]
-        [TestCase(BasePath + "/abc/80/4x34")]
+        [TestCase(BasePath + "/abc/80/4x34-2017-04-01")]
         [TestCase(BasePath + "/2147483648")]
         [TestCase(BasePath + "/2147483648/80")]
-        [TestCase(BasePath + "/2147483648/80/4x34")]
+        [TestCase(BasePath + "/2147483648/80/4x34-2017-04-01")]
         public void ThenItShouldReturnPaybillIfValueInPathIsNotValidInt(string path)
         {
             // Act
@@ -128,10 +133,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
 
         [TestCase(BasePath + "/abc")]
         [TestCase(BasePath + "/abc/80")]
-        [TestCase(BasePath + "/abc/4x34")]
+        [TestCase(BasePath + "/abc/4x34-2017-04-01")]
         [TestCase(BasePath + "/2147483648")]
         [TestCase(BasePath + "/2147483648/80")]
-        [TestCase(BasePath + "/2147483648/4x34")]
+        [TestCase(BasePath + "/2147483648/4x34-2017-04-01")]
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsNotValidInt(string path)
         {
             // Act
@@ -144,10 +149,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
 
         [TestCase(BasePath + "/0")]
         [TestCase(BasePath + "/0/80")]
-        [TestCase(BasePath + "/0/4x34")]
+        [TestCase(BasePath + "/0/4x34-2017-04-01")]
         [TestCase(BasePath + "/-1")]
         [TestCase(BasePath + "/-1/80")]
-        [TestCase(BasePath + "/-1/4x34")]
+        [TestCase(BasePath + "/-1/4x34-2017-04-01")]
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsNotPositive(string path)
         {
             // Act
@@ -158,11 +163,12 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual("Paybill is not a valid entry", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
-        [TestCase(BasePath + "/987654321/80/ax34")]
-        [TestCase(BasePath + "/987654321/80/2xa")]
-        [TestCase(BasePath + "/987654321/80/axa")]
+        [TestCase(BasePath + "/987654321/80/ax34-2017-04-01")]
+        [TestCase(BasePath + "/987654321/80/2xa-2017-04-01")]
+        [TestCase(BasePath + "/987654321/80/axa-2017-04-01")]
+        [TestCase(BasePath + "/987654321/80/abc-2017-04-01")]
         [TestCase(BasePath + "/987654321/80/abc")]
-        [TestCase(BasePath + "/987654321/80/4x99")]
+        [TestCase(BasePath + "/987654321/80/4x99-2017-04-01")]
         public void ThenItShouldReturnTrainingCourseIfStandardIsNotValidOrStandardNotFound(string path)
         {
             // Act
@@ -172,26 +178,31 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual("TrainingCourse", actual.ActionName);
         }
 
-        [TestCase(BasePath + "/987654321/80/ax34")]
-        [TestCase(BasePath + "/987654321/80/2xa")]
-        [TestCase(BasePath + "/987654321/80/axa")]
+        [TestCase(BasePath + "/987654321/80/ax34-2017-04-01")]
+        [TestCase(BasePath + "/987654321/80/2xa-2017-04-01")]
+        [TestCase(BasePath + "/987654321/80/axa-2017-04-01")]
+        [TestCase(BasePath + "/987654321/80/abc-2017-04-01")]
         [TestCase(BasePath + "/987654321/80/abc")]
-        [TestCase(BasePath + "/987654321/80/4x99")]
-        public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardIsNotValidOrStandardNotFound(string path)
+        [TestCase(BasePath + "/987654321/80/4x99-2017-04-01")]
+        [TestCase(BasePath + "/987654321/80/4x99-abc")]
+        [TestCase(BasePath + "/987654321/80/4x99-99999-04-01")]
+        [TestCase(BasePath + "/987654321/80/4x99-2017-56-01")]
+        [TestCase(BasePath + "/987654321/80/4x99-2017-04-32")]
+        public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardIsNotValidOrStandardNotFoundOrChortSizeInvalidOrStartDateInvalid(string path)
         {
             // Act
             var actual = _parser.Parse(path);
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
-            Assert.AreEqual("Number of apprentices or training standard invalid", actual.RouteValues[ErrorMessageRouteValueKey]);
+            Assert.AreEqual("Number of apprentices, training standard or start date invalid", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
         [Test]
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardSelectedButCohortSizeIs0()
         {
             // Act
-            var actual = _parser.Parse($"{BasePath}/987654321/80/0x34");
+            var actual = _parser.Parse($"{BasePath}/987654321/80/0x34-2017-04-01");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
@@ -209,7 +220,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         }
 
         [TestCase(BasePath + "/987654321/abc")]
-        [TestCase(BasePath + "/987654321/abc/1x34")]
+        [TestCase(BasePath + "/987654321/abc/1x34-2017-04-01")]
         [TestCase(BasePath + "/987654321/1.1")]
         [TestCase(BasePath + "/987654321/0")]
         [TestCase(BasePath + "/987654321/-1")]
@@ -223,7 +234,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         }
 
         [TestCase(BasePath + "/987654321/80")]
-        [TestCase(BasePath + "/987654321/80/1x34")]
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01")]
         public void ThenItShouldIncludeEnglishFractionInRouteValuesIfValidEnglishFractionInUrl(string path)
         {
             // Act
@@ -233,5 +244,6 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.IsTrue(actual.RouteValues.ContainsKey(EnglishFractionRouteValueKey));
             Assert.AreEqual(80, actual.RouteValues[EnglishFractionRouteValueKey]);
         }
+
     }
 }

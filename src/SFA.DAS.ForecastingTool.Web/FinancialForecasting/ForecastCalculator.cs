@@ -63,7 +63,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 var monthDate = startDate.AddMonths(i);
                 foreach (var standard in standards)
                 {
-                    var monthlyTrainingFraction = standard.Result.Standard.Price / (decimal)standard.Result.Standard.Duration;
+                    var monthlyTrainingFraction = (standard.Result.Standard.Price * standard.Result.Qty) / (decimal)standard.Result.Standard.Duration;
 
                     var trainingStartDate = new DateTime(standard.Result.StartDate.Year, standard.Result.StartDate.Month, 1);
                     var trainingEndDate = trainingStartDate.AddMonths(standard.Result.Standard.Duration);

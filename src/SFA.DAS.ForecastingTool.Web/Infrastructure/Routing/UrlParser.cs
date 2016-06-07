@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -110,53 +111,59 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             int standardQty;
             int standardCode;
             DateTime standardStartDate;
-            var standardMatch = Regex.Match(parts[3], @"^(\d+)x(\d+)-(\d{4})-(\d{2})-(\d{2})$");
-            if (standardMatch.Success)
+
+            var standards = parts[3].Split('_');
+
+
+            for (var i = 0; i < standards.Length; i++)
             {
-                standardQty = int.Parse(standardMatch.Groups[1].Value);
-                standardCode = int.Parse(standardMatch.Groups[2].Value);
-                try
+                var standardMatch = Regex.Match(standards[i], @"^(\d+)x(\d+)-(\d{4})-(\d{2})-(\d{2})$");
+                if (standardMatch.Success)
                 {
-                    standardStartDate = new DateTime(int.Parse(standardMatch.Groups[3].Value),
-                        int.Parse(standardMatch.Groups[4].Value),
-                        int.Parse(standardMatch.Groups[5].Value));
+                    standardQty = int.Parse(standardMatch.Groups[1].Value);
+                    standardCode = int.Parse(standardMatch.Groups[2].Value);
+                    try
+                    {
+                        standardStartDate = new DateTime(int.Parse(standardMatch.Groups[3].Value),
+                            int.Parse(standardMatch.Groups[4].Value),
+                            int.Parse(standardMatch.Groups[5].Value));
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        result.IsErrored = true;
+                        result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
+                        result.ActionName = "TrainingCourse";
+                        return result;
+                    }
                 }
-                catch (ArgumentOutOfRangeException)
+                else
                 {
                     result.IsErrored = true;
                     result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
                     result.ActionName = "TrainingCourse";
                     return result;
                 }
-            }
-            else
-            {
-                result.IsErrored = true;
-                result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
-                result.ActionName = "TrainingCourse";
-                return result;
-            }
 
-            if (standardCode > 0 && standardQty == 0)
-            {
-                result.IsErrored = true;
-                result.RouteValues.Add("ErrorMessage", "Must have at least 1 apprentice to calculate. Alternatively you can skip this step");
-                result.ActionName = "TrainingCourse";
-                return result;
-            }
-
-            Standard standard = null;
-            if (standardQty > 0 || standardCode > 0)
-            {
-                standard = _standardsRepository.GetByCodeAsync(standardCode).Result;
-                if (standard == null)
+                if (standardCode > 0 && standardQty == 0)
                 {
                     result.IsErrored = true;
-                    result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
+                    result.RouteValues.Add("ErrorMessage", "Must have at least 1 apprentice to calculate. Alternatively you can skip this step");
                     result.ActionName = "TrainingCourse";
                     return result;
                 }
-            }
+
+                Standard standard = null;
+                if (standardQty > 0 || standardCode > 0)
+                {
+                    standard = _standardsRepository.GetByCodeAsync(standardCode).Result;
+                    if (standard == null)
+                    {
+                        result.IsErrored = true;
+                        result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
+                        result.ActionName = "TrainingCourse";
+                        return result;
+                    }
+                }
 
             int duration;
             if (!int.TryParse(parts.Length > 4 ? parts[4] : "12", out duration))
@@ -173,12 +180,15 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 duration = 36;
             }
 
-            result.ActionName = "Results";
-            result.RouteValues.Add("SelectedStandard.Qty", standardQty);
-            result.RouteValues.Add("SelectedStandard.Code", standardCode);
-            result.RouteValues.Add("SelectedStandard.Name", standard?.Name);
-            result.RouteValues.Add("SelectedStandard.StartDate", standardStartDate);
+                result.ActionName = "Results";
+                result.RouteValues.Add($"SelectedStandards[{i}].Qty", standardQty);
+                result.RouteValues.Add($"SelectedStandards[{i}].Code", standardCode);
+                result.RouteValues.Add($"SelectedStandards[{i}].Name", standard?.Name);
+                result.RouteValues.Add($"SelectedStandards[{i}].StartDate", standardStartDate);
+            }
             result.RouteValues.Add("Duration", duration);
+
+
             return result;
         }
     }

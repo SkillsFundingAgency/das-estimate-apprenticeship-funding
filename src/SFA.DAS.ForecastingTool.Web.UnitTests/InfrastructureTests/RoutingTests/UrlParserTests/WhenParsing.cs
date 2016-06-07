@@ -13,10 +13,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         private const string ErrorMessageRouteValueKey = "ErrorMessage";
         private const string PaybillRouteValueKey = "Paybill";
         private const string EnglishFractionRouteValueKey = "EnglishFraction";
-        private const string StandardQtyRouteValueKey = "SelectedStandard.Qty";
-        private const string StandardCodeRouteValueKey = "SelectedStandard.Code";
-        private const string StandardNameRouteValueKey = "SelectedStandard.Name";
-        private const string StandardStartDateRouteValueKey = "SelectedStandard.StartDate";
+        private const string StandardQtyRouteValueKey = "SelectedStandards[{0}].Qty";
+        private const string StandardCodeRouteValueKey = "SelectedStandards[{0}].Code";
+        private const string StandardNameRouteValueKey = "SelectedStandards[{0}].Name";
+        private const string StandardStartDateRouteValueKey = "SelectedStandards[{0}].StartDate";
         private const string DurationRouteValueKey = "Duration";
 
         private Mock<IStandardsRepository> _standardsRepo;
@@ -27,6 +27,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         {
             _standardsRepo = new Mock<IStandardsRepository>();
             _standardsRepo.Setup(r => r.GetByCodeAsync(34)).Returns(Task.FromResult(new Standard { Name = "Unit tester" }));
+            _standardsRepo.Setup(r => r.GetByCodeAsync(12)).Returns(Task.FromResult(new Standard { Name = "Unit tester" }));
 
             _parser = new UrlParser(_standardsRepo.Object);
         }
@@ -96,27 +97,33 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual("Results", actual.ActionName);
         }
 
-        [TestCase(BasePath + "/987654321/80/4x34-2017-04-01", 4, 34, "2017-04-01")]
-        [TestCase(BasePath + "/987654321/80/12x34-2018-02-20", 12, 34, "2018-02-20")]
-        public void ThenItShouldIncludeTheStandardInfoInRouteValuesIfInPath(string path, int expectedQty, int expectedCode, string expectedStartDate)
+        [TestCase(BasePath + "/987654321/80/4x34-2017-04-01", new[] { 4 }, new[] { 34 }, new[] { "2017-04-01" })]
+        [TestCase(BasePath + "/987654321/80/12x34-2018-02-20", new[] { 12 }, new[] { 34 }, new[] { "2018-02-20" })]
+        [TestCase(BasePath + "/987654321/80/12x34-2018-02-20_10x12-2018-03-20", new[] { 12, 10 }, new[] { 34, 12 }, new[] { "2018-02-20", "2018-03-20" })]
+        public void ThenItShouldIncludeTheStandardInfoInRouteValuesIfInPath(string path, int[] expectedQty, int[] expectedCode, string[] expectedStartDate)
         {
             // Act
             var actual = _parser.Parse(path);
 
             // Assert
-            Assert.IsTrue(actual.RouteValues.ContainsKey(StandardQtyRouteValueKey));
-            Assert.AreEqual(expectedQty, actual.RouteValues[StandardQtyRouteValueKey]);
 
-            Assert.IsTrue(actual.RouteValues.ContainsKey(StandardCodeRouteValueKey));
-            Assert.AreEqual(expectedCode, actual.RouteValues[StandardCodeRouteValueKey]);
+            for (var i = 0; i < expectedQty.Length; i++)
+            {
+                Assert.IsTrue(actual.RouteValues.ContainsKey(string.Format(StandardQtyRouteValueKey, i)));
+                Assert.AreEqual(expectedQty[i], actual.RouteValues[string.Format(StandardQtyRouteValueKey, i)]);
 
-            Assert.IsTrue(actual.RouteValues.ContainsKey(StandardNameRouteValueKey));
-            Assert.AreEqual("Unit tester", actual.RouteValues[StandardNameRouteValueKey]);
+                Assert.IsTrue(actual.RouteValues.ContainsKey(string.Format(StandardCodeRouteValueKey, i)));
+                Assert.AreEqual(expectedCode[i], actual.RouteValues[string.Format(StandardCodeRouteValueKey, i)]);
 
-            Assert.IsTrue(actual.RouteValues.ContainsKey(StandardStartDateRouteValueKey));
-            Assert.AreEqual(DateTime.Parse(expectedStartDate), actual.RouteValues[StandardStartDateRouteValueKey]);
+                Assert.IsTrue(actual.RouteValues.ContainsKey(string.Format(StandardNameRouteValueKey, i)));
+                Assert.AreEqual("Unit tester", actual.RouteValues[string.Format(StandardNameRouteValueKey, i)]);
+
+                Assert.IsTrue(actual.RouteValues.ContainsKey(string.Format(StandardStartDateRouteValueKey, i)));
+                Assert.AreEqual(DateTime.Parse(expectedStartDate[i]), actual.RouteValues[string.Format(StandardStartDateRouteValueKey, i)]);
+            }
+            
         }
-        
+
         [TestCase(BasePath + "/abc")]
         [TestCase(BasePath + "/abc/80")]
         [TestCase(BasePath + "/abc/80/4x34-2017-04-01")]

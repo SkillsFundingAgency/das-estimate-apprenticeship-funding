@@ -51,7 +51,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
         public async Task<ActionResult> Results(ResultsViewModel model)
         {
             var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction,
-                model.SelectedStandard.Code, model.SelectedStandard.Qty, model.SelectedStandard.StartDate, model.Duration);
+                model.SelectedStandards[0].Code, model.SelectedStandards[0].Qty, model.SelectedStandards[0].StartDate, model.Duration);
 
             model.LevyAmount = forecastResult.LevyPaid;
             model.LevyFundingReceived = forecastResult.FundingReceived;

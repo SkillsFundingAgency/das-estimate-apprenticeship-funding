@@ -3,9 +3,15 @@
 <div class="grid-row">
     <div class="column-full-width">
         <h2 class="heading-xlarge">Your estimated apprenticeship funding</h2>
-        <p>You will receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy apprenticeship funding, which includes the government @Model.TopPercentageForDisplay% top up. You will pay @Model.LevyAmount.ToString("C0") in levy.</p>
+        <p>
+            You will receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy apprenticeship funding, which includes the government @Model.TopPercentageForDisplay% top up. You will pay @Model.LevyAmount.ToString("C0") in levy.
+        </p>
         <p>Here is your monthly funding breakdown.</p>
+    </div>
+</div>
 
+<div class="grid-row">
+    <div class="column-full-width">
         <table>
             <thead>
                 <tr>
@@ -15,14 +21,14 @@
                     <th class="financial">Available funds</th>
                     <th class="financial" style="max-width: 150px;">
                         Employer Contribution
-                        <br/>
-                        <span style="font-weight:400;">Amount you'll need to pay for training this month (The govt will pay the rest)</span>
+                        <br />
+                        <span style="font-weight: 400;">Amount you'll need to pay for training this month (The govt will pay the rest)</span>
                     </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var month in Model.Results)
-            {
+                {
                     <tr>
                         <td>@month.Date.ToString("MMMM")</td>
                         <td class="financial">@Html.FinancialText(month.LevyIn)</td>
@@ -33,7 +39,20 @@
                 }
             </tbody>
         </table>
+    </div>
+</div>
 
+@if (Model.CanAddPeriod)
+{
+    <div class="grid-row">
+        <div class="column-full-width">
+            <a href="@Model.NextPeriodUrl" class="button">Add another 12 months</a>
+        </div>
+    </div>
+}
+
+<div class="grid-row">
+    <div class="column-full-width">
         @Html.Partial("_PreviousAnswers", Model)
     </div>
 </div>

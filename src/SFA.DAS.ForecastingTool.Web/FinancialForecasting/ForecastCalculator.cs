@@ -16,7 +16,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             _configurationProvider = configurationProvider;
         }
 
-        public async Task<ForecastResult> ForecastAsync(int paybill, int englishFraction, int standardCode, int standardQty, DateTime standardStartDate)
+        public async Task<ForecastResult> ForecastAsync(int paybill, int englishFraction, int standardCode, int standardQty, DateTime standardStartDate, int duration)
         {
             var levyPaid = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
             if (levyPaid < 0) // Non-levy payer
@@ -27,7 +27,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var decimalEnglishFraction = englishFraction / 100m;
             var fundingReceived = (levyPaid * decimalEnglishFraction) * _configurationProvider.LevyTopupPercentage;
 
-            var breakdown = await CalculateBreakdown(standardCode, standardQty, standardStartDate, fundingReceived);
+            var breakdown = await CalculateBreakdown(standardCode, standardQty, standardStartDate, fundingReceived, duration);
 
             return new ForecastResult
             {
@@ -38,10 +38,9 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             };
         }
 
-        private async Task<MonthlyCashflow[]> CalculateBreakdown(int standardCode, int standardQty, DateTime standardStartDate, decimal fundingReceived)
+        private async Task<MonthlyCashflow[]> CalculateBreakdown(int standardCode, int standardQty, DateTime standardStartDate, decimal fundingReceived, int duration)
         {
             var standard = await _standardsRepository.GetByCodeAsync(standardCode);
-            var duration = 12;
             var totalTrainingCost = standard?.Price * standardQty ?? 0;
             var monthlyTrainingFraction = totalTrainingCost / (decimal)(standard?.Duration ?? 1);
 

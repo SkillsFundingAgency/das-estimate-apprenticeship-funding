@@ -51,7 +51,7 @@
 }
 
 .grid-row {
-  margin: 0 -15px;
+  margin: 15px -15px;
 }
 
 @font-face {
@@ -148,7 +148,7 @@
 }
 
 .grid-row {
-  margin: 0 -15px;
+  margin: 15px -15px;
 }
 
 @-ms-viewport {

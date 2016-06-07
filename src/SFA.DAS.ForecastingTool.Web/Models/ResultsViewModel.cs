@@ -11,5 +11,7 @@ namespace SFA.DAS.ForecastingTool.Web.Models
         public decimal LevyAmount { get; set; }
         public decimal LevyFundingReceived { get; set; }
         public string TopPercentageForDisplay { get; set; }
+        public bool CanAddPeriod { get; set; }
+        public string NextPeriodUrl { get; set; }
     }
 }

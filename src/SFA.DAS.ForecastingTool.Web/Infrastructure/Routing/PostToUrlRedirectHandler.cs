@@ -16,32 +16,32 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 var paybillEntry = GetFormValue(form, "paybill", "0");
                 if (PaybillIsEligibleForLevy(paybillEntry))
                 {
-                    Redirect(context, $"{GetUrlToSegment(currentUrl, 1)}{paybillEntry}");
+                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{paybillEntry}");
                 }
                 else
                 {
-                    Redirect(context, $"{GetUrlToSegment(currentUrl, 1)}{paybillEntry}/1");
+                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{paybillEntry}/1");
                 }
             }
             else if (form.AllKeys.Contains("englishFractionSubmit"))
             {
                 var englishFractionEntry = GetFormValue(form, "englishFraction", "0");
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}{englishFractionEntry}");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(2)}{englishFractionEntry}");
             }
             else if (form.AllKeys.Contains("englishFractionSkip"))
             {
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 2)}100");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(2)}100");
             }
             else if (form.AllKeys.Contains("trainingCourseSubmit"))
             {
                 var cohortsEntry = GetFormValue(form, "cohorts", "0");
                 var standardSelection = GetFormValue(form, "standard", "0");
                 var startDateEntry = GetFormValue(form, "startDate", "2017-04-01");
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 3)}{cohortsEntry}x{standardSelection}-{startDateEntry}");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{cohortsEntry}x{standardSelection}-{startDateEntry}/12");
             }
             else if (form.AllKeys.Contains("trainingCourseSkip"))
             {
-                Redirect(context, $"{GetUrlToSegment(currentUrl, 4)}0x0");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(4)}0x0/12");
             }
         }
 
@@ -55,11 +55,11 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             var redirectUri = new Uri(baseUri, relativeUrl);
             context.Response.Redirect(redirectUri.ToString());
         }
-        private string GetUrlToSegment(Uri url, int segments)
-        {
-            var result = url.Segments.Take(segments + 1).Aggregate((x, y) => x + y);
-            return result.EndsWith("/") ? result : result + "/";
-        }
+        //private string GetUrlToSegment(Uri url, int segments)
+        //{
+        //    var result = url.Segments.Take(segments + 1).Aggregate((x, y) => x + y);
+        //    return result.EndsWith("/") ? result : result + "/";
+        //}
         private string GetFormValue(NameValueCollection form, string name, string defaultValue = "")
         {
             var value = form[name];

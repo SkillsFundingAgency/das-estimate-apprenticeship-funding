@@ -17,7 +17,6 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         public ParsedUrl Parse(string url)
         {
             var parts = url.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            var result = new ParsedUrl { RouteValues = new Dictionary<string, object>() };
 
             if (parts.Length == 1)
             {
@@ -31,7 +30,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             {
                 return ProcessTrainingCoursePath(parts);
             }
-            if (parts.Length == 4)
+            if (parts.Length >= 4)
             {
                 return ProcessResultsPath(parts);
             }
@@ -159,11 +158,27 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 }
             }
 
+            int duration;
+            if (!int.TryParse(parts.Length > 4 ? parts[4] : "12", out duration))
+            {
+                duration = 12;
+            }
+            duration = duration - (duration % 12);
+            if (duration < 12)
+            {
+                duration = 12;
+            }
+            if (duration > 36)
+            {
+                duration = 36;
+            }
+
             result.ActionName = "Results";
             result.RouteValues.Add("SelectedStandard.Qty", standardQty);
             result.RouteValues.Add("SelectedStandard.Code", standardCode);
             result.RouteValues.Add("SelectedStandard.Name", standard?.Name);
             result.RouteValues.Add("SelectedStandard.StartDate", standardStartDate);
+            result.RouteValues.Add("Duration", duration);
             return result;
         }
     }

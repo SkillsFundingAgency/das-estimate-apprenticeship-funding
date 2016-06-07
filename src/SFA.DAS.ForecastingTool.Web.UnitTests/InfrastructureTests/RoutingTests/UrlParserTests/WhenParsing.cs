@@ -17,6 +17,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         private const string StandardCodeRouteValueKey = "SelectedStandard.Code";
         private const string StandardNameRouteValueKey = "SelectedStandard.Name";
         private const string StandardStartDateRouteValueKey = "SelectedStandard.StartDate";
+        private const string DurationRouteValueKey = "Duration";
 
         private Mock<IStandardsRepository> _standardsRepo;
         private UrlParser _parser;
@@ -243,6 +244,55 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(EnglishFractionRouteValueKey));
             Assert.AreEqual(80, actual.RouteValues[EnglishFractionRouteValueKey]);
+        }
+
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01")]
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01/abc")]
+        public void ThenItShouldDefaultDurationTo12WhenNotInUrlOrIncorrectInUrl(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(DurationRouteValueKey));
+            Assert.AreEqual(12, actual.RouteValues[DurationRouteValueKey]);
+        }
+
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01/13", 12)]
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01/23", 12)]
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01/25", 24)]
+        public void ThenItShouldReturnDurationAsTheLowestMultipleOf12IfUrlValueIsNotMultipleItself(string path, int expectedDuration)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(DurationRouteValueKey));
+            Assert.AreEqual(expectedDuration, actual.RouteValues[DurationRouteValueKey]);
+        }
+
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01/6")]
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01/0")]
+        public void ThenItShouldReturnDurationAs12IfCorrectedUrlValueLessThan12(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(DurationRouteValueKey));
+            Assert.AreEqual(12, actual.RouteValues[DurationRouteValueKey]);
+        }
+
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01/37")]
+        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01/48")]
+        public void ThenItShouldReturnDurationAs36IfCorrectedUrlValueMoreThan36(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path);
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(DurationRouteValueKey));
+            Assert.AreEqual(36, actual.RouteValues[DurationRouteValueKey]);
         }
 
     }

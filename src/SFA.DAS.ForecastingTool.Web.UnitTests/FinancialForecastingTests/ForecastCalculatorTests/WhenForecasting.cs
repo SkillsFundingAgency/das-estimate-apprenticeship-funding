@@ -17,6 +17,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         private const int StandardCode = 1;
         private const int StandardQty = 1;
         private readonly DateTime StandardStartDate = new DateTime(2017, 4, 1);
+        public const int Duration = 12;
 
         private Mock<IStandardsRepository> _standardsRepository;
         private ForecastCalculator _calculator;
@@ -45,7 +46,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldReturnInstanceOfForecastResult()
         {
             // Act
-            var actual = await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate);
+            var actual = await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration);
 
             // Assert
             Assert.IsNotNull(actual);
@@ -57,7 +58,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldReturnCorrectLevyPaidAmount(int paybill, int expectedLevyPaid)
         {
             // Act
-            var actual = await _calculator.ForecastAsync(paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate);
+            var actual = await _calculator.ForecastAsync(paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration);
 
             // Assert
             Assert.AreEqual(expectedLevyPaid, actual.LevyPaid);
@@ -69,7 +70,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldReturnCorrectFundingReceivedAmount(int paybill, int expectedFundingReceived)
         {
             // Act
-            var actual = await _calculator.ForecastAsync(paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate);
+            var actual = await _calculator.ForecastAsync(paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration);
 
             // Assert
             Assert.AreEqual(expectedFundingReceived, actual.FundingReceived);
@@ -85,28 +86,30 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             _configurationProvider.Setup(cp => cp.LevyTopupPercentage).Returns((decimal)configuredTopupPercentage);
 
             // Act
-            var actual = await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate);
+            var actual = await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration);
 
             // Assert
             Assert.AreEqual(expectedTopupPercentage, actual.UserFriendlyTopupPercentage);
         }
 
-        [Test]
-        public async Task ThenItShouldReturn12MonthsOfForecast()
+        [TestCase(12)]
+        [TestCase(34)]
+        [TestCase(36)]
+        public async Task ThenItShouldReturnSpecifiedNumberOfMonthsOfForecast(int duration)
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, duration))?.Breakdown;
 
             // Assert
             Assert.IsNotNull(actual);
-            Assert.AreEqual(12, actual.Length);
+            Assert.AreEqual(duration, actual.Length);
         }
 
         [Test]
         public async Task ThenItShouldReturnConsecutiveMonthlyDatesStartingOnApril2017()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration))?.Breakdown;
 
             // Assert
             var startDate = new DateTime(2017, 4, 1);
@@ -124,7 +127,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldReturnEveryMonthsLevyInAsOneTwelthOfPaybillAfterPercentageAndAllowanceAndTopup()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration))?.Breakdown;
 
             // Assert
             for (var i = 0; i < 12; i++)
@@ -136,19 +139,28 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             }
         }
 
-        [Test]
-        public async Task ThenItShouldReturnEveryMonthsTrainingOutAsOneTwelthOfTheTotalCohortTrainingCost()
+        [TestCase(12, 500)]
+        [TestCase(18, 333.33)]
+        [TestCase(24, 250)]
+        public async Task ThenItShouldReturnEveryMonthsTrainingOutAsEvenProportionOfTrainingCOstForDuration(int courseDuration, decimal expectedMonthlyCost)
         {
+            // Arrange
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode)).Returns(Task.FromResult(new Standard
+            {
+                Price = 6000,
+                Duration = courseDuration
+            }));
+
             // Act
-            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration))?.Breakdown;
 
             // Assert
             for (var i = 0; i < 12; i++)
             {
                 var actualTrainingOut = actual[i].TrainingOut;
 
-                Assert.AreEqual(500, actualTrainingOut,
-                    $"Expected actual[{i}].TrainingOut to be 500 but was {actualTrainingOut}");
+                Assert.AreEqual(expectedMonthlyCost, actualTrainingOut,
+                    $"Expected actual[{i}].TrainingOut to be {expectedMonthlyCost} but was {actualTrainingOut}");
             }
         }
 
@@ -156,7 +168,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldOnlyStartTakingTrainingCostsFromTheStartDate()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate.AddMonths(2)))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate.AddMonths(2), Duration))?.Breakdown;
 
             // Assert
             Assert.AreEqual(0, actual[0].TrainingOut, $"Expected actual[0].TrainingOut to be 500 but was {actual[0].TrainingOut}");
@@ -174,7 +186,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldStopTakingTrainingCostsFromTheStartDatePlusStandardDuration()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate.AddMonths(-3)))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate.AddMonths(-3), Duration))?.Breakdown;
 
             // Assert
             for (var i = 0; i < 10; i++)
@@ -192,7 +204,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldKeepARollingBalance()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration))?.Breakdown;
 
             // Assert
             Assert.AreEqual(72.92m, actual[0].Balance);
@@ -213,7 +225,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldHaveCopaymentOfTheDeficitAtCopaymentRate()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(CoPayPaybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(CoPayPaybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration))?.Breakdown;
 
             // Assert
             Assert.AreEqual(4.17m, actual[0].CoPayment);
@@ -234,7 +246,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldReturnEveryMonthsLevyInAs0IfPaybillApplicableForLevy()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(NonLevyPaybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(NonLevyPaybill, EnglishFraction, StandardCode, StandardQty, StandardStartDate, Duration))?.Breakdown;
 
             // Assert
             for (var i = 0; i < 12; i++)
@@ -250,7 +262,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldApplyEnglishFractionToCalculateFundingReceived()
         {
             // Act
-            var actual = await _calculator.ForecastAsync(CoPayPaybill, 80, StandardCode, StandardQty, StandardStartDate);
+            var actual = await _calculator.ForecastAsync(CoPayPaybill, 80, StandardCode, StandardQty, StandardStartDate, Duration);
 
             // Assert
             Assert.AreEqual(4400, actual.FundingReceived);
@@ -260,7 +272,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldApplyEnglishFractionToCalculateMonthlyLevyIn()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(CoPayPaybill, 80, StandardCode, StandardQty, StandardStartDate))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(CoPayPaybill, 80, StandardCode, StandardQty, StandardStartDate, Duration))?.Breakdown;
 
             // Assert
             for (var i = 0; i < 12; i++)

@@ -255,6 +255,7 @@
     <Compile Include="Standards\IStandardsRepository.cs" />
     <Compile Include="Standards\Standard.cs" />
     <Compile Include="Standards\StandardsRepository.cs" />
+    <Compile Include="UriExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

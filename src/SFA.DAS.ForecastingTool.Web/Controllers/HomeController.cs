@@ -51,12 +51,14 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
         public async Task<ActionResult> Results(ResultsViewModel model)
         {
             var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction,
-                model.SelectedStandard.Code, model.SelectedStandard.Qty, model.SelectedStandard.StartDate);
+                model.SelectedStandard.Code, model.SelectedStandard.Qty, model.SelectedStandard.StartDate, model.Duration);
 
             model.LevyAmount = forecastResult.LevyPaid;
             model.LevyFundingReceived = forecastResult.FundingReceived;
             model.TopPercentageForDisplay = forecastResult.UserFriendlyTopupPercentage.ToString("0");
             model.Results = forecastResult.Breakdown;
+            model.CanAddPeriod = model.Duration < 36;
+            model.NextPeriodUrl = Request.Url.GetUrlToSegment(4) + (model.Duration + 12);
             return View(model);
         }
     }

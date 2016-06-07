@@ -21,6 +21,34 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    @foreach (var cohort in Model.SelectedStandards)
+                    {
+                        <tr>
+                            <td>
+                                <select name="standard" class="form-control-1-3" style="width: 100%;" aria-label="Training standard">
+                                    @foreach (var standard in Model.Standards)
+                                    {
+                                        if (standard.Code == cohort.Code)
+                                        {
+                                            <option value="@standard.Code" selected="selected">@standard.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@standard.Code">@standard.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <input name="cohorts" type="number" class="form-control-1-2" aria-label="Number of apprentices" value="@cohort.Qty" />
+                            </td>
+                            <td>
+                                <input name="startDate" type="date" class="form-control-3-4" style="width: 100%;" aria-label="Start date" value="@cohort.StartDate.ToString("yyyy-MM-dd")" />
+                            </td>
+                        </tr>
+                    }
+
                     <tr>
                         <td>
                             <select name="standard" class="form-control-1-3" style="width: 100%;" aria-label="Training standard">
@@ -35,7 +63,7 @@
                             <input name="cohorts" type="number" class="form-control-1-2" aria-label="Number of apprentices" />
                         </td>
                         <td>
-                            <input name="startDate" type="date" class="form-control-3-4" style="width:100%;" aria-label="Start date" value="2017-04-01" />
+                            <input name="startDate" type="date" class="form-control-3-4" style="width: 100%;" aria-label="Start date" value="2017-04-01" />
                         </td>
                     </tr>
                 </tbody>
@@ -43,6 +71,7 @@
             <div class="form-group" style="margin-top: 15px;">
                 <input name="trainingCourseSubmit" type="submit" class="button" value="Estimate" />
                 <input name="trainingCourseSkip" type="submit" class="button button-secondary" value="Skip" />
+                <input name="trainingCourseAdd" type="submit" class="button button-secondary" value="Add another" />
             </div>
         </form>
 

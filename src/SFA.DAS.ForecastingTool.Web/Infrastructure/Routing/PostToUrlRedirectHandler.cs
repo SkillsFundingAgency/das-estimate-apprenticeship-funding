@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 {
@@ -34,15 +36,19 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             }
             else if (form.AllKeys.Contains("trainingCourseSubmit"))
             {
-                var cohortsEntry = GetFormValue(form, "cohorts", "0");
-                var standardSelection = GetFormValue(form, "standard", "0");
-                var startDateEntry = GetFormValue(form, "startDate", "2017-04-01");
-                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{cohortsEntry}x{standardSelection}-{startDateEntry}/12");
+                var cohorstSegment = GetCohortsUrlSegment(form, true);
+                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{cohorstSegment}/12");
             }
             else if (form.AllKeys.Contains("trainingCourseSkip"))
             {
                 Redirect(context, $"{currentUrl.GetUrlToSegment(4)}0x0/12");
             }
+            else if (form.AllKeys.Contains("trainingCourseAdd"))
+            {
+                var cohorstSegment = GetCohortsUrlSegment(form, false);
+                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{cohorstSegment}");
+            }
+
         }
 
 
@@ -55,11 +61,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             var redirectUri = new Uri(baseUri, relativeUrl);
             context.Response.Redirect(redirectUri.ToString());
         }
-        //private string GetUrlToSegment(Uri url, int segments)
-        //{
-        //    var result = url.Segments.Take(segments + 1).Aggregate((x, y) => x + y);
-        //    return result.EndsWith("/") ? result : result + "/";
-        //}
+        
         private string GetFormValue(NameValueCollection form, string name, string defaultValue = "")
         {
             var value = form[name];
@@ -73,6 +75,30 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 return paybill >= 3000000;
             }
             return false;
+        }
+
+        private string GetCohortsUrlSegment(NameValueCollection form, bool includeUnslectedRows)
+        {
+            var cohortsEntry = GetFormValue(form, "cohorts", "0").Split(',');
+            var standardSelection = GetFormValue(form, "standard", "0").Split(',');
+            var startDateEntry = GetFormValue(form, "startDate", "2017-04-01").Split(',');
+
+            var segmentbuilder = new StringBuilder();
+
+            for (var i = 0; i < standardSelection.Length; i ++)
+            {
+                if (!includeUnslectedRows && standardSelection[i] == "noselection")
+                {
+                    continue;
+                }
+                if (i > 0)
+                {
+                    segmentbuilder.Append("_");
+                }
+                segmentbuilder.Append($"{cohortsEntry[i]}x{standardSelection[i]}-{startDateEntry[i]}");
+            }
+
+            return segmentbuilder.ToString();
         }
     }
 }

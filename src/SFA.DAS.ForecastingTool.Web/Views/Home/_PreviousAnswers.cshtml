@@ -23,20 +23,27 @@
         @if (Model.SelectedStandards != null)
         {
             <tr>
-                @foreach (var standard in Model.SelectedStandards)
-                {
+                <td>
+                    @foreach (var standard in Model.SelectedStandards)
+                    {
 
-                    if (standard.Qty == 0)
-                    {
-                        <td>No apprentices selected</td>
+                        if (standard.Qty == 0)
+                        {
+                            <div>
+                                No apprentices selected
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div>
+                                @standard.Qty apprentices on @standard.Name training course
+                            </div>
+                        }
                     }
-                    else
-                    {
-                        <td>@standard.Qty apprentices on @standard.Name training course</td>
-                    }
-                    
-                }
-                <td><a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFraction}")">Change</a></td>
+                </td>
+
+                <td style="vertical-align: top;"><a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFraction}")">Change</a></td>
             </tr>
         }
     </table>

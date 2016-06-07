@@ -4,6 +4,10 @@ namespace SFA.DAS.ForecastingTool.Web.Models
 {
     public class ForecastQuestionsModel
     {
+        public ForecastQuestionsModel()
+        {
+            SelectedStandards = new List<StandardModel>();
+        }
         public string ErrorMessage { get; set; }
         public int Paybill { get; set; }
         public int EnglishFraction { get; set; }

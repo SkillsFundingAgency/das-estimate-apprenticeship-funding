@@ -88,13 +88,13 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         }
 
         [Test]
-        public void ThenItShouldReturnResultsIfPathHasAmountAndFractionAndStandard()
+        public void ThenItShouldReturnResultsIfPathHasAmountAndFractionAndStandardButNotDuration()
         {
             // Act
             var actual = _parser.Parse($"{BasePath}/987654321/80/4x34-2017-04-01");
 
             // Assert
-            Assert.AreEqual("Results", actual.ActionName);
+            Assert.AreEqual("TrainingCourse", actual.ActionName);
         }
 
         [TestCase(BasePath + "/987654321/80/4x34-2017-04-01", new[] { 4 }, new[] { 34 }, new[] { "2017-04-01" })]
@@ -253,9 +253,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual(80, actual.RouteValues[EnglishFractionRouteValueKey]);
         }
 
-        [TestCase(BasePath + "/987654321/80/1x34-2017-04-01")]
         [TestCase(BasePath + "/987654321/80/1x34-2017-04-01/abc")]
-        public void ThenItShouldDefaultDurationTo12WhenNotInUrlOrIncorrectInUrl(string path)
+        public void ThenItShouldDefaultDurationTo12WhenIncorrectInUrl(string path)
         {
             // Act
             var actual = _parser.Parse(path);

@@ -164,6 +164,13 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                         return result;
                     }
                 }
+                
+                result.ActionName = "Results";
+                result.RouteValues.Add($"SelectedStandards[{i}].Qty", standardQty);
+                result.RouteValues.Add($"SelectedStandards[{i}].Code", standardCode);
+                result.RouteValues.Add($"SelectedStandards[{i}].Name", standard?.Name);
+                result.RouteValues.Add($"SelectedStandards[{i}].StartDate", standardStartDate);
+            }
 
             int duration;
             if (!int.TryParse(parts.Length > 4 ? parts[4] : "12", out duration))
@@ -180,14 +187,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 duration = 36;
             }
 
-                result.ActionName = "Results";
-                result.RouteValues.Add($"SelectedStandards[{i}].Qty", standardQty);
-                result.RouteValues.Add($"SelectedStandards[{i}].Code", standardCode);
-                result.RouteValues.Add($"SelectedStandards[{i}].Name", standard?.Name);
-                result.RouteValues.Add($"SelectedStandards[{i}].StartDate", standardStartDate);
-            }
             result.RouteValues.Add("Duration", duration);
-
 
             return result;
         }

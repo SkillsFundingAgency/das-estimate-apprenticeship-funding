@@ -210,6 +210,8 @@
     <Content Include="Content\stylesheets\images\open-government-licence.png" />
     <Content Include="Content\stylesheets\images\open-government-licence_2x.png" />
     <Content Include="Content\stylesheets\patterns.css" />
+    <Content Include="error\general.htm" />
+    <Content Include="error\not-found.htm" />
     <Content Include="Global.asax" />
     <Content Include="favicon.ico" />
     <Content Include="Scripts\govuk-template.js" />

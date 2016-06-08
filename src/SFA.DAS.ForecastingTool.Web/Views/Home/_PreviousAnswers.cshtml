@@ -20,7 +20,7 @@
                 <td><a href="@Url.Content($"~/forecast/{Model.Paybill}")">Change</a></td>
             </tr>
         }
-        @if (Model.SelectedStandards != null)
+        @if (Model.SelectedStandards.Any())
         {
             <tr>
                 <td>

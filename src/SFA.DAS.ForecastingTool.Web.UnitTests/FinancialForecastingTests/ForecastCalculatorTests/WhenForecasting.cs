@@ -17,9 +17,9 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         private const int CoPayPaybill = 4000000;
         private const int NonLevyPaybill = 1000000;
         private const int EnglishFraction = 100;
-        private int[] StandardCode = { 1,2};
-        private int[] StandardQty = { 1, 1};
-        private readonly DateTime[] StandardStartDate =  {new DateTime(2017, 4, 1),new DateTime(2017, 4, 1)};
+        private int[] StandardCode = { 1, 2 };
+        private int[] StandardQty = { 1, 1 };
+        private readonly DateTime[] StandardStartDate = { new DateTime(2017, 4, 1), new DateTime(2017, 4, 1) };
         public const int Duration = 12;
 
         private Mock<IStandardsRepository> _standardsRepository;
@@ -227,6 +227,49 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                 Assert.AreEqual(expectedMonthlyCost, actualTrainingOut,
                     $"Expected actual[{i}].TrainingOut to be {expectedMonthlyCost} but was {actualTrainingOut}");
             }
+        }
+
+        [TestCase(new[] { 1, 1 }, 625)]
+        [TestCase(new[] { 1, 10 }, 1750)]
+        [TestCase(new[] { 10, 10 }, 6250)]
+        public async Task ThenItShouldCalculateTheMonthlyTrainginCostForDifferentQuantities(int[] cohortQauntities, decimal expectedMonthlyCost)
+        {
+
+            //Arrange
+            var myStandards = new List<StandardModel>();
+            for (var i = 0; i < StandardQty.Length; i++)
+            {
+                myStandards.Add(new StandardModel
+                {
+                    Code = StandardCode[i],
+                    Qty = cohortQauntities[i],
+                    StartDate = StandardStartDate[i]
+                });
+            }
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Standard
+            {
+                Price = 6000,
+                Duration = 12
+            }));
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[1])).Returns(Task.FromResult(new Standard
+            {
+                Price = 1500,
+                Duration = 12
+            }));
+
+            // Act
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, myStandards.ToArray(), Duration))?.Breakdown;
+
+            // Assert
+            for (var i = 0; i < 12; i++)
+            {
+                var actualTrainingOut = actual[i].TrainingOut;
+
+
+                Assert.AreEqual(expectedMonthlyCost, actualTrainingOut,
+                    $"Expected actual[{i}].TrainingOut to be {expectedMonthlyCost} but was {actualTrainingOut}");
+            }
+
         }
 
 

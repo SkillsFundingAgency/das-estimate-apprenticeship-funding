@@ -2,14 +2,14 @@
 
 <div class="grid-row">
     <div class="column-two-thirds">
-        <h2 class="heading-xlarge">How much is your paybill?</h2>
+        <h2 class="heading-xlarge">Enter your payroll</h2>
         @if (!string.IsNullOrEmpty(Model.ErrorMessage))
         {
             <div class="error">
                 <p class="error-message">@Model.ErrorMessage</p>
             </div>
         }
-        <p>Please enter your annual paybill</p>
+        <p>Please enter your gross annual payroll</p>
         <form method="post">
             <div class="form-group">
                 <span>£</span>

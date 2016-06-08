@@ -1720,13 +1720,17 @@ input[type=number] {
   width: 70px;
 }
 
-.error {
+.error, .warning {
   margin-right: 15px;
 }
 
 .error .error-message {
   color: #b10e1e;
   font-weight: bold;
+}
+
+.warning {
+    line-height: 2.00em;
 }
 
 .error .form-control {
@@ -1743,10 +1747,21 @@ input[type=number] {
   padding-left: 10px;
 }
 
+.warning,
+.warning-summary {
+  border-left: 4px solid #bfc1c3;
+  padding-left: 10px;
+}
+
 @media (min-width: 641px) {
   .error,
   .error-summary {
     border-left: 5px solid #b10e1e;
+    padding-left: 15px;
+  }
+  .warning,
+  .warning-summary {
+    border-left: 5px solid #bfc1c3;
     padding-left: 15px;
   }
 }

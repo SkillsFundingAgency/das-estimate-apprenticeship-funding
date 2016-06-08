@@ -66,7 +66,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             if (!int.TryParse(parts[1], out paybill) || paybill <= 0)
             {
                 result.IsErrored = true;
-                result.RouteValues.Add("ErrorMessage", "Paybill is not a valid entry");
+                result.RouteValues.Add("ErrorMessage", "Payroll is not a valid entry");
                 result.ActionName = "Paybill";
             }
             else
@@ -89,7 +89,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             if (!int.TryParse(parts[2], out englishFraction) || englishFraction <= 0 || englishFraction > 100)
             {
                 result.IsErrored = true;
-                result.RouteValues.Add("ErrorMessage", "English fraction is not a valid entry");
+                result.RouteValues.Add("ErrorMessage", "English percentage is not a valid entry");
                 result.ActionName = "EnglishFraction";
             }
             else

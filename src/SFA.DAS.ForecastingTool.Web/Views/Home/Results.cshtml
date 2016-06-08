@@ -4,9 +4,12 @@
     <div class="column-full-width">
         <h2 class="heading-xlarge">Your estimated apprenticeship funding</h2>
         <p>
-            You will receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy apprenticeship funding, which includes the government @Model.TopPercentageForDisplay% top up. You will pay @Model.LevyAmount.ToString("C0") in levy.
+            Based on your annual payroll of <span class="bold-medium">@Model.Paybill.ToString("C0")</span> and your English percentage of <span class="bold-medium">@Model.EnglishFraction%</span>:
         </p>
-        <p>Here is your monthly funding breakdown.</p>
+        <p>
+            You will pay <span class="bold-medium">@Model.LevyAmount.ToString("C0")</span> in levy and receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of apprenticeship funding. This includes the 10% government top up.
+        </p>
+        <p>Here is your monthly funding breakdown</p>
     </div>
 </div>
 
@@ -16,13 +19,13 @@
             <thead>
                 <tr>
                     <th>Month</th>
-                    <th class="financial">Funding Received</th>
+                    <th class="financial">Apprenticeship funding</th>
                     <th class="financial">Estimated training cost</th>
                     <th class="financial">Available funds</th>
                     <th class="financial" style="max-width: 150px;">
-                        Employer Contribution
+                        Co-funding
                         <br />
-                        <span style="font-weight: 400;">Amount you'll need to pay for training this month (The govt will pay the rest)</span>
+                        <span style="font-weight: 400;">An additional amount paid by you for apprenticeship training. Government pays the rest.</span>
                     </th>
                 </tr>
             </thead>

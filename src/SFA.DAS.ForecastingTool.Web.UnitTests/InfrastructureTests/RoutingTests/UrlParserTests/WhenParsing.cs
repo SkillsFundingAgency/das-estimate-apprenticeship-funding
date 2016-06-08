@@ -152,7 +152,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
-            Assert.AreEqual("Paybill is not a valid entry", actual.RouteValues[ErrorMessageRouteValueKey]);
+            Assert.AreEqual("Payroll is not a valid entry", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
         [TestCase(BasePath + "/0")]
@@ -168,7 +168,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
-            Assert.AreEqual("Paybill is not a valid entry", actual.RouteValues[ErrorMessageRouteValueKey]);
+            Assert.AreEqual("Payroll is not a valid entry", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
         [TestCase(BasePath + "/987654321/80/ax34-2017-04-01")]

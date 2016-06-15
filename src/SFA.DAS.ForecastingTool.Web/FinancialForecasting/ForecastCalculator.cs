@@ -63,7 +63,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 foreach (var standard in standards)
                 {
                     var trainingStartDate = new DateTime(standard.StartDate.Year, standard.StartDate.Month, 1);
-                    var trainingEndDate = trainingStartDate.AddMonths(standard.Standard.Duration);
+                    var trainingEndDate = trainingStartDate.AddMonths(standard.Standard.Duration - 1);
                     var trainingHasStarted = monthDate.CompareTo(trainingStartDate) >= 0;
                     var trainingHasFinished = monthDate.CompareTo(trainingEndDate) > 0;
                     trainingCostForMonth += trainingHasStarted && !trainingHasFinished ? standard.MonthlyTrainingFraction : 0;

@@ -207,7 +207,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Standard
             {
                 Price = 6000,
-                Duration = 11
+                Duration = 12
             }));
             _configurationProvider.Setup(cp => cp.FinalTrainingPaymentPercentage).Returns(0.1m);
 
@@ -215,7 +215,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(1090.91m, actual[11].TrainingOut);
+            Assert.AreEqual(1050.00m, actual[11].TrainingOut);
         }
 
         [TestCase(12, 625)]
@@ -342,7 +342,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 9; i++)
             {
                 var actualTrainingOut = actual[i].TrainingOut;
 

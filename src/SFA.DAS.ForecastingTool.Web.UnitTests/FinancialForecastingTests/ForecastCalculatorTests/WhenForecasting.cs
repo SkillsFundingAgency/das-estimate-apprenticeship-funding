@@ -436,5 +436,44 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                     $"Expected actual[{i}].LevyIn to be 366.67 but was {actualLevyIn}");
             }
         }
+
+        [Test]
+        public async Task ThenItShouldSunsetFundsWhenTheBalanceExceeds18TimesMonthlyFunding()
+        {
+            // Act
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, new StandardModel[0], 24))?.Breakdown;
+
+            // Assert
+            for (var i = 17; i < 24; i++)
+            {
+                var actualBalance = actual[i].Balance;
+
+                Assert.AreEqual(10312.50m, actualBalance,
+                    $"Expected actual[{i}].Balance to be 10312.50 but was {actualBalance}");
+            }
+        }
+
+        [Test]
+        public async Task ThenItShouldIncludeHowMuchFundsWereSunsettedWhenApplicable()
+        {
+            // Act
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, new StandardModel[0], 24))?.Breakdown;
+
+            for (var i = 0; i < 18; i++)
+            {
+                var actualSunsetFunds = actual[i].SunsetFunds;
+
+                Assert.AreEqual(0m, actualSunsetFunds,
+                    $"Expected actual[{i}].SunsetFunds to be 0 but was {actualSunsetFunds}");
+            }
+            // Assert
+            for (var i = 18; i < 24; i++)
+            {
+                var actualSunsetFunds = actual[i].SunsetFunds;
+
+                Assert.AreEqual(572.92m, actualSunsetFunds,
+                    $"Expected actual[{i}].SunsetFunds to be 572.92 but was {actualSunsetFunds}");
+            }
+        }
     }
 }

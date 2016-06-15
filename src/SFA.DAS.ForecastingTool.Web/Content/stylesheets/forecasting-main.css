@@ -2475,6 +2475,10 @@ td.financial, th.financial {
     margin-bottom: 20px;
 }
 
+.sunset-funds {
+    display:block; 
+    color:red;
+}
 
 
 .disclaimer {

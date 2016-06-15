@@ -36,7 +36,13 @@
                         <td>@month.Date.ToString("MMMM")</td>
                         <td class="financial">@Html.FinancialText(month.LevyIn)</td>
                         <td class="financial">@Html.FinancialText(month.TrainingOut)</td>
-                        <td class="financial">@month.Balance.ToString("C")</td>
+                        <td class="financial">
+                            <span>@month.Balance.ToString("C")</span>
+                            @if (month.SunsetFunds > 0)
+                            {
+                                <span class="sunset-funds">@month.SunsetFunds.ToString("C") expired</span>
+                            }
+                        </td>
                         <td class="financial">@Html.FinancialText(month.CoPayment)</td>
                     </tr>
                 }

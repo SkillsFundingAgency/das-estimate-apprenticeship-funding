@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
 using SFA.DAS.ForecastingTool.Web.Models;
@@ -13,15 +11,17 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
         private readonly IStandardsRepository _standardsRepository;
         private readonly IConfigurationProvider _configurationProvider;
 
+
         public ForecastCalculator(IStandardsRepository standardsRepository, IConfigurationProvider configurationProvider)
         {
             _standardsRepository = standardsRepository;
             _configurationProvider = configurationProvider;
         }
 
+
+
         public async Task<ForecastResult> ForecastAsync(int paybill, int englishFraction, StandardModel[] myStandards, int duration)
         {
-
             var levyPaid = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
             if (levyPaid < 0) // Non-levy payer
             {
@@ -40,8 +40,9 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 UserFriendlyTopupPercentage = (int)Math.Round((_configurationProvider.LevyTopupPercentage - 1) * 100, 0),
                 Breakdown = breakdown
             };
-
         }
+
+
 
         private async Task<MonthlyCashflow[]> CalculateBreakdown(StandardModel[] cohorts, decimal fundingReceived, int duration)
         {
@@ -49,6 +50,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var startDate = new DateTime(2017, 4, 1);
 
             var monthlyFunding = fundingReceived / 12m;
+            var sunsetLimit = monthlyFunding * 18;
 
             var rollingBalance = 0m;
             var months = new MonthlyCashflow[duration];
@@ -56,6 +58,8 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             {
                 var trainingCostForMonth = 0m;
                 var monthDate = startDate.AddMonths(i);
+                var sunsetFunds = 0m;
+
                 foreach (var standard in standards)
                 {
                     var trainingStartDate = new DateTime(standard.StartDate.Year, standard.StartDate.Month, 1);
@@ -69,8 +73,12 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     }
                 }
 
-
                 rollingBalance += monthlyFunding - trainingCostForMonth;
+                if (rollingBalance > sunsetLimit)
+                {
+                    sunsetFunds = rollingBalance - sunsetLimit;
+                    rollingBalance = sunsetLimit;
+                }
 
                 months[i] = new MonthlyCashflow
                 {
@@ -78,6 +86,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     LevyIn = Math.Round(monthlyFunding, 2),
                     TrainingOut = Math.Round(trainingCostForMonth, 2),
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
+                    SunsetFunds = Math.Round(sunsetFunds, 2),
                     CoPayment = rollingBalance < 0 ? Math.Round((rollingBalance * -1) * _configurationProvider.CopaymentPercentage, 2) : 0
                 };
 
@@ -100,6 +109,8 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             }
             return standards;
         }
+
+
 
 
         private class BreakdownStandard

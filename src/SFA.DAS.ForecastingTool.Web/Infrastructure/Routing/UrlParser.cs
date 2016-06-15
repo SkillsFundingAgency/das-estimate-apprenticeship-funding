@@ -139,6 +139,11 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             }
 
             var standards = parts[3].Split('_');
+
+            if (standards.Length == 1 && standards[0] == "0x0")
+            {
+                return;
+            }
             
             for (var i = 0; i < standards.Length; i++)
             {

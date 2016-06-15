@@ -301,5 +301,15 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual(36, actual.RouteValues[DurationRouteValueKey]);
         }
 
+        [Test]
+        public void ThenItShouldAllowTrainingCourseToBeSkipped()
+        {
+            // Act
+            var actual = _parser.Parse(BasePath + "/12345678/100/0x0/12");
+
+            // Assert
+            Assert.AreEqual("Results", actual.ActionName);
+        }
+
     }
 }

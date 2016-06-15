@@ -23,11 +23,11 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 }
                 if (PaybillIsEligibleForLevy(paybillEntry))
                 {
-                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{EncodeFormEntryForUrl(paybillEntry)}");
+                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{EncodeFormEntryForUrl(paybillEntry)}/");
                 }
                 else
                 {
-                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{EncodeFormEntryForUrl(paybillEntry)}/100");
+                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{EncodeFormEntryForUrl(paybillEntry)}/100/");
                 }
             }
             else if (form.AllKeys.Contains("englishFractionSubmit"))
@@ -38,25 +38,25 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 {
                     englishFractionEntry = Math.Floor(englishFraction).ToString();
                 }
-                Redirect(context, $"{currentUrl.GetUrlToSegment(2)}{EncodeFormEntryForUrl(englishFractionEntry)}");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(2)}{EncodeFormEntryForUrl(englishFractionEntry)}/");
             }
             else if (form.AllKeys.Contains("englishFractionSkip"))
             {
-                Redirect(context, $"{currentUrl.GetUrlToSegment(2)}100");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(2)}100/");
             }
             else if (form.AllKeys.Contains("trainingCourseSubmit"))
             {
                 var cohorstSegment = GetCohortsUrlSegment(form, true);
-                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}/12");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}/12/");
             }
             else if (form.AllKeys.Contains("trainingCourseSkip"))
             {
-                Redirect(context, $"{currentUrl.GetUrlToSegment(4)}0x0/12");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(4)}0x0/12/");
             }
             else if (form.AllKeys.Contains("trainingCourseAdd"))
             {
                 var cohorstSegment = GetCohortsUrlSegment(form, false);
-                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}/");
             }
 
         }
@@ -80,7 +80,12 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 
         private string EncodeFormEntryForUrl(string entry)
         {
-            return HttpUtility.UrlEncode(entry).Replace(".", "%2E");
+            var encoded = HttpUtility.UrlEncode(entry);
+            while (encoded.EndsWith("."))
+            {
+                encoded = encoded.Substring(0, encoded.Length - 1);
+            }
+            return encoded;
         }
 
         private bool PaybillIsEligibleForLevy(string paybillEntry)

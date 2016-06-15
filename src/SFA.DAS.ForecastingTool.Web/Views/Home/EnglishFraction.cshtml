@@ -19,7 +19,7 @@
                 <label>
                     <span>Estimated English percentage</span>
                     <input name="englishFraction" type="number" class="form-control-1-4" aria-label="Estimate of percentage of workforce in England (1-100)"
-                           value="@(Model.EnglishFraction > 0 ? Model.EnglishFraction.ToString() : "")"/>
+                           value="@(Model.EnglishFraction > 0 ? Model.EnglishFraction.ToString() : "")" min="1" max="100" />
                     <span>%</span>
                 </label>
             </div>

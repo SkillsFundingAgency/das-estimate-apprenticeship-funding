@@ -16,6 +16,11 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             if (form.AllKeys.Contains("paybillSubmit"))
             {
                 var paybillEntry = GetFormValue(form, "paybill", "0");
+                decimal paybill;
+                if (decimal.TryParse(paybillEntry, out paybill))
+                {
+                    paybillEntry = Math.Floor(paybill).ToString();
+                }
                 if (PaybillIsEligibleForLevy(paybillEntry))
                 {
                     Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{EncodeFormEntryForUrl(paybillEntry)}");

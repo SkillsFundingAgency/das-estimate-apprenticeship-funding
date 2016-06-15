@@ -18,17 +18,22 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 var paybillEntry = GetFormValue(form, "paybill", "0");
                 if (PaybillIsEligibleForLevy(paybillEntry))
                 {
-                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{paybillEntry}");
+                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{EncodeFormEntryForUrl(paybillEntry)}");
                 }
                 else
                 {
-                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{paybillEntry}/100");
+                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{EncodeFormEntryForUrl(paybillEntry)}/100");
                 }
             }
             else if (form.AllKeys.Contains("englishFractionSubmit"))
             {
                 var englishFractionEntry = GetFormValue(form, "englishFraction", "0");
-                Redirect(context, $"{currentUrl.GetUrlToSegment(2)}{englishFractionEntry}");
+                decimal englishFraction;
+                if (decimal.TryParse(englishFractionEntry, out englishFraction))
+                {
+                    englishFractionEntry = Math.Floor(englishFraction).ToString();
+                }
+                Redirect(context, $"{currentUrl.GetUrlToSegment(2)}{EncodeFormEntryForUrl(englishFractionEntry)}");
             }
             else if (form.AllKeys.Contains("englishFractionSkip"))
             {
@@ -37,7 +42,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             else if (form.AllKeys.Contains("trainingCourseSubmit"))
             {
                 var cohorstSegment = GetCohortsUrlSegment(form, true);
-                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{cohorstSegment}/12");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}/12");
             }
             else if (form.AllKeys.Contains("trainingCourseSkip"))
             {
@@ -46,7 +51,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             else if (form.AllKeys.Contains("trainingCourseAdd"))
             {
                 var cohorstSegment = GetCohortsUrlSegment(form, false);
-                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{cohorstSegment}");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}");
             }
 
         }
@@ -67,6 +72,12 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             var value = form[name];
             return string.IsNullOrEmpty(value) ? defaultValue : value;
         }
+
+        private string EncodeFormEntryForUrl(string entry)
+        {
+            return HttpUtility.UrlEncode(entry).Replace(".", "%2E");
+        }
+
         private bool PaybillIsEligibleForLevy(string paybillEntry)
         {
             long paybill;

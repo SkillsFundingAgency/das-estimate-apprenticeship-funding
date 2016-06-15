@@ -22,7 +22,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
             var data = "[{\"Code\":11,\"Name\":\"Standard 11\",\"Price\":24000,\"Duration\":12},{\"Code\":22,\"Name\":\"Standard 22\",\"Price\":12000,\"Duration\":6}]";
             _standardsFileInfo = new Mock<IFileInfo>();
             _standardsFileInfo.Setup(i => i.Exists).Returns(true);
-            _standardsFileInfo.Setup(i => i.OpenRead()).Returns(new MemoryStream(Encoding.UTF8.GetBytes(data)));
+            _standardsFileInfo.Setup(i => i.OpenRead(It.IsAny<FileShare>())).Returns(new MemoryStream(Encoding.UTF8.GetBytes(data)));
 
             _fileSystem = new Mock<IFileSystem>();
             _fileSystem.Setup(fs => fs.GetFile("~/App_Data/Standards.json"))
@@ -78,7 +78,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
         public void ThenItShouldThrowInvalidDataExceptionIfFileContentIsCorrupt()
         {
             // Arrange
-            _standardsFileInfo.Setup(i => i.OpenRead()).Returns(new MemoryStream(Encoding.UTF8.GetBytes("<Notjson>")));
+            _standardsFileInfo.Setup(i => i.OpenRead(It.IsAny<FileShare>())).Returns(new MemoryStream(Encoding.UTF8.GetBytes("<Notjson>")));
 
             // Act + Assert
             var ex = Assert.ThrowsAsync<InvalidDataException>(async () => await _repo.GetAllAsync());

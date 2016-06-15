@@ -40,17 +40,13 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 UserFriendlyTopupPercentage = (int)Math.Round((_configurationProvider.LevyTopupPercentage - 1) * 100, 0),
                 Breakdown = breakdown
             };
-            
+
         }
-        
+
         private async Task<MonthlyCashflow[]> CalculateBreakdown(StandardModel[] cohorts, decimal fundingReceived, int duration)
         {
-
-
-            var standards = cohorts.Select(async s => new { Standard = await _standardsRepository.GetByCodeAsync(s.Code), Qty = s.Qty, StartDate = s.StartDate }).ToArray();
-
+            var standards = await ExpandCohortModels(cohorts);
             var startDate = new DateTime(2017, 4, 1);
-            
 
             var monthlyFunding = fundingReceived / 12m;
 
@@ -58,18 +54,19 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var months = new MonthlyCashflow[duration];
             for (var i = 0; i < duration; i++)
             {
-                
                 var trainingCostForMonth = 0m;
                 var monthDate = startDate.AddMonths(i);
                 foreach (var standard in standards)
                 {
-                    var monthlyTrainingFraction = (standard.Result.Standard.Price * standard.Result.Qty) / (decimal)standard.Result.Standard.Duration;
-
-                    var trainingStartDate = new DateTime(standard.Result.StartDate.Year, standard.Result.StartDate.Month, 1);
-                    var trainingEndDate = trainingStartDate.AddMonths(standard.Result.Standard.Duration);
+                    var trainingStartDate = new DateTime(standard.StartDate.Year, standard.StartDate.Month, 1);
+                    var trainingEndDate = trainingStartDate.AddMonths(standard.Standard.Duration);
                     var trainingHasStarted = monthDate.CompareTo(trainingStartDate) >= 0;
                     var trainingHasFinished = monthDate.CompareTo(trainingEndDate) > 0;
-                    trainingCostForMonth += trainingHasStarted && !trainingHasFinished ? monthlyTrainingFraction : 0;
+                    trainingCostForMonth += trainingHasStarted && !trainingHasFinished ? standard.MonthlyTrainingFraction : 0;
+                    if (monthDate.CompareTo(trainingEndDate) == 0)
+                    {
+                        trainingCostForMonth += standard.FinalPaymentAmount;
+                    }
                 }
 
 
@@ -93,5 +90,37 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             return months;
         }
 
+        private async Task<BreakdownStandard[]> ExpandCohortModels(StandardModel[] cohorts)
+        {
+            var standards = new BreakdownStandard[cohorts.Length];
+            for (var i = 0; i < cohorts.Length; i++)
+            {
+                standards[i] = new BreakdownStandard(await _standardsRepository.GetByCodeAsync(cohorts[i].Code),
+                    cohorts[i].Qty, cohorts[i].StartDate, _configurationProvider.FinalTrainingPaymentPercentage);
+            }
+            return standards;
+        }
+
+
+        private class BreakdownStandard
+        {
+            public BreakdownStandard(Standard standard, int qty, DateTime startDate, decimal finalPaymentPercentage)
+            {
+                Standard = standard;
+                Qty = qty;
+                StartDate = startDate;
+
+                var totalCost = standard.Price * qty;
+                FinalPaymentAmount = totalCost * finalPaymentPercentage;
+                MonthlyTrainingFraction = (totalCost - FinalPaymentAmount) / standard.Duration;
+            }
+
+
+            public Standard Standard { get; }
+            public int Qty { get; }
+            public DateTime StartDate { get; }
+            public decimal MonthlyTrainingFraction { get; }
+            public decimal FinalPaymentAmount { get; set; }
+        }
     }
 }

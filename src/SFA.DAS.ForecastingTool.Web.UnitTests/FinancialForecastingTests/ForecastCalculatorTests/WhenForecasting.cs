@@ -72,6 +72,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             _configurationProvider.Setup(cp => cp.LevyAllowance).Returns(15000);
             _configurationProvider.Setup(cp => cp.LevyTopupPercentage).Returns(1.1m);
             _configurationProvider.Setup(cp => cp.CopaymentPercentage).Returns(0.1m);
+            _configurationProvider.Setup(cp => cp.FinalTrainingPaymentPercentage).Returns(0m);
 
             _calculator = new ForecastCalculator(_standardsRepository.Object, _configurationProvider.Object);
         }
@@ -173,10 +174,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             }
         }
 
-        [TestCase(12, 500)]
-        [TestCase(18, 333.33)]
-        [TestCase(24, 250)]
-        public async Task ThenItShouldReturnEveryMonthsTrainingOutAsEvenProportionOfTrainingCostForDuration(int courseDuration, decimal expectedMonthlyCost)
+        [TestCase(12, 450)]
+        [TestCase(18, 300)]
+        [TestCase(24, 225)]
+        public async Task ThenItShouldReturnTrainingOutAsTheCostOfTrainingLessFinalPaymentEvenlySpreadOverCourseDuration(int courseDuration, decimal expectedMonthlyCost)
         {
             // Arrange
             _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Standard
@@ -184,12 +185,13 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                 Price = 6000,
                 Duration = courseDuration
             }));
+            _configurationProvider.Setup(cp => cp.FinalTrainingPaymentPercentage).Returns(0.1m);
 
             // Act
             var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            for (var i = 0; i < 12; i++)
+            for (var i = 0; i < 11; i++)
             {
                 var actualTrainingOut = actual[i].TrainingOut;
 
@@ -198,6 +200,23 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             }
         }
 
+        [Test]
+        public async Task ThenItShouldReturnTrainingOutAsOneMonthsTrainingPlusFinalPaymentAmountOnFinalMonthOfTraining()
+        {
+            // Arrange
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Standard
+            {
+                Price = 6000,
+                Duration = 11
+            }));
+            _configurationProvider.Setup(cp => cp.FinalTrainingPaymentPercentage).Returns(0.1m);
+
+            // Act
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
+
+            // Assert
+            Assert.AreEqual(1090.91m, actual[11].TrainingOut);
+        }
 
         [TestCase(12, 625)]
         [TestCase(18, 416.67)]

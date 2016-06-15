@@ -59,6 +59,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 var trainingCostForMonth = 0m;
                 var monthDate = startDate.AddMonths(i);
                 var sunsetFunds = 0m;
+                var fundsReceived = monthDate == startDate ? 0m : monthlyFunding;
 
                 foreach (var standard in standards)
                 {
@@ -73,7 +74,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     }
                 }
 
-                rollingBalance += monthlyFunding - trainingCostForMonth;
+                rollingBalance += fundsReceived - trainingCostForMonth;
                 if (rollingBalance > sunsetLimit)
                 {
                     sunsetFunds = rollingBalance - sunsetLimit;
@@ -83,7 +84,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 months[i] = new MonthlyCashflow
                 {
                     Date = monthDate,
-                    LevyIn = Math.Round(monthlyFunding, 2),
+                    LevyIn = Math.Round(fundsReceived, 2),
                     TrainingOut = Math.Round(trainingCostForMonth, 2),
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
                     SunsetFunds = Math.Round(sunsetFunds, 2),

@@ -159,13 +159,23 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         }
 
         [Test]
+        public async Task ThenItShouldNotHaveAndLevyInOnMonthOne()
+        {
+            // Act
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
+
+            // Assert
+            Assert.AreEqual(0m, actual[0].LevyIn);
+        }
+
+        [Test]
         public async Task ThenItShouldReturnEveryMonthsLevyInAsOneTwelthOfPaybillAfterPercentageAndAllowanceAndTopup()
         {
             // Act
             var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            for (var i = 0; i < 12; i++)
+            for (var i = 1; i < 12; i++)
             {
                 var actualLevyIn = actual[i].LevyIn;
 
@@ -360,18 +370,18 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(72.92m, actual[0].Balance);
-            Assert.AreEqual(145.83m, actual[1].Balance);
-            Assert.AreEqual(218.75m, actual[2].Balance);
-            Assert.AreEqual(291.67m, actual[3].Balance);
-            Assert.AreEqual(364.58m, actual[4].Balance);
-            Assert.AreEqual(437.50m, actual[5].Balance);
-            Assert.AreEqual(510.42m, actual[6].Balance);
-            Assert.AreEqual(583.33m, actual[7].Balance);
-            Assert.AreEqual(656.25m, actual[8].Balance);
-            Assert.AreEqual(729.17m, actual[9].Balance);
-            Assert.AreEqual(802.08m, actual[10].Balance);
-            Assert.AreEqual(875.00m, actual[11].Balance);
+            Assert.AreEqual(0m, actual[0].Balance);
+            Assert.AreEqual(72.92m, actual[1].Balance);
+            Assert.AreEqual(145.83m, actual[2].Balance);
+            Assert.AreEqual(218.75m, actual[3].Balance);
+            Assert.AreEqual(291.67m, actual[4].Balance);
+            Assert.AreEqual(364.58m, actual[5].Balance);
+            Assert.AreEqual(437.50m, actual[6].Balance);
+            Assert.AreEqual(510.42m, actual[7].Balance);
+            Assert.AreEqual(583.33m, actual[8].Balance);
+            Assert.AreEqual(656.25m, actual[9].Balance);
+            Assert.AreEqual(729.17m, actual[10].Balance);
+            Assert.AreEqual(802.08m, actual[11].Balance);
         }
 
         [Test]
@@ -381,7 +391,6 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.ForecastAsync(CoPayPaybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(4.17m, actual[0].CoPayment);
             Assert.AreEqual(4.17m, actual[1].CoPayment);
             Assert.AreEqual(4.17m, actual[2].CoPayment);
             Assert.AreEqual(4.17m, actual[3].CoPayment);
@@ -428,7 +437,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.ForecastAsync(CoPayPaybill, 80, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            for (var i = 0; i < 12; i++)
+            for (var i = 1; i < 12; i++)
             {
                 var actualLevyIn = actual[i].LevyIn;
 
@@ -444,7 +453,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, new StandardModel[0], 24))?.Breakdown;
 
             // Assert
-            for (var i = 17; i < 24; i++)
+            for (var i = 18; i < 24; i++)
             {
                 var actualBalance = actual[i].Balance;
 
@@ -467,7 +476,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                     $"Expected actual[{i}].SunsetFunds to be 0 but was {actualSunsetFunds}");
             }
             // Assert
-            for (var i = 18; i < 24; i++)
+            for (var i = 19; i < 24; i++)
             {
                 var actualSunsetFunds = actual[i].SunsetFunds;
 

@@ -33,7 +33,7 @@
                 @foreach (var month in Model.Results)
                 {
                     <tr>
-                        <td>@month.Date.ToString("MMMM")</td>
+                        <td>@month.Date.ToString("MMMM yyyy")</td>
                         <td class="financial">@Html.FinancialText(month.LevyIn)</td>
                         <td class="financial">@Html.FinancialText(month.TrainingOut)</td>
                         <td class="financial">

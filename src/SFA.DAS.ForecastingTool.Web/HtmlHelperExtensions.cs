@@ -10,7 +10,7 @@ namespace SFA.DAS.ForecastingTool.Web
             {
                 return "-";
             }
-            return amount.ToString("C");
+            return amount.ToString("C0");
         }
     }
 }

@@ -87,7 +87,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             Assert.IsNotNull(actual);
         }
 
-        [TestCase(4000000, 5000)]
+        [TestCase(4000000, 4992)]
         [TestCase(4500000, 7500)]
         [TestCase(1000000, 0)]
         public async Task ThenItShouldReturnCorrectLevyPaidAmount(int paybill, int expectedLevyPaid)
@@ -99,8 +99,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             Assert.AreEqual(expectedLevyPaid, actual.LevyPaid);
         }
 
-        [TestCase(4000000, 5500)]
-        [TestCase(4500000, 8250)]
+        [TestCase(4000000, 5496)]
+        [TestCase(4500000, 8256)]
         [TestCase(1000000, 0)]
         public async Task ThenItShouldReturnCorrectFundingReceivedAmount(int paybill, int expectedFundingReceived)
         {
@@ -179,8 +179,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             {
                 var actualLevyIn = actual[i].LevyIn;
 
-                Assert.AreEqual(572.92m, actualLevyIn,
-                    $"Expected actual[{i}].LevyIn to be 572.92 but was {actualLevyIn}");
+                Assert.AreEqual(572m, actualLevyIn,
+                    $"Expected actual[{i}].LevyIn to be 572 but was {actualLevyIn}");
             }
         }
 
@@ -225,12 +225,12 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(1050.00m, actual[11].TrainingOut);
+            Assert.AreEqual(1050m, actual[11].TrainingOut);
         }
 
         [TestCase(12, 625)]
-        [TestCase(18, 416.67)]
-        [TestCase(24, 312.5)]
+        [TestCase(18, 416)]
+        [TestCase(24, 312)]
         public async Task ThenItShouldReturnEveryMonthsTrainingOutAsEvenProportionOfTrainingCostForDurationWithMultipleStandards(int courseDuration, decimal expectedMonthlyCost)
         {
             // Arrange
@@ -322,8 +322,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(0, actual[0].TrainingOut, $"Expected actual[0].TrainingOut to be 500 but was {actual[0].TrainingOut}");
-            Assert.AreEqual(0, actual[1].TrainingOut, $"Expected actual[1].TrainingOut to be 500 but was {actual[1].TrainingOut}");
+            Assert.AreEqual(0, actual[0].TrainingOut, $"Expected actual[0].TrainingOut to be 0 but was {actual[0].TrainingOut}");
+            Assert.AreEqual(0, actual[1].TrainingOut, $"Expected actual[1].TrainingOut to be 0 but was {actual[1].TrainingOut}");
             for (var i = 2; i < 12; i++)
             {
                 var actualTrainingOut = actual[i].TrainingOut;
@@ -371,17 +371,17 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
 
             // Assert
             Assert.AreEqual(0m, actual[0].Balance);
-            Assert.AreEqual(72.92m, actual[1].Balance);
-            Assert.AreEqual(145.83m, actual[2].Balance);
-            Assert.AreEqual(218.75m, actual[3].Balance);
-            Assert.AreEqual(291.67m, actual[4].Balance);
-            Assert.AreEqual(364.58m, actual[5].Balance);
-            Assert.AreEqual(437.50m, actual[6].Balance);
-            Assert.AreEqual(510.42m, actual[7].Balance);
-            Assert.AreEqual(583.33m, actual[8].Balance);
-            Assert.AreEqual(656.25m, actual[9].Balance);
-            Assert.AreEqual(729.17m, actual[10].Balance);
-            Assert.AreEqual(802.08m, actual[11].Balance);
+            Assert.AreEqual(72m, actual[1].Balance);
+            Assert.AreEqual(144m, actual[2].Balance);
+            Assert.AreEqual(216m, actual[3].Balance);
+            Assert.AreEqual(288m, actual[4].Balance);
+            Assert.AreEqual(360m, actual[5].Balance);
+            Assert.AreEqual(432m, actual[6].Balance);
+            Assert.AreEqual(504m, actual[7].Balance);
+            Assert.AreEqual(576m, actual[8].Balance);
+            Assert.AreEqual(648m, actual[9].Balance);
+            Assert.AreEqual(720m, actual[10].Balance);
+            Assert.AreEqual(792m, actual[11].Balance);
         }
 
         [Test]
@@ -391,17 +391,17 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.ForecastAsync(CoPayPaybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(4.17m, actual[1].CoPayment);
-            Assert.AreEqual(4.17m, actual[2].CoPayment);
-            Assert.AreEqual(4.17m, actual[3].CoPayment);
-            Assert.AreEqual(4.17m, actual[4].CoPayment);
-            Assert.AreEqual(4.17m, actual[5].CoPayment);
-            Assert.AreEqual(4.17m, actual[6].CoPayment);
-            Assert.AreEqual(4.17m, actual[7].CoPayment);
-            Assert.AreEqual(4.17m, actual[8].CoPayment);
-            Assert.AreEqual(4.17m, actual[9].CoPayment);
-            Assert.AreEqual(4.17m, actual[10].CoPayment);
-            Assert.AreEqual(4.17m, actual[11].CoPayment);
+            Assert.AreEqual(4m, actual[1].CoPayment);
+            Assert.AreEqual(4m, actual[2].CoPayment);
+            Assert.AreEqual(4m, actual[3].CoPayment);
+            Assert.AreEqual(4m, actual[4].CoPayment);
+            Assert.AreEqual(4m, actual[5].CoPayment);
+            Assert.AreEqual(4m, actual[6].CoPayment);
+            Assert.AreEqual(4m, actual[7].CoPayment);
+            Assert.AreEqual(4m, actual[8].CoPayment);
+            Assert.AreEqual(4m, actual[9].CoPayment);
+            Assert.AreEqual(4m, actual[10].CoPayment);
+            Assert.AreEqual(4m, actual[11].CoPayment);
         }
 
         [Test]
@@ -427,7 +427,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = await _calculator.ForecastAsync(CoPayPaybill, 80, _myStandards.ToArray(), Duration);
 
             // Assert
-            Assert.AreEqual(4400, actual.FundingReceived);
+            Assert.AreEqual(4404, actual.FundingReceived);
         }
 
         [Test]
@@ -441,8 +441,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             {
                 var actualLevyIn = actual[i].LevyIn;
 
-                Assert.AreEqual(366.67m, actualLevyIn,
-                    $"Expected actual[{i}].LevyIn to be 366.67 but was {actualLevyIn}");
+                Assert.AreEqual(367m, actualLevyIn,
+                    $"Expected actual[{i}].LevyIn to be 366 but was {actualLevyIn}");
             }
         }
 
@@ -457,8 +457,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             {
                 var actualBalance = actual[i].Balance;
 
-                Assert.AreEqual(10312.50m, actualBalance,
-                    $"Expected actual[{i}].Balance to be 10312.50 but was {actualBalance}");
+                Assert.AreEqual(10296m, actualBalance,
+                    $"Expected actual[{i}].Balance to be 10312 but was {actualBalance}");
             }
         }
 
@@ -480,8 +480,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             {
                 var actualSunsetFunds = actual[i].SunsetFunds;
 
-                Assert.AreEqual(572.92m, actualSunsetFunds,
-                    $"Expected actual[{i}].SunsetFunds to be 572.92 but was {actualSunsetFunds}");
+                Assert.AreEqual(572m, actualSunsetFunds,
+                    $"Expected actual[{i}].SunsetFunds to be 572 but was {actualSunsetFunds}");
             }
         }
     }

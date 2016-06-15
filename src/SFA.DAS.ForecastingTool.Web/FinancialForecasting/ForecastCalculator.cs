@@ -22,14 +22,15 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
         public async Task<ForecastResult> ForecastAsync(long paybill, int englishFraction, StandardModel[] myStandards, int duration)
         {
-            var levyPaid = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
-            if (levyPaid < 0) // Non-levy payer
+            var monthlyLevyPaid = Math.Floor(((paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance) / 12);
+            if (monthlyLevyPaid < 0) // Non-levy payer
             {
-                levyPaid = 0;
+                monthlyLevyPaid = 0;
             }
+            var levyPaid = monthlyLevyPaid * 12;
 
             var decimalEnglishFraction = englishFraction / 100m;
-            var fundingReceived = (levyPaid * decimalEnglishFraction) * _configurationProvider.LevyTopupPercentage;
+            var fundingReceived = Math.Ceiling((monthlyLevyPaid * decimalEnglishFraction) * _configurationProvider.LevyTopupPercentage) * 12;
 
             var breakdown = await CalculateBreakdown(myStandards, fundingReceived, duration);
 
@@ -88,7 +89,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     TrainingOut = Math.Round(trainingCostForMonth, 2),
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
                     SunsetFunds = Math.Round(sunsetFunds, 2),
-                    CoPayment = rollingBalance < 0 ? Math.Round((rollingBalance * -1) * _configurationProvider.CopaymentPercentage, 2) : 0
+                    CoPayment = rollingBalance < 0 ? Math.Floor((rollingBalance * -1) * _configurationProvider.CopaymentPercentage) : 0
                 };
 
                 // Have we just balanced the account?
@@ -113,7 +114,6 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
 
 
-
         private class BreakdownStandard
         {
             public BreakdownStandard(Standard standard, int qty, DateTime startDate, decimal finalPaymentPercentage)
@@ -123,8 +123,8 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 StartDate = startDate;
 
                 var totalCost = standard.Price * qty;
-                FinalPaymentAmount = totalCost * finalPaymentPercentage;
-                MonthlyTrainingFraction = (totalCost - FinalPaymentAmount) / standard.Duration;
+                MonthlyTrainingFraction = Math.Floor((totalCost - (totalCost * finalPaymentPercentage)) / standard.Duration);
+                FinalPaymentAmount = totalCost - (MonthlyTrainingFraction * standard.Duration);
             }
 
 

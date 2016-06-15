@@ -20,7 +20,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
 
 
-        public async Task<ForecastResult> ForecastAsync(int paybill, int englishFraction, StandardModel[] myStandards, int duration)
+        public async Task<ForecastResult> ForecastAsync(long paybill, int englishFraction, StandardModel[] myStandards, int duration)
         {
             var levyPaid = (paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance;
             if (levyPaid < 0) // Non-levy payer

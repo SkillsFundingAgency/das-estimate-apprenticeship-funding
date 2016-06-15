@@ -69,8 +69,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         }
         private bool PaybillIsEligibleForLevy(string paybillEntry)
         {
-            int paybill;
-            if (int.TryParse(paybillEntry, out paybill))
+            long paybill;
+            if (long.TryParse(paybillEntry, out paybill))
             {
                 return paybill >= 3000000;
             }

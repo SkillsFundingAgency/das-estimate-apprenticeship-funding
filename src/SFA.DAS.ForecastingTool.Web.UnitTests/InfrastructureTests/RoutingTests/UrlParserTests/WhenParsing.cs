@@ -75,16 +75,18 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual(expectedActionName, actual.ActionName);
         }
 
-        [TestCase(BasePath + "/987654321/80")]
-        [TestCase(BasePath + "/987654321/80/4x34-2017-04-01")]
-        public void ThenItShouldIncludeThePaybillInRouteValuesIfInPath(string path)
+        [TestCase(BasePath + "/987654321/80", 987654321)]
+        [TestCase(BasePath + "/987654321/80/4x34-2017-04-01", 987654321)]
+        [TestCase(BasePath + "/2147484000/80", 2147484000)]
+        [TestCase(BasePath + "/2147484000/80/4x34-2017-04-01", 2147484000)]
+        public void ThenItShouldIncludeThePaybillInRouteValuesIfInPath(string path, long expectedPaybill)
         {
             // Act
             var actual = _parser.Parse(path);
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(PaybillRouteValueKey));
-            Assert.AreEqual(987654321, actual.RouteValues[PaybillRouteValueKey]);
+            Assert.AreEqual(expectedPaybill, actual.RouteValues[PaybillRouteValueKey]);
         }
 
         [Test]
@@ -127,10 +129,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         [TestCase(BasePath + "/abc")]
         [TestCase(BasePath + "/abc/80")]
         [TestCase(BasePath + "/abc/80/4x34-2017-04-01")]
-        [TestCase(BasePath + "/2147483648")]
-        [TestCase(BasePath + "/2147483648/80")]
-        [TestCase(BasePath + "/2147483648/80/4x34-2017-04-01")]
-        public void ThenItShouldReturnPaybillIfValueInPathIsNotValidInt(string path)
+        [TestCase(BasePath + "/512409557603043101")]
+        [TestCase(BasePath + "/512409557603043101/80")]
+        [TestCase(BasePath + "/512409557603043101/80/4x34-2017-04-01")]
+        public void ThenItShouldReturnPaybillIfValueInPathIsNotValidLongOrExceedsMaxPaybill(string path)
         {
             // Act
             var actual = _parser.Parse(path);
@@ -142,10 +144,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         [TestCase(BasePath + "/abc")]
         [TestCase(BasePath + "/abc/80")]
         [TestCase(BasePath + "/abc/4x34-2017-04-01")]
-        [TestCase(BasePath + "/2147483648")]
-        [TestCase(BasePath + "/2147483648/80")]
-        [TestCase(BasePath + "/2147483648/4x34-2017-04-01")]
-        public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsNotValidInt(string path)
+        [TestCase(BasePath + "/512409557603043101")]
+        [TestCase(BasePath + "/512409557603043101/80")]
+        [TestCase(BasePath + "/512409557603043101/4x34-2017-04-01")]
+        public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsNotValidLongOrExceedsMaxPaybill(string path)
         {
             // Act
             var actual = _parser.Parse(path);

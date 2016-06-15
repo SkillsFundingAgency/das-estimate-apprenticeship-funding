@@ -8,6 +8,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 {
     public class UrlParser
     {
+        private const long MaxPaybill = 512409557603043100;
+
         private readonly IStandardsRepository _standardsRepository;
 
         public UrlParser(IStandardsRepository standardsRepository)
@@ -62,8 +64,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 return result;
             }
 
-            int paybill;
-            if (!int.TryParse(parts[1], out paybill) || paybill <= 0)
+            long paybill;
+            if (!long.TryParse(parts[1], out paybill) || paybill <= 0 || paybill > MaxPaybill)
             {
                 result.IsErrored = true;
                 result.RouteValues.Add("ErrorMessage", "Payroll is not a valid entry");

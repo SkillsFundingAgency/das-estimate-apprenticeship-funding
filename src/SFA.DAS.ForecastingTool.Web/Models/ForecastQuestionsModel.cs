@@ -9,7 +9,7 @@ namespace SFA.DAS.ForecastingTool.Web.Models
             SelectedStandards = new List<StandardModel>();
         }
         public string ErrorMessage { get; set; }
-        public int Paybill { get; set; }
+        public long Paybill { get; set; }
         public int EnglishFraction { get; set; }
         public List<StandardModel> SelectedStandards { get; set; }
         public int Duration { get; set; }

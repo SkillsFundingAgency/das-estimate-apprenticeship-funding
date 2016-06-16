@@ -1,7 +1,7 @@
 ﻿@model SFA.DAS.ForecastingTool.Web.Models.TrainingCourseViewModel
 
 <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="column-full-width">
         <h2 class="heading-xlarge">Apprentices and training</h2>
         @if (!string.IsNullOrEmpty(Model.ErrorMessage))
         {
@@ -35,11 +35,11 @@
                                     {
                                         if (standard.Code == cohort.Code)
                                         {
-                                            <option value="@standard.Code" selected="selected" data-price="@standard.AnnualCost">@standard.Name</option>
+                                            <option value="@standard.Code" selected="selected" data-price="@standard.Price">@standard.Name</option>
                                         }
                                         else
                                         {
-                                            <option value="@standard.Code" data-price="@standard.AnnualCost">@standard.Name</option>
+                                            <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
                                         }
                                     }
                                 </select>
@@ -62,7 +62,7 @@
                                 <option value="noselection">Please choose...</option>
                                 @foreach (var standard in Model.Standards)
                                 {
-                                    <option value="@standard.Code" data-price="@standard.AnnualCost">@standard.Name</option>
+                                    <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
                                 }
                             </select>
                         </td>

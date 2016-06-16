@@ -7,7 +7,7 @@
 
     function updateTableForCosts() {
         var $headerRow = $('#trainingCourses > thead > tr');
-        $('<th>Approx. Annual Cost</th>').insertBefore($headerRow.find('th:last-child'));
+        $('<th>Cost</th>').insertBefore($headerRow.find('th:last-child'));
 
         $('#trainingCourses > tbody > tr').each(function (index, element) {
             var $row = $(element);

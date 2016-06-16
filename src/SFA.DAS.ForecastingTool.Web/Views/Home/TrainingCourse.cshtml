@@ -13,9 +13,9 @@
             <p class="warning-message">You can skip this step if you don’t have this information.</p>
         </div>
         <p>Enter the type of apprenticeship training and number of apprentices you are taking on.</p>
-        
+
         <form method="post">
-            <table>
+            <table id="trainingCourses">
                 <thead>
                     <tr>
                         <th style="width: 60%;">Type of apprenticeship training</th>
@@ -34,11 +34,11 @@
                                     {
                                         if (standard.Code == cohort.Code)
                                         {
-                                            <option value="@standard.Code" selected="selected">@standard.Name</option>
+                                            <option value="@standard.Code" selected="selected" data-price="@standard.Price">@standard.Name</option>
                                         }
                                         else
                                         {
-                                            <option value="@standard.Code">@standard.Name</option>
+                                            <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
                                         }
                                     }
                                 </select>
@@ -58,7 +58,7 @@
                                 <option value="noselection">Please choose...</option>
                                 @foreach (var standard in Model.Standards)
                                 {
-                                    <option value="@standard.Code">@standard.Name</option>
+                                    <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
                                 }
                             </select>
                         </td>
@@ -82,3 +82,10 @@
         @Html.Partial("_PreviousAnswers", Model)
     </div>
 </div>
+
+
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/forecasting-number-extension-1.0.js")"></script>
+    <script src="@Url.Content("~/Scripts/forecasting-trainingcourse-1.0.js")"></script>
+}

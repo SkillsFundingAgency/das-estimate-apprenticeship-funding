@@ -318,11 +318,22 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldPutPreviousPaybillInRouteValuesIfEditingPaybill()
         {
             // Act
-            var actual = _parser.Parse(BasePath, "previousAnswer=12345678");
+            var actual = _parser.Parse(BasePath, "?previousAnswer=12345678");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(PaybillRouteValueKey));
             Assert.AreEqual(12345678, actual.RouteValues[PaybillRouteValueKey]);
+        }
+
+        [Test]
+        public void ThenItShouldPutPreviousEnglishPercentageInRouteValuesIfEditingEnglishPercentage()
+        {
+            // Act
+            var actual = _parser.Parse(BasePath + "/4000000/", "?previousAnswer=76");
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(EnglishFractionRouteValueKey));
+            Assert.AreEqual(76, actual.RouteValues[EnglishFractionRouteValueKey]);
         }
     }
 }

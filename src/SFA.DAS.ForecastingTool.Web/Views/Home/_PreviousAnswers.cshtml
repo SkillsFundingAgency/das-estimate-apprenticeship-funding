@@ -17,7 +17,7 @@
         {
             <tr>
                 <td>English percentage of @(Model.EnglishFraction)%</td>
-                <td><a href="@Url.Content($"~/forecast/{Model.Paybill}")">Change</a></td>
+                <td><a href="@Url.Content($"~/forecast/{Model.Paybill}?previousAnswer={Model.EnglishFraction}")">Change</a></td>
             </tr>
         }
         @if (Model is SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel)

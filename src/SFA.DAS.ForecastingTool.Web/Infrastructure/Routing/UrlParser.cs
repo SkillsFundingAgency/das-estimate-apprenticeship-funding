@@ -54,11 +54,14 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 return result;
             }
 
-            var previousAnswer = GetPreviousAnswerValue(queryParts);
-            long paybill;
-            if (!string.IsNullOrEmpty(previousAnswer) && long.TryParse(previousAnswer, out paybill))
+            if (parts.Length == 1)
             {
-                result.RouteValues.Add("Paybill", paybill);
+                var previousAnswer = GetPreviousAnswerValue(queryParts);
+                long paybill;
+                if (!string.IsNullOrEmpty(previousAnswer) && long.TryParse(previousAnswer, out paybill))
+                {
+                    result.RouteValues.Add("Paybill", paybill);
+                }
             }
 
             result.ActionName = "Paybill";
@@ -81,6 +84,16 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             }
             else
             {
+                if (parts.Length == 2)
+                {
+                    var previousAnswer = GetPreviousAnswerValue(queryParts);
+                    int englishFraction;
+                    if (!string.IsNullOrEmpty(previousAnswer) && int.TryParse(previousAnswer, out englishFraction))
+                    {
+                        result.RouteValues.Add("EnglishFraction", englishFraction);
+                    }
+                }
+
                 result.ActionName = "EnglishFraction";
             }
 

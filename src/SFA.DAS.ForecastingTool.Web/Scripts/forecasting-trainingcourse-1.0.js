@@ -1,19 +1,23 @@
 ﻿(function () {
     $(document).ready(function () {
-        addCostColumn();
+        updateTableForCosts();
         attachHandlers();
     });
 
 
-    function addCostColumn() {
+    function updateTableForCosts() {
         var $headerRow = $('#trainingCourses > thead > tr');
         $headerRow.append($('<th>Cost</th>'));
+
         $('#trainingCourses > tbody > tr').each(function (index, element) {
             var $row = $(element);
             $row.append($('<td class="cost"></td>'));
 
             updateRowCost($row);
         });
+
+        $('#trainingCourses > tbody').append($('<tr><td colspan="3"></td><td id="grandTotal" style="font-weight:700;"></td></tr>'));
+        updateGrandTotal();
     }
     function attachHandlers() {
         $('select[name=standard]').change(cohortPriceChange);
@@ -22,6 +26,8 @@
     function cohortPriceChange() {
         var $row = $(this).parent().parent();
         updateRowCost($row);
+
+        updateGrandTotal();
     }
     function updateRowCost($row) {
         var $costCell = $($row.find('td.cost')[0]);
@@ -30,6 +36,18 @@
 
         var totalCost = standard.price * size;
         $costCell.text('£' + totalCost.format(0));
+    }
+    function updateGrandTotal() {
+        var grandTotal = 0;
+        $('#trainingCourses > tbody > tr').each(function (index, element) {
+            var $row = $(element);
+            var standard = getSelectedStandard($row);
+            var size = getCohortSize($row);
+
+            grandTotal += standard.price * size;
+        });
+
+        $('#grandTotal').text('£' + grandTotal.format(0));
     }
     function getSelectedStandard($row) {
         var standard = { code: '', name: '', price: 0 };

@@ -17,48 +17,56 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             _standardsRepository = standardsRepository;
         }
 
-        public ParsedUrl Parse(string url)
+        public ParsedUrl Parse(string url, string queryString)
         {
             var parts = url.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var queryParts = queryString.Split(new[] {'?', '&'}, StringSplitOptions.RemoveEmptyEntries);
 
             if (parts.Length == 1)
             {
-                return ProcessPaybillPath(parts);
+                return ProcessPaybillPath(parts, queryParts);
             }
             if (parts.Length == 2)
             {
-                return ProcessEnglishFractionPath(parts);
+                return ProcessEnglishFractionPath(parts, queryParts);
             }
             if (parts.Length == 3 || parts.Length == 4)
             {
-                return ProcessTrainingCoursePath(parts);
+                return ProcessTrainingCoursePath(parts, queryParts);
             }
             if (parts.Length == 5)
             {
-                return ProcessResultsPath(parts);
+                return ProcessResultsPath(parts, queryParts);
             }
 
-            return ProcessWelcomePath(parts);
+            return ProcessWelcomePath(parts, queryParts);
         }
 
-        private ParsedUrl ProcessWelcomePath(string[] parts)
+        private ParsedUrl ProcessWelcomePath(string[] parts, string[] queryParts)
         {
             return new ParsedUrl { ActionName = "Welcome", RouteValues = new Dictionary<string, object>() };
         }
-        private ParsedUrl ProcessPaybillPath(string[] parts)
+        private ParsedUrl ProcessPaybillPath(string[] parts, string[] queryParts)
         {
-            var result = ProcessWelcomePath(parts);
+            var result = ProcessWelcomePath(parts, queryParts);
             if (result.IsErrored)
             {
                 return result;
             }
 
+            var previousAnswer = GetPreviousAnswerValue(queryParts);
+            long paybill;
+            if (!string.IsNullOrEmpty(previousAnswer) && long.TryParse(previousAnswer, out paybill))
+            {
+                result.RouteValues.Add("Paybill", paybill);
+            }
+
             result.ActionName = "Paybill";
             return result;
         }
-        private ParsedUrl ProcessEnglishFractionPath(string[] parts)
+        private ParsedUrl ProcessEnglishFractionPath(string[] parts, string[] queryParts)
         {
-            var result = ProcessPaybillPath(parts);
+            var result = ProcessPaybillPath(parts, queryParts);
             if (result.IsErrored)
             {
                 return result;
@@ -79,9 +87,9 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             result.RouteValues.Add("Paybill", paybill);
             return result;
         }
-        private ParsedUrl ProcessTrainingCoursePath(string[] parts)
+        private ParsedUrl ProcessTrainingCoursePath(string[] parts, string[] queryParts)
         {
-            var result = ProcessEnglishFractionPath(parts);
+            var result = ProcessEnglishFractionPath(parts, queryParts);
             if (result.IsErrored)
             {
                 return result;
@@ -104,9 +112,9 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             result.RouteValues.Add("EnglishFraction", englishFraction);
             return result;
         }
-        private ParsedUrl ProcessResultsPath(string[] parts)
+        private ParsedUrl ProcessResultsPath(string[] parts, string[] queryParts)
         {
-            var result = ProcessTrainingCoursePath(parts);
+            var result = ProcessTrainingCoursePath(parts, queryParts);
             if (result.IsErrored)
             {
                 return result;
@@ -207,6 +215,11 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 result.RouteValues.Add($"SelectedCohorts[{i}].Name", standard?.Name);
                 result.RouteValues.Add($"SelectedCohorts[{i}].StartDate", standardStartDate);
             }
+        }
+
+        private string GetPreviousAnswerValue(string[] queryParts)
+        {
+            return queryParts.FirstOrDefault(q => q.ToLower().StartsWith("previousanswer="))?.Substring(15);
         }
     }
 }

@@ -13,10 +13,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         private const string ErrorMessageRouteValueKey = "ErrorMessage";
         private const string PaybillRouteValueKey = "Paybill";
         private const string EnglishFractionRouteValueKey = "EnglishFraction";
-        private const string StandardQtyRouteValueKey = "SelectedStandards[{0}].Qty";
-        private const string StandardCodeRouteValueKey = "SelectedStandards[{0}].Code";
-        private const string StandardNameRouteValueKey = "SelectedStandards[{0}].Name";
-        private const string StandardStartDateRouteValueKey = "SelectedStandards[{0}].StartDate";
+        private const string StandardQtyRouteValueKey = "SelectedCohorts[{0}].Qty";
+        private const string StandardCodeRouteValueKey = "SelectedCohorts[{0}].Code";
+        private const string StandardNameRouteValueKey = "SelectedCohorts[{0}].Name";
+        private const string StandardStartDateRouteValueKey = "SelectedCohorts[{0}].StartDate";
         private const string DurationRouteValueKey = "Duration";
 
         private Mock<IStandardsRepository> _standardsRepo;
@@ -36,7 +36,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnAnInstanceOfParsedUrl()
         {
             // Act
-            var actual = _parser.Parse("");
+            var actual = _parser.Parse("", "");
 
             // Assert
             Assert.IsNotNull(actual);
@@ -46,7 +46,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnWelcomePageIfNoPath()
         {
             // Act
-            var actual = _parser.Parse("");
+            var actual = _parser.Parse("", "");
 
             // Assert
             Assert.AreEqual("Welcome", actual.ActionName);
@@ -56,7 +56,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnPaybillIfOnlyForecastInPath()
         {
             // Act
-            var actual = _parser.Parse(BasePath);
+            var actual = _parser.Parse(BasePath, "");
 
             // Assert
             Assert.AreEqual("Paybill", actual.ActionName);
@@ -69,7 +69,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldRemoveLeadingAndOrTrailingSlashes(string path, string expectedActionName)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.AreEqual(expectedActionName, actual.ActionName);
@@ -82,7 +82,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldIncludeThePaybillInRouteValuesIfInPath(string path, long expectedPaybill)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(PaybillRouteValueKey));
@@ -93,7 +93,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnResultsIfPathHasAmountAndFractionAndStandardButNotDuration()
         {
             // Act
-            var actual = _parser.Parse($"{BasePath}/987654321/80/4x34-2017-04-01");
+            var actual = _parser.Parse($"{BasePath}/987654321/80/4x34-2017-04-01", "");
 
             // Assert
             Assert.AreEqual("TrainingCourse", actual.ActionName);
@@ -105,7 +105,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldIncludeTheStandardInfoInRouteValuesIfInPath(string path, int[] expectedQty, int[] expectedCode, string[] expectedStartDate)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
 
@@ -135,7 +135,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnPaybillIfValueInPathIsNotValidLongOrExceedsMaxPaybill(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.AreEqual("Paybill", actual.ActionName);
@@ -150,7 +150,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsNotValidLongOrExceedsMaxPaybill(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
@@ -166,7 +166,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfValueInPathIsNotPositive(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
@@ -182,7 +182,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnTrainingCourseIfStandardIsNotValidOrStandardNotFound(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.AreEqual("TrainingCourse", actual.ActionName);
@@ -201,7 +201,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardIsNotValidOrStandardNotFoundOrChortSizeInvalidOrStartDateInvalid(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
@@ -212,7 +212,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardSelectedButCohortSizeIs0()
         {
             // Act
-            var actual = _parser.Parse($"{BasePath}/987654321/80/0x34-2017-04-01");
+            var actual = _parser.Parse($"{BasePath}/987654321/80/0x34-2017-04-01", "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
@@ -223,7 +223,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnEnglishFractionIfPathHasPaybillOnly()
         {
             // Act
-            var actual = _parser.Parse(BasePath + "/12345678");
+            var actual = _parser.Parse(BasePath + "/12345678", "");
 
             // Assert
             Assert.AreEqual("EnglishFraction", actual.ActionName);
@@ -237,7 +237,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnEnglishFractionIfPathContainsInvalidDecimalPercentage(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.AreEqual("EnglishFraction", actual.ActionName);
@@ -248,7 +248,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldIncludeEnglishFractionInRouteValuesIfValidEnglishFractionInUrl(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(EnglishFractionRouteValueKey));
@@ -259,7 +259,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldDefaultDurationTo12WhenIncorrectInUrl(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(DurationRouteValueKey));
@@ -272,7 +272,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnDurationAsTheLowestMultipleOf12IfUrlValueIsNotMultipleItself(string path, int expectedDuration)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(DurationRouteValueKey));
@@ -284,7 +284,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnDurationAs12IfCorrectedUrlValueLessThan12(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(DurationRouteValueKey));
@@ -296,7 +296,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldReturnDurationAs36IfCorrectedUrlValueMoreThan36(string path)
         {
             // Act
-            var actual = _parser.Parse(path);
+            var actual = _parser.Parse(path, "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(DurationRouteValueKey));
@@ -307,11 +307,22 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldAllowTrainingCourseToBeSkipped()
         {
             // Act
-            var actual = _parser.Parse(BasePath + "/12345678/100/0x0/12");
+            var actual = _parser.Parse(BasePath + "/12345678/100/0x0/12", "");
 
             // Assert
             Assert.AreEqual("Results", actual.ActionName);
         }
 
+
+        [Test]
+        public void ThenItShouldPutPreviousPaybillInRouteValuesIfEditingPaybill()
+        {
+            // Act
+            var actual = _parser.Parse(BasePath, "previousAnswer=12345678");
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(PaybillRouteValueKey));
+            Assert.AreEqual(12345678, actual.RouteValues[PaybillRouteValueKey]);
+        }
     }
 }

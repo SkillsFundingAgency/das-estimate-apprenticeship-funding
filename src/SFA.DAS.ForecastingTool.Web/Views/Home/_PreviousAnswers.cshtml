@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <td>Annual payroll of @Model.Paybill.ToString("C0")</td>
-            <td><a href="@Url.Content($"~/forecast")">Change</a></td>
+            <td><a href="@Url.Content($"~/forecast?previousAnswer={Model.Paybill}")">Change</a></td>
         </tr>
         @if (Model.EnglishFraction > 0)
         {
@@ -20,26 +20,22 @@
                 <td><a href="@Url.Content($"~/forecast/{Model.Paybill}")">Change</a></td>
             </tr>
         }
-        @if (Model.SelectedCohorts.Any())
+        @if (Model is SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel)
         {
             <tr>
                 <td>
-                    @foreach (var standard in Model.SelectedCohorts)
+                    @if (Model.SelectedCohorts.Any())
                     {
-
-                        if (standard.Qty == 0)
-                        {
-                            <div>
-                                No apprentices selected
-                            </div>
-
-                        }
-                        else
+                        foreach (var standard in Model.SelectedCohorts)
                         {
                             <div>
                                 @standard.Qty apprentices on @standard.Name training course
                             </div>
                         }
+                    }
+                    else
+                    {
+                        <div>No apprenticeships selected</div>
                     }
                 </td>
 

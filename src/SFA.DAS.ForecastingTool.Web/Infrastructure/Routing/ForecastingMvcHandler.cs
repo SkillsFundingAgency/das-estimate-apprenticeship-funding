@@ -19,7 +19,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         protected override IAsyncResult BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, object state)
         {
             var parser = _container.GetInstance<UrlParser>();
-            var parsedUrl = parser.Parse(httpContext.Request.Url.LocalPath);
+            var parsedUrl = parser.Parse(httpContext.Request.Url.LocalPath, httpContext.Request.Url.Query);
 
             RequestContext.RouteData.Values["action"] = parsedUrl.ActionName;
             foreach (var key in parsedUrl.RouteValues.Keys)

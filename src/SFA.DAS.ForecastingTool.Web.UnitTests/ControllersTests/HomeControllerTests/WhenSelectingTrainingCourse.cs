@@ -64,8 +64,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
             var model = (actual as ViewResult)?.Model as TrainingCourseViewModel;
             Assert.IsNotNull(model.Standards);
             Assert.AreEqual(2, model.Standards.Length);
-            Assert.AreSame(_standards[1], model.Standards[0]);
-            Assert.AreSame(_standards[0], model.Standards[1]);
+            Assert.AreEqual(_standards[1].Code, model.Standards[0].Code);
+            Assert.AreEqual(_standards[0].Code, model.Standards[1].Code);
         }
     }
 }

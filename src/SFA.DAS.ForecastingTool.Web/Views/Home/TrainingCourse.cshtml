@@ -21,6 +21,7 @@
                         <th style="width: 60%;">Type of apprenticeship training</th>
                         <th style="width: 20%;">Number of apprentices</th>
                         <th style="width: 20%;">Start date</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,7 +48,10 @@
                                 <input name="cohorts" type="number" class="form-control-1-2" aria-label="Number of apprentices" value="@cohort.Qty" />
                             </td>
                             <td>
-                                <input name="startDate" type="date" class="form-control-3-4" style="width: 100%;" aria-label="Start date" value="@cohort.StartDate.ToString("yyyy-MM-dd")" />
+                                <input name="startDate" type="date" class="form-control-3-4" style="width: 100%;" aria-label="Start date" value="@cohort.StartDate.ToString("yyyy-MM-dd")"/>
+                            </td>
+                            <td>
+                                <button name="trainingCourseDelete@($"{cohort.Qty}x{cohort.Code}-{cohort.StartDate.ToString("yyyy-MM-dd")}")" type="submit" class="button button-secondary">Delete</button>
                             </td>
                         </tr>
                     }
@@ -66,8 +70,9 @@
                             <input name="cohorts" type="number" class="form-control-1-2" aria-label="Number of apprentices" />
                         </td>
                         <td>
-                            <input name="startDate" type="date" class="form-control-3-4" style="width: 100%;" aria-label="Start date" value="2017-04-01" />
+                            <input name="startDate" type="date" class="form-control-3-4" style="width: 100%;" aria-label="Start date" value="2017-04-01"/>
                         </td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

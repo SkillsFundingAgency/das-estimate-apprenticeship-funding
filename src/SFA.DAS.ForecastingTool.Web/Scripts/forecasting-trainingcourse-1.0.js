@@ -7,16 +7,16 @@
 
     function updateTableForCosts() {
         var $headerRow = $('#trainingCourses > thead > tr');
-        $headerRow.append($('<th>Approx. Annual Cost</th>'));
+        $('<th>Approx. Annual Cost</th>').insertBefore($headerRow.find('th:last-child'));
 
         $('#trainingCourses > tbody > tr').each(function (index, element) {
             var $row = $(element);
-            $row.append($('<td class="cost"></td>'));
+            $('<td class="cost"></td>').insertBefore($row.find('td:last-child'));
 
             updateRowCost($row);
         });
 
-        $('#trainingCourses > tbody').append($('<tr><td colspan="3"></td><td id="grandTotal" style="font-weight:700;"></td></tr>'));
+        $('#trainingCourses > tbody').append($('<tr><td colspan="3"></td><td id="grandTotal" class="grandTotal"></td><td></td></tr>'));
         updateGrandTotal();
     }
     function attachHandlers() {

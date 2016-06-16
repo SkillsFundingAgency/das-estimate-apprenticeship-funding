@@ -62,7 +62,13 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 var cohorstSegment = GetCohortsUrlSegment(form);
                 Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}/");
             }
-
+            else if (form.AllKeys.Any(k => k.StartsWith("trainingCourseDelete")))
+            {
+                var cohortToDelete = form.AllKeys.First(k => k.StartsWith("trainingCourseDelete")).Substring(20);
+                var originalCohorstSegment = GetCohortsUrlSegment(form);
+                var fixedCohortSegment = originalCohorstSegment.Replace(cohortToDelete, "").Replace("__", "_");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(fixedCohortSegment)}/");
+            }
         }
 
 

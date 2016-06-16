@@ -25,17 +25,17 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         private Mock<IStandardsRepository> _standardsRepository;
         private ForecastCalculator _calculator;
         private Mock<IConfigurationProvider> _configurationProvider;
-        private List<StandardModel> _myStandards;
-        private List<StandardModel> _myMultipleStandards;
+        private List<CohortModel> _myStandards;
+        private List<CohortModel> _myMultipleStandards;
 
         [SetUp]
         public void Arrange()
         {
             //Arrange
-            _myStandards = new List<StandardModel>();
+            _myStandards = new List<CohortModel>();
             for (var i = 0; i < StandardQty.Length - 1; i++)
             {
-                _myStandards.Add(new StandardModel
+                _myStandards.Add(new CohortModel
                 {
                     Code = StandardCode[i],
                     Qty = StandardQty[i],
@@ -43,10 +43,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                 });
             }
 
-            _myMultipleStandards = new List<StandardModel>();
+            _myMultipleStandards = new List<CohortModel>();
             for (var i = 0; i < StandardQty.Length; i++)
             {
-                _myMultipleStandards.Add(new StandardModel
+                _myMultipleStandards.Add(new CohortModel
                 {
                     Code = StandardCode[i],
                     Qty = StandardQty[i],
@@ -265,10 +265,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         {
 
             //Arrange
-            var myStandards = new List<StandardModel>();
+            var myStandards = new List<CohortModel>();
             for (var i = 0; i < StandardQty.Length; i++)
             {
-                myStandards.Add(new StandardModel
+                myStandards.Add(new CohortModel
                 {
                     Code = StandardCode[i],
                     Qty = cohortQauntities[i],
@@ -306,10 +306,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldOnlyStartTakingTrainingCostsFromTheStartDate()
         {
             //Arrange
-            var myStandards = new List<StandardModel>();
+            var myStandards = new List<CohortModel>();
             for (var i = 0; i < StandardQty.Length - 1; i++)
             {
-                myStandards.Add(new StandardModel
+                myStandards.Add(new CohortModel
                 {
                     Code = StandardCode[i],
                     Qty = StandardQty[i],
@@ -337,10 +337,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldStopTakingTrainingCostsFromTheStartDatePlusStandardDuration()
         {
             //Arrange
-            var myStandards = new List<StandardModel>();
+            var myStandards = new List<CohortModel>();
             for (var i = 0; i < StandardQty.Length - 1; i++)
             {
-                myStandards.Add(new StandardModel
+                myStandards.Add(new CohortModel
                 {
                     Code = StandardCode[i],
                     Qty = StandardQty[i],
@@ -450,7 +450,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldSunsetFundsWhenTheBalanceExceeds18TimesMonthlyFunding()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, new StandardModel[0], 24))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, new CohortModel[0], 24))?.Breakdown;
 
             // Assert
             for (var i = 18; i < 24; i++)
@@ -466,7 +466,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldIncludeHowMuchFundsWereSunsettedWhenApplicable()
         {
             // Act
-            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, new StandardModel[0], 24))?.Breakdown;
+            var actual = (await _calculator.ForecastAsync(Paybill, EnglishFraction, new CohortModel[0], 24))?.Breakdown;
 
             for (var i = 0; i < 18; i++)
             {

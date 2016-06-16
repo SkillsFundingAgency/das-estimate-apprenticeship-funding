@@ -6,12 +6,12 @@ namespace SFA.DAS.ForecastingTool.Web.Models
     {
         public ForecastQuestionsModel()
         {
-            SelectedStandards = new List<StandardModel>();
+            SelectedCohorts = new List<CohortModel>();
         }
         public string ErrorMessage { get; set; }
         public long Paybill { get; set; }
         public int EnglishFraction { get; set; }
-        public List<StandardModel> SelectedStandards { get; set; }
+        public List<CohortModel> SelectedCohorts { get; set; }
         public int Duration { get; set; }
     }
 }

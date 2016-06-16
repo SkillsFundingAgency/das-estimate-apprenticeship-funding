@@ -20,7 +20,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
 
 
-        public async Task<ForecastResult> ForecastAsync(long paybill, int englishFraction, StandardModel[] myStandards, int duration)
+        public async Task<ForecastResult> ForecastAsync(long paybill, int englishFraction, CohortModel[] cohorts, int duration)
         {
             var monthlyLevyPaid = Math.Floor(((paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance) / 12);
             if (monthlyLevyPaid < 0) // Non-levy payer
@@ -32,7 +32,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var decimalEnglishFraction = englishFraction / 100m;
             var fundingReceived = Math.Ceiling((monthlyLevyPaid * decimalEnglishFraction) * _configurationProvider.LevyTopupPercentage) * 12;
 
-            var breakdown = await CalculateBreakdown(myStandards, fundingReceived, duration);
+            var breakdown = await CalculateBreakdown(cohorts, fundingReceived, duration);
 
             return new ForecastResult
             {
@@ -45,7 +45,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
 
 
-        private async Task<MonthlyCashflow[]> CalculateBreakdown(StandardModel[] cohorts, decimal fundingReceived, int duration)
+        private async Task<MonthlyCashflow[]> CalculateBreakdown(CohortModel[] cohorts, decimal fundingReceived, int duration)
         {
             var standards = await ExpandCohortModels(cohorts);
             var startDate = new DateTime(2017, 4, 1);
@@ -101,7 +101,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             return months;
         }
 
-        private async Task<BreakdownStandard[]> ExpandCohortModels(StandardModel[] cohorts)
+        private async Task<BreakdownStandard[]> ExpandCohortModels(CohortModel[] cohorts)
         {
             var standards = new BreakdownStandard[cohorts.Length];
             for (var i = 0; i < cohorts.Length; i++)

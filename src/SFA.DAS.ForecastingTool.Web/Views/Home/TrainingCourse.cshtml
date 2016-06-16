@@ -25,7 +25,7 @@
                 </thead>
                 <tbody>
 
-                    @foreach (var cohort in Model.SelectedStandards)
+                    @foreach (var cohort in Model.SelectedCohorts)
                     {
                         <tr>
                             <td>
@@ -34,11 +34,11 @@
                                     {
                                         if (standard.Code == cohort.Code)
                                         {
-                                            <option value="@standard.Code" selected="selected" data-price="@standard.Price">@standard.Name</option>
+                                            <option value="@standard.Code" selected="selected" data-price="@standard.AnnualCost">@standard.Name</option>
                                         }
                                         else
                                         {
-                                            <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
+                                            <option value="@standard.Code" data-price="@standard.AnnualCost">@standard.Name</option>
                                         }
                                     }
                                 </select>
@@ -58,7 +58,7 @@
                                 <option value="noselection">Please choose...</option>
                                 @foreach (var standard in Model.Standards)
                                 {
-                                    <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
+                                    <option value="@standard.Code" data-price="@standard.AnnualCost">@standard.Name</option>
                                 }
                             </select>
                         </td>

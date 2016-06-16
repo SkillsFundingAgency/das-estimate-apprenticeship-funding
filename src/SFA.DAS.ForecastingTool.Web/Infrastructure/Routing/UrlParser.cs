@@ -202,10 +202,10 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 }
 
 
-                result.RouteValues.Add($"SelectedStandards[{i}].Qty", standardQty);
-                result.RouteValues.Add($"SelectedStandards[{i}].Code", standardCode);
-                result.RouteValues.Add($"SelectedStandards[{i}].Name", standard?.Name);
-                result.RouteValues.Add($"SelectedStandards[{i}].StartDate", standardStartDate);
+                result.RouteValues.Add($"SelectedCohorts[{i}].Qty", standardQty);
+                result.RouteValues.Add($"SelectedCohorts[{i}].Code", standardCode);
+                result.RouteValues.Add($"SelectedCohorts[{i}].Name", standard?.Name);
+                result.RouteValues.Add($"SelectedCohorts[{i}].StartDate", standardStartDate);
             }
         }
     }

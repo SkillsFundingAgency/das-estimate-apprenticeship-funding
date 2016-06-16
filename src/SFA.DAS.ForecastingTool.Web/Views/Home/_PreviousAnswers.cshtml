@@ -20,11 +20,11 @@
                 <td><a href="@Url.Content($"~/forecast/{Model.Paybill}")">Change</a></td>
             </tr>
         }
-        @if (Model.SelectedStandards.Any())
+        @if (Model.SelectedCohorts.Any())
         {
             <tr>
                 <td>
-                    @foreach (var standard in Model.SelectedStandards)
+                    @foreach (var standard in Model.SelectedCohorts)
                     {
 
                         if (standard.Qty == 0)

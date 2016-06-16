@@ -8,6 +8,6 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
     public interface IForecastCalculator
     {
         
-        Task<ForecastResult> ForecastAsync(long paybill, int englishFraction, StandardModel[] myStandards, int duration);
+        Task<ForecastResult> ForecastAsync(long paybill, int englishFraction, CohortModel[] cohorts, int duration);
     }
 }

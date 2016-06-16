@@ -255,6 +255,7 @@
     <Compile Include="Infrastructure\Routing\UrlParser.cs" />
     <Compile Include="Models\ForecastQuestionsModel.cs" />
     <Compile Include="Models\ResultsViewModel.cs" />
+    <Compile Include="Models\CohortModel.cs" />
     <Compile Include="Models\StandardModel.cs" />
     <Compile Include="Models\TrainingCourseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

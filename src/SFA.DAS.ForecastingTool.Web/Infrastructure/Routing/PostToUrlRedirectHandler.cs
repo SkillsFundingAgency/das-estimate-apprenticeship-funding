@@ -46,16 +46,20 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             }
             else if (form.AllKeys.Contains("trainingCourseSubmit"))
             {
-                var cohorstSegment = GetCohortsUrlSegment(form, true);
+                var cohorstSegment = GetCohortsUrlSegment(form);
+                if (string.IsNullOrEmpty(cohorstSegment))
+                {
+                    cohorstSegment = "noselection";
+                }
                 Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}/12/");
             }
             else if (form.AllKeys.Contains("trainingCourseSkip"))
             {
-                Redirect(context, $"{currentUrl.GetUrlToSegment(4)}0x0/12/");
+                Redirect(context, $"{currentUrl.GetUrlToSegment(3)}0x0/12/");
             }
             else if (form.AllKeys.Contains("trainingCourseAdd"))
             {
-                var cohorstSegment = GetCohortsUrlSegment(form, false);
+                var cohorstSegment = GetCohortsUrlSegment(form);
                 Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}/");
             }
 
@@ -98,7 +102,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             return false;
         }
 
-        private string GetCohortsUrlSegment(NameValueCollection form, bool includeUnslectedRows)
+        private string GetCohortsUrlSegment(NameValueCollection form)
         {
             var cohortsEntry = GetFormValue(form, "cohorts", "0").Split(',');
             var standardSelection = GetFormValue(form, "standard", "0").Split(',');
@@ -108,7 +112,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 
             for (var i = 0; i < standardSelection.Length; i ++)
             {
-                if (!includeUnslectedRows && standardSelection[i] == "noselection")
+                if (standardSelection[i] == "noselection")
                 {
                     continue;
                 }

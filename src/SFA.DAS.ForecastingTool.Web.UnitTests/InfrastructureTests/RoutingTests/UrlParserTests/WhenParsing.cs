@@ -335,5 +335,33 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.IsTrue(actual.RouteValues.ContainsKey(EnglishFractionRouteValueKey));
             Assert.AreEqual(76, actual.RouteValues[EnglishFractionRouteValueKey]);
         }
+
+        [Test]
+        public void ThenItShouldPutCohortsInRouteValuesIfEditingTrainingCourse()
+        {
+            // Act
+            var actual = _parser.Parse(BasePath + "/4000000/100/", "?previousAnswer=1x34-2017-04-01_10x12-2018-03-20");
+
+            // Assert
+            AssertStandardRouteValuesArePresentAndCorrect(actual, 0, 1, 34, new DateTime(2017, 4, 1));
+            AssertStandardRouteValuesArePresentAndCorrect(actual, 1, 10, 12, new DateTime(2018, 3, 20));
+        }
+
+
+
+        private void AssertStandardRouteValuesArePresentAndCorrect(ParsedUrl actual, int index, int expectedQty, int expectedCode, DateTime expectedStateDate)
+        {
+            var qtyKey = string.Format(StandardQtyRouteValueKey, index);
+            Assert.IsTrue(actual.RouteValues.ContainsKey(qtyKey));
+            Assert.AreEqual(expectedQty, actual.RouteValues[qtyKey]);
+
+            var codeKey = string.Format(StandardCodeRouteValueKey, index);
+            Assert.IsTrue(actual.RouteValues.ContainsKey(codeKey));
+            Assert.AreEqual(expectedCode, actual.RouteValues[codeKey]);
+
+            var startDateKey = string.Format(StandardStartDateRouteValueKey, index);
+            Assert.IsTrue(actual.RouteValues.ContainsKey(startDateKey));
+            Assert.AreEqual(expectedStateDate, actual.RouteValues[startDateKey]);
+        }
     }
 }

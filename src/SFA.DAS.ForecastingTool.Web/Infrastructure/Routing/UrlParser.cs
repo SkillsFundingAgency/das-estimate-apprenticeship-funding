@@ -119,7 +119,15 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             {
                 result.ActionName = "TrainingCourse";
 
-                ParseStandardsFromUrl(parts, result);
+                var previousAnswer = GetPreviousAnswerValue(queryParts);
+                if (parts.Length >= 4)
+                {
+                    ParseStandardsFromUrl(parts[3], result);
+                }
+                else if (!string.IsNullOrEmpty(previousAnswer))
+                {
+                    ParseStandardsFromUrl(previousAnswer, result);
+                }
             }
 
             result.RouteValues.Add("EnglishFraction", englishFraction);
@@ -154,14 +162,9 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             return result;
         }
 
-        private void ParseStandardsFromUrl(string[] parts, ParsedUrl result)
+        private void ParseStandardsFromUrl(string standardsPart, ParsedUrl result)
         {
-            if (parts.Length < 4)
-            {
-                return;
-            }
-
-            var standards = parts[3].Split('_');
+            var standards = standardsPart.Split('_');
 
             if (standards.Length == 1 && standards[0] == "0x0")
             {

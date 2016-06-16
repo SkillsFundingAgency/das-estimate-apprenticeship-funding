@@ -27,7 +27,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 }
                 else
                 {
-                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{EncodeFormEntryForUrl(paybillEntry)}/100/");
+                    Redirect(context, $"{currentUrl.GetUrlToSegment(1)}{EncodeFormEntryForUrl(paybillEntry)}/NA/");
                 }
             }
             else if (form.AllKeys.Contains("englishFractionSubmit"))

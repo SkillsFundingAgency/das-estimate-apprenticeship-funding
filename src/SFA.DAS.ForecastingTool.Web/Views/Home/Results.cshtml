@@ -4,7 +4,7 @@
     <div class="column-full-width">
         <h2 class="heading-xlarge">Your estimated apprenticeship funding</h2>
         <p>
-            Based on your annual payroll of <span class="bold-medium">@Model.Paybill.ToString("C0")</span> and your English percentage of <span class="bold-medium">@Model.EnglishFraction%</span>:
+            Based on your annual payroll of <span class="bold-medium">@Model.Paybill.ToString("C0")</span> and your English percentage of <span class="bold-medium">@(Model.EnglishFraction == 0 ? 100 : Model.EnglishFraction)%</span>:
         </p>
         <p>
             You will pay <span class="bold-medium">@Model.LevyAmount.ToString("C0")</span> in levy and receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of apprenticeship funding. This includes the 10% government top up.

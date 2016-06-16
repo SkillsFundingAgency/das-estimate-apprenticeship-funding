@@ -15,6 +15,8 @@ namespace SFA.DAS.ForecastingTool.Web.Models
         public List<CohortModel> SelectedCohorts { get; set; }
         public int Duration { get; set; }
 
+        public string EnglishFractionForPreviousAnswer => EnglishFraction == 0 ? "NA" : EnglishFraction.ToString();
+
         public string GetCohortsUrl()
         {
             if (!SelectedCohorts.Any())

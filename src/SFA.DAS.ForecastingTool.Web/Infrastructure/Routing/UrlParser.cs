@@ -108,8 +108,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 return result;
             }
 
-            int englishFraction;
-            if (!int.TryParse(parts[2], out englishFraction) || englishFraction <= 0 || englishFraction > 100)
+            int englishFraction = 0;
+            if (parts[2].ToUpper() != "NA" && (!int.TryParse(parts[2], out englishFraction) || englishFraction <= 0 || englishFraction > 100))
             {
                 result.IsErrored = true;
                 result.RouteValues.Add("ErrorMessage", "English percentage is not a valid entry");

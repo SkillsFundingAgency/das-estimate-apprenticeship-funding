@@ -16,7 +16,7 @@
             updateRowCost($row);
         });
 
-        $('#trainingCourses > tbody').append($('<tr><td colspan="3"></td><td id="grandTotal" class="grandTotal"></td><td></td></tr>'));
+        $('#trainingCourses > tbody').append($('<tr><td colspan="3"></td><td id="grandTotal" class="grand-total"></td><td></td></tr>'));
         updateGrandTotal();
     }
     function attachHandlers() {

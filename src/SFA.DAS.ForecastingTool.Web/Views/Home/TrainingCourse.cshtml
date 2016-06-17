@@ -10,16 +10,24 @@
                     <p class="error-message">@Model.ErrorMessage</p>
                 </div>
             }
-            <p>We estimate the amount you’ll have to spend on apprenticeships after paying your levy is <span>@Model.LevyFundingReceived.ToString("C0")</span></p>
-            <details style="margin-bottom: 20px" role="group">
-                <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">How this is worked out</span></summary>
-                <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
-                    <p>
-                        £15,000 allowance is applied to 0.5% of your gross annual payroll. English percentage applied. @(Model.TopPercentageForDisplay)% government top-up applied
-                    </p>
-                </div>
-            </details>
-            <p>You can now estimate how much you’ll be spending on apprenticeships every month or you can skip this step</p>
+            @if (Model.LevyFundingReceived > 0)
+            {
+                <p>We estimate the amount you’ll have to spend on apprenticeships after paying your levy is <span>@Model.LevyFundingReceived.ToString("C0")</span></p>
+                <details style="margin-bottom: 20px" role="group">
+                    <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">How this is worked out</span></summary>
+                    <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+                        <p>
+                            £15,000 allowance is applied to 0.5% of your gross annual payroll. English percentage applied. @(Model.TopPercentageForDisplay)% government top-up applied
+                        </p>
+                    </div>
+                </details>
+                <p>You can now estimate how much you’ll be spending on apprenticeships every month or you can <a href="0x0/12">skip this step</a></p>
+            }
+            else
+            {
+                <p>You can now estimate the cost of your apprenticeships.You’ll only need to contribute 10%, the government will pay the rest.</p>
+                <p>Or you can <a href="0x0/12">skip this step</a></p>
+            }
         </div>
     </div>
     <hr />

@@ -2467,6 +2467,10 @@ input[type=number] {
     padding: 0 15px;
 }
 
+table.sticky-header th {
+    background-color: white;
+}
+
 
 .error {
     margin-bottom: 20px;

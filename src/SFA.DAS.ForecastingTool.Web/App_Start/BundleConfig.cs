@@ -7,7 +7,8 @@ namespace SFA.DAS.ForecastingTool.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.floatThead.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                 "~/scripts/govuk-template.js"));

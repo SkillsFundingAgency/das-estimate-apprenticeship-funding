@@ -15,7 +15,7 @@
 
 <div class="grid-row">
     <div class="column-full-width">
-        <table>
+        <table class="results-table sticky-header">
             <thead>
             <tr>
                 <th colspan="3"></th>
@@ -68,3 +68,11 @@
         @Html.Partial("_PreviousAnswers", Model)
     </div>
 </div>
+
+@section scripts {
+    <script>
+        $(document).ready(function() {
+            $(".sticky-header").floatThead({ scrollingTop: -64 });
+        })
+    </script>
+}

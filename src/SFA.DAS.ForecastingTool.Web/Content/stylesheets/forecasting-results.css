@@ -1,19 +1,19 @@
-﻿td.financial, th.financial {
+﻿table.results-table td.financial, table.results-table th.financial {
     text-align: right;
 }
-th.co-funding-banner {
+table.results-table th.co-funding-banner {
     padding:20px 20px; 
     font-size: 19px;
     border-left: 1px solid #f8f8f8;
     border-right: 1px solid #f8f8f8;
 }
-th.co-funding, td.co-funding {
+table.results-table th.co-funding, table.results-table td.co-funding {
     border-top: 1px solid #f8f8f8;
     background-color: #dee0e2;
 }
-th.co-funding-emp, td.co-funding-emp {
+table.results-table th.co-funding-emp, table.results-table td.co-funding-emp {
     border-left: 1px solid #f8f8f8;
 }
-th.co-funding-govt, td.co-funding-govt {
+table.results-table th.co-funding-govt, table.results-table td.co-funding-govt {
     border-right: 1px solid #f8f8f8;
 }

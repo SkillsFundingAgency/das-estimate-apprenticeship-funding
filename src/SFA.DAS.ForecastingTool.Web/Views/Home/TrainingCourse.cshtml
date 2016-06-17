@@ -1,102 +1,106 @@
 ﻿@model SFA.DAS.ForecastingTool.Web.Models.TrainingCourseViewModel
 
-<div class="grid-row training-course">
-    <div class="column-full-width">
-        <h2 class="heading-xlarge">Apprentices and training</h2>
-        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-        {
-            <div class="error">
-                <p class="error-message">@Model.ErrorMessage</p>
+<div class="training-course">
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h2 class="heading-xlarge">Apprentices and training</h2>
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="error">
+                    <p class="error-message">@Model.ErrorMessage</p>
+                </div>
+            }
+            <div class="warning">
+                <p class="warning-message">You can skip this step if you don’t have this information.</p>
             </div>
-        }
-        <div class="warning">
-            <p class="warning-message">You can skip this step if you don’t have this information.</p>
+            <p>Enter the type of apprenticeship training and number of apprentices you are taking on.</p>
         </div>
-        <p>Enter the type of apprenticeship training and number of apprentices you are taking on.</p>
-
-        <form method="post">
-            @for (var i = 0; i < Model.SelectedCohorts.Count; i++)
+    </div>
+    <div class="grid-row">
+        <div class="column-full-width">
+            <form method="post">
+                @for (var i = 0; i < Model.SelectedCohorts.Count; i++)
             {
                 var cohort = Model.SelectedCohorts[i];
 
+                    <div class="grid-row">
+                        <div class="column-two-thirds">
+                            <h3 class="heading-medium">Apprenticeship @(i + 1)</h3>
+
+                            <div class="form-group">
+                                <label class="form-label" for="standard@(i)">Type of apprenticeship training</label>
+                                <select name="standard" id="standard@(i)" class="form-control training-standard" aria-label="Training standard">
+                                    @foreach (var standard in Model.Standards)
+                                    {
+                                        if (standard.Code == cohort.Code)
+                                        {
+                                            <option value="@standard.Code" selected="selected" data-price="@standard.Price">@standard.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="cohorts@(i)">Number of apprentices</label>
+                                <input name="cohorts" id="cohorts@(i)" type="number" class="form-control cohort-size" aria-label="Number of apprentices" value="@cohort.Qty" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="startDate@(i)">Start date</label>
+                                <input name="startDate" id="startDate@(i)" type="date" class="form-control" aria-label="Start date" value="@cohort.StartDate.ToString("yyyy-MM-dd")" />
+                            </div>
+                        </div>
+                        <div class="column-one-third" style="padding-top: 50px">
+                            <button name="trainingCourseDelete@($"{cohort.Qty}x{cohort.Code}-{cohort.StartDate.ToString("yyyy-MM-dd")}")" type="submit" class="button button-secondary">Delete</button>
+                        </div>
+                    </div>
+                    <hr />
+                }
+
                 <div class="grid-row">
                     <div class="column-two-thirds">
-                        <h3 class="heading-medium">Apprenticeship @(i + 1)</h3>
+                        <h3 class="heading-medium">Apprenticeship @(Model.SelectedCohorts.Count + 1)</h3>
 
                         <div class="form-group">
-                            <label class="form-label" for="standard@(i)">Type of apprenticeship training</label>
-                            <select name="standard" id="standard@(i)" class="form-control training-standard" aria-label="Training standard">
+                            <label class="form-label" for="standardNew">Type of apprenticeship training</label>
+                            <select name="standard" id="standardNew" class="form-control training-standard" aria-label="Training standard">
+                                <option value="noselection">Please choose...</option>
                                 @foreach (var standard in Model.Standards)
                                 {
-                                    if (standard.Code == cohort.Code)
-                                    {
-                                        <option value="@standard.Code" selected="selected" data-price="@standard.Price">@standard.Name</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
-                                    }
+                                    <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
                                 }
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="cohorts@(i)">Number of apprentices</label>
-                            <input name="cohorts" id="cohorts@(i)" type="number" class="form-control cohort-size" aria-label="Number of apprentices" value="@cohort.Qty" />
+                            <label class="form-label" for="cohortsNew">Number of apprentices</label>
+                            <input name="cohorts" id="cohortsNew" type="number" class="form-control cohort-size" aria-label="Number of apprentices" />
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="startDate@(i)">Start date</label>
-                            <input name="startDate" id="startDate@(i)" type="date" class="form-control" aria-label="Start date" value="@cohort.StartDate.ToString("yyyy-MM-dd")"/>
+                            <label class="form-label" for="startDateNew">Start date</label>
+                            <input name="startDate" id="startDateNew" type="date" class="form-control" aria-label="Start date" value="2017-04-01" />
                         </div>
                     </div>
                     <div class="column-one-third" style="padding-top: 50px">
-                        <button name="trainingCourseDelete@($"{cohort.Qty}x{cohort.Code}-{cohort.StartDate.ToString("yyyy-MM-dd")}")" type="submit" class="button button-secondary">Delete</button>
                     </div>
                 </div>
                 <hr />
-            }
 
-            <div class="grid-row">
-                <div class="column-two-thirds">
-                    <h3 class="heading-medium">Apprenticeship @(Model.SelectedCohorts.Count + 1)</h3>
+                <input name="trainingCourseAdd" type="submit" class="button" value="Add another" />
+                <hr />
 
-                    <div class="form-group">
-                        <label class="form-label" for="standardNew">Type of apprenticeship training</label>
-                        <select name="standard" id="standardNew" class="form-control training-standard" aria-label="Training standard">
-                            <option value="noselection">Please choose...</option>
-                            @foreach (var standard in Model.Standards)
-                            {
-                                <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="cohortsNew">Number of apprentices</label>
-                        <input name="cohorts" id="cohortsNew" type="number" class="form-control cohort-size" aria-label="Number of apprentices" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="startDateNew">Start date</label>
-                        <input name="startDate" id="startDateNew" type="date" class="form-control" aria-label="Start date" value="2017-04-01" />
-                    </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <input name="trainingCourseSubmit" type="submit" class="button" value="Estimate" />
+                    <input name="trainingCourseSkip" type="submit" class="button button-secondary" value="Skip" />
                 </div>
-                <div class="column-one-third" style="padding-top: 50px">
-                </div>
-            </div>
-            <hr/>
-
-            <input name="trainingCourseAdd" type="submit" class="button" value="Add another"/>
-            <hr />
-
-            <div class="form-group" style="margin-top: 15px;">
-                <input name="trainingCourseSubmit" type="submit" class="button" value="Estimate" />
-                <input name="trainingCourseSkip" type="submit" class="button button-secondary" value="Skip" />
-            </div>
-        </form>
+            </form>
 
 
-        @Html.Partial("_PreviousAnswers", Model)
+            @Html.Partial("_PreviousAnswers", Model)
+        </div>
     </div>
 </div>
-
 
 @section scripts
 {

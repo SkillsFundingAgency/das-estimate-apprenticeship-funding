@@ -1,7 +1,7 @@
 ﻿@model SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel
 
 <div class="grid-row">
-    <div class="column-full-width">
+    <div class="column-two-thirds">
         <h2 class="heading-xlarge">Your estimated apprenticeship funding</h2>
         <p>
             Based on your annual payroll of <span class="bold-medium">@Model.Paybill.ToString("C0")</span> and your English percentage of <span class="bold-medium">@(Model.EnglishFraction == 0 ? 100 : Model.EnglishFraction)%</span>:

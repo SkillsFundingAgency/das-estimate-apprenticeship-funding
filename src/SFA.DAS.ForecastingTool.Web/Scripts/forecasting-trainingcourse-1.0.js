@@ -1,77 +1,91 @@
 ﻿(function () {
-    $(document).ready(function () {
-        updateTableForCosts();
-        attachHandlers();
-    });
+    init();
 
+    function init() {
+        addGrandTotalElement();
 
-    function updateTableForCosts() {
-        var $headerRow = $('#trainingCourses > thead > tr');
-        $('<th>Cost</th>').insertBefore($headerRow.find('th:last-child'));
+        $('form .grid-row .column-two-thirds').each(function (index, element) {
+            var $container = $(element);
 
-        $('#trainingCourses > tbody > tr').each(function (index, element) {
-            var $row = $(element);
-            $('<td class="cost"></td>').insertBefore($row.find('td:last-child'));
-
-            updateRowCost($row);
+            addCostElement($container);
+            attachHandlers($container);
         });
+    }
 
-        $('#trainingCourses > tbody').append($('<tr><td colspan="3"></td><td id="grandTotal" class="grand-total"></td><td></td></tr>'));
+    function addCostElement($container) {
+        $container.append($('<div style="font-weight:700;">Cost</div><div class="cost">£<span>0</span></div>'));
+        updateApprenticeshipCost($container);
+    }
+
+    function addGrandTotalElement() {
+        $('<div class="grand-total">Total cost: £<span>0</span></div>').insertBefore($('form > div:last-child'));
         updateGrandTotal();
     }
-    function attachHandlers() {
-        $('select[name=standard]').change(cohortPriceChange);
-        $('input[name=cohorts]').change(cohortPriceChange);
-    }
-    function cohortPriceChange() {
-        var $row = $(this).parent().parent();
-        updateRowCost($row);
 
+    function attachHandlers($container) {
+        $container.find('select[name=standard]').change(inputChangedHandler);
+        $container.find('input[name=cohorts]').change(inputChangedHandler);
+    }
+
+    function inputChangedHandler() {
+        var $container = $(this).parent().parent().parent();
+        updateApprenticeshipCost($container);
         updateGrandTotal();
     }
-    function updateRowCost($row) {
-        var $costCell = $($row.find('td.cost')[0]);
-        var standard = getSelectedStandard($row);
-        var size = getCohortSize($row);
 
-        var totalCost = standard.price * size;
-        $costCell.text('£' + totalCost.format(0));
+    function updateApprenticeshipCost($container) {
+        var cost = getApprenticeshipCost($container);
+
+        $($container.find('div.cost > span')[0]).text(cost.format(0));
     }
+
     function updateGrandTotal() {
         var grandTotal = 0;
-        $('#trainingCourses > tbody > tr').each(function (index, element) {
-            var $row = $(element);
-            var standard = getSelectedStandard($row);
-            var size = getCohortSize($row);
 
-            grandTotal += standard.price * size;
+        $('form .grid-row .column-two-thirds').each(function (index, element) {
+            var $container = $(element);
+            var cost = getApprenticeshipCost($container);
+            grandTotal += cost;
         });
 
-        $('#grandTotal').text('£' + grandTotal.format(0));
+        $('.grand-total > span').text(grandTotal.format(0));
     }
-    function getSelectedStandard($row) {
-        var standard = { code: '', name: '', price: 0 };
 
-        var selectedOptions = $row.find('select[name=standard] > option:selected');
-        if (selectedOptions.length == 0) {
-            return standard;
+    function getApprenticeshipCost($container) {
+        var apprenticeshipDetails = getApprenticeshipDetails($container);
+        return apprenticeshipDetails.price * apprenticeshipDetails.qty;
+    }
+
+    function getApprenticeshipDetails($container) {
+        var details = {
+            code: '',
+            name: '',
+            price: 0,
+            qty: 0,
+            startDate: ''
+        };
+
+        var selectedStandardSelector = $container.find('select[name=standard] > option:selected');
+        if (selectedStandardSelector.length > 0) {
+            var selectedStandard = $(selectedStandardSelector[0]);
+            details.code = selectedStandard.val();
+            details.name = selectedStandard.text();
+            details.price = selectedStandard.attr('data-price');
         }
 
-        var $option = $(selectedOptions[0]);
-        var code = parseInt($option.val());
-        if (isNaN(code)) {
-            return standard;
+        var cohortSelector = $container.find('input[name=cohorts]');
+        if (cohortSelector.length > 0) {
+            details.qty = parseInt($(cohortSelector[0]).val());
         }
 
-        standard.code = code;
-        standard.name = $option.text();
-        standard.price = parseInt($option.attr('data-price'));
 
-        return standard;
-    }
-    function getCohortSize($row) {
-        var $size = $($row.find('input[name=cohorts]')[0]);
-        var size = parseInt($size.val());
-        return isNaN(size) ? 0 : size;
+        if (isNaN(details.price)) {
+            details.price = 0;
+        }
+        if (isNaN(details.qty)) {
+            details.qty = 0;
+        }
+
+        return details;
     }
 })();

@@ -20,7 +20,7 @@
         <div class="column-full-width">
             <form method="post">
                 @for (var i = 0; i < Model.SelectedCohorts.Count; i++)
-            {
+                {
                 var cohort = Model.SelectedCohorts[i];
 
                     <div class="grid-row">
@@ -105,5 +105,5 @@
 @section scripts
 {
     <script src="@Url.Content("~/Scripts/forecasting-number-extension-1.0.js")"></script>
-    @*<script src="@Url.Content("~/Scripts/forecasting-trainingcourse-1.0.js")"></script>*@
+    <script src="@Url.Content("~/Scripts/forecasting-trainingcourse-1.0.js")"></script>
 }

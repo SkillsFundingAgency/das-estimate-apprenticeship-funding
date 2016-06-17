@@ -4,3 +4,8 @@
 .training-course .form-control.cohort-size {
     width:50px;
 }
+.training-course .grand-total {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}

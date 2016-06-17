@@ -2476,13 +2476,6 @@ table.sticky-header th {
     margin-bottom: 20px;
 }
 
-.cost {
-    text-align: right;
-}
-.grand-total {
-    font-weight:700; 
-    text-align: right;
-}
 .sunset-funds {
     display:block; 
     color:red;

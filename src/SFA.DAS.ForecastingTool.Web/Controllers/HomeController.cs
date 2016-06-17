@@ -54,7 +54,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
         public async Task<ActionResult> TrainingCourse(TrainingCourseViewModel model)
         {
             var standards = await _standardsRepository.GetAllAsync();
-            model.Standards = standards.OrderBy(s => s.Name).Select(s=>new StandardModel(s)).ToArray();
+            model.Standards = standards.OrderBy(s => s.Name).Select(s => new StandardModel(s)).ToArray();
 
             var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction);
             model.LevyFundingReceived = forecastResult.FundingReceived;
@@ -74,6 +74,12 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             model.Results = forecastResult.Breakdown;
             model.CanAddPeriod = model.Duration < 36;
             model.NextPeriodUrl = Request.Url.GetUrlToSegment(4) + (model.Duration + 12);
+
+            var years = model.Duration / 12;
+            model.TrainingCostForDuration = model.Results.Sum(x => x.TrainingOut);
+            model.LevyFundingReceivedForDuration = model.LevyFundingReceived * years;
+            model.FundingShortfallForDuration = model.Results.Sum(x => x.CoPaymentEmployer + x.CoPaymentGovernment);
+
             return View(model);
         }
     }

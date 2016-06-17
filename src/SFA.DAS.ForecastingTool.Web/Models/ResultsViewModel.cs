@@ -13,5 +13,8 @@ namespace SFA.DAS.ForecastingTool.Web.Models
         public string TopPercentageForDisplay { get; set; }
         public bool CanAddPeriod { get; set; }
         public string NextPeriodUrl { get; set; }
+        public decimal TrainingCostForDuration { get; set; }
+        public decimal LevyFundingReceivedForDuration { get; set; }
+        public decimal FundingShortfallForDuration { get; set; }
     }
 }

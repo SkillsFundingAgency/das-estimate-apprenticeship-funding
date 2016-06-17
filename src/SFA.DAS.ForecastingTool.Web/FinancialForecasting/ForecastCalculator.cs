@@ -82,6 +82,10 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     rollingBalance = sunsetLimit;
                 }
 
+                var shortfall = rollingBalance < 0 ? rollingBalance * -1 : 0;
+                var employerContribution = Math.Floor(shortfall*_configurationProvider.CopaymentPercentage);
+                var governmentContribution = shortfall - employerContribution;
+
                 months[i] = new MonthlyCashflow
                 {
                     Date = monthDate,
@@ -89,7 +93,8 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     TrainingOut = Math.Round(trainingCostForMonth, 2),
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
                     SunsetFunds = Math.Round(sunsetFunds, 2),
-                    CoPayment = rollingBalance < 0 ? Math.Floor((rollingBalance * -1) * _configurationProvider.CopaymentPercentage) : 0
+                    CoPaymentEmployer = employerContribution,
+                    CoPaymentGovernment = governmentContribution
                 };
 
                 // Have we just balanced the account?

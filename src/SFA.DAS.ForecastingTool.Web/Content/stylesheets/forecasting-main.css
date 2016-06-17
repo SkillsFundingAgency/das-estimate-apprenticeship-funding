@@ -2467,9 +2467,6 @@ input[type=number] {
     padding: 0 15px;
 }
 
-td.financial, th.financial {
-    text-align: right;
-}
 
 .error {
     margin-bottom: 20px;

@@ -16,7 +16,8 @@ namespace SFA.DAS.ForecastingTool.Web
                 "~/Content/stylesheets/govuk-template.css",
                 "~/Content/stylesheets/fonts.css",
                 "~/Content/stylesheets/das-controls.css",
-                "~/Content/stylesheets/forecasting-main.css"));
+                "~/Content/stylesheets/forecasting-main.css",
+                "~/Content/stylesheets/forecasting-results.css"));
         }
     }
 }

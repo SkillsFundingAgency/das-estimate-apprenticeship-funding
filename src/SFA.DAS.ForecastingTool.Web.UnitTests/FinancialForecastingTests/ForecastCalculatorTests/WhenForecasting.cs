@@ -385,23 +385,43 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         }
 
         [Test]
-        public async Task ThenItShouldHaveCopaymentOfTheDeficitAtCopaymentRate()
+        public async Task ThenItShouldHaveEmployerCopaymentOfTheDeficitAtCopaymentRate()
         {
             // Act
             var actual = (await _calculator.ForecastAsync(CoPayPaybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(4m, actual[1].CoPayment);
-            Assert.AreEqual(4m, actual[2].CoPayment);
-            Assert.AreEqual(4m, actual[3].CoPayment);
-            Assert.AreEqual(4m, actual[4].CoPayment);
-            Assert.AreEqual(4m, actual[5].CoPayment);
-            Assert.AreEqual(4m, actual[6].CoPayment);
-            Assert.AreEqual(4m, actual[7].CoPayment);
-            Assert.AreEqual(4m, actual[8].CoPayment);
-            Assert.AreEqual(4m, actual[9].CoPayment);
-            Assert.AreEqual(4m, actual[10].CoPayment);
-            Assert.AreEqual(4m, actual[11].CoPayment);
+            Assert.AreEqual(4m, actual[1].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[2].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[3].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[4].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[5].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[6].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[7].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[8].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[9].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[10].CoPaymentEmployer);
+            Assert.AreEqual(4m, actual[11].CoPaymentEmployer);
+        }
+
+        [Test]
+        public async Task ThenItShouldHaveGovernmentCopaymentOfTheDeficitAtCopaymentRate()
+        {
+            // Act
+            var actual = (await _calculator.ForecastAsync(CoPayPaybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
+
+            // Assert
+            Assert.AreEqual(38m, actual[1].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[2].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[3].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[4].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[5].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[6].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[7].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[8].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[9].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[10].CoPaymentGovernment);
+            Assert.AreEqual(38m, actual[11].CoPaymentGovernment);
         }
 
         [Test]

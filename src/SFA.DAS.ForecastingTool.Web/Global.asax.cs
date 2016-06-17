@@ -1,7 +1,9 @@
 ﻿using System.Threading;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.ApplicationInsights.Extensibility;
 
 namespace SFA.DAS.ForecastingTool.Web
 {
@@ -9,6 +11,8 @@ namespace SFA.DAS.ForecastingTool.Web
     {
         protected void Application_Start()
         {
+            TelemetryConfiguration.Active.InstrumentationKey = WebConfigurationManager.AppSettings["AppInsights:InstrumentationKey"];
+
             var container = DependencyConfig.RegisterDependencies();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes, container);

@@ -9,23 +9,18 @@
                 <p class="error-message">@Model.ErrorMessage</p>
             </div>
         }
-        <div class="warning">
-            <p class="warning-message">You can skip this step if you don’t have this information.</p>    
-        </div>
         
-        <p>This is a calculation based on the proportion of your workforce who lived in England in the previous tax year.</p>
         <form method="post">
             <div class="form-group">
                 <label class="form-label-bold">
-                    <span>Estimated English percentage</span>
-                    <div class="form-hint">Change this to your English percentage, if you are unsure leave it at 100%</div>
+                    <span>Roughly, what percentage of your employees live in England?</span>
+                    <div class="form-hint">If you're unsure enter 100</div>
                 </label>
-                <input name="englishFraction" type="number" class="form-control" aria-label="Estimate of percentage of workforce in England (1-100)"
-                       value="@(Model.EnglishFraction > 0 ? Model.EnglishFraction.ToString() : "100")" min="1" max="100" style="width:50px;" />
+                <input name="englishFraction" type="number" class="form-control"
+                       value="@(Model.EnglishFraction > 0 ? Model.EnglishFraction.ToString() : "")" min="1" max="100" style="width:50px;" />
                 <span>%</span>
             </div>
             <input name="englishFractionSubmit" type="submit" class="button" value="Next" />
-            @*<input name="englishFractionSkip" type="submit" class="button button-secondary" value="Skip" />*@
         </form>
 
 

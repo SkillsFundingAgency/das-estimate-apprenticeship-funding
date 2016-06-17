@@ -202,6 +202,7 @@
     <Content Include="Content\stylesheets\fonts.css" />
     <Content Include="Content\stylesheets\forecasting-main.css" />
     <Content Include="Content\stylesheets\forecasting-results.css" />
+    <Content Include="Content\stylesheets\forecasting-trainingcourse.css" />
     <Content Include="Content\stylesheets\govuk-template-ie6.css" />
     <Content Include="Content\stylesheets\govuk-template-ie7.css" />
     <Content Include="Content\stylesheets\govuk-template-ie8.css" />

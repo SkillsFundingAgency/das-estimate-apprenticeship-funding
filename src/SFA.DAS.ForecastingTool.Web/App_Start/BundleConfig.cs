@@ -18,6 +18,7 @@ namespace SFA.DAS.ForecastingTool.Web
                 "~/Content/stylesheets/fonts.css",
                 "~/Content/stylesheets/das-controls.css",
                 "~/Content/stylesheets/forecasting-main.css",
+                "~/Content/stylesheets/forecasting-trainingcourse.css",
                 "~/Content/stylesheets/forecasting-results.css"));
         }
     }

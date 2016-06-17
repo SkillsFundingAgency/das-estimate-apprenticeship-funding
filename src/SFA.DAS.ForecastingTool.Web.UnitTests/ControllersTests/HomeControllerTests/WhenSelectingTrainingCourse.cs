@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.ForecastingTool.Web.Controllers;
+using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -12,6 +13,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
     {
         private Standard[] _standards;
         private Mock<IStandardsRepository> _standardsRepository;
+        private Mock<IForecastCalculator> _forecastCalculator;
         private HomeController _controller;
         private TrainingCourseViewModel _model;
 
@@ -27,9 +29,17 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
             _standardsRepository = new Mock<IStandardsRepository>();
             _standardsRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(_standards));
 
-            _controller = new HomeController(_standardsRepository.Object, null, null);
+            _forecastCalculator = new Mock<IForecastCalculator>();
+            _forecastCalculator.Setup(c => c.ForecastAsync(12345678, 100))
+                .Returns(Task.FromResult(new ForecastResult {FundingReceived = 987654}));
 
-            _model = new TrainingCourseViewModel();
+            _controller = new HomeController(_standardsRepository.Object, _forecastCalculator.Object, null);
+
+            _model = new TrainingCourseViewModel
+            {
+                Paybill = 12345678,
+                EnglishFraction = 100
+            };
         }
 
         [Test]

@@ -54,15 +54,18 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
         public async Task<ActionResult> TrainingCourse(TrainingCourseViewModel model)
         {
             var standards = await _standardsRepository.GetAllAsync();
-
             model.Standards = standards.OrderBy(s => s.Name).Select(s=>new StandardModel(s)).ToArray();
+
+            var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction);
+            model.LevyFundingReceived = forecastResult.FundingReceived;
+            model.TopPercentageForDisplay = forecastResult.UserFriendlyTopupPercentage.ToString("0");
 
             return View(model);
         }
 
         public async Task<ActionResult> Results(ResultsViewModel model)
         {
-            var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction,
+            var forecastResult = await _forecastCalculator.DetailedForecastAsync(model.Paybill, model.EnglishFraction,
                 model.SelectedCohorts.ToArray(), model.Duration);
 
             model.LevyAmount = forecastResult.LevyPaid;

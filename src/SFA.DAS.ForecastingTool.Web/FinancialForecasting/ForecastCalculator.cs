@@ -19,8 +19,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
         }
 
 
-
-        public async Task<ForecastResult> ForecastAsync(long paybill, int englishFraction, CohortModel[] cohorts, int duration)
+        public async Task<ForecastResult> ForecastAsync(long paybill, int englishFraction)
         {
             var monthlyLevyPaid = Math.Floor(((paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance) / 12);
             if (monthlyLevyPaid < 0) // Non-levy payer
@@ -32,12 +31,23 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var decimalEnglishFraction = englishFraction / 100m;
             var fundingReceived = Math.Ceiling((monthlyLevyPaid * decimalEnglishFraction) * _configurationProvider.LevyTopupPercentage) * 12;
 
-            var breakdown = await CalculateBreakdown(cohorts, fundingReceived, duration);
-
             return new ForecastResult
             {
                 FundingReceived = fundingReceived,
                 LevyPaid = levyPaid,
+                UserFriendlyTopupPercentage = (int)Math.Round((_configurationProvider.LevyTopupPercentage - 1) * 100, 0)
+            };
+        }
+        public async Task<DetailedForecastResult> DetailedForecastAsync(long paybill, int englishFraction, CohortModel[] cohorts, int duration)
+        {
+            var forecastResult = await ForecastAsync(paybill, englishFraction);
+
+            var breakdown = await CalculateBreakdown(cohorts, forecastResult.FundingReceived, duration);
+
+            return new DetailedForecastResult
+            {
+                FundingReceived = forecastResult.FundingReceived,
+                LevyPaid = forecastResult.LevyPaid,
                 UserFriendlyTopupPercentage = (int)Math.Round((_configurationProvider.LevyTopupPercentage - 1) * 100, 0),
                 Breakdown = breakdown
             };

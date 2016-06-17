@@ -10,18 +10,25 @@
                     <p class="error-message">@Model.ErrorMessage</p>
                 </div>
             }
-            <div class="warning">
-                <p class="warning-message">You can skip this step if you don’t have this information.</p>
-            </div>
-            <p>Enter the type of apprenticeship training and number of apprentices you are taking on.</p>
+            <p>We estimate the amount you’ll have to spend on apprenticeships after paying your levy is <span>@Model.LevyFundingReceived.ToString("C0")</span></p>
+            <details style="margin-bottom: 20px" role="group">
+                <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">How this is worked out</span></summary>
+                <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+                    <p>
+                        £15,000 allowance is applied to 0.5% of your gross annual payroll. English percentage applied. @(Model.TopPercentageForDisplay)% government top-up applied
+                    </p>
+                </div>
+            </details>
+            <p>You can now estimate how much you’ll be spending on apprenticeships every month or you can skip this step</p>
         </div>
     </div>
+    <hr />
     <div class="grid-row">
         <div class="column-full-width">
             <form method="post">
                 @for (var i = 0; i < Model.SelectedCohorts.Count; i++)
                 {
-                var cohort = Model.SelectedCohorts[i];
+                    var cohort = Model.SelectedCohorts[i];
 
                     <div class="grid-row">
                         <div class="column-two-thirds">

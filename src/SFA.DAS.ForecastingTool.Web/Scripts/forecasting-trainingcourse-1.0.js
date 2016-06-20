@@ -13,7 +13,7 @@
     }
 
     function addCostElement($container) {
-        $container.append($('<div style="font-weight:700;">Cost</div><div class="cost">£<span>0</span></div>'));
+        $container.append($('<div style="font-weight:700;">Cost</div><div class="cost">£<span class="price">0</span> over <span class="duration">0</span> months</div>'));
         updateApprenticeshipCost($container);
     }
 
@@ -34,9 +34,10 @@
     }
 
     function updateApprenticeshipCost($container) {
-        var cost = getApprenticeshipCost($container);
+        var priceAndDuration = getApprenticeshipPriceAndDuration($container);
 
-        $($container.find('div.cost > span')[0]).text(cost.format(0));
+        $($container.find('div.cost > span.price')[0]).text(priceAndDuration.price.format(0));
+        $($container.find('div.cost > span.duration')[0]).text(priceAndDuration.duration);
     }
 
     function updateGrandTotal() {
@@ -55,12 +56,20 @@
         var apprenticeshipDetails = getApprenticeshipDetails($container);
         return apprenticeshipDetails.price * apprenticeshipDetails.qty;
     }
+    function getApprenticeshipPriceAndDuration($container) {
+        var apprenticeshipDetails = getApprenticeshipDetails($container);
+        return {
+            price: apprenticeshipDetails.price * apprenticeshipDetails.qty,
+            duration: apprenticeshipDetails.duration
+        };
+    }
 
     function getApprenticeshipDetails($container) {
         var details = {
             code: '',
             name: '',
             price: 0,
+            duration: 0,
             qty: 0,
             startDate: ''
         };
@@ -70,7 +79,8 @@
             var selectedStandard = $(selectedStandardSelector[0]);
             details.code = selectedStandard.val();
             details.name = selectedStandard.text();
-            details.price = selectedStandard.attr('data-price');
+            details.price = parseInt(selectedStandard.attr('data-price'));
+            details.duration = parseInt(selectedStandard.attr('data-duration'));
         }
 
         var cohortSelector = $container.find('input[name=cohorts]');
@@ -81,6 +91,9 @@
 
         if (isNaN(details.price)) {
             details.price = 0;
+        }
+        if (isNaN(details.duration)) {
+            details.duration = 0;
         }
         if (isNaN(details.qty)) {
             details.qty = 0;

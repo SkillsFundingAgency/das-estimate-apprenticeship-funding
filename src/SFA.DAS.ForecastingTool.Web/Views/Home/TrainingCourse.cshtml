@@ -51,11 +51,11 @@
                                     {
                                         if (standard.Code == cohort.Code)
                                         {
-                                            <option value="@standard.Code" selected="selected" data-price="@standard.Price">@standard.Name</option>
+                                            <option value="@standard.Code" selected="selected" data-price="@standard.Price" data-duration="@standard.Duration">@standard.Name</option>
                                         }
                                         else
                                         {
-                                            <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
+                                            <option value="@standard.Code" data-price="@standard.Price" data-duration="@standard.Duration">@standard.Name</option>
                                         }
                                     }
                                 </select>
@@ -99,7 +99,7 @@
                                 <option value="noselection">Please choose...</option>
                                 @foreach (var standard in Model.Standards)
                                 {
-                                    <option value="@standard.Code" data-price="@standard.Price">@standard.Name</option>
+                                    <option value="@standard.Code" data-price="@standard.Price" data-duration="@standard.Duration">@standard.Name</option>
                                 }
                             </select>
                         </div>

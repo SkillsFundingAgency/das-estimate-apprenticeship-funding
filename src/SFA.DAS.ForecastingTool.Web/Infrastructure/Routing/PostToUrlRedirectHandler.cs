@@ -110,7 +110,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         private void TrainingCourseAdd(HttpContext context, NameValueCollection form, Uri currentUrl)
         {
             var cohorstSegment = GetCohortsUrlSegment(form);
-            Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}/");
+            Redirect(context, $"{currentUrl.GetUrlToSegment(3)}{EncodeFormEntryForUrl(cohorstSegment)}/#next-apprenticeship");
         }
         private void TrainingCourseDelete(HttpContext context, NameValueCollection form, Uri currentUrl)
         {

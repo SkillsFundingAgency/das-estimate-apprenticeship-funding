@@ -65,8 +65,21 @@
                                 <input name="cohorts" id="cohorts@(i)" type="number" class="form-control cohort-size" aria-label="Number of apprentices" value="@cohort.Qty" />
                             </div>
                             <div class="form-group">
-                                <label class="form-label-bold" for="startDate@(i)">Start date</label>
-                                <input name="startDate" id="startDate@(i)" type="date" class="form-control" aria-label="Start date" value="@cohort.StartDate.ToString("yyyy-MM-dd")" />
+                                <fieldset>
+                                    <legend class="form-label-bold">Start date</legend>
+                                    <div class="form-date">
+                                        <div class="form-group form-group-month">
+                                            <label for="startDateMonth@(i)">Month</label>
+                                            <input name="startDateMonth" id="startDateMonth@(i)" type="number" pattern="[0-9]*" min="0" max="12" class="form-control"
+                                                   placeholder="MM" value="@cohort.StartDate.Month.ToString("00")">
+                                        </div>
+                                        <div class="form-group form-group-year">
+                                            <label for="startDateYear@(i)">Year</label>
+                                            <input name="startDateYear" id="startDateYear@(i)" type="number" pattern="[0-9]*" min="17" max="99" class="form-control"
+                                                   placeholder="YY" value="@(cohort.StartDate.Year - 2000)">
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </div>
                         </div>
                         <div class="column-one-third" style="padding-top: 50px">
@@ -95,8 +108,21 @@
                             <input name="cohorts" id="cohortsNew" type="number" class="form-control cohort-size" aria-label="Number of apprentices" />
                         </div>
                         <div class="form-group">
-                            <label class="form-label-bold" for="startDateNew">Start date</label>
-                            <input name="startDate" id="startDateNew" type="date" class="form-control" aria-label="Start date" value="2017-04-01" />
+                            <fieldset>
+                                <legend class="form-label-bold">Start date</legend>
+                                <div class="form-date">
+                                    <div class="form-group form-group-month">
+                                        <label for="startDateMonth">Month</label>
+                                        <input name="startDateMonth" id="startDateMonth" type="number" pattern="[0-9]*" min="0" max="12" class="form-control" 
+                                               placeholder="MM" value="04">
+                                    </div>
+                                    <div class="form-group form-group-year">
+                                        <label for="startDateYear">Year</label>
+                                        <input name="startDateYear" id="startDateYear" type="number" pattern="[0-9]*" min="17" max="99" class="form-control" 
+                                               placeholder="YY" value="17">
+                                    </div>
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                     <div class="column-one-third" style="padding-top: 50px">

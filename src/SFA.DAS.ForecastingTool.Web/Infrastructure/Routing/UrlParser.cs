@@ -173,7 +173,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             
             for (var i = 0; i < standards.Length; i++)
             {
-                var standardMatch = Regex.Match(standards[i], @"^(\d+)x(\d+)-(\d{4})-(\d{2})-(\d{2})$");
+                var standardMatch = Regex.Match(standards[i], @"^(\d+)x(\d+)-(\d{2})(\d{2})$");
                 DateTime standardStartDate;
                 int standardCode;
                 int standardQty;
@@ -183,9 +183,13 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     standardCode = int.Parse(standardMatch.Groups[2].Value);
                     try
                     {
-                        standardStartDate = new DateTime(int.Parse(standardMatch.Groups[3].Value),
-                            int.Parse(standardMatch.Groups[4].Value),
-                            int.Parse(standardMatch.Groups[5].Value));
+                        standardStartDate = new DateTime(2000 + int.Parse(standardMatch.Groups[4].Value),
+                            int.Parse(standardMatch.Groups[3].Value),
+                            1);
+                        if (standardStartDate.Year < 2017)
+                        {
+                            throw new ArgumentOutOfRangeException($"Year {standardStartDate.Year} is before 2017");
+                        }
                     }
                     catch (ArgumentOutOfRangeException)
                     {

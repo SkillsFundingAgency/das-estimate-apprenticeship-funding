@@ -170,7 +170,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         {
             var cohortsEntry = GetFormValue(form, "cohorts", "0").Split(',');
             var standardSelection = GetFormValue(form, "standard", "0").Split(',');
-            var startDateEntry = GetFormValue(form, "startDate", "2017-04-01").Split(',');
+            var startDateMonthEntry = GetFormValue(form, "startDateMonth", "04").Split(',');
+            var startDateYearEntry = GetFormValue(form, "startDateYear", "17").Split(',');
 
             var segmentbuilder = new StringBuilder();
 
@@ -184,7 +185,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 {
                     segmentbuilder.Append("_");
                 }
-                segmentbuilder.Append($"{cohortsEntry[i]}x{standardSelection[i]}-{startDateEntry[i]}");
+                segmentbuilder.Append($"{cohortsEntry[i]}x{standardSelection[i]}-{startDateMonthEntry[i]}{startDateYearEntry[i]}");
             }
 
             return segmentbuilder.ToString();

@@ -185,7 +185,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 {
                     segmentbuilder.Append("_");
                 }
-                segmentbuilder.Append($"{cohortsEntry[i]}x{standardSelection[i]}-{startDateMonthEntry[i]}{startDateYearEntry[i]}");
+
+                segmentbuilder.Append($"{cohortsEntry[i]}x{standardSelection[i]}-{startDateMonthEntry[i].PadLeft(2, '0')}{startDateYearEntry[i]}");
             }
 
             return segmentbuilder.ToString();

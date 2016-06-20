@@ -260,6 +260,8 @@
     <Compile Include="Infrastructure\FileSystem\IFileInfo.cs" />
     <Compile Include="Infrastructure\FileSystem\IFileSystem.cs" />
     <Compile Include="Infrastructure\Routing\ForecastingMvcHandler.cs" />
+    <Compile Include="Infrastructure\Routing\CatchAllHttpHandler.cs" />
+    <Compile Include="Infrastructure\Routing\CatchAllRouteHandler.cs" />
     <Compile Include="Infrastructure\Routing\ForecastingRouteHandler.cs" />
     <Compile Include="Infrastructure\Routing\ParsedUrl.cs" />
     <Compile Include="Infrastructure\Routing\PostToUrlRedirectHandler.cs" />

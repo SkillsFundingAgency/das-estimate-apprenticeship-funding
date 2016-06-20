@@ -18,10 +18,12 @@ namespace SFA.DAS.ForecastingTool.Web
             routes.Add(customRoute);
 
             routes.MapRoute(
-                name: "Default",
+                name: "Welcome",
                 url: "",
                 defaults: new { controller = "Home", action = "Welcome", id = UrlParameter.Optional }
             );
+
+            routes.Add(new Route("{*url}", new CatchAllRouteHandler()));
         }
     }
 }

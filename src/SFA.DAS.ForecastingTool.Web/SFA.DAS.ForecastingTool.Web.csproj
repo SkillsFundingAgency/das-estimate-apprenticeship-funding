@@ -253,6 +253,7 @@
     <Compile Include="Infrastructure\Configuration\AppSettingsConfigurationProvider.cs" />
     <Compile Include="Infrastructure\Configuration\IConfigurationProvider.cs" />
     <Compile Include="Infrastructure\DependencyResolution\ContainerBuilder.cs" />
+    <Compile Include="Infrastructure\EuCookieMessage\EuCookieMessageManager.cs" />
     <Compile Include="Infrastructure\FileSystem\DiskFileInfo.cs" />
     <Compile Include="Infrastructure\FileSystem\DiskFileSystem.cs" />
     <Compile Include="Infrastructure\FileSystem\IFileInfo.cs" />

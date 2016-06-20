@@ -11,7 +11,7 @@
         {
             <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of apprenticeship funding per year.</p>
             @Html.Partial("_HowLevyCalculated", Model)
-            <p>Over the next @Model.Duration months you will receive <span class="bold-medium">@Model.LevyFundingReceivedForDuration.ToString("C0")</span> and your training will cost <span class="bold-medium">@Model.TrainingCostForDuration.ToString("C0")</span>, which leaves a shortfall of <span class="bold-medium">@Model.FundingShortfallForDuration.ToString("C0")</span>. This makes you eligible for co-funding.  Using co-funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
+            <p>Over the next @Model.Duration months, you will have a shortfall. This makes you eligible for co-funding. Using co-funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
         }
         else
         {

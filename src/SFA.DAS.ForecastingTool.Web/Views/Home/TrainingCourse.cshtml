@@ -1,4 +1,5 @@
-﻿@model SFA.DAS.ForecastingTool.Web.Models.TrainingCourseViewModel
+﻿@using System.Web.Optimization
+@model SFA.DAS.ForecastingTool.Web.Models.TrainingCourseViewModel
 
 <div class="training-course">
     <div class="grid-row">
@@ -120,6 +121,5 @@
 
 @section scripts
 {
-    <script src="@Url.Content("~/Scripts/forecasting-number-extension-1.0.js")"></script>
-    <script src="@Url.Content("~/Scripts/forecasting-trainingcourse-1.0.js")"></script>
+    @Scripts.Render("~/bundles/training-course")
 }

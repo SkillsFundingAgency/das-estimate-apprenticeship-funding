@@ -2,7 +2,7 @@
 
 <div class="grid-row">
     <div class="column-two-thirds">
-        <h2 class="heading-xlarge">Enter your payroll</h2>
+        <h2 class="heading-xlarge">Enter your UK payroll</h2>
         @if (!string.IsNullOrEmpty(Model.ErrorMessage))
         {
             <div class="error">
@@ -13,7 +13,7 @@
             @Html.AntiForgeryToken()
             <div class="form-group">
                 <label class="form-label-bold">
-                    <span>Please enter your gross annual payroll</span>
+                    <span>Please enter your gross annual UK payroll</span>
                 </label>
 
                 <span>£</span>

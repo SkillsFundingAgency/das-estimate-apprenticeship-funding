@@ -24,7 +24,7 @@
 
     function attachHandlers($container) {
         $container.find('select[name=standard]').change(inputChangedHandler);
-        $container.find('input[name=cohorts]').change(inputChangedHandler);
+        $container.find('input[name=cohorts]').on('input', inputChangedHandler);
     }
 
     function inputChangedHandler() {

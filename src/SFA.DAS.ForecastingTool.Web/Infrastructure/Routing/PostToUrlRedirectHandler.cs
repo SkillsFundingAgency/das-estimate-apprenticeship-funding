@@ -4,11 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
+using System.Web.Helpers;
+using System.Web.Mvc;
+using NLog;
 
 namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 {
     public class PostToUrlRedirectHandler : IHttpHandler
     {
+        private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
+
         private readonly ActionHandlerMapping[] _actionHandlers;
 
         public PostToUrlRedirectHandler()
@@ -25,20 +30,35 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             };
         }
 
+
         public void ProcessRequest(HttpContext context)
         {
             var form = context.Request.Form;
+            var currentUrl = context.Request.Url;
+
             var handler = GetHandler(form);
             if (handler == null)
             {
+                Logger.Warn($"Invalid form post received to {currentUrl} from {context.Request.UserHostAddress}");
+
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return;
             }
 
-            var currentUrl = context.Request.Url;
+            try
+            {
+                AntiForgery.Validate();
+            }
+            catch (HttpAntiForgeryException ex)
+            {
+                Logger.Warn(ex, $"Request received to {currentUrl} from {context.Request.UserHostAddress} with invalid anti-forgery token.");
+
+                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return;
+            }
+
             handler.Handler.Invoke(context, form, currentUrl);
         }
-
 
         public bool IsReusable { get; } = false;
 

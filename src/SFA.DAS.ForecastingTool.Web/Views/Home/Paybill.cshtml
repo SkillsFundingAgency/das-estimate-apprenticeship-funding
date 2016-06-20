@@ -11,12 +11,13 @@
         }
         <p>Please enter your gross annual payroll</p>
         <form method="post">
+            @Html.AntiForgeryToken()
             <div class="form-group">
                 <span>£</span>
                 <input name="paybill" type="number" class="form-control-1-3" aria-label="Annual payroll in whole pounds"
-                       value="@(Model.Paybill > 0 ? Model.Paybill.ToString() : "")" />
+                       value="@(Model.Paybill > 0 ? Model.Paybill.ToString() : "")"/>
             </div>
-            <input name="paybillSubmit" type="submit" class="button" value="Next" />
+            <input name="paybillSubmit" type="submit" class="button" value="Next"/>
         </form>
     </div>
 </div>

@@ -34,6 +34,7 @@
     <div class="grid-row">
         <div class="column-full-width">
             <form method="post">
+                @Html.AntiForgeryToken()
                 @for (var i = 0; i < Model.SelectedCohorts.Count; i++)
                 {
                     var cohort = Model.SelectedCohorts[i];

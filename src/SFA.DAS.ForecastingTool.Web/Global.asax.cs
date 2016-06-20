@@ -13,6 +13,8 @@ namespace SFA.DAS.ForecastingTool.Web
         {
             TelemetryConfiguration.Active.InstrumentationKey = WebConfigurationManager.AppSettings["AppInsights:InstrumentationKey"];
 
+            MvcHandler.DisableMvcResponseHeader = true;
+
             var container = DependencyConfig.RegisterDependencies();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes, container);

@@ -22,12 +22,12 @@
                         </p>
                     </div>
                 </details>
-                <p>You can now estimate how much you’ll be spending on apprenticeships every month or you can <a href="0x0/12">skip this step</a></p>
+                <p class="no-bottom-margin">You can now estimate how much you’ll be spending on apprenticeships every month or you can <a href="0x0/12">skip this step</a></p>
             }
             else
             {
                 <p>You can now estimate the cost of your apprenticeships.You’ll only need to contribute 10%, the government will pay the rest.</p>
-                <p>Or you can <a href="0x0/12">skip this step</a></p>
+                <p class="no-bottom-margin">Or you can <a href="0x0/12">skip this step</a></p>
             }
         </div>
     </div>
@@ -44,7 +44,7 @@
 
                     <div class="grid-row">
                         <div class="column-two-thirds">
-                            <h3 class="heading-medium">Apprenticeship @(i + 1)</h3>
+                            <h3 class="heading-medium no-margin">Apprenticeship @(i + 1)</h3>
 
                             <div class="form-group">
                                 <label class="form-label-bold" for="standard@(i)">Type of apprenticeship training</label>
@@ -94,7 +94,7 @@
                 <div class="grid-row">
                     <a name="next-apprenticeship"></a>
                     <div class="column-two-thirds">
-                        <h3 class="heading-medium">Apprenticeship @(Model.SelectedCohorts.Count + 1)</h3>
+                        <h3 class="heading-medium no-top-margin">Apprenticeship @(Model.SelectedCohorts.Count + 1)</h3>
 
                         <div class="form-group">
                             <label class="form-label-bold" for="standardNew">Type of apprenticeship training</label>
@@ -134,7 +134,7 @@
                 <hr />
 
                 <input name="trainingCourseAdd" type="submit" class="button button-grey" value="Add another" />
-                <hr />
+                <hr style="margin-top:32px;" />
 
                 <div class="form-group" style="margin-top: 15px;">
                     <input name="trainingCourseSubmit" type="submit" class="button" value="Estimate" />

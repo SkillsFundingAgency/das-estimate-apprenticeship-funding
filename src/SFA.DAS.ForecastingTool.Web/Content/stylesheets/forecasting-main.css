@@ -2501,3 +2501,11 @@ table.sticky-header th {
     color: #000;
     box-shadow: 0 2px 0 #666;
 }
+
+
+.no-top-margin {
+    margin-top: 0;
+}
+.no-bottom-margin {
+    margin-bottom: 0;
+}

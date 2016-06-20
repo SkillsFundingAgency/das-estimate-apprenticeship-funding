@@ -12,7 +12,7 @@
             }
             @if (Model.LevyFundingReceived > 0)
             {
-                <p>We estimate the amount you’ll have to spend on apprenticeships after paying your levy is <span>@Model.LevyFundingReceived.ToString("C0")</span></p>
+                <p>We estimate the amount you’ll have to spend on apprenticeships after paying your levy is <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span></p>
                 <details style="margin-bottom: 20px" role="group">
                     <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">How this is worked out</span></summary>
                     <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">

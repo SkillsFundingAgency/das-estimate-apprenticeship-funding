@@ -221,6 +221,7 @@
     <Content Include="error\not-found.htm" />
     <Content Include="Global.asax" />
     <Content Include="favicon.ico" />
+    <Content Include="Scripts\details.polyfill.js" />
     <Content Include="Scripts\forecasting-trainingcourse-1.0.js" />
     <Content Include="Scripts\govuk-template.js" />
     <Content Include="Scripts\ie.js" />

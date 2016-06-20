@@ -11,6 +11,7 @@ namespace SFA.DAS.ForecastingTool.Web
                         "~/Scripts/jquery.floatThead.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+                "~/Scripts/details.polyfill.js",
                 "~/scripts/govuk-template.js"));
 
             bundles.Add(new StyleBundle("~/Content/stylesheets/bundled-css").Include(

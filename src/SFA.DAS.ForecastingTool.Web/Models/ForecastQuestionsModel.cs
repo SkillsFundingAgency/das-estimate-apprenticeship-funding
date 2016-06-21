@@ -23,7 +23,7 @@ namespace SFA.DAS.ForecastingTool.Web.Models
             {
                 return string.Empty;
             }
-            return SelectedCohorts.Select(x => $"{x.Qty}x{x.Code}-{x.StartDate.ToString("yyyy-MM-dd")}")
+            return SelectedCohorts.Select(x => $"{x.Qty}x{x.Code}-{x.StartDate.ToString("MMyy")}")
                 .Aggregate((x, y) => $"{x}_{y}");
         }
     }

@@ -95,6 +95,7 @@
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingByCode.cs" />
     <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingAll.cs" />
     <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingByCode.cs" />
+    <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingByName.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

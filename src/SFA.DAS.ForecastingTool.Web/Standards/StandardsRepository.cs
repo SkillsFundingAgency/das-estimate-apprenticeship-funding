@@ -50,5 +50,11 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
             var standards = await GetAllAsync();
             return standards.SingleOrDefault(s => s.Code == code);
         }
+
+        public async Task<Standard> GetByName(string name)
+        {
+            var standards = await GetAllAsync();
+            return standards.SingleOrDefault(s => s.Name == name);
+        }
     }
 }

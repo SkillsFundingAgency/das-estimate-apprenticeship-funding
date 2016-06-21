@@ -6,5 +6,6 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
     {
         Task<Standard[]> GetAllAsync();
         Task<Standard> GetByCodeAsync(int code);
+        Task<Standard> GetByName(string name);
     }
 }

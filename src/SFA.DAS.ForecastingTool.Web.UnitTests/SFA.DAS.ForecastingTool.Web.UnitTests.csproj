@@ -93,6 +93,7 @@
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\CachedStandardsRepositoryTestsBase.cs" />
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingAll.cs" />
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingByCode.cs" />
+    <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingByName.cs" />
     <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingAll.cs" />
     <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingByCode.cs" />
     <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingByName.cs" />

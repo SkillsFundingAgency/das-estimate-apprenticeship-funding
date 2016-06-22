@@ -2502,13 +2502,6 @@ table.sticky-header th {
     box-shadow: 0 2px 0 #666;
 }
 
-
-.no-top-margin {
-:hov
-
-
-.cls
-
 element.style {
     display: none;
 }
@@ -2535,6 +2528,7 @@ img[Attributes Style] {
     width: 35px;
     height: 31px;
 }
-.no-bottom-margin {
+
 #global-header #logo {
+    background-image: none;
 }

@@ -84,5 +84,10 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             model.LevyPercentage = _configurationProvider.LevyPercentage;
             return View(model);
         }
+
+        public ActionResult Privacy()
+        {
+            return View();
+        }
     }
 }

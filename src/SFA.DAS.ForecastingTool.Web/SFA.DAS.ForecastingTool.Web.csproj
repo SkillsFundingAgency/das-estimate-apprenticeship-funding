@@ -300,6 +300,7 @@
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Home\_HowLevyCalculated.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

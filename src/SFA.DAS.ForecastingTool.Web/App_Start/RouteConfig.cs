@@ -23,7 +23,16 @@ namespace SFA.DAS.ForecastingTool.Web
                 defaults: new { controller = "Home", action = "Welcome", id = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+                name: "Privacy",
+                url: "Privacy",
+                defaults: new { controller = "Home", action = "Privacy" }
+                );
+
+
             routes.Add(new Route("{*url}", new CatchAllRouteHandler()));
+
+            
         }
     }
 }

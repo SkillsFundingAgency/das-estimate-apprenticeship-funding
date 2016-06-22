@@ -33,6 +33,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
             return new ForecastResult
             {
+                MonthlyLevyPaid = monthlyLevyPaid,
                 FundingReceived = fundingReceived,
                 LevyPaid = levyPaid,
                 UserFriendlyTopupPercentage = (int)Math.Round((_configurationProvider.LevyTopupPercentage - 1) * 100, 0)
@@ -46,6 +47,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
             return new DetailedForecastResult
             {
+                MonthlyLevyPaid = forecastResult.MonthlyLevyPaid,
                 FundingReceived = forecastResult.FundingReceived,
                 LevyPaid = forecastResult.LevyPaid,
                 UserFriendlyTopupPercentage = (int)Math.Round((_configurationProvider.LevyTopupPercentage - 1) * 100, 0),

@@ -3,9 +3,10 @@
 <details style="margin-bottom: 20px" role="group">
     <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">How this is worked out</span></summary>
     <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
-        <p>£15,000 allowance is applied to 0.5% of your gross annual payroll, divided by 12 and rounded down to the nearest pound. This gives the monthly levy payment of @((Model.LevyAmount / 12).ToString("C0"))</p>
-        <p>The monthly levy payment is multiplied by 12 to give the annual levy payment of @Model.LevyAmount.ToString("C0")</p>
-        <p>The monthly levy payment has the @(Model.TopPercentageForDisplay)% topup applied and rounded up to the nearest pound, to give the monthly apprenticeship funding of @((Model.LevyFundingReceived/ 12).ToString("C0"))</p>
-        <p>The monthly apprenticeship funding is multiplied by 12 to give the annual apprenticeship funding of @Model.LevyFundingReceived.ToString("C0")</p>
+        <p>The amount you have available to spend is calculated on a monthly basis as follows:</p>
+        <p>@Model.Allowance.ToString("C0") allowance is applied to 0.5% of your gross annual payroll, divided by 12 and rounded down to the nearest pound. This gives the monthly levy payment of @((Model.LevyAmount / 12).ToString("C0"))</p>
+        <p>Your English percentage of @Model.EnglishFraction% is applied to @((Model.MonthlyLevyPaid).ToString("C0")) (rounded down)</p>
+        <p>Add government top-up of @(Model.TopPercentageForDisplay)% = a monthly available spend of @((Model.LevyFundingReceived / 12).ToString("C0")) (rounded up)</p>
+            
     </div>
 </details>

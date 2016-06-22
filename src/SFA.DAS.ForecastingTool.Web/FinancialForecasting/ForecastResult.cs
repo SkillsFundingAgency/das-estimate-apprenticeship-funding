@@ -5,5 +5,6 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
         public decimal FundingReceived { get; set; }
         public decimal LevyPaid { get; set; }
         public int UserFriendlyTopupPercentage { get; set; }
+        public decimal MonthlyLevyPaid { get; set; }
     }
 }

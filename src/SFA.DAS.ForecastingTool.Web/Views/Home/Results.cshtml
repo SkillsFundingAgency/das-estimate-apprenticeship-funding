@@ -5,13 +5,13 @@
         <h2 class="heading-xlarge">Your estimated apprenticeship funding</h2>
         @if (Model.LevyFundingReceived == 0)
         {
-            <p>You’re eligible for co-funding.  Using co-funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
+            <p>You’re eligible for joint funding. This is sometimes known as co-funding. Using joint funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
         }
         else if (Model.Results.Any(x => x.CoPaymentEmployer > 0))
         {
             <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of apprenticeship funding per year.</p>
             @Html.Partial("_HowLevyCalculated", Model)
-            <p>Over the next @Model.Duration months, you will have a shortfall. This makes you eligible for co-funding. Using co-funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
+            <p>Over the next @Model.Duration months, you will have a shortfall. This makes you eligible for joint funding. This is sometimes known as co-funding. Using joint funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
         }
         else
         {
@@ -34,7 +34,7 @@
                 <tr>
                     <th>Date</th>
                     <th class="financial">Levy credit</th>
-                    <th class="financial">Training debit</th>
+                    <th class="financial">Cost of Training</th>
                     <th class="financial co-funding co-funding-emp">Your contribution</th>
                     <th class="financial co-funding co-funding-govt">Govt contribution</th>
                     <th class="financial">Balance</th>

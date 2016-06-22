@@ -16,5 +16,8 @@ namespace SFA.DAS.ForecastingTool.Web.Models
         public decimal TrainingCostForDuration { get; set; }
         public decimal LevyFundingReceivedForDuration { get; set; }
         public decimal FundingShortfallForDuration { get; set; }
+        public decimal MonthlyLevyPaid { get; set; }
+        public decimal LevyPercentage { get; set; }
+        public int Allowance { get; set; }
     }
 }

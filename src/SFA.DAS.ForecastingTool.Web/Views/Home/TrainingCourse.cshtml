@@ -13,21 +13,14 @@
             }
             @if (Model.LevyFundingReceived > 0)
             {
-                <p>We estimate the amount you’ll have to spend on apprenticeships after paying your levy is <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span></p>
-                <details style="margin-bottom: 20px" role="group">
-                    <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">How this is worked out</span></summary>
-                    <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
-                        <p>
-                            £15,000 allowance is applied to 0.5% of your gross annual payroll. English percentage applied. @(Model.TopPercentageForDisplay)% government top-up applied
-                        </p>
-                    </div>
-                </details>
                 <p class="no-bottom-margin">You can now estimate how much you’ll be spending on apprenticeships every month or you can <a href="0x0/12">skip this step</a></p>
             }
             else
             {
                 <p>You can now estimate the cost of your apprenticeships.You’ll only need to contribute 10%, the government will pay the rest.</p>
-                <p class="no-bottom-margin">Or you can <a href="0x0/12">skip this step</a></p>
+                    <p class="no-bottom-margin">Or you can <a href="0x0/12">skip this step</a></p>
+                
+                
             }
         </div>
     </div>
@@ -133,12 +126,10 @@
                 </div>
                 <hr />
 
-                <input name="trainingCourseAdd" type="submit" class="button button-grey" value="Add another" />
-                <hr style="margin-top:32px;" />
-
                 <div class="form-group" style="margin-top: 15px;">
-                    <input name="trainingCourseSubmit" type="submit" class="button" value="Estimate" />
-                    <input name="trainingCourseSkip" type="submit" class="button button-secondary" value="Skip" />
+                    <input name="trainingCourseAdd" type="submit" class="button button-grey" value="Add another" />
+                    <input name="trainingCourseSubmit" type="submit" class="button" value="Next"/>
+                    <input name="trainingCourseSkip" type="submit" class="button button-secondary" value="Skip"/>
                 </div>
             </form>
 

@@ -69,17 +69,19 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
                 model.SelectedCohorts.ToArray(), model.Duration);
 
             model.LevyAmount = forecastResult.LevyPaid;
+            model.MonthlyLevyPaid = forecastResult.MonthlyLevyPaid;
             model.LevyFundingReceived = forecastResult.FundingReceived;
             model.TopPercentageForDisplay = forecastResult.UserFriendlyTopupPercentage.ToString("0");
             model.Results = forecastResult.Breakdown;
             model.CanAddPeriod = model.Duration < 36;
-            model.NextPeriodUrl = Request.Url.GetUrlToSegment(4) + (model.Duration + 12);
+            model.NextPeriodUrl = Request?.Url?.GetUrlToSegment(4) + (model.Duration + 12);
 
             var years = model.Duration / 12;
             model.TrainingCostForDuration = model.Results.Sum(x => x.TrainingOut);
             model.LevyFundingReceivedForDuration = model.LevyFundingReceived * years;
             model.FundingShortfallForDuration = model.Results.Sum(x => x.CoPaymentEmployer + x.CoPaymentGovernment);
-
+            model.Allowance = _configurationProvider.LevyAllowance;
+            model.LevyPercentage = _configurationProvider.LevyPercentage;
             return View(model);
         }
     }

@@ -2485,3 +2485,42 @@ td.financial, th.financial {
     color: #b10e1e;
     margin-right: 10px;
 }
+
+
+
+:hov
+
+
+.cls
+
+element.style {
+    display: none;
+}
+#global-header #logo img {
+    position: relative;
+    top: -2px;
+    width: 35px;
+    height: 31px;
+    padding-right: 6px;
+    float: left;
+    display: inline;
+    line-height: inherit;
+    border: none;
+    visibility: hidden;
+}
+div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+img {
+    border: 0;
+}
+img[Attributes Style] {
+    width: 35px;
+    height: 31px;
+}
+
+#global-header #logo {
+    background-image: none;
+}

@@ -23,17 +23,24 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
                 throw new FileNotFoundException("Could not find Standards file");
             }
 
-            using (var stream = standardsFile.OpenRead())
+            using (var stream = standardsFile.OpenRead(FileShare.ReadWrite))
             using (var reader = new StreamReader(stream))
             {
-                var json = await reader.ReadToEndAsync();
                 try
                 {
-                    return JsonConvert.DeserializeObject<Standard[]>(json);
+                    var json = await reader.ReadToEndAsync();
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<Standard[]>(json);
+                    }
+                    catch (JsonReaderException ex)
+                    {
+                        throw new InvalidDataException("Standards data is corrupt", ex);
+                    }
                 }
-                catch (JsonReaderException ex)
+                finally
                 {
-                    throw new InvalidDataException("Standards data is corrupt", ex);
+                    reader.Close();
                 }
             }
         }
@@ -42,6 +49,12 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
         {
             var standards = await GetAllAsync();
             return standards.SingleOrDefault(s => s.Code == code);
+        }
+
+        public async Task<Standard> GetByName(string name)
+        {
+            var standards = await GetAllAsync();
+            return standards.SingleOrDefault(s => s.Name == name);
         }
     }
 }

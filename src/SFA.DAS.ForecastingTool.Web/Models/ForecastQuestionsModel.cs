@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SFA.DAS.ForecastingTool.Web.Models
 {
@@ -6,12 +7,24 @@ namespace SFA.DAS.ForecastingTool.Web.Models
     {
         public ForecastQuestionsModel()
         {
-            SelectedStandards = new List<StandardModel>();
+            SelectedCohorts = new List<CohortModel>();
         }
         public string ErrorMessage { get; set; }
-        public int Paybill { get; set; }
+        public long Paybill { get; set; }
         public int EnglishFraction { get; set; }
-        public List<StandardModel> SelectedStandards { get; set; }
+        public List<CohortModel> SelectedCohorts { get; set; }
         public int Duration { get; set; }
+
+        public string EnglishFractionForPreviousAnswer => EnglishFraction == 0 ? "NA" : EnglishFraction.ToString();
+
+        public string GetCohortsUrl()
+        {
+            if (!SelectedCohorts.Any())
+            {
+                return string.Empty;
+            }
+            return SelectedCohorts.Select(x => $"{x.Qty}x{x.Code}-{x.StartDate.ToString("MMyy")}")
+                .Aggregate((x, y) => $"{x}_{y}");
+        }
     }
 }

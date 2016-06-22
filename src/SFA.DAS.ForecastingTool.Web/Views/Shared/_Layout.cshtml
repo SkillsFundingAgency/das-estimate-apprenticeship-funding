@@ -5,11 +5,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estimate my apprenticeship funding</title>
+    <title>Estimate your apprenticeship funding</title>
     @Styles.Render("~/Content/stylesheets/bundled-css")
 
 </head>
 <body>
+    @Html.CookieWarning()
     <header role="banner" id="global-header" class="with-proposition">
         <div class="header-wrapper">
             <div class="header-global">
@@ -31,12 +32,6 @@
             <p>
                 <strong class="phase-tag">ALPHA</strong>
                 <span>This is a new service – your <a href="https://www.surveymonkey.co.uk/r/VRPG2W2" target="_blank">feedback</a> will help us to improve it.</span>
-            </p>
-        </div>
-        <div class="disclaimer">
-            <p>
-                <strong>Disclaimer</strong>
-                <span>All figures in this tool are estimates</span>
             </p>
         </div>
 
@@ -69,6 +64,7 @@
         </div>
     </footer>
 
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/scripts")
     @RenderSection("scripts", required: false)
 </body>

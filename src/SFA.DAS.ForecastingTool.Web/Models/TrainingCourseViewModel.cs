@@ -4,6 +4,8 @@ namespace SFA.DAS.ForecastingTool.Web.Models
 {
     public class TrainingCourseViewModel : ForecastQuestionsModel
     {
-        public Standard[] Standards { get; set; }
+        public StandardModel[] Standards { get; set; }
+        public decimal LevyFundingReceived { get; set; }
+        public string TopPercentageForDisplay { get; set; }
     }
 }

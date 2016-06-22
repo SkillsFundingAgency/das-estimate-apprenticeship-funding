@@ -8,6 +8,6 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.FileSystem
         bool Exists { get; }
         long Length { get; }
 
-        Stream OpenRead();
+        Stream OpenRead(FileShare share = FileShare.None);
     }
 }

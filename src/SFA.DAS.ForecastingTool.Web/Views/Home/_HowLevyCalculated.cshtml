@@ -1,0 +1,11 @@
+﻿@model SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel
+
+<details style="margin-bottom: 20px" role="group">
+    <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">How this is worked out</span></summary>
+    <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+        <p>The amount you have available to spend is calculated on a monthly basis as follows:</p>
+        <p>@Model.Allowance.ToString("C0") allowance is applied to 0.5% of your gross annual payroll, divided by 12 and rounded down to the nearest pound. This gives the monthly levy payment of @((Model.MonthlyLevyPaid).ToString("C0"))  (rounded down)</p>
+        <p>Your English percentage of @Model.EnglishFraction% is applied to @((Model.MonthlyLevyPaid).ToString("C0")), add government top-up of @(Model.TopPercentageForDisplay)% = a monthly available spend of @((Model.LevyFundingReceived / 12).ToString("C0")) (rounded up)</p>
+            
+    </div>
+</details>

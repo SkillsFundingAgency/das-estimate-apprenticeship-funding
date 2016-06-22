@@ -1,43 +1,61 @@
 ﻿@model SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel
 
 <div class="grid-row">
-    <div class="column-full-width">
+    <div class="column-two-thirds">
         <h2 class="heading-xlarge">Your estimated apprenticeship funding</h2>
-        <p>
-            Based on your annual payroll of <span class="bold-medium">@Model.Paybill.ToString("C0")</span> and your English percentage of <span class="bold-medium">@Model.EnglishFraction%</span>:
-        </p>
-        <p>
-            You will pay <span class="bold-medium">@Model.LevyAmount.ToString("C0")</span> in levy and receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of apprenticeship funding. This includes the 10% government top up.
-        </p>
-        <p>Here is your monthly funding breakdown</p>
+        @if (Model.LevyFundingReceived == 0)
+        {
+            <p>You’re eligible for joint funding. This is sometimes known as co-investment. Using joint funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
+        }
+        else if (Model.Results.Any(x => x.CoPaymentEmployer > 0))
+        {
+            <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of apprenticeship funding per year.</p>
+            @Html.Partial("_HowLevyCalculated", Model)
+            <p>Over the next @Model.Duration months, you will have a shortfall. This makes you eligible for joint funding. This is sometimes known as co-investment. Using joint funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
+        }
+        else
+        {
+            <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of apprenticeship funding.</p>
+            @Html.Partial("_HowLevyCalculated", Model)
+        }
     </div>
 </div>
 
 <div class="grid-row">
     <div class="column-full-width">
-        <table>
+        <h3 class="heading-medium">Here is your monthly funding breakdown</h3>
+        <table class="results-table sticky-header">
             <thead>
                 <tr>
-                    <th>Month</th>
-                    <th class="financial">Apprenticeship funding</th>
-                    <th class="financial">Estimated training cost</th>
-                    <th class="financial">Available funds</th>
-                    <th class="financial" style="max-width: 150px;">
-                        Co-funding
-                        <br />
-                        <span style="font-weight: 400;">An additional amount paid by you for apprenticeship training. Government pays the rest.</span>
-                    </th>
+                    <th colspan="3"></th>
+                    <th colspan="2" class="co-funding co-funding-banner">Co-Funding</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <th class="financial">Levy credit</th>
+                    <th class="financial">Cost of Training</th>
+                    <th class="financial co-funding co-funding-emp">Your contribution</th>
+                    <th class="financial co-funding co-funding-govt">Govt contribution</th>
+                    <th class="financial">Balance</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var month in Model.Results)
                 {
                     <tr>
-                        <td>@month.Date.ToString("MMMM")</td>
+                        <td>@month.Date.ToString("MMMM yyyy")</td>
                         <td class="financial">@Html.FinancialText(month.LevyIn)</td>
                         <td class="financial">@Html.FinancialText(month.TrainingOut)</td>
-                        <td class="financial">@month.Balance.ToString("C")</td>
-                        <td class="financial">@Html.FinancialText(month.CoPayment)</td>
+                        <td class="financial co-funding co-funding-emp">@Html.FinancialText(month.CoPaymentEmployer)</td>
+                        <td class="financial co-funding co-funding-govt">@Html.FinancialText(month.CoPaymentGovernment)</td>
+                        <td class="financial">
+                            <span>@month.Balance.ToString("C0")</span>
+                            @if (month.SunsetFunds > 0)
+                            {
+                                <span class="sunset-funds">@month.SunsetFunds.ToString("C0") expired</span>
+                            }
+                        </td>
                     </tr>
                 }
             </tbody>
@@ -59,3 +77,11 @@
         @Html.Partial("_PreviousAnswers", Model)
     </div>
 </div>
+
+@*@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".sticky-header").floatThead({ scrollingTop: -64 });
+        })
+    </script>
+}*@

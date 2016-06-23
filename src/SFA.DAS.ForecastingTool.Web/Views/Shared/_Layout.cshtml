@@ -5,17 +5,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estimate my apprenticeship funding</title>
+    <title>Estimate your apprenticeship funding</title>
     @Styles.Render("~/Content/stylesheets/bundled-css")
 
 </head>
 <body>
+    @Html.CookieWarning()
     <header role="banner" id="global-header" class="with-proposition">
         <div class="header-wrapper">
             <div class="header-global">
                 <div class="header-logo">
                     <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content">
-                        <img src="~/Content/images/gov.uk_logotype_crown_invert_trans.png?0.16.2" width="35" height="31" alt=""> GOV.UK
+                        GOV.UK
                     </a>
                 </div>
             </div>
@@ -33,12 +34,6 @@
                 <span>This is a new service – your <a href="https://www.surveymonkey.co.uk/r/VRPG2W2" target="_blank">feedback</a> will help us to improve it.</span>
             </p>
         </div>
-        <div class="disclaimer">
-            <p>
-                <strong>Disclaimer</strong>
-                <span>All figures in this tool are estimates</span>
-            </p>
-        </div>
 
         @RenderBody()
     </main><!-- / #content -->
@@ -49,7 +44,12 @@
 
             <div class="footer-meta">
                 <div class="footer-meta-inner">
-
+                    <ul class="footer-nav">
+                        <li class="footer-link">
+                            <a href="@Url.RouteUrl("Privacy")">Privacy and cookies</a>
+                        </li>
+                        
+                    </ul>
                     <div class="open-government-licence">
                         <p class="logo">
                             <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
@@ -69,6 +69,7 @@
         </div>
     </footer>
 
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/scripts")
     @RenderSection("scripts", required: false)
 </body>

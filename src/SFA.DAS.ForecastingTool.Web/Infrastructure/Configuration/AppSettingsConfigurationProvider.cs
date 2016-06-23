@@ -62,5 +62,20 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration
                 return pct;
             }
         }
+
+
+        public decimal FinalTrainingPaymentPercentage
+        {
+            get
+            {
+                var value = GetSetting("Training:FinalPaymentPercentage");
+                decimal pct;
+                if (!decimal.TryParse(value, out pct))
+                {
+                    return 1;
+                }
+                return pct;
+            }
+        }
     }
 }

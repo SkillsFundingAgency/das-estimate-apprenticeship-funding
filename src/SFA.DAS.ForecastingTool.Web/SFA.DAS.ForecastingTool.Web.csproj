@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <ApplicationInsightsResourceId>/subscriptions/f9725178-72cf-4bd0-a478-ff49fe02f172/resourcegroups/das-dev-ftl-ai/providers/microsoft.insights/components/das-dev-ftl-ai</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -87,6 +88,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.5\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SimpleInjector, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
@@ -196,6 +201,8 @@
     <Content Include="Content\stylesheets\fonts-ie8.css" />
     <Content Include="Content\stylesheets\fonts.css" />
     <Content Include="Content\stylesheets\forecasting-main.css" />
+    <Content Include="Content\stylesheets\forecasting-results.css" />
+    <Content Include="Content\stylesheets\forecasting-trainingcourse.css" />
     <Content Include="Content\stylesheets\govuk-template-ie6.css" />
     <Content Include="Content\stylesheets\govuk-template-ie7.css" />
     <Content Include="Content\stylesheets\govuk-template-ie8.css" />
@@ -214,8 +221,15 @@
     <Content Include="error\not-found.htm" />
     <Content Include="Global.asax" />
     <Content Include="favicon.ico" />
+    <Content Include="Scripts\details.polyfill.js" />
+    <Content Include="Scripts\forecasting-trainingcourse-1.0.js" />
     <Content Include="Scripts\govuk-template.js" />
     <Content Include="Scripts\ie.js" />
+    <Content Include="Scripts\forecasting-number-extension-1.0.js" />
+    <None Include="Scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.3.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\jquery.floatThead.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -226,8 +240,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="FinancialForecasting\ForecastCalculator.cs" />
-    <Compile Include="FinancialForecasting\ForecastResult.cs" />
+    <Compile Include="FinancialForecasting\DetailedForecastResult.cs" />
     <Compile Include="FinancialForecasting\IForecastCalculator.cs" />
+    <Compile Include="FinancialForecasting\ForecastResult.cs" />
     <Compile Include="FinancialForecasting\MonthlyCashflow.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -239,17 +254,21 @@
     <Compile Include="Infrastructure\Configuration\AppSettingsConfigurationProvider.cs" />
     <Compile Include="Infrastructure\Configuration\IConfigurationProvider.cs" />
     <Compile Include="Infrastructure\DependencyResolution\ContainerBuilder.cs" />
+    <Compile Include="Infrastructure\EuCookieMessage\EuCookieMessageManager.cs" />
     <Compile Include="Infrastructure\FileSystem\DiskFileInfo.cs" />
     <Compile Include="Infrastructure\FileSystem\DiskFileSystem.cs" />
     <Compile Include="Infrastructure\FileSystem\IFileInfo.cs" />
     <Compile Include="Infrastructure\FileSystem\IFileSystem.cs" />
     <Compile Include="Infrastructure\Routing\ForecastingMvcHandler.cs" />
+    <Compile Include="Infrastructure\Routing\CatchAllHttpHandler.cs" />
+    <Compile Include="Infrastructure\Routing\CatchAllRouteHandler.cs" />
     <Compile Include="Infrastructure\Routing\ForecastingRouteHandler.cs" />
     <Compile Include="Infrastructure\Routing\ParsedUrl.cs" />
     <Compile Include="Infrastructure\Routing\PostToUrlRedirectHandler.cs" />
     <Compile Include="Infrastructure\Routing\UrlParser.cs" />
     <Compile Include="Models\ForecastQuestionsModel.cs" />
     <Compile Include="Models\ResultsViewModel.cs" />
+    <Compile Include="Models\CohortModel.cs" />
     <Compile Include="Models\StandardModel.cs" />
     <Compile Include="Models\TrainingCourseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -278,6 +297,10 @@
     <Content Include="Content\stylesheets\fonts\GDSTransportWebsite-Bold.eot" />
     <Content Include="Content\stylesheets\fonts\GDSTransportTabular-Light.eot" />
     <Content Include="Content\stylesheets\fonts\GDSTransportTabular-Bold.eot" />
+    <Content Include="Scripts\jquery-2.2.3.min.map" />
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\Home\_HowLevyCalculated.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -285,7 +308,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

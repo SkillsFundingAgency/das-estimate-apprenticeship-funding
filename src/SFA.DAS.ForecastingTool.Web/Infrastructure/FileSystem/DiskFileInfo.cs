@@ -19,9 +19,9 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.FileSystem
         public bool Exists { get; }
         public long Length { get; }
 
-        public Stream OpenRead()
+        public Stream OpenRead(FileShare share = FileShare.None)
         {
-            return new FileStream(Path, FileMode.Open, FileAccess.Read);
+            return new FileStream(Path, FileMode.Open, FileAccess.Read, share);
         }
     }
 }

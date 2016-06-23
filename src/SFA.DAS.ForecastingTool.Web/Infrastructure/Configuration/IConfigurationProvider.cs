@@ -7,5 +7,6 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration
         int LevyAllowance { get; }
         decimal LevyTopupPercentage { get; }
         decimal CopaymentPercentage { get; }
+        decimal FinalTrainingPaymentPercentage { get; }
     }
 }

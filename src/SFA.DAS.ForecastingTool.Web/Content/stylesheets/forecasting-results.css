@@ -1,0 +1,29 @@
+﻿table.results-table td.financial, table.results-table th.financial {
+    text-align: right;
+}
+table.results-table th.co-funding-banner {
+    padding:20px 20px; 
+    font-size: 19px;
+    border-left: 1px solid #f8f8f8;
+    border-right: 1px solid #f8f8f8;
+    text-align: center;
+}
+table.results-table th.co-funding, table.results-table td.co-funding {
+    border-top: 1px solid #f8f8f8;
+    background-color: #dee0e2;
+    width:145px;
+}
+table.results-table th.co-funding-emp, table.results-table td.co-funding-emp {
+    border-left: 1px solid #f8f8f8;
+}
+table.results-table th.co-funding-govt, table.results-table td.co-funding-govt {
+    border-right: 1px solid #f8f8f8;
+}
+
+table.results-table td.training-column-full {
+    width:25%
+}
+
+table.results-table td.training-column {
+    width:30%
+}

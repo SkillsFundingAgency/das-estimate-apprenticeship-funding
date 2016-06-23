@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.ForecastingTool.Web.Controllers;
+using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -12,6 +13,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
     {
         private Standard[] _standards;
         private Mock<IStandardsRepository> _standardsRepository;
+        private Mock<IForecastCalculator> _forecastCalculator;
         private HomeController _controller;
         private TrainingCourseViewModel _model;
 
@@ -27,9 +29,17 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
             _standardsRepository = new Mock<IStandardsRepository>();
             _standardsRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(_standards));
 
-            _controller = new HomeController(_standardsRepository.Object, null, null);
+            _forecastCalculator = new Mock<IForecastCalculator>();
+            _forecastCalculator.Setup(c => c.ForecastAsync(12345678, 100))
+                .Returns(Task.FromResult(new ForecastResult {FundingReceived = 987654}));
 
-            _model = new TrainingCourseViewModel();
+            _controller = new HomeController(_standardsRepository.Object, _forecastCalculator.Object, null);
+
+            _model = new TrainingCourseViewModel
+            {
+                Paybill = 12345678,
+                EnglishFraction = 100
+            };
         }
 
         [Test]
@@ -64,8 +74,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
             var model = (actual as ViewResult)?.Model as TrainingCourseViewModel;
             Assert.IsNotNull(model.Standards);
             Assert.AreEqual(2, model.Standards.Length);
-            Assert.AreSame(_standards[1], model.Standards[0]);
-            Assert.AreSame(_standards[0], model.Standards[1]);
+            Assert.AreEqual(_standards[1].Code, model.Standards[0].Code);
+            Assert.AreEqual(_standards[0].Code, model.Standards[1].Code);
         }
     }
 }

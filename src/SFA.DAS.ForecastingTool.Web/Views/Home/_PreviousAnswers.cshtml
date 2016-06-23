@@ -10,40 +10,36 @@
             </td>
         </tr>
         <tr>
-            <td>Annual paybill of @Model.Paybill.ToString("C0")</td>
-            <td><a href="@Url.Content($"~/forecast")">Change</a></td>
+            <td>Annual payroll of @Model.Paybill.ToString("C0")</td>
+            <td><a href="@Url.Content($"~/forecast?previousAnswer={Model.Paybill}")">Change</a></td>
         </tr>
         @if (Model.EnglishFraction > 0)
         {
             <tr>
-                <td>English fraction of @(Model.EnglishFraction)%</td>
-                <td><a href="@Url.Content($"~/forecast/{Model.Paybill}")">Change</a></td>
+                <td>English percentage of @(Model.EnglishFraction)%</td>
+                <td><a href="@Url.Content($"~/forecast/{Model.Paybill}?previousAnswer={Model.EnglishFraction}")">Change</a></td>
             </tr>
         }
-        @if (Model.SelectedStandards.Any())
+        @if (Model is SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel)
         {
             <tr>
                 <td>
-                    @foreach (var standard in Model.SelectedStandards)
+                    @if (Model.SelectedCohorts.Any())
                     {
-
-                        if (standard.Qty == 0)
-                        {
-                            <div>
-                                No apprentices selected
-                            </div>
-
-                        }
-                        else
+                        foreach (var standard in Model.SelectedCohorts)
                         {
                             <div>
                                 @standard.Qty apprentices on @standard.Name training course
                             </div>
                         }
                     }
+                    else
+                    {
+                        <div>No apprenticeships selected</div>
+                    }
                 </td>
 
-                <td style="vertical-align: top;"><a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFraction}")">Change</a></td>
+                <td style="vertical-align: top;"><a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFractionForPreviousAnswer}?previousAnswer={Model.GetCohortsUrl()}")">Change</a></td>
             </tr>
         }
     </table>

@@ -706,3 +706,33 @@ button:focus,
         @media (min-width: 641px) {
           #footer .footer-meta .copyright a {
             text-align: right; } }
+
+        
+.footer-nav {
+    display: inline-block;
+    list-style: none;
+    margin-bottom: 30px;
+    padding: 0;
+    width: 100%
+}
+
+@media(min-width: 641px) {
+    .footer-nav {
+        margin-bottom:0;
+        margin-right: -4px;
+        width: 75%
+    }
+}
+
+
+.footer-link {
+    padding-right: 20px;
+    vertical-align: bottom
+}
+
+@media(min-width: 641px) {
+    .footer-link {
+        display:inline-block;
+        margin-bottom: 0
+    }
+}

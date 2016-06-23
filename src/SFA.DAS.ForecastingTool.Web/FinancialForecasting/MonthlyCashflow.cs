@@ -8,6 +8,9 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
         public decimal LevyIn { get; set; }
         public decimal TrainingOut { get; set; }
         public decimal Balance { get; set; }
-        public decimal CoPayment { get; set; }
+        public decimal SunsetFunds { get; set; }
+        public decimal CoPaymentEmployer { get; set; }
+        public decimal CoPaymentGovernment { get; set; }
+        public bool FinalPaymentMade { get; set; }
     }
 }

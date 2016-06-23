@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.EuCookieMessage;
 
 namespace SFA.DAS.ForecastingTool.Web
 {
@@ -10,7 +11,13 @@ namespace SFA.DAS.ForecastingTool.Web
             {
                 return "-";
             }
-            return amount.ToString("C");
+            return amount.ToString("C0");
         }
+
+        public static MvcHtmlString CookieWarning(this HtmlHelper htmlHelper)
+        {
+            return new MvcHtmlString(EuCookieMessageManager.GetHtml());
+        }
+        
     }
 }

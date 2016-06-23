@@ -8,6 +8,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 {
     public class UrlParser
     {
+        private const long MaxPaybill = 512409557603043100;
+
         private readonly IStandardsRepository _standardsRepository;
 
         public UrlParser(IStandardsRepository standardsRepository)
@@ -15,55 +17,66 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             _standardsRepository = standardsRepository;
         }
 
-        public ParsedUrl Parse(string url)
+        public ParsedUrl Parse(string url, string queryString)
         {
             var parts = url.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var queryParts = queryString.Split(new[] {'?', '&'}, StringSplitOptions.RemoveEmptyEntries);
 
             if (parts.Length == 1)
             {
-                return ProcessPaybillPath(parts);
+                return ProcessPaybillPath(parts, queryParts);
             }
             if (parts.Length == 2)
             {
-                return ProcessEnglishFractionPath(parts);
+                return ProcessEnglishFractionPath(parts, queryParts);
             }
             if (parts.Length == 3 || parts.Length == 4)
             {
-                return ProcessTrainingCoursePath(parts);
+                return ProcessTrainingCoursePath(parts, queryParts);
             }
             if (parts.Length == 5)
             {
-                return ProcessResultsPath(parts);
+                return ProcessResultsPath(parts, queryParts);
             }
 
-            return ProcessWelcomePath(parts);
+            return ProcessWelcomePath(parts, queryParts);
         }
 
-        private ParsedUrl ProcessWelcomePath(string[] parts)
+        private ParsedUrl ProcessWelcomePath(string[] parts, string[] queryParts)
         {
             return new ParsedUrl { ActionName = "Welcome", RouteValues = new Dictionary<string, object>() };
         }
-        private ParsedUrl ProcessPaybillPath(string[] parts)
+        private ParsedUrl ProcessPaybillPath(string[] parts, string[] queryParts)
         {
-            var result = ProcessWelcomePath(parts);
+            var result = ProcessWelcomePath(parts, queryParts);
             if (result.IsErrored)
             {
                 return result;
+            }
+
+            if (parts.Length == 1)
+            {
+                var previousAnswer = GetPreviousAnswerValue(queryParts);
+                long paybill;
+                if (!string.IsNullOrEmpty(previousAnswer) && long.TryParse(previousAnswer, out paybill))
+                {
+                    result.RouteValues.Add("Paybill", paybill);
+                }
             }
 
             result.ActionName = "Paybill";
             return result;
         }
-        private ParsedUrl ProcessEnglishFractionPath(string[] parts)
+        private ParsedUrl ProcessEnglishFractionPath(string[] parts, string[] queryParts)
         {
-            var result = ProcessPaybillPath(parts);
+            var result = ProcessPaybillPath(parts, queryParts);
             if (result.IsErrored)
             {
                 return result;
             }
 
-            int paybill;
-            if (!int.TryParse(parts[1], out paybill) || paybill <= 0)
+            long paybill;
+            if (!long.TryParse(parts[1], out paybill) || paybill <= 0 || paybill > MaxPaybill)
             {
                 result.IsErrored = true;
                 result.RouteValues.Add("ErrorMessage", "Payroll is not a valid entry");
@@ -71,22 +84,32 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             }
             else
             {
+                if (parts.Length == 2)
+                {
+                    var previousAnswer = GetPreviousAnswerValue(queryParts);
+                    int englishFraction;
+                    if (!string.IsNullOrEmpty(previousAnswer) && int.TryParse(previousAnswer, out englishFraction))
+                    {
+                        result.RouteValues.Add("EnglishFraction", englishFraction);
+                    }
+                }
+
                 result.ActionName = "EnglishFraction";
             }
 
             result.RouteValues.Add("Paybill", paybill);
             return result;
         }
-        private ParsedUrl ProcessTrainingCoursePath(string[] parts)
+        private ParsedUrl ProcessTrainingCoursePath(string[] parts, string[] queryParts)
         {
-            var result = ProcessEnglishFractionPath(parts);
+            var result = ProcessEnglishFractionPath(parts, queryParts);
             if (result.IsErrored)
             {
                 return result;
             }
 
-            int englishFraction;
-            if (!int.TryParse(parts[2], out englishFraction) || englishFraction <= 0 || englishFraction > 100)
+            int englishFraction = 0;
+            if (parts[2].ToUpper() != "NA" && (!int.TryParse(parts[2], out englishFraction) || englishFraction <= 0 || englishFraction > 100))
             {
                 result.IsErrored = true;
                 result.RouteValues.Add("ErrorMessage", "English percentage is not a valid entry");
@@ -96,15 +119,23 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             {
                 result.ActionName = "TrainingCourse";
 
-                ParseStandardsFromUrl(parts, result);
+                var previousAnswer = GetPreviousAnswerValue(queryParts);
+                if (parts.Length >= 4)
+                {
+                    ParseStandardsFromUrl(parts[3], result);
+                }
+                else if (!string.IsNullOrEmpty(previousAnswer))
+                {
+                    ParseStandardsFromUrl(previousAnswer, result);
+                }
             }
 
             result.RouteValues.Add("EnglishFraction", englishFraction);
             return result;
         }
-        private ParsedUrl ProcessResultsPath(string[] parts)
+        private ParsedUrl ProcessResultsPath(string[] parts, string[] queryParts)
         {
-            var result = ProcessTrainingCoursePath(parts);
+            var result = ProcessTrainingCoursePath(parts, queryParts);
             if (result.IsErrored)
             {
                 return result;
@@ -131,18 +162,18 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             return result;
         }
 
-        private void ParseStandardsFromUrl(string[] parts, ParsedUrl result)
+        private void ParseStandardsFromUrl(string standardsPart, ParsedUrl result)
         {
-            if (parts.Length < 4)
+            var standards = standardsPart.Split('_');
+
+            if (standards.Length == 1 && standards[0] == "0x0")
             {
                 return;
             }
-
-            var standards = parts[3].Split('_');
             
             for (var i = 0; i < standards.Length; i++)
             {
-                var standardMatch = Regex.Match(standards[i], @"^(\d+)x(\d+)-(\d{4})-(\d{2})-(\d{2})$");
+                var standardMatch = Regex.Match(standards[i], @"^(\d+)x(\d+)-(\d{2})(\d{2})$");
                 DateTime standardStartDate;
                 int standardCode;
                 int standardQty;
@@ -152,9 +183,13 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     standardCode = int.Parse(standardMatch.Groups[2].Value);
                     try
                     {
-                        standardStartDate = new DateTime(int.Parse(standardMatch.Groups[3].Value),
-                            int.Parse(standardMatch.Groups[4].Value),
-                            int.Parse(standardMatch.Groups[5].Value));
+                        standardStartDate = new DateTime(2000 + int.Parse(standardMatch.Groups[4].Value),
+                            int.Parse(standardMatch.Groups[3].Value),
+                            1);
+                        if (standardStartDate.Year < 2017)
+                        {
+                            throw new ArgumentOutOfRangeException($"Year {standardStartDate.Year} is before 2017");
+                        }
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -195,11 +230,16 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 }
 
 
-                result.RouteValues.Add($"SelectedStandards[{i}].Qty", standardQty);
-                result.RouteValues.Add($"SelectedStandards[{i}].Code", standardCode);
-                result.RouteValues.Add($"SelectedStandards[{i}].Name", standard?.Name);
-                result.RouteValues.Add($"SelectedStandards[{i}].StartDate", standardStartDate);
+                result.RouteValues.Add($"SelectedCohorts[{i}].Qty", standardQty);
+                result.RouteValues.Add($"SelectedCohorts[{i}].Code", standardCode);
+                result.RouteValues.Add($"SelectedCohorts[{i}].Name", standard?.Name);
+                result.RouteValues.Add($"SelectedCohorts[{i}].StartDate", standardStartDate);
             }
+        }
+
+        private string GetPreviousAnswerValue(string[] queryParts)
+        {
+            return queryParts.FirstOrDefault(q => q.ToLower().StartsWith("previousanswer="))?.Substring(15);
         }
     }
 }

@@ -11,7 +11,7 @@
 
         @if (!shouldShowGrid)
         {
-            <p>With a paybill of @Model.Paybill.ToString("C0"), it is unlikely that you will be required to pay the levy. If you want to see other funding available to you from government, you could <a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFractionForPreviousAnswer}?previousAnswer={Model.GetCohortsUrl()}")">add some apprenticeship training.</a></p>
+            <p>Your payroll is under £3 million so you will not be required to pay the levy. You will only have to pay 10% toward the cost of apprenticeships, the government will pay the rest. This is known as co-investment. To see the contribution you will make, go back and <a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFractionForPreviousAnswer}?previousAnswer={Model.GetCohortsUrl()}")">add an apprenticeship.</a></p>
         }
         else
         {

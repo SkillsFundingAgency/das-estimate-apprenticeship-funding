@@ -43,7 +43,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         [When(@"I view the results page")]
         public void WhenIViewTheResultsPage()
         {
-            Assert.AreEqual("",_scenarioContext.Url);
+            _scenarioContext.I.Expect.Url("http://localhost:6060/forecast/10000/NA/0x0/12");
         }
 
         [Then(@"my english fraction is (.*)")]
@@ -55,7 +55,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         [Then(@"I am not shown a results grid")]
         public void ThenIAmNotShownAResultsGrid()
         {
-            I.Expect.Not.Exists(".resultstable");
+            I.Expect.Not.Exists(".results-table");
         }
 
 

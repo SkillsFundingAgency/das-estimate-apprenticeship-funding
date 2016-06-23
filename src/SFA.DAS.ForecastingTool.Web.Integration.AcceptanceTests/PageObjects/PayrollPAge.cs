@@ -15,7 +15,9 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.PageObjects
 
         public ApprenticesAndTrainingPage EnterLowPayroll()
         {
-            I.Enter("10000").In("input.fomr-control-1-3");
+            I.Enter("10000").In("input.form-control-1-3");
+
+            I.Click("input.button");
 
             return Switch<ApprenticesAndTrainingPage>();
         }

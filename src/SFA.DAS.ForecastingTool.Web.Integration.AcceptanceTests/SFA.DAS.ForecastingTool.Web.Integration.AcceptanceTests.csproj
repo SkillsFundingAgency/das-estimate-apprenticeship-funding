@@ -122,7 +122,7 @@
     </Compile>
     <Compile Include="PageObjects\ApprenticesAndTrainingPage.cs" />
     <Compile Include="PageObjects\EnglishPercentagePage.cs" />
-    <Compile Include="PageObjects\PayrollPAge.cs" />
+    <Compile Include="PageObjects\PayrollPage.cs" />
     <Compile Include="PageObjects\ResultsPage.cs" />
     <Compile Include="PageObjects\WelcomePage.cs" />
     <Compile Include="Steps\ForecastCalculatorSteps.cs" />

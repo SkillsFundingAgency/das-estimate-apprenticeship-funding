@@ -11,13 +11,13 @@
 
         @if (!shouldShowGrid)
         {
-            <p>Your payroll is under £3 million so you will not be required to pay the levy. You will only have to pay 10% toward the cost of apprenticeships, the government will pay the rest. This is known as co-investment. To see the contribution you will make, go back and <a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFractionForPreviousAnswer}?previousAnswer={Model.GetCohortsUrl()}")">add an apprenticeship.</a></p>
+            <p>Your payroll is under £3 million so you will not be required to pay the levy. You will only have to pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships, the government will pay the rest. This is known as co-investment. To see the contribution you will make, go back and <a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFractionForPreviousAnswer}?previousAnswer={Model.GetCohortsUrl()}")">add an apprenticeship.</a></p>
         }
         else
         {
             if (Model.LevyFundingReceived == 0)
             {
-                <p>You’re eligible for joint funding. This is sometimes known as co-investment. Using joint funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
+                <p>Your payroll is under £3 million so you will not be required to pay the levy. You will only have to pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships, the government will pay the rest. This is known as co-investment</p>
             }
             else if (Model.Results.Any(x => x.CoPaymentEmployer > 0))
             {

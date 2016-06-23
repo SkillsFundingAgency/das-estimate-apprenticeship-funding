@@ -226,6 +226,7 @@
     <Content Include="Scripts\govuk-template.js" />
     <Content Include="Scripts\ie.js" />
     <Content Include="Scripts\forecasting-number-extension-1.0.js" />
+    <None Include="Properties\PublishProfiles\SFA.DAS.ForecastingTool.WebPublishingProfile.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />

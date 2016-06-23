@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ForecastingTool.Web", "SFA.DAS.ForecastingTool.Web\SFA.DAS.ForecastingTool.Web.csproj", "{A27065EB-F4BA-46EF-9799-2C4545D7D3ED}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFileProcessor", "DataFileProcessor\DataFileProcessor.csproj", "{596ECDA4-4509-4153-A9A4-6DC6966D400A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A0A2D285-A103-4157-A2E1-991EF07E70EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests", "SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests\SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.csproj", "{43F448E8-5B82-420A-818F-9E3E1A0EC21A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{596ECDA4-4509-4153-A9A4-6DC6966D400A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{596ECDA4-4509-4153-A9A4-6DC6966D400A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{596ECDA4-4509-4153-A9A4-6DC6966D400A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F448E8-5B82-420A-818F-9E3E1A0EC21A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F448E8-5B82-420A-818F-9E3E1A0EC21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F448E8-5B82-420A-818F-9E3E1A0EC21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F448E8-5B82-420A-818F-9E3E1A0EC21A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,5 +44,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1118545F-A7DF-4C37-B8D3-8C49487CE188} = {A0A2D285-A103-4157-A2E1-991EF07E70EC}
 		{596ECDA4-4509-4153-A9A4-6DC6966D400A} = {D79EC262-A7DA-474F-9EFB-DA2B2FB89875}
+		{43F448E8-5B82-420A-818F-9E3E1A0EC21A} = {A0A2D285-A103-4157-A2E1-991EF07E70EC}
 	EndGlobalSection
 EndGlobal

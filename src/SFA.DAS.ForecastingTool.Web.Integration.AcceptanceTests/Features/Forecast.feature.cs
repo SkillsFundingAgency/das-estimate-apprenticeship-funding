@@ -67,7 +67,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Forecast adds numbers correctly")]
         [NUnit.Framework.TestCaseAttribute("200000", "75", "36000", "3600", "32400", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("3100000", "75", "36000", "3508", "31710", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3100000", "75", "36000", "3504", "31680", new string[0])]
         public virtual void ForecastAddsNumbersCorrectly(string paybill, string english_Fraction, string total_Cost, string total_Employer_Contribution, string total_Goverment_Pays, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecast adds numbers correctly", exampleTags);
@@ -83,7 +83,7 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "Actuarial Technician",
                         "2",
-                        "2017-04-01"});
+                        "2017-05-01"});
 #line 8
  testRunner.When("I Have the following apprenticeships:", ((string)(null)), table1, "When ");
 #line 12

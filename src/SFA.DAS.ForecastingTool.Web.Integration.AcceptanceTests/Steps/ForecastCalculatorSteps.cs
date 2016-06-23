@@ -35,7 +35,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
             _resultsViewModel = new ResultsViewModel();
         }
 
-        [Given(@"I Have the following apprenticeships:")]
+        [When(@"I Have the following apprenticeships:")]
         public void GivenIHaveTheFollowingApprenticeships(Table apprenticeshipTable)
         {
             var apprenticeships = apprenticeshipTable.CreateSet<Apprenticeship>();
@@ -55,7 +55,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         }
 
 
-        [When(@"I have a paybill of (.*) and my English Fraction is (.*)")]
+        [Given(@"I have a paybill of (.*) and my English Fraction is (.*)")]
         public void GivenIHaveAPaybillOfAndMyEnglishFractionIs(int paybill, int englishFraction)
         {
             _resultsViewModel.Duration = 36;

@@ -19,7 +19,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         private const int EnglishFraction = 100;
         private int[] StandardCode = { 1, 2 };
         private int[] StandardQty = { 1, 1 };
-        private readonly DateTime[] StandardStartDate = { new DateTime(2017, 4, 1), new DateTime(2017, 4, 1) };
+        private readonly DateTime[] StandardStartDate = { new DateTime(2017, 5, 1), new DateTime(2017, 5, 1) };
         public const int Duration = 12;
 
         private Mock<IStandardsRepository> _standardsRepository;
@@ -141,13 +141,13 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         }
 
         [Test]
-        public async Task ThenItShouldReturnConsecutiveMonthlyDatesStartingOnApril2017()
+        public async Task ThenItShouldReturnConsecutiveMonthlyDatesStartingOnMay2017()
         {
             // Act
             var actual = (await _calculator.DetailedForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            var startDate = new DateTime(2017, 4, 1);
+            var startDate = new DateTime(2017, 5, 1);
             for (var i = 0; i < 12; i++)
             {
                 var expectedDate = startDate.AddMonths(i);
@@ -159,13 +159,13 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         }
 
         [Test]
-        public async Task ThenItShouldNotHaveAndLevyInOnMonthOne()
+        public async Task ThenItShouldHaveAndLevyInOnMonthOne()
         {
             // Act
             var actual = (await _calculator.DetailedForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(0m, actual[0].LevyIn);
+            Assert.AreEqual(572m, actual[0].LevyIn);
         }
 
         [Test]
@@ -370,18 +370,18 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.DetailedForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(0m, actual[0].Balance);
-            Assert.AreEqual(72m, actual[1].Balance);
-            Assert.AreEqual(144m, actual[2].Balance);
-            Assert.AreEqual(216m, actual[3].Balance);
-            Assert.AreEqual(288m, actual[4].Balance);
-            Assert.AreEqual(360m, actual[5].Balance);
-            Assert.AreEqual(432m, actual[6].Balance);
-            Assert.AreEqual(504m, actual[7].Balance);
-            Assert.AreEqual(576m, actual[8].Balance);
-            Assert.AreEqual(648m, actual[9].Balance);
-            Assert.AreEqual(720m, actual[10].Balance);
-            Assert.AreEqual(792m, actual[11].Balance);
+            Assert.AreEqual(72m, actual[0].Balance);
+            Assert.AreEqual(144m, actual[1].Balance);
+            Assert.AreEqual(216m, actual[2].Balance);
+            Assert.AreEqual(288m, actual[3].Balance);
+            Assert.AreEqual(360m, actual[4].Balance);
+            Assert.AreEqual(432m, actual[5].Balance);
+            Assert.AreEqual(504m, actual[6].Balance);
+            Assert.AreEqual(576m, actual[7].Balance);
+            Assert.AreEqual(648m, actual[8].Balance);
+            Assert.AreEqual(720m, actual[9].Balance);
+            Assert.AreEqual(792m, actual[10].Balance);
+            Assert.AreEqual(864m, actual[11].Balance);
         }
 
         [Test]

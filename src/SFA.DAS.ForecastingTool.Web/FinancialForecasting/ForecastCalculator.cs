@@ -60,7 +60,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
         private async Task<MonthlyCashflow[]> CalculateBreakdown(CohortModel[] cohorts, decimal fundingReceived, int duration)
         {
             var standards = await ExpandCohortModels(cohorts);
-            var startDate = new DateTime(2017, 4, 1);
+            var startDate = new DateTime(2017, 5, 1);
 
             var monthlyFunding = fundingReceived / 12m;
             var sunsetLimit = monthlyFunding * 18;
@@ -72,7 +72,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 var trainingCostForMonth = 0m;
                 var monthDate = startDate.AddMonths(i);
                 var sunsetFunds = 0m;
-                var fundsReceived = monthDate == startDate ? 0m : monthlyFunding;
+                var fundsReceived = monthlyFunding;
                 var finalPaymentMade = false;
 
                 foreach (var standard in standards)

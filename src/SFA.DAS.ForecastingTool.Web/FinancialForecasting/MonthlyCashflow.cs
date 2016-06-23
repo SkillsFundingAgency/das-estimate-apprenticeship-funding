@@ -11,5 +11,6 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
         public decimal SunsetFunds { get; set; }
         public decimal CoPaymentEmployer { get; set; }
         public decimal CoPaymentGovernment { get; set; }
+        public bool FinalPaymentMade { get; set; }
     }
 }

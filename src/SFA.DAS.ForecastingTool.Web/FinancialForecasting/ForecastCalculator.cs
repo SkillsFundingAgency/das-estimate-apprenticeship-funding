@@ -73,6 +73,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 var monthDate = startDate.AddMonths(i);
                 var sunsetFunds = 0m;
                 var fundsReceived = monthDate == startDate ? 0m : monthlyFunding;
+                var finalPaymentMade = false;
 
                 foreach (var standard in standards)
                 {
@@ -84,6 +85,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     if (monthDate.CompareTo(trainingEndDate) == 0)
                     {
                         trainingCostForMonth += standard.FinalPaymentAmount;
+                        finalPaymentMade = true;
                     }
                 }
 
@@ -106,7 +108,8 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     Balance = rollingBalance < 0 ? 0 : Math.Round(rollingBalance, 2),
                     SunsetFunds = Math.Round(sunsetFunds, 2),
                     CoPaymentEmployer = employerContribution,
-                    CoPaymentGovernment = governmentContribution
+                    CoPaymentGovernment = governmentContribution,
+                    FinalPaymentMade = finalPaymentMade
                 };
 
                 // Have we just balanced the account?

@@ -19,3 +19,11 @@ table.results-table th.co-funding-emp, table.results-table td.co-funding-emp {
 table.results-table th.co-funding-govt, table.results-table td.co-funding-govt {
     border-right: 1px solid #f8f8f8;
 }
+
+table.results-table td.training-column-full {
+    width:25%
+}
+
+table.results-table td.training-column {
+    width:30%
+}

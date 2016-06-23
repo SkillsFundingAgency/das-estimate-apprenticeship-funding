@@ -9,13 +9,13 @@
         }
         else if (Model.Results.Any(x => x.CoPaymentEmployer > 0))
         {
-            <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy credit per year.</p>
+            <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy credit per year. Any unused credit will expire after 18 months.</p>
             @Html.Partial("_HowLevyCalculated", Model)
             <p>Over the next @Model.Duration months, you won’t have enough levy credit to pay for training. This makes you eligible for joint funding. This is sometimes known as co-investment. Using joint funding, you pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government pays the rest.</p>
         }
         else
         {
-            <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy credit.</p>
+            <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy credit per year. Any unused credit will expire after 18 months.</p>
             @Html.Partial("_HowLevyCalculated", Model)
         }
     </div>
@@ -26,38 +26,65 @@
         <h3 class="heading-medium">Your monthly funding breakdown</h3>
         <table class="results-table sticky-header">
             <thead>
-                <tr>
-                    <th colspan="3"></th>
-                    <th colspan="2" class="co-funding co-funding-banner">Co-investment</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>Date</th>
-                    <th class="financial">Levy credit</th>
-                    <th class="financial">Cost of Training</th>
-                    <th class="financial co-funding co-funding-emp">Your contribution (10%)</th>
-                    <th class="financial co-funding co-funding-govt">Govt contribution (90%)</th>
-                    <th class="financial">Balance</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var month in Model.Results)
+
+                @{
+                    var showCoInvestment = Model.Results.Sum(x => x.CoPaymentEmployer) + Model.Results.Sum(x => x.CoPaymentGovernment) != 0;
+                }
+
+
+                @if (showCoInvestment)
                 {
                     <tr>
-                        <td>@month.Date.ToString("MMMM yyyy")</td>
-                        <td class="financial">@Html.FinancialText(month.LevyIn)</td>
-                        <td class="financial">@Html.FinancialText(month.TrainingOut)</td>
-                        <td class="financial co-funding co-funding-emp">@Html.FinancialText(month.CoPaymentEmployer)</td>
-                        <td class="financial co-funding co-funding-govt">@Html.FinancialText(month.CoPaymentGovernment)</td>
-                        <td class="financial">
-                            <span>@month.Balance.ToString("C0")</span>
-                            @if (month.SunsetFunds > 0)
-                            {
-                                <span class="sunset-funds">@month.SunsetFunds.ToString("C0") expired</span>
-                            }
-                        </td>
+                        <th colspan="3"></th>
+                        <th colspan="2" class="co-funding co-funding-banner">Co-investment</th>
+                        <th></th>
                     </tr>
                 }
+            
+            <tr>
+                <th>Date</th>
+                <th class="financial">Levy credit</th>
+                <th class="financial">Cost of Training</th>
+                @if (showCoInvestment)
+                {
+                    <th class="financial co-funding co-funding-emp">Your contribution (10%)</th>
+                    <th class="financial co-funding co-funding-govt">Govt contribution (90%)</th>
+                }
+                <th class="financial">Balance</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            @foreach (var month in Model.Results)
+            {
+
+                <tr>
+                    <td>@month.Date.ToString("MMMM yyyy")</td>
+                    <td class="financial">@Html.FinancialText(month.LevyIn)</td>
+                    <td class="financial @(showCoInvestment ? "training-column-full" :"training-column" )">
+                        <span>
+                            @Html.FinancialText(month.TrainingOut)
+
+                            @if (month.FinalPaymentMade)
+                            {
+                                <br/><span class="sunset-funds" style="width: 50%;float:right">20% of the cost is reserved until training is completed</span>
+                            }
+                        </span>
+                    </td>
+                    @if (showCoInvestment)
+                    {
+                        <td class="financial co-funding co-funding-emp">@Html.FinancialText(month.CoPaymentEmployer)</td>
+                        <td class="financial co-funding co-funding-govt">@Html.FinancialText(month.CoPaymentGovernment)</td>
+                    }
+                    <td class="financial">
+                        <span>@month.Balance.ToString("C0")</span>
+                        @if (month.SunsetFunds > 0)
+                        {
+                            <span class="sunset-funds">@month.SunsetFunds.ToString("C0") expired</span>
+                        }
+                    </td>
+                </tr>
+            }
             </tbody>
         </table>
     </div>

@@ -79,7 +79,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             if (!long.TryParse(parts[1], out paybill) || paybill <= 0 || paybill > MaxPaybill)
             {
                 result.IsErrored = true;
-                result.RouteValues.Add("ErrorMessage", "Payroll is not a valid entry");
+                result.RouteValues.Add("ErrorMessage", "Enter the amount of your organisation’s UK payroll");
                 result.ActionName = "Paybill";
             }
             else

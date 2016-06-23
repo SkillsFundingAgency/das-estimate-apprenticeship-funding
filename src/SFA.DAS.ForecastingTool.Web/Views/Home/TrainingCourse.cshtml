@@ -4,7 +4,7 @@
 <div class="training-course">
     <div class="grid-row">
         <div class="column-two-thirds">
-            <h2 class="heading-xlarge">Apprentices and training</h2>
+            <h1 class="heading-xlarge">Choose the apprenticeships you want</h1>
             @if (!string.IsNullOrEmpty(Model.ErrorMessage))
             {
                 <div class="error">
@@ -18,9 +18,9 @@
             else
             {
                 <p>You can now estimate the cost of your apprenticeships.You’ll only need to contribute 10%, the government will pay the rest.</p>
-                    <p class="no-bottom-margin">Or you can <a href="0x0/12">skip this step</a></p>
-                
-                
+                <p class="no-bottom-margin">Or you can <a href="0x0/12">skip this step</a></p>
+
+
             }
         </div>
     </div>
@@ -87,7 +87,11 @@
                 <div class="grid-row">
                     <a name="next-apprenticeship"></a>
                     <div class="column-two-thirds">
-                        <h3 class="heading-medium no-top-margin">Apprenticeship @(Model.SelectedCohorts.Count + 1)</h3>
+                        @if (Model.SelectedCohorts.Count != 0)
+                        {
+                            <h3 class="heading-medium no-top-margin">Apprenticeship @(Model.SelectedCohorts.Count + 1)</h3>
+                        }
+                        
 
                         <div class="form-group">
                             <label class="form-label-bold" for="standardNew">Type of apprenticeship training</label>
@@ -106,16 +110,17 @@
                         <div class="form-group">
                             <fieldset>
                                 <legend class="form-label-bold">Start date</legend>
+                                <p class="text-secondary">This can be any date after May 2017</p>
                                 <div class="form-date">
                                     <div class="form-group form-group-month">
                                         <label for="startDateMonth">Month</label>
                                         <input name="startDateMonth" id="startDateMonth" type="number" pattern="[0-9]*" min="0" max="12" class="form-control"
-                                               placeholder="MM" value="05">
+                                               placeholder="MM">
                                     </div>
                                     <div class="form-group form-group-year">
                                         <label for="startDateYear">Year</label>
                                         <input name="startDateYear" id="startDateYear" type="number" pattern="[0-9]*" min="17" max="99" class="form-control"
-                                               placeholder="YY" value="17">
+                                               placeholder="YY">
                                     </div>
                                 </div>
                             </fieldset>
@@ -130,8 +135,8 @@
 
                 <div class="form-group" style="margin-top: 15px;">
                     <input name="trainingCourseAdd" type="submit" class="button button-grey" value="Add another" />
-                    <input name="trainingCourseSubmit" type="submit" class="button" value="Next"/>
-                    <input name="trainingCourseSkip" type="submit" class="button button-secondary" value="Skip"/>
+                    <input name="trainingCourseSubmit" type="submit" class="button" value="Next" />
+                    <input name="trainingCourseSkip" type="submit" class="button button-secondary" value="Skip" />
                 </div>
             </form>
 

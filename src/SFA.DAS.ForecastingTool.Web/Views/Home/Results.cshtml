@@ -21,13 +21,13 @@
             }
             else if (Model.Results.Any(x => x.CoPaymentEmployer > 0))
             {
-                <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy credit per year. Any unused credit will expire after 18 months.</p>
+                <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy credit per year. Any unused credit will expire 18 months after it arrives in your account.</p>
                 @Html.Partial("_HowLevyCalculated", Model)
                 <p>You will get co-investment because you don't have enough levy credit to pay for all your training. This means the government will pay 90% of the training costs that are not covered by your levy credit and you contribute the rest.</p>
             }
             else
             {
-                <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy credit per year. Any unused credit will expire after 18 months.</p>
+                <p>You’ll receive <span class="bold-medium">@Model.LevyFundingReceived.ToString("C0")</span> of levy credit per year. Any unused credit will expire 18 months after it arrives in your account.</p>
                 @Html.Partial("_HowLevyCalculated", Model)
             }
         }

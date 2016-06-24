@@ -188,16 +188,12 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual("TrainingCourse", actual.ActionName);
         }
 
-        [TestCase(BasePath + "/987654321/80/ax34-0417")]
         [TestCase(BasePath + "/987654321/80/2xa-0417")]
         [TestCase(BasePath + "/987654321/80/axa-0417")]
         [TestCase(BasePath + "/987654321/80/abc-0417")]
+        [TestCase(BasePath + "/987654321/80/ax34-0417")]
         [TestCase(BasePath + "/987654321/80/abc")]
-        [TestCase(BasePath + "/987654321/80/4x99-0417")]
         [TestCase(BasePath + "/987654321/80/4x99-abc")]
-        [TestCase(BasePath + "/987654321/80/4x99-0017")]
-        [TestCase(BasePath + "/987654321/80/4x99-9917")]
-        [TestCase(BasePath + "/987654321/80/4x99-0100")]
         [TestCase(BasePath + "/987654321/80/4x99-012017")]
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardIsNotValidOrStandardNotFoundOrChortSizeInvalidOrStartDateInvalid(string path)
         {
@@ -207,6 +203,18 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
             Assert.AreEqual("Number of apprentices, training standard or start date invalid", actual.RouteValues[ErrorMessageRouteValueKey]);
+        }
+
+        [TestCase(BasePath + "/987654321/80/4x99-0417")]
+        [TestCase(BasePath + "/987654321/80/4x99-0017")]
+        [TestCase(BasePath + "/987654321/80/4x99-9917")]
+        [TestCase(BasePath + "/987654321/80/4x99-0100")]
+        public void ThenItShouldIncludeErrorMessageInRouteValuesIfStartDateInvalid(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path, "");
+
+            Assert.AreEqual("Start date invalid, please enter a date from May 2017", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
         [Test]

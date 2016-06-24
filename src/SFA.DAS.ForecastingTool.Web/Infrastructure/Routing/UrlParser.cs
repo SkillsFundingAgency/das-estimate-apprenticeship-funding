@@ -198,7 +198,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     catch (ArgumentOutOfRangeException)
                     {
                         result.IsErrored = true;
-                        result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
+                        result.RouteValues.Add("ErrorMessage", "Start date invalid, please enter a date from May 2017");
                         result.ActionName = "TrainingCourse";
                         return;
                     }

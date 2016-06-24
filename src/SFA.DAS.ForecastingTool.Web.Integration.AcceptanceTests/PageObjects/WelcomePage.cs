@@ -1,4 +1,5 @@
-﻿using FluentAutomation;
+﻿using System.Configuration;
+using FluentAutomation;
 
 namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.PageObjects
 {
@@ -8,7 +9,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.PageObjects
 
         public WelcomePage(FluentTest test) : base(test)
         {
-            Url = "http://localhost:6060";
+            Url = ConfigurationManager.AppSettings["TestBaseUrl"];
             At = () => I.Expect.Exists(StartButton);
         }
 

@@ -15,6 +15,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A0A2D285
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests", "SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests\SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.csproj", "{43F448E8-5B82-420A-818F-9E3E1A0EC21A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{170D6C3A-71CA-46A9-9C6B-C6949FF90DA7}"
+	ProjectSection(SolutionItems) = preProject
+		Build.fsx = Build.fsx
+		RunBuild.bat = RunBuild.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

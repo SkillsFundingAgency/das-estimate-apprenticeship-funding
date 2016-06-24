@@ -179,7 +179,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 int standardQty;
                 if (standardMatch.Success)
                 {
-                    standardQty = int.Parse(standardMatch.Groups[1].Value);
+                    
                     standardCode = int.Parse(standardMatch.Groups[2].Value);
                     try
                     {
@@ -207,6 +207,16 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 {
                     result.IsErrored = true;
                     result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
+                    result.ActionName = "TrainingCourse";
+                    return;
+                }
+                
+                var parseResult = int.TryParse(standardMatch.Groups[1].Value, out standardQty);
+
+                if (!parseResult || standardQty > 1000000)
+                {
+                    result.IsErrored = true;
+                    result.RouteValues.Add("ErrorMessage", "Number of cohorts per apprentice must be less than or equal to 1000000");
                     result.ActionName = "TrainingCourse";
                     return;
                 }

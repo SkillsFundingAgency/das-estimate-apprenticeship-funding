@@ -217,6 +217,18 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual("Start date invalid, please enter a date from May 2017", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
+        [TestCase(BasePath + "/987654321/80/1000001x34-0118")]
+        [TestCase(BasePath + "/987654321/80/1000000000000001x34-0118")]
+        [TestCase(BasePath + "/987654321/80/1000000000000000000000000000000000000000001x34-0118")]
+        public void ThenItShouldIncludeErrorMessageInRouteValuesIfQtyPerCohortIsGreaterThanOneMillion(string url)
+        {
+            // Act
+            var actual = _parser.Parse(url, "");
+
+            //Assert
+            Assert.IsTrue(actual.IsErrored);
+        }
+
         [Test]
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardSelectedButCohortSizeIs0()
         {

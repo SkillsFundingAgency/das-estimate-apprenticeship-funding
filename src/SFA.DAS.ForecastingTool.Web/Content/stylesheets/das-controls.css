@@ -12,3 +12,7 @@
     text-decoration: underline; 
     box-shadow: none
 }
+
+input.apprenticeship-link {
+    padding-left: 0px;
+}

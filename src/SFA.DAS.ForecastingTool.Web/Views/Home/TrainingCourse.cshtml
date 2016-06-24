@@ -13,12 +13,16 @@
             }
             @if (Model.LevyFundingReceived > 0)
             {
-                <p class="no-bottom-margin">You can now estimate how much you’ll be spending on apprenticeships every month or you can <a href="0x0/12">skip this step</a></p>
+                <p class="no-bottom-margin">
+                    You can now estimate how much you’ll be spending on apprenticeships every month or you can <a href="0x0/12">skip this step</a>
+                </p>
             }
             else
             {
                 <p>You can now estimate the cost of your apprenticeships.You’ll only need to contribute 10%, the government will pay the rest.</p>
-                <p class="no-bottom-margin">Or you can <a href="0x0/12">skip this step</a></p>
+                <p class="no-bottom-margin">
+                    Or you can <a href="0x0/12">skip this step</a>
+                </p>
 
 
             }
@@ -91,7 +95,7 @@
                         {
                             <h3 class="heading-medium no-top-margin">Apprenticeship @(Model.SelectedCohorts.Count + 1)</h3>
                         }
-                        
+
 
                         <div class="form-group">
                             <label class="form-label-bold" for="standardNew">Type of apprenticeship training</label>
@@ -105,7 +109,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label-bold" for="cohortsNew">Number of apprentices</label>
-                            <input name="cohorts" id="cohortsNew" type="number" class="form-control cohort-size" aria-label="Number of apprentices"/>
+                            <input name="cohorts" id="cohortsNew" type="number" class="form-control cohort-size" aria-label="Number of apprentices" />
                         </div>
                         <div class="form-group">
                             <fieldset>
@@ -136,19 +140,24 @@
                 <hr />
 
                 <div class="form-group" style="margin-top: 15px;">
-                    
+
                     <input name="trainingCourseSubmit" type="submit" class="button" value="Next" />
                     <input name="trainingCourseSkip" type="submit" class="button button-secondary" value="Skip" />
                 </div>
             </form>
 
 
-            @Html.Partial("_PreviousAnswers", Model)
+
         </div>
     </div>
 </div>
+<div class="grid-row">
+    <div class="column-full-width">
+        @Html.Partial("_PreviousAnswers", Model)
+    </div>
+</div>
 
-@section scripts
+    @section scripts
 {
-    @Scripts.Render("~/bundles/training-course")
-}
+        @Scripts.Render("~/bundles/training-course")
+    }

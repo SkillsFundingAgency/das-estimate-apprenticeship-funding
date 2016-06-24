@@ -2536,3 +2536,11 @@ img[Attributes Style] {
 .no-top-margin {
     margin-top: 0;
 }
+
+.no-margin-bottom {
+    margin-bottom: 0;
+}
+
+h3.results-heading {
+    padding-top: 60px;  
+}

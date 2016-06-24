@@ -1,11 +1,12 @@
 ﻿using System.Configuration;
 using FluentAutomation;
+using NUnit.Framework;
 using SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.PageObjects;
 using TechTalk.SpecFlow;
 
 namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
 {
-    [Binding]
+    [Binding , Scope(Tag="Automation")]
     public class ForecastToolSteps : FluentTest
     {
         private ResultsPage _scenarioContextResultsPage;

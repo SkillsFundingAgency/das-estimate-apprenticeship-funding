@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAutomation;
+﻿using FluentAutomation;
 
 namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.PageObjects
 {
     public class ApprenticesAndTrainingPage : PageObject<ApprenticesAndTrainingPage>
     {
+        private string SkipButton = "a[href='0x0/12']";
+
         public ApprenticesAndTrainingPage(FluentTest test) : base(test)
         {
         }
 
         public ResultsPage IAddNoApprentices()
         {
-            I.Click("a[href='0x0/12']");
+            I.WaitUntil(() => I.Assert.Exists(SkipButton));
+            
+            I.Click(SkipButton);
 
             return Switch<ResultsPage>();
         }

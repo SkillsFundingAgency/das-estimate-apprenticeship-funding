@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAutomation;
+﻿using FluentAutomation;
 
 namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.PageObjects
 {
@@ -19,6 +14,8 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.PageObjects
 
         public PayrollPage GotToPayrollPage()
         {
+            I.WaitUntil(() => I.Assert.Exists(StartButton));
+
             I.Click(StartButton);
 
             return Switch<PayrollPage>();

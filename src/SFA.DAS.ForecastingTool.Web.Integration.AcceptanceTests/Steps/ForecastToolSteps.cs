@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAutomation;
-using NUnit.Framework;
+﻿using FluentAutomation;
 using SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.PageObjects;
 using TechTalk.SpecFlow;
 
@@ -13,7 +7,9 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
     [Binding]
     public class ForecastToolSteps : FluentTest
     {
-        private ResultsPage _scenarioContext;
+        private ResultsPage _scenarioContextResultsPage;
+        private PageObject _scenarioContextEnglishFraction;
+        
 
         [BeforeScenario]
         public void Arrange()
@@ -25,7 +21,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         [Given(@"I am a non levy payer")]
         public void GivenIAmANonLevyPayer()
         {
-            _scenarioContext = new WelcomePage(this)
+            _scenarioContextResultsPage = new WelcomePage(this)
                             .Go()
                             .GotToPayrollPage()
                             .EnterLowPayroll()
@@ -34,30 +30,46 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         }
 
 
-        [Given(@"I a have a payroll of (.*)")]
-        public void GivenIAHaveAPayrollOf(string p0)
+        [Given(@"I have a payroll of (.*)")]
+        public void GivenIAHaveAPayrollOf(string payroll)
         {
-            ScenarioContext.Current.Pending();
+            ScenarioContext.Current["payroll"] = payroll;
+
+            _scenarioContextEnglishFraction = new WelcomePage(this)
+                .Go()
+                .GotToPayrollPage()
+                .EnterPayroll(payroll);
+
         }
 
         [When(@"I view the results page")]
         public void WhenIViewTheResultsPage()
         {
-            _scenarioContext.I.Expect.Url("http://localhost:6060/forecast/10000/NA/0x0/12");
+            _scenarioContextResultsPage.I.Assert.Url("http://localhost:6060/forecast/10000/NA/0x0/12");    
         }
 
         [Then(@"my english fraction is (.*)")]
-        public void ThenMyEnglishFractionIs(string p0)
+        public void ThenMyEnglishFractionIs(string englishFraction)
         {
-            ScenarioContext.Current.Pending();
+            var payroll = ScenarioContext.Current["payroll"].ToString();
+            if (englishFraction == "NA")
+            {
+                ((ApprenticesAndTrainingPage) _scenarioContextEnglishFraction).I.Assert.Url($"http://localhost:6060/forecast/{payroll}/NA/");
+            }
+            else
+            {
+                var englishPercentagePage = (EnglishPercentagePage)_scenarioContextEnglishFraction;
+                var result = englishPercentagePage.EnterPercentageAndGotoNextPage(englishFraction);
+                
+                result.I.Assert.Url($"http://localhost:6060/forecast/{payroll}/{englishFraction}/");
+            }
         }
 
         [Then(@"I am not shown a results grid")]
         public void ThenIAmNotShownAResultsGrid()
         {
-            I.Expect.Not.Exists(".results-table");
+            _scenarioContextResultsPage.I.Assert.Not.Exists(".results-table");
         }
-
-
+        
     }
 }

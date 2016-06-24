@@ -69,16 +69,15 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Features
         [NUnit.Framework.TestCaseAttribute("3", "NA", new string[0])]
         [NUnit.Framework.TestCaseAttribute("2999999", "NA", new string[0])]
         [NUnit.Framework.TestCaseAttribute("3000000", "100", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("4100000", "50", new string[0])]
         public virtual void NonLevyPayerIsNotShownEnglishFractionScreen(string payroll, string english_Fraction, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Non Levy Payer is not shown english fraction screen", exampleTags);
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
- testRunner.Given(string.Format("I a have a payroll of {0}", payroll), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("I have a payroll of {0}", payroll), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.When("I view the results page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 9
  testRunner.Then(string.Format("my english fraction is {0}", english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -2532,3 +2532,7 @@ img[Attributes Style] {
 #global-header #logo {
     background-image: none;
 }
+
+.no-top-margin {
+    margin-top: 0;
+}

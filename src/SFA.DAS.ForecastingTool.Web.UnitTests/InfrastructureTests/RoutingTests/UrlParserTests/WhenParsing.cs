@@ -99,7 +99,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual("TrainingCourse", actual.ActionName);
         }
 
-        [TestCase(BasePath + "/987654321/80/4x34-0417", new[] { 4 }, new[] { 34 }, new[] { "2017-04-01" })]
+        [TestCase(BasePath + "/987654321/80/4x34-0517", new[] { 4 }, new[] { 34 }, new[] { "2017-05-01" })]
         [TestCase(BasePath + "/987654321/80/12x34-0218", new[] { 12 }, new[] { 34 }, new[] { "2018-02-1" })]
         [TestCase(BasePath + "/987654321/80/12x34-0218_10x12-0318", new[] { 12, 10 }, new[] { 34, 12 }, new[] { "2018-02-1", "2018-03-1" })]
         public void ThenItShouldIncludeTheStandardInfoInRouteValuesIfInPath(string path, int[] expectedQty, int[] expectedCode, string[] expectedStartDate)
@@ -213,7 +213,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldIncludeErrorMessageInRouteValuesIfStandardSelectedButCohortSizeIs0()
         {
             // Act
-            var actual = _parser.Parse($"{BasePath}/987654321/80/0x34-0417", "");
+            var actual = _parser.Parse($"{BasePath}/987654321/80/0x34-0517", "");
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
@@ -256,7 +256,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual(80, actual.RouteValues[EnglishFractionRouteValueKey]);
         }
 
-        [TestCase(BasePath + "/987654321/80/1x34-0417/abc")]
+        [TestCase(BasePath + "/987654321/80/1x34-0517/abc")]
         public void ThenItShouldDefaultDurationTo12WhenIncorrectInUrl(string path)
         {
             // Act
@@ -267,9 +267,9 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual(12, actual.RouteValues[DurationRouteValueKey]);
         }
 
-        [TestCase(BasePath + "/987654321/80/1x34-0417/13", 12)]
-        [TestCase(BasePath + "/987654321/80/1x34-0417/23", 12)]
-        [TestCase(BasePath + "/987654321/80/1x34-0417/25", 24)]
+        [TestCase(BasePath + "/987654321/80/1x34-0517/13", 12)]
+        [TestCase(BasePath + "/987654321/80/1x34-0517/23", 12)]
+        [TestCase(BasePath + "/987654321/80/1x34-0517/25", 24)]
         public void ThenItShouldReturnDurationAsTheLowestMultipleOf12IfUrlValueIsNotMultipleItself(string path, int expectedDuration)
         {
             // Act
@@ -280,8 +280,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual(expectedDuration, actual.RouteValues[DurationRouteValueKey]);
         }
 
-        [TestCase(BasePath + "/987654321/80/1x34-0417/6")]
-        [TestCase(BasePath + "/987654321/80/1x34-0417/0")]
+        [TestCase(BasePath + "/987654321/80/1x34-0517/6")]
+        [TestCase(BasePath + "/987654321/80/1x34-0517/0")]
         public void ThenItShouldReturnDurationAs12IfCorrectedUrlValueLessThan12(string path)
         {
             // Act
@@ -292,8 +292,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             Assert.AreEqual(12, actual.RouteValues[DurationRouteValueKey]);
         }
 
-        [TestCase(BasePath + "/987654321/80/1x34-0417/37")]
-        [TestCase(BasePath + "/987654321/80/1x34-0417/48")]
+        [TestCase(BasePath + "/987654321/80/1x34-0517/37")]
+        [TestCase(BasePath + "/987654321/80/1x34-0517/48")]
         public void ThenItShouldReturnDurationAs36IfCorrectedUrlValueMoreThan36(string path)
         {
             // Act
@@ -341,13 +341,33 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         public void ThenItShouldPutCohortsInRouteValuesIfEditingTrainingCourse()
         {
             // Act
-            var actual = _parser.Parse(BasePath + "/4000000/100/", "?previousAnswer=1x34-0417_10x12-0318");
+            var actual = _parser.Parse(BasePath + "/4000000/100/", "?previousAnswer=1x34-0517_10x12-0318");
 
             // Assert
-            AssertStandardRouteValuesArePresentAndCorrect(actual, 0, 1, 34, new DateTime(2017, 4, 1));
+            AssertStandardRouteValuesArePresentAndCorrect(actual, 0, 1, 34, new DateTime(2017, 5, 1));
             AssertStandardRouteValuesArePresentAndCorrect(actual, 1, 10, 12, new DateTime(2018, 3, 1));
         }
 
+        [TestCase(BasePath + "/987654321/80/1x34-0417")]
+        [TestCase(BasePath + "/987654321/80/1x34-0416")]
+        public void ThenItShouldReturnAsIsErroredForDatesBeforeMay2017(string url)
+        {
+            //Act
+            var actual = _parser.Parse(url,"");
+
+            //Assert
+            Assert.IsTrue(actual.IsErrored);
+        }
+
+        [Test]
+        public void ThenItShouldReturnAsErroredForDatesBeforeMay2017InPreviousAnswers()
+        {
+            //Assert
+            var actual = _parser.Parse(BasePath + "/4000000/100/", "?previousAnswer=1x34-0417_10x12-0318");
+
+            //Act
+            Assert.IsTrue(actual.IsErrored);
+        }
 
 
         private void AssertStandardRouteValuesArePresentAndCorrect(ParsedUrl actual, int index, int expectedQty, int expectedCode, DateTime expectedStateDate)

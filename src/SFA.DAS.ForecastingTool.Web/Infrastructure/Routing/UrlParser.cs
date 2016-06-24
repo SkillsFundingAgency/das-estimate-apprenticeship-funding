@@ -190,6 +190,10 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                         {
                             throw new ArgumentOutOfRangeException($"Year {standardStartDate.Year} is before 2017");
                         }
+                        if (standardStartDate.Year == 2017 && standardStartDate.Month < 5)
+                        {
+                            throw new ArgumentOutOfRangeException($"Date {standardStartDate} is before May 2017");
+                        }
                     }
                     catch (ArgumentOutOfRangeException)
                     {

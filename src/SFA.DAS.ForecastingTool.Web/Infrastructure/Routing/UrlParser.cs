@@ -216,7 +216,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 if (!parseResult || standardQty > 1000000)
                 {
                     result.IsErrored = true;
-                    result.RouteValues.Add("ErrorMessage", "Number of cohorts per apprentice must be less than or equal to 1000000");
+                    result.RouteValues.Add("ErrorMessage", "We've limited the number of apprentices you can select to 1,000,000 so please enter a number below this.");
                     result.ActionName = "TrainingCourse";
                     return;
                 }

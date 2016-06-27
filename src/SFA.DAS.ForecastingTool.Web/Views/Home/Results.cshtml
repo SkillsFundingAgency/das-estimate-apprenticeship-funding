@@ -77,9 +77,9 @@
                     {
 
                         <tr>
-                            <td>@month.Date.ToString("MMMM yyyy")</td>
-                            <td class="financial">@Html.FinancialText(month.LevyIn)</td>
-                            <td class="financial @(showCoInvestment ? "training-column-full" :"training-column" )">
+                            <td class="main-grid"> @month.Date.ToString("MMMM yyyy")</td>
+                            <td class="financial main-grid">@Html.FinancialText(month.LevyIn)</td>
+                            <td class="financial main-grid @(showCoInvestment ? "training-column-full" :"training-column" )">
                                 <span>
                                     @Html.FinancialText(month.TrainingOut)
 
@@ -94,7 +94,7 @@
                                 <td class="financial co-funding co-funding-emp">@Html.FinancialText(month.CoPaymentEmployer)</td>
                                 <td class="financial co-funding co-funding-govt">@Html.FinancialText(month.CoPaymentGovernment)</td>
                             }
-                            <td class="financial">
+                            <td class="financial main-grid">
                                 <span>@month.Balance.ToString("C0")</span>
                                 @if (month.SunsetFunds > 0)
                                 {

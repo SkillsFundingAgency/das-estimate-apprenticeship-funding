@@ -104,29 +104,33 @@ table.results-table th.co-funding-govt, table.results-table td.co-funding-govt {
       display: block;
       font-weight: 400;
   }
-  .results-table td:nth-of-type(1):before {
+  .results-table td.main-grid:nth-of-type(1):before {
     content: "Date";
     font-weight: 400;
   }
-  .results-table td:nth-of-type(2):before {
+  .results-table td.main-grid:nth-of-type(2):before {
     content: "Levy Credit";
     font-weight: 400;
   }
-  .results-table td:nth-of-type(3):before {
+  .results-table td.main-grid:nth-of-type(3):before {
     content: "Cost of Training";
     font-weight: 400;
   }
-  .results-table td:nth-of-type(4):before {
+  .results-table td.co-funding:nth-of-type(4):before {
     content: "Your Contribution (10%)";
     font-weight: 400;
   }
-  .results-table td:nth-of-type(5):before {
+  .results-table td.co-funding:nth-of-type(5):before {
     content: "Govt Contribution (90%)";
     font-weight: 400;
   }
-  .results-table td:nth-of-type(6):before {
+  .results-table td.main-grid:nth-of-type(6):before {
     content: "Balance";
     font-weight: 400;
-    color: #0b0c0c;
   }
+  .results-table td.main-grid:nth-of-type(4):before {
+    content: "Balance";
+    font-weight: 400;
+  }
+  
 }

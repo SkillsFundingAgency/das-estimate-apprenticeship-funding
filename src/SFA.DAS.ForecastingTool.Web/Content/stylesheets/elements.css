@@ -2356,3 +2356,105 @@ input[type=number] {
 .example-button .swatch-wrapper {
   width: 100%;
 }
+
+
+.content-block table,article table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 1em 0 2em;
+    width: 100%
+}
+
+.content-block table caption,article table caption {
+    font-family: "nta", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: none;
+    font-size-adjust: 0.525;
+    margin: 0.4em 0.5em 0.4em 0.7em;
+    text-align: left
+}
+
+@media (min-width: 641px) {
+    .content-block table caption,article table caption {
+        font-size:24px;
+        line-height: 1.25
+    }
+}
+
+@media (max-width: 640px) {
+    .content-block table,article table {
+        margin:1em 0 2em 0;
+        width: 100%
+    }
+
+    .content-block table caption,article table caption {
+        padding-left: 0
+    }
+}
+
+.content-block th,.content-block td,article th,article td {
+    font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.14286;
+    font-weight: 400;
+    text-transform: none;
+    font-size-adjust: 0.5;
+    vertical-align: top;
+    padding: .75em .5em .75em 0
+}
+
+@media (min-width: 641px) {
+    .content-block th,.content-block td,article th,article td {
+        font-size:16px;
+        line-height: 1.25
+    }
+}
+
+.content-block th a[rel="external"]:after,.content-block td a[rel="external"]:after,article th a[rel="external"]:after,article td a[rel="external"]:after {
+    content: "     ";
+    background-position: right 3px
+}
+
+.content-block th a[rel="external"]:hover:after,.content-block td a[rel="external"]:hover:after,article th a[rel="external"]:hover:after,article td a[rel="external"]:hover:after {
+    background-position: right -385px
+}
+
+@media (max-width: 640px) {
+    .content-block th a[rel="external"]:after,.content-block td a[rel="external"]:after,article th a[rel="external"]:after,article td a[rel="external"]:after {
+        content:"     ";
+        background-position: right 1px
+    }
+
+    .content-block th a[rel="external"]:hover:after,.content-block td a[rel="external"]:hover:after,article th a[rel="external"]:hover:after,article td a[rel="external"]:hover:after {
+        background-position: right -387px
+    }
+}
+
+.content-block td,article td {
+    border-bottom: solid 1px #bfc1c3
+}
+
+.content-block td small,article td small {
+    font-family: "nta", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.14286;
+    font-weight: 400;
+    text-transform: none;
+    font-size-adjust: 0.5
+}
+
+@media (min-width: 641px) {
+    .content-block td small,article td small {
+        font-size:16px;
+        line-height: 1.25
+    }
+}
+
+.content-block th,article th {
+    line-height: 1.25em;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: solid 1px #bfc1c3
+}

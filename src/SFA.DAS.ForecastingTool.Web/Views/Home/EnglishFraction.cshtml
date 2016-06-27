@@ -15,13 +15,13 @@
             <div class="form-group">
                 <label class="form-label-bold">
                     <span>Roughly what percentage of your employees live in England?</span>
-                    <div class="form-hint">If you're unsure, enter 100</div>
+                    <div class="form-hint">If you're unsure, then enter 100</div>
                 </label>
                 <input name="englishFraction" type="number" class="form-control"
                        value="@(Model.EnglishFraction > 0 ? Model.EnglishFraction.ToString() : "")" min="1" max="100" style="width:50px;" />
                 <span>%</span>
             </div>
-            <input name="englishFractionSubmit" type="submit" class="button" value="Save and Continue" />
+            <input name="englishFractionSubmit" type="submit" class="button" value="Save and continue" />
         </form>
 
 

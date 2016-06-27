@@ -11,13 +11,22 @@ table.results-table th.co-funding-banner {
 table.results-table th.co-funding, table.results-table td.co-funding {
     border-top: 1px solid #f8f8f8;
     background-color: #dee0e2;
-    width:145px;
+    
+    text-align: center;
 }
 table.results-table th.co-funding-emp, table.results-table td.co-funding-emp {
     border-left: 1px solid #f8f8f8;
+    width:119px;
+    
 }
+
+table.results-table th.co-funding-emp {
+    padding: 12px 25px 9px 25px;
+}
+
 table.results-table th.co-funding-govt, table.results-table td.co-funding-govt {
     border-right: 1px solid #f8f8f8;
+    width:145px;
 }
 
 table.results-table td.training-column-full {
@@ -117,11 +126,11 @@ table.results-table th.co-funding-govt, table.results-table td.co-funding-govt {
     font-weight: 400;
   }
   .results-table td.co-funding:nth-of-type(4):before {
-    content: "Your Contribution (10%)";
+    content: "Your share (10%)";
     font-weight: 400;
   }
   .results-table td.co-funding:nth-of-type(5):before {
-    content: "Govt Contribution (90%)";
+    content: "Government share (90%)";
     font-weight: 400;
   }
   .results-table td.main-grid:nth-of-type(6):before {

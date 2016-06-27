@@ -11,7 +11,7 @@
 
         @if (!shouldShowGrid)
         {
-            <p>Your payroll is less than £3 million so you won't have to pay the levy. You will only have to pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government will pay the rest. To see the contribution you will make, go back and <a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFractionForPreviousAnswer}?previousAnswer={Model.GetCohortsUrl()}")">add an apprenticeship.</a></p>
+            <p>Your payroll is less than £3 million so you won't have to pay the levy. You will only have to pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government will pay the rest. To get a more detailed estimate of what you'll contribute, go back and <a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFractionForPreviousAnswer}?previousAnswer={Model.GetCohortsUrl()}")">add an apprenticeship.</a></p>
         }
         else
         {

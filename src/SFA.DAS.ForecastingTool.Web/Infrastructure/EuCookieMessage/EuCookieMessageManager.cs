@@ -8,7 +8,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.EuCookieMessage
     public static class EuCookieMessageManager
     {
         private const string CookieName = "seen_cookie_message";
-        private const string MessageHtml = "<div id=\"global-cookie-message\" style=\"display: block;\"><p>GOV.UK uses cookies to make the site simpler. <a href=\"https://www.gov.uk/help/cookies\">Find out more about cookies</a></p></div>";
+        private const string MessageHtml = "<div id=\"global-cookie-message\" style=\"display: block;\"><p>GOV.UK uses cookies to make the site simpler. <a href=\"https://www.gov.uk/help/cookies\" target=\"_blank\">Find out more about cookies</a></p></div>";
 
         public static string GetHtml()
         {

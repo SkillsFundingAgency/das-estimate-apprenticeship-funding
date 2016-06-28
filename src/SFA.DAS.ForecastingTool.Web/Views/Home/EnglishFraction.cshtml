@@ -9,7 +9,7 @@
                 <p class="error-message">@Model.ErrorMessage</p>
             </div>
         }
-        
+
         <form method="post">
             @Html.AntiForgeryToken()
             <div class="form-group">
@@ -18,13 +18,24 @@
                     <div class="form-hint">If you're unsure, then enter 100</div>
                 </label>
                 <input name="englishFraction" type="number" class="form-control"
-                       value="@(Model.EnglishFraction > 0 ? Model.EnglishFraction.ToString() : "")" min="1" max="100" style="width:50px;" />
+                       value="@(Model.EnglishFraction > 0 ? Model.EnglishFraction.ToString() : "")" min="1" max="100" style="width: 50px;"/>
                 <span>%</span>
             </div>
-            <input name="englishFractionSubmit" type="submit" class="button" value="Save and continue" />
+            <input name="englishFractionSubmit" type="submit" class="button" value="Save and continue"/>
         </form>
 
 
         @Html.Partial("_PreviousAnswers", Model)
     </div>
 </div>
+
+
+
+@section scripts {
+
+    <script type="text/javascript">
+            ga('send', 'pageview', '/EnglishFraction');
+    </script>
+}
+
+

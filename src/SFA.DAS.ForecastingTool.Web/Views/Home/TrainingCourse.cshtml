@@ -162,12 +162,14 @@
 </div>
 
     @section scripts
-{
+    {
         @Scripts.Render("~/bundles/training-course")
 
 
         <script type="text/javascript">
-            ga('send', 'pageview', '/TrainingCourse');
+            $(document).ready(function() {
+                ga('send', 'pageview', '/TrainingCourse');
+            });
         </script>
 
     }

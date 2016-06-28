@@ -257,7 +257,7 @@ input, textarea,
 table, caption, tbody, tfoot, thead, tr, th, td {
     font-size: inherit;
     font-family: 'Noto Sans', sans-serif;
-    line-height: inherit;
+    line-height: 1.6;
     font-weight: normal;
 }
 
@@ -336,10 +336,10 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 main {
     font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
-    line-height: 1.25;
+    line-height: 1.5;
     font-weight: 400;
     text-transform: none;
-    -webkit-font-smoothing: antialiased;
+    
 }
 
 @media (min-width: 641px) {

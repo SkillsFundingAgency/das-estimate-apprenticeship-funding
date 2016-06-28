@@ -338,6 +338,8 @@ button:focus,
     padding-bottom: 8px; }
     @media (min-width: 641px) {
       #global-header .header-wrapper {
+          padding-bottom: 38px;
+          padding-top: 15px;
         padding-left: 15px;
         padding-right: 15px; } }
     #global-header .header-wrapper .header-global .header-logo {
@@ -359,16 +361,22 @@ button:focus,
       width: 90%; }
       #global-header.with-proposition .header-wrapper .header-global .header-logo,
       #global-header.with-proposition .header-wrapper .header-global .site-search {
-        width: 40%; } }
+        width: 35%; } }
   @media (min-width: 965px) {
     #global-header.with-proposition .header-wrapper .header-proposition {
-        margin: 7px 0 0 0; 
+        margin: 23px 0 0 0; 
       float: right; } }
   @media(max-width:965px) {
     #global-header.with-proposition .header-wrapper .header-proposition {
         float: left;
         width: 100%;
         padding: 0px 15px;
+    }
+    #global-header .header-wrapper {
+        padding-bottom: 20px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
     }
   }
   #global-header.with-proposition .header-wrapper .header-proposition .content {

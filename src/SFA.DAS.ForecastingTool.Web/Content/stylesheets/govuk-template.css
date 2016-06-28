@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: GDS-Logo;
-  src: local("HelveticaNeue"), local("Helvetica Neue"), local("Arial"), local("Helvetica"); }
+  src: local("Helvetica Neue"), local("Droid Sans"), local("Liberation Sans"), local("Arial"), local("Helvetica"), local("sans-serif"); }
 
 @-ms-viewport {
   width: device-width; }
@@ -64,7 +64,7 @@
 /* local styleguide includes */
 /* Old depricated greys, new things should use the toolkit greys */
 html, body, button, input, table, td, th {
-  font-family: "nta", Arial, sans-serif; }
+  font-family: Helvetica Neue, Droid Sans, Liberation Sans, Arial, Helvetica, sans-serif; }
 
 html, body, div, h1, h2, h3, h4, h5, h6, article, aside, footer, header, hgroup, nav, section {
   margin: 0;
@@ -342,7 +342,7 @@ button:focus,
         padding-right: 15px; } }
     #global-header .header-wrapper .header-global .header-logo {
       float: left; }
-      @media (min-width: 769px) {
+      @media (min-width: 965px) {
         #global-header .header-wrapper .header-global .header-logo {
           width: 33.33%; } }
       @media screen and (max-width: 379px) {
@@ -353,17 +353,24 @@ button:focus,
         margin: 0 15px; }
     #global-header .header-wrapper .header-global .header-logo {
       margin: 5px 0 2px; }
-  @media (min-width: 769px) {
+  @media (min-width: 965px) {
     #global-header.with-proposition .header-wrapper .header-global {
       float: left;
-      width: 33.33%; }
+      width: 90%; }
       #global-header.with-proposition .header-wrapper .header-global .header-logo,
       #global-header.with-proposition .header-wrapper .header-global .site-search {
-        width: 100%; } }
-  @media (min-width: 769px) {
+        width: 40%; } }
+  @media (min-width: 965px) {
     #global-header.with-proposition .header-wrapper .header-proposition {
-      width: 66.66%;
-      float: left; } }
+        margin: 7px 0 0 0; 
+      float: right; } }
+  @media(max-width:965px) {
+    #global-header.with-proposition .header-wrapper .header-proposition {
+        float: left;
+        width: 100%;
+        padding: 0px 15px;
+    }
+  }
   #global-header.with-proposition .header-wrapper .header-proposition .content {
     margin: 0 15px; }
   #global-header #logo {
@@ -533,7 +540,7 @@ button:focus,
 /* Global header bar */
 #global-header-bar {
   height: 10px;
-  background-color: #005ea5; }
+  background-color: #6f777b; }
 
 /* Global cookie message */
 .js-enabled #global-cookie-message {

@@ -1,7 +1,8 @@
 ﻿@font-face {
-    font-family: GDS-Logo;
-    src: local("HelveticaNeue"), local("Helvetica Neue"), local("Arial"), local("Helvetica");
+    font-family: 'Noto Sans', sans-serif;
+    
 }
+
 
 @-ms-viewport {
     width: device-width;
@@ -54,10 +55,10 @@
     margin: 15px -15px;
 }
 
-@font-face {
+/*@font-face {
     font-family: GDS-Logo;
     src: local("HelveticaNeue"), local("Helvetica Neue"), local("Arial"), local("Helvetica");
-}
+}*/
 
 @-ms-viewport {
     width: device-width;
@@ -81,10 +82,10 @@
     clear: both;
 }
 
-@font-face {
+/*@font-face {
     font-family: GDS-Logo;
     src: local("HelveticaNeue"), local("Helvetica Neue"), local("Arial"), local("Helvetica");
-}
+}*/
 
 @-ms-viewport {
     width: device-width;
@@ -173,10 +174,10 @@
     width: device-width;
 }
 
-@font-face {
+/*@font-face {
     font-family: GDS-Logo;
     src: local("HelveticaNeue"), local("Helvetica Neue"), local("Arial"), local("Helvetica");
-}
+}*/
 
 @-ms-viewport {
     width: device-width;
@@ -255,7 +256,7 @@ b, u, i, center,
 input, textarea,
 table, caption, tbody, tfoot, thead, tr, th, td {
     font-size: inherit;
-    font-family: inherit;
+    font-family: 'Noto Sans', sans-serif;
     line-height: inherit;
     font-weight: normal;
 }
@@ -333,7 +334,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 main {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 400;
@@ -349,7 +350,7 @@ main {
 }
 
 .font-xxlarge {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 53px;
     line-height: 1.0377358491;
     font-weight: 400;
@@ -364,7 +365,7 @@ main {
 }
 
 .font-xlarge {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 32px;
     line-height: 1.09375;
     font-weight: 400;
@@ -379,7 +380,7 @@ main {
 }
 
 .font-large {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 24px;
     line-height: 1.0416666667;
     font-weight: 400;
@@ -394,7 +395,7 @@ main {
 }
 
 .font-medium {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 400;
@@ -409,7 +410,7 @@ main {
 }
 
 .font-small {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 400;
@@ -424,7 +425,7 @@ main {
 }
 
 .font-xsmall {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     line-height: 1.1428571429;
     font-weight: 400;
@@ -439,7 +440,7 @@ main {
 }
 
 .bold-xxlarge {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 53px;
     line-height: 1.0377358491;
     font-weight: 700;
@@ -454,7 +455,7 @@ main {
 }
 
 .bold-xlarge {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 32px;
     line-height: 1.09375;
     font-weight: 700;
@@ -469,7 +470,7 @@ main {
 }
 
 .bold-large {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 24px;
     line-height: 1.0416666667;
     font-weight: 700;
@@ -499,7 +500,7 @@ main {
 }
 
 .bold-small {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 700;
@@ -514,7 +515,7 @@ main {
 }
 
 .bold-xsmall {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     line-height: 1.1428571429;
     font-weight: 700;
@@ -529,7 +530,8 @@ main {
 }
 
 .heading-xlarge {
-    font-family: "nta", Arial, sans-serif;
+    
+    font-family: 'Noto Sans', sans-serif;
     font-size: 32px;
     line-height: 1.09375;
     font-weight: 700;
@@ -553,7 +555,7 @@ main {
 }
 
 .heading-xlarge .heading-secondary {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     line-height: 1.1111111111;
     font-weight: 400;
@@ -579,7 +581,7 @@ main {
 }
 
 .heading-large {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 24px;
     line-height: 1.0416666667;
     font-weight: 700;
@@ -603,7 +605,7 @@ main {
 }
 
 .heading-large .heading-secondary {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 400;
@@ -629,7 +631,7 @@ main {
 }
 
 .heading-medium {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 700;
@@ -653,7 +655,7 @@ main {
 }
 
 .heading-small {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 700;
@@ -688,7 +690,7 @@ p {
 }
 
 .lede {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 400;
@@ -731,7 +733,7 @@ p {
     display: -moz-inline-stack;
     display: inline-block;
     position: relative;
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     line-height: 1.1428571429;
     font-weight: 400;
@@ -932,7 +934,7 @@ hr {
 
 .button-start,
 .button-get-started {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 700;
@@ -1455,7 +1457,7 @@ textarea {
 }
 
 .form-label {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 400;
@@ -1470,7 +1472,7 @@ textarea {
 }
 
 .form-label-bold {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 700;

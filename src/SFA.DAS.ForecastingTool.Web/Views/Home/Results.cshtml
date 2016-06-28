@@ -9,6 +9,14 @@
     <div class="column-two-thirds">
         <h1 class="heading-xlarge">Your estimated apprenticeship funding</h1>
 
+            <div class="disclaimer-nopadding">
+                <p>
+                    <strong>Disclaimer</strong>
+                    <span>This tool is designed to be illustrative only. The actual amount of levy you will pay may vary.</span>
+                </p>
+            </div>
+    
+
         @if (!shouldShowGrid)
         {
             <p>Your payroll is less than £3 million so you won't have to pay the levy. You will only have to pay @(Model.TopPercentageForDisplay)% toward the cost of apprenticeships and the government will pay the rest. To get a more detailed estimate of what you'll contribute, go back and <a href="@Url.Content($"~/forecast/{Model.Paybill}/{Model.EnglishFractionForPreviousAnswer}?previousAnswer={Model.GetCohortsUrl()}")">add an apprenticeship.</a></p>

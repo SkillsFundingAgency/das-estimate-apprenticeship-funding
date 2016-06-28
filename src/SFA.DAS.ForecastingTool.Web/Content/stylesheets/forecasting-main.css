@@ -2489,7 +2489,12 @@ table.sticky-header th {
     padding-top: 30px;
 }
 
-    .disclaimer strong {
+.disclaimer-nopadding {
+    padding-top: 0;
+}
+
+.disclaimer strong,
+.disclaimer-nopadding strong {
         font-weight: bold;
         color: #b10e1e;
         margin-right: 10px;

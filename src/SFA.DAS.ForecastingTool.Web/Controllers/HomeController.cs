@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Microsoft.ApplicationInsights;
 using NLog;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
@@ -17,6 +18,8 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
         private readonly IForecastCalculator _forecastCalculator;
         private readonly IConfigurationProvider _configurationProvider;
 
+        private readonly TelemetryClient _tc;
+
         public HomeController(
             IStandardsRepository standardsRepository,
             IForecastCalculator forecastCalculator,
@@ -25,6 +28,8 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             _standardsRepository = standardsRepository;
             _forecastCalculator = forecastCalculator;
             _configurationProvider = configurationProvider;
+
+            _tc = new TelemetryClient();
         }
 
         protected override void OnException(ExceptionContext filterContext)
@@ -38,21 +43,29 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
 
         public ActionResult Welcome()
         {
+            _tc.TrackPageView("Weclome");
+
             return View(new ForecastQuestionsModel());
         }
 
         public ActionResult Paybill(ForecastQuestionsModel model)
         {
+            _tc.TrackPageView("Pay Bill");
+
             return View(model);
         }
 
         public ActionResult EnglishFraction(ForecastQuestionsModel model)
         {
+            _tc.TrackPageView("English Fraction");
+
             return View(model);
         }
 
         public async Task<ActionResult> TrainingCourse(TrainingCourseViewModel model)
         {
+            _tc.TrackPageView("Training Course");
+
             var standards = await _standardsRepository.GetAllAsync();
             model.Standards = standards.OrderBy(s => s.Name).Select(s => new StandardModel(s)).ToArray();
 
@@ -65,6 +78,8 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
 
         public async Task<ActionResult> Results(ResultsViewModel model)
         {
+            _tc.TrackPageView("Results");
+
             var forecastResult = await _forecastCalculator.DetailedForecastAsync(model.Paybill, model.EnglishFraction,
                 model.SelectedCohorts.ToArray(), model.Duration);
 

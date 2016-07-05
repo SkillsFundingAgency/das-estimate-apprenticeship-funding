@@ -350,6 +350,8 @@ button:focus,
       @media screen and (max-width: 379px) {
         #global-header .header-wrapper .header-global .header-logo {
           width: auto;
+          
+        padding: 0 0 35px;
           float: none; } }
       #global-header .header-wrapper .header-global .header-logo .content {
         margin: 0 15px; }

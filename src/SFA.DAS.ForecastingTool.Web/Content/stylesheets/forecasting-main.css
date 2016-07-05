@@ -1,5 +1,5 @@
 ﻿@font-face {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     
 }
 
@@ -256,7 +256,7 @@ b, u, i, center,
 input, textarea,
 table, caption, tbody, tfoot, thead, tr, th, td {
     font-size: inherit;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     line-height: 1.6;
     font-weight: normal;
 }
@@ -334,7 +334,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 main {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     line-height: 1.5;
     font-weight: 400;
@@ -350,7 +350,7 @@ main {
 }
 
 .font-xxlarge {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 53px;
     line-height: 1.0377358491;
     font-weight: 400;
@@ -365,7 +365,7 @@ main {
 }
 
 .font-xlarge {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 32px;
     line-height: 1.09375;
     font-weight: 400;
@@ -380,7 +380,7 @@ main {
 }
 
 .font-large {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 24px;
     line-height: 1.0416666667;
     font-weight: 400;
@@ -395,7 +395,7 @@ main {
 }
 
 .font-medium {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 400;
@@ -410,7 +410,7 @@ main {
 }
 
 .font-small {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 400;
@@ -425,7 +425,7 @@ main {
 }
 
 .font-xsmall {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
     line-height: 1.1428571429;
     font-weight: 400;
@@ -440,7 +440,7 @@ main {
 }
 
 .bold-xxlarge {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 53px;
     line-height: 1.0377358491;
     font-weight: 700;
@@ -455,7 +455,7 @@ main {
 }
 
 .bold-xlarge {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 32px;
     line-height: 1.09375;
     font-weight: 700;
@@ -470,7 +470,7 @@ main {
 }
 
 .bold-large {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 24px;
     line-height: 1.0416666667;
     font-weight: 700;
@@ -500,7 +500,7 @@ main {
 }
 
 .bold-small {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 700;
@@ -515,7 +515,7 @@ main {
 }
 
 .bold-xsmall {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
     line-height: 1.1428571429;
     font-weight: 700;
@@ -531,7 +531,7 @@ main {
 
 .heading-xlarge {
     
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 32px;
     line-height: 1.09375;
     font-weight: 700;
@@ -555,7 +555,7 @@ main {
 }
 
 .heading-xlarge .heading-secondary {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
     line-height: 1.1111111111;
     font-weight: 400;
@@ -581,7 +581,7 @@ main {
 }
 
 .heading-large {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 24px;
     line-height: 1.0416666667;
     font-weight: 700;
@@ -605,7 +605,7 @@ main {
 }
 
 .heading-large .heading-secondary {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 400;
@@ -631,7 +631,7 @@ main {
 }
 
 .heading-medium {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 700;
@@ -655,7 +655,7 @@ main {
 }
 
 .heading-small {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 700;
@@ -690,7 +690,7 @@ p {
 }
 
 .lede {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 400;
@@ -733,7 +733,7 @@ p {
     display: -moz-inline-stack;
     display: inline-block;
     position: relative;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
     line-height: 1.1428571429;
     font-weight: 400;
@@ -934,7 +934,7 @@ hr {
 
 .button-start,
 .button-get-started {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 700;
@@ -942,7 +942,7 @@ hr {
     background-image: url("/public/images/icons/icon-pointer.png");
     background-repeat: no-repeat;
     background-position: 100% 50%;
-    padding: 0.3684210526em 2.1578947368em 0.2105263158em 0.8421052632em;
+    padding: 0.3684210526em 2.1578947368em 0.40263158em 0.8421052632em;
 }
 
 @media (min-width: 641px) {
@@ -1457,7 +1457,7 @@ textarea {
 }
 
 .form-label {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 400;
@@ -1472,7 +1472,7 @@ textarea {
 }
 
 .form-label-bold {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     font-weight: 700;

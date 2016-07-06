@@ -221,6 +221,7 @@
     <Content Include="error\not-found.htm" />
     <Content Include="Global.asax" />
     <Content Include="favicon.ico" />
+    <Content Include="loaderio-a8ce7f8d27b063056042abab61c96b90.txt" />
     <Content Include="Scripts\details.polyfill.js" />
     <Content Include="Scripts\forecasting-trainingcourse-1.0.js" />
     <Content Include="Scripts\govuk-template.js" />

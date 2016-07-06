@@ -26,6 +26,11 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             {
                 monthlyLevyPaid = 0;
             }
+            if (monthlyLevyPaid == 0 && paybill >= 3000001)
+            {
+                monthlyLevyPaid = 1;
+            }
+
             var levyPaid = monthlyLevyPaid * 12;
 
             var decimalEnglishFraction = englishFraction / 100m;

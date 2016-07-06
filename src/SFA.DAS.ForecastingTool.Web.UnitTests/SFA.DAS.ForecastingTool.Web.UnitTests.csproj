@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllersTests\HomeControllerTests\WhenSelectingTrainingCourse.cs" />
+    <Compile Include="FinancialForecastingTests\ForecastCalculatorTests\WhenCalculatingMyMonthlyLevy.cs" />
     <Compile Include="FinancialForecastingTests\ForecastCalculatorTests\WhenForecasting.cs" />
     <Compile Include="InfrastructureTests\RoutingTests\UrlParserTests\WhenParsing.cs" />
     <Compile Include="ModelsTests\ForecastQuestionsModelTests\WhenGeneratingTheCohortUrl.cs" />

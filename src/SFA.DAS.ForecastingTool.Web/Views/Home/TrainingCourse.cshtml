@@ -11,7 +11,7 @@
                     <p class="error-message">@Model.ErrorMessage</p>
                 </div>
             }
-            @if (Model.LevyFundingReceived > 0)
+            @if (Model.Paybill >= 3000001)
             {
                 <p class="no-bottom-margin">
                     Choose one or more apprenticeships to get a more detailed estimate of how much you will spend every month or you can <a href="/forecast/@Model.Paybill/@Model.EnglishFractionForPreviousAnswer/0x0/12">skip this step</a>

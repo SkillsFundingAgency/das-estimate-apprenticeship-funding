@@ -202,7 +202,24 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
-            Assert.AreEqual("Number of apprentices, training standard or start date invalid", actual.RouteValues[ErrorMessageRouteValueKey]);
+            Assert.AreEqual("You must choose an apprenticeship training course. Alternatively you can skip this step.", actual.RouteValues[ErrorMessageRouteValueKey]);
+        }
+
+        [TestCase(BasePath + "/987654321/80/4x34-0418_2xa-0417")]
+        [TestCase(BasePath + "/987654321/80/4x34-0418_axa-0417")]
+        [TestCase(BasePath + "/987654321/80/4x34-0418_abc-0417")]
+        [TestCase(BasePath + "/987654321/80/4x34-0418_ax34-0417")]
+        [TestCase(BasePath + "/987654321/80/4x34-0418_abc")]
+        [TestCase(BasePath + "/987654321/80/4x34-0418_4x99-abc")]
+        [TestCase(BasePath + "/987654321/80/4x34-0418_4x99-012017")]
+        public void ThenItShouldIncludeErrorMessageIfOneCohortEntryIsCorrectAndTheAdditionalOneIsnt(string path)
+        {
+            // Act
+            var actual = _parser.Parse(path, "");
+
+            // Assert
+            Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
+            Assert.AreEqual("You need to choose at least one apprentice to add another row. Alternatively you can skip this step.", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
         [TestCase(BasePath + "/987654321/80/4x99-0417")]
@@ -237,7 +254,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
 
             // Assert
             Assert.IsTrue(actual.RouteValues.ContainsKey(ErrorMessageRouteValueKey));
-            Assert.AreEqual("Must have at least 1 apprentice to calculate. Alternatively you can skip this step", actual.RouteValues[ErrorMessageRouteValueKey]);
+            Assert.AreEqual("You must choose an apprenticeship training course. Alternatively you can skip this step.", actual.RouteValues[ErrorMessageRouteValueKey]);
         }
 
         [Test]

@@ -177,7 +177,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 
             for (var i = 0; i < standardSelection.Length; i++)
             {
-                if (standardSelection[i] == "noselection")
+                if (standardSelection[i] == "noselection" && string.IsNullOrEmpty(cohortsEntry[i]) && string.IsNullOrEmpty(startDateMonthEntry[i]) && string.IsNullOrEmpty(startDateYearEntry[i]))
                 {
                     continue;
                 }

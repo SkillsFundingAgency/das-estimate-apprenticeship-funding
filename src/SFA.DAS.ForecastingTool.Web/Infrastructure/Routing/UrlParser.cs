@@ -170,6 +170,10 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             {
                 return;
             }
+
+            var errorMessage = standards.Length > 1 
+                                 ? "You need to choose at least one apprentice to add another row. Alternatively you can skip this step." 
+                                 : "You must choose an apprenticeship training course. Alternatively you can skip this step.";
             
             for (var i = 0; i < standards.Length; i++)
             {
@@ -206,7 +210,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 else
                 {
                     result.IsErrored = true;
-                    result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
+                    result.RouteValues.Add("ErrorMessage", errorMessage);
                     result.ActionName = "TrainingCourse";
                     return;
                 }
@@ -224,8 +228,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 if (standardCode > 0 && standardQty == 0)
                 {
                     result.IsErrored = true;
-                    result.RouteValues.Add("ErrorMessage",
-                        "Must have at least 1 apprentice to calculate. Alternatively you can skip this step");
+                    result.RouteValues.Add("ErrorMessage", errorMessage);
                     result.ActionName = "TrainingCourse";
                     return;
                 }

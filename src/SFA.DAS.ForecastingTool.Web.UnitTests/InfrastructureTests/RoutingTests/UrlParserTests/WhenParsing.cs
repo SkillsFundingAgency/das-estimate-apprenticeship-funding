@@ -27,6 +27,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         {
             _standardsRepo = new Mock<IStandardsRepository>();
             _standardsRepo.Setup(r => r.GetByCodeAsync(34)).Returns(Task.FromResult(new Standard { Name = "Unit tester" }));
+            _standardsRepo.Setup(r => r.GetByCodeAsync(43621)).Returns(Task.FromResult(new Standard { Name = "Unit tester" }));
             _standardsRepo.Setup(r => r.GetByCodeAsync(12)).Returns(Task.FromResult(new Standard { Name = "Unit tester" }));
 
             _parser = new UrlParser(_standardsRepo.Object);
@@ -100,6 +101,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         }
 
         [TestCase(BasePath + "/987654321/80/4x34-0517", new[] { 4 }, new[] { 34 }, new[] { "2017-05-01" })]
+        [TestCase(BasePath + "/987654321/80/4x43621-0517", new[] { 4 }, new[] { 43621 }, new[] { "2017-05-01" })]
         [TestCase(BasePath + "/987654321/80/12x34-0218", new[] { 12 }, new[] { 34 }, new[] { "2018-02-1" })]
         [TestCase(BasePath + "/987654321/80/12x34-0218_10x12-0318", new[] { 12, 10 }, new[] { 34, 12 }, new[] { "2018-02-1", "2018-03-1" })]
         public void ThenItShouldIncludeTheStandardInfoInRouteValuesIfInPath(string path, int[] expectedQty, int[] expectedCode, string[] expectedStartDate)

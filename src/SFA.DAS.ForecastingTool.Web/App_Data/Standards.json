@@ -169,7 +169,7 @@
   },
   {
     "Code": 58222,
-    "Name": "Catering and Professional Chefs - Patisserie and Confectionery  - Level 3",
+    "Name": "Catering and Professional Chefs - Patisserie and Confectionery - Level 3",
     "Price": 2500,
     "Duration": 18
   },
@@ -210,16 +210,16 @@
     "Duration": 20
   },
   {
-    "Code": 44531,
-    "Name": "Children and Young People's Workforce - Children and Young People's Workforce  - Level 2",
-    "Price": 2000,
-    "Duration": 12
-  },
-  {
     "Code": 44521,
     "Name": "Children and Young People's Workforce - Early Years Educator - Level 3",
     "Price": 2500,
     "Duration": 20
+  },
+  {
+    "Code": 44531,
+    "Name": "Children and Young People's Workforce - Level 2",
+    "Price": 2000,
+    "Duration": 12
   },
   {
     "Code": 44523,
@@ -354,16 +354,16 @@
     "Duration": 36
   },
   {
-    "Code": 25,
-    "Name": "Digital and Technology Solutions Professional �  degree apprenticeship - Level 6",
-    "Price": 27000,
-    "Duration": 36
-  },
-  {
     "Code": 78,
     "Name": "Digital Marketer - Level 3",
     "Price": 9000,
     "Duration": 18
+  },
+  {
+    "Code": 25,
+    "Name": "Digital and Technology Solutions Professional - Level 6",
+    "Price": 27000,
+    "Duration": 36
   },
   {
     "Code": 26,
@@ -427,7 +427,7 @@
   },
   {
     "Code": 53934,
-    "Name": "Engineering Manufacture - Engineering Maintenance and Installation  - Level 2",
+    "Name": "Engineering Manufacture - Engineering Maintenance and Installation - Level 2",
     "Price": 4000,
     "Duration": 18
   },
@@ -457,7 +457,7 @@
   },
   {
     "Code": 53935,
-    "Name": "Engineering Manufacture - Fabrication and Welding  - Level 2",
+    "Name": "Engineering Manufacture - Fabrication and Welding - Level 2",
     "Price": 5000,
     "Duration": 18
   },
@@ -493,7 +493,7 @@
   },
   {
     "Code": 53936,
-    "Name": "Engineering Manufacture - Materials Processing and Finishing  - Level 2",
+    "Name": "Engineering Manufacture - Materials Processing and Finishing - Level 2",
     "Price": 4000,
     "Duration": 18
   },
@@ -571,25 +571,25 @@
   },
   {
     "Code": 44431,
-    "Name": "Health and Social Care - Adult Social Care  - Level 2",
+    "Name": "Health and Social Care - Adult Social Care - Level 2",
     "Price": 1500,
     "Duration": 12
   },
   {
     "Code": 44421,
-    "Name": "Health and Social Care - Adult Social Care  - Level 3",
+    "Name": "Health and Social Care - Adult Social Care - Level 3",
     "Price": 2000,
     "Duration": 18
   },
   {
     "Code": 44432,
-    "Name": "Health and Social Care - Health  - Level 2",
+    "Name": "Health and Social Care - Health - Level 2",
     "Price": 1500,
     "Duration": 12
   },
   {
     "Code": 44422,
-    "Name": "Health and Social Care - Health  - Level 3",
+    "Name": "Health and Social Care - Health - Level 3",
     "Price": 1500,
     "Duration": 18
   },
@@ -637,7 +637,7 @@
   },
   {
     "Code": 58331,
-    "Name": "Hospitality - Hospitality Services  - Level 2",
+    "Name": "Hospitality - Hospitality Services - Level 2",
     "Price": 1500,
     "Duration": 12
   },
@@ -649,7 +649,7 @@
   },
   {
     "Code": 58333,
-    "Name": "Hospitality - House Keeping  - Level 2",
+    "Name": "Hospitality - House Keeping - Level 2",
     "Price": 1500,
     "Duration": 12
   },
@@ -661,13 +661,13 @@
   },
   {
     "Code": 65,
-    "Name": "Housing property management - Level 3",
+    "Name": "Housing/property management - Level 3",
     "Price": 9000,
     "Duration": 18
   },
   {
     "Code": 64,
-    "Name": "Housing property management assistant - Level 2",
+    "Name": "Housing/property management assistant - Level 2",
     "Price": 3000,
     "Duration": 12
   },
@@ -702,16 +702,16 @@
     "Duration": 42
   },
   {
-    "Code": 60,
-    "Name": "Insurance Practitioner - Level 3",
-    "Price": 9000,
-    "Duration": 12
-  },
-  {
     "Code": 63,
     "Name": "Insurance Professional - Level 4",
     "Price": 9000,
     "Duration": 24
+  },
+  {
+    "Code": 60,
+    "Name": "Insurance Practitioner - Level 3",
+    "Price": 9000,
+    "Duration": 12
   },
   {
     "Code": 29,
@@ -746,7 +746,7 @@
   {
     "Code": 418201,
     "Name": "IT, Software, Web & Telecoms Professionals - Level 4",
-    "Price": 9000,
+    "Price": 12000,
     "Duration": 18
   },
   {
@@ -754,6 +754,12 @@
     "Name": "Junior 2D Artist (visual effects) - Level 4",
     "Price": 9000,
     "Duration": 18
+  },
+  {
+    "Code": 83,
+    "Name": "Junior Management Consultant - Level 4",
+    "Price": 9000,
+    "Duration": 24
   },
   {
     "Code": 68,
@@ -766,12 +772,6 @@
     "Name": "Junior Journalist - Level 3",
     "Price": 12000,
     "Duration": 18
-  },
-  {
-    "Code": 83,
-    "Name": "Junior Management Consultant - Level 4",
-    "Price": 9000,
-    "Duration": 24
   },
   {
     "Code": 44,
@@ -1015,7 +1015,7 @@
   },
   {
     "Code": 44323,
-    "Name": "Retail - Management  - Level 3",
+    "Name": "Retail - Management - Level 3",
     "Price": 1500,
     "Duration": 15
   },
@@ -1039,7 +1039,7 @@
   },
   {
     "Code": 44322,
-    "Name": "Retail - Visual Merchandising  - Level 3",
+    "Name": "Retail - Visual Merchandising - Level 3",
     "Price": 1500,
     "Duration": 15
   },
@@ -1062,26 +1062,26 @@
     "Duration": 18
   },
   {
+    "Code": 66,
+    "Name": "Senior housing/property management - Level 4",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
     "Code": 31,
     "Name": "Senior Financial Services Customer Adviser - Level 3",
     "Price": 9000,
     "Duration": 12
   },
   {
-    "Code": 66,
-    "Name": "Senior housing property management - Level 4",
-    "Price": 9000,
-    "Duration": 18
-  },
-  {
-    "Code": 2,
-    "Name": "Software Developer - Level 4",
+    "Code": 91,
+    "Name": "Software Tester - Level 4",
     "Price": 18000,
     "Duration": 24
   },
   {
-    "Code": 91,
-    "Name": "Software Tester - Level 4",
+    "Code": 2,
+    "Name": "Software Developer - Level 4",
     "Price": 18000,
     "Duration": 24
   },
@@ -1147,79 +1147,79 @@
   },
   {
     "Code": 43624,
-    "Name": "Vehicle Maintenance and Repair  - Auto Electrical and Mobile Electrical Installation - Level 3",
+    "Name": "Vehicle Maintenance and Repair - Auto Electrical and Mobile Electrical Installation - Level 3",
     "Price": 6000,
     "Duration": 18
   },
   {
     "Code": 43634,
-    "Name": "Vehicle Maintenance and Repair  - Auto Electrics/Mobile Electrics - Level 2",
+    "Name": "Vehicle Maintenance and Repair - Auto Electrics/Mobile Electrics - Level 2",
     "Price": 5000,
     "Duration": 24
   },
   {
     "Code": 43637,
-    "Name": "Vehicle Maintenance and Repair  - Caravan and Motorhome - Level 2",
+    "Name": "Vehicle Maintenance and Repair - Caravan and Motorhome - Level 2",
     "Price": 3000,
     "Duration": 18
   },
   {
     "Code": 43626,
-    "Name": "Vehicle Maintenance and Repair  - Caravan and Motorhome - Level 3",
+    "Name": "Vehicle Maintenance and Repair - Caravan and Motorhome - Level 3",
     "Price": 3500,
     "Duration": 18
   },
   {
     "Code": 43632,
-    "Name": "Vehicle Maintenance and Repair  - Heavy Vehicle - Level 2",
+    "Name": "Vehicle Maintenance and Repair - Heavy Vehicle - Level 2",
     "Price": 6000,
     "Duration": 24
   },
   {
     "Code": 43622,
-    "Name": "Vehicle Maintenance and Repair  - Heavy Vehicle - Level 3",
+    "Name": "Vehicle Maintenance and Repair - Heavy Vehicle - Level 3",
     "Price": 6000,
     "Duration": 18
   },
   {
     "Code": 43635,
-    "Name": "Vehicle Maintenance and Repair  - Heavy Vehicle Trailer - Level 2",
+    "Name": "Vehicle Maintenance and Repair - Heavy Vehicle Trailer - Level 2",
     "Price": 5000,
     "Duration": 24
   },
   {
     "Code": 43636,
-    "Name": "Vehicle Maintenance and Repair  - Lift Truck - Level 2",
+    "Name": "Vehicle Maintenance and Repair - Lift Truck - Level 2",
     "Price": 6000,
     "Duration": 24
   },
   {
     "Code": 43625,
-    "Name": "Vehicle Maintenance and Repair  - Lift Truck - Level 3",
+    "Name": "Vehicle Maintenance and Repair - Lift Truck - Level 3",
     "Price": 6000,
     "Duration": 18
   },
   {
     "Code": 43631,
-    "Name": "Vehicle Maintenance and Repair  - Light Vehicle - Level 2",
+    "Name": "Vehicle Maintenance and Repair - Light Vehicle - Level 2",
     "Price": 5000,
     "Duration": 24
   },
   {
     "Code": 43621,
-    "Name": "Vehicle Maintenance and Repair  - Light Vehicle - Level 3",
+    "Name": "Vehicle Maintenance and Repair - Light Vehicle - Level 3",
     "Price": 6000,
     "Duration": 18
   },
   {
     "Code": 43633,
-    "Name": "Vehicle Maintenance and Repair  - Motorcycle - Level 2",
+    "Name": "Vehicle Maintenance and Repair - Motorcycle - Level 2",
     "Price": 5000,
     "Duration": 24
   },
   {
     "Code": 43623,
-    "Name": "Vehicle Maintenance and Repair  - Motorcycle - Level 3",
+    "Name": "Vehicle Maintenance and Repair - Motorcycle - Level 3",
     "Price": 6000,
     "Duration": 18
   },

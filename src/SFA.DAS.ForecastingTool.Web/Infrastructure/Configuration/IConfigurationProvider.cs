@@ -8,5 +8,6 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration
         decimal LevyTopupPercentage { get; }
         decimal CopaymentPercentage { get; }
         decimal FinalTrainingPaymentPercentage { get; }
+        int SunsettingPeriod { get; }
     }
 }

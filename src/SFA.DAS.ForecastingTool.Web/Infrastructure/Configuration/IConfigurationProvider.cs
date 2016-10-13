@@ -9,5 +9,6 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration
         decimal CopaymentPercentage { get; }
         decimal FinalTrainingPaymentPercentage { get; }
         int SunsettingPeriod { get; }
+        int ForecastDuration { get; }
     }
 }

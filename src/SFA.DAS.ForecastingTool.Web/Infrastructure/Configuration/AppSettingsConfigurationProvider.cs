@@ -77,6 +77,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration
                 return pct;
             }
         }
+
         public int SunsettingPeriod
         {
             get
@@ -90,6 +91,21 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration
                 }
 
                 return period;
+            }
+        }
+
+        public int ForecastDuration {
+            get
+            {
+                var value = GetSetting("Levy:ForecastDuration");
+
+                int duration;
+                if (!int.TryParse(value, out duration))
+                {
+                    return 36;
+                }
+
+                return duration;
             }
         }
     }

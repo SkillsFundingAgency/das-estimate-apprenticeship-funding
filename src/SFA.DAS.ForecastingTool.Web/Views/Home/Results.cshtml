@@ -1,4 +1,5 @@
-﻿@model SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel
+﻿@using System.Text
+@model SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel
 
 
 @{
@@ -142,9 +143,24 @@
 </div>
 
 @section scripts {
-
     <script type="text/javascript">
-        $(document).ready(function() {
+        @{ var cohorts = new StringBuilder(); }
+        @if (Model.SelectedCohorts.Any())
+        {
+            foreach (var standard in Model.SelectedCohorts)
+            {
+                if (cohorts.Length != 0)
+                {
+                    cohorts.Append(",");
+                }
+                cohorts.Append("[" + standard.Qty + " apprentices on " + standard.Name + " training course starting on " + standard.StartDate + "]");
+            }
+        }
+
+        $(document).ready(function () {
+            ga('set', 'metric1', @Model.Paybill);
+            ga('set', 'metric2', @Model.EnglishFraction);
+            ga('set', 'dimension1', '@cohorts.ToString()');
             ga('send', 'pageview', '/Results');
         });
     </script>

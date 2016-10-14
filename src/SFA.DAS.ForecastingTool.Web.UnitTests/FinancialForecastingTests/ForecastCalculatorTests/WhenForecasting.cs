@@ -73,6 +73,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             _configurationProvider.Setup(cp => cp.LevyTopupPercentage).Returns(1.1m);
             _configurationProvider.Setup(cp => cp.CopaymentPercentage).Returns(0.1m);
             _configurationProvider.Setup(cp => cp.FinalTrainingPaymentPercentage).Returns(0m);
+            _configurationProvider.Setup(cp => cp.SunsettingPeriod).Returns(18);
 
             _calculator = new ForecastCalculator(_standardsRepository.Object, _configurationProvider.Object);
         }
@@ -467,18 +468,22 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         }
 
         [Test]
-        public async Task ThenItShouldSunsetFundsWhenTheBalanceExceeds18TimesMonthlyFunding()
+        public async Task ThenItShouldSunsetFundsWhenTheBalanceExceedsTheConfiguredAmountTimesMonthlyFunding()
         {
+            //Arrange
+            var sunsetPeriod = 30;
+            _configurationProvider.Setup(x => x.SunsettingPeriod).Returns(sunsetPeriod);
+
             // Act
-            var actual = (await _calculator.DetailedForecastAsync(Paybill, EnglishFraction, new CohortModel[0], 24))?.Breakdown;
+            var actual = (await _calculator.DetailedForecastAsync(Paybill, EnglishFraction, new CohortModel[0], 36))?.Breakdown;
 
             // Assert
-            for (var i = 18; i < 24; i++)
+            for (var i = sunsetPeriod; i < 36; i++)
             {
                 var actualBalance = actual[i].Balance;
 
-                Assert.AreEqual(10296m, actualBalance,
-                    $"Expected actual[{i}].Balance to be 10312 but was {actualBalance}");
+                Assert.AreEqual(17160m, actualBalance,
+                    $"Expected actual[{i}].Balance to be 17160 but was {actualBalance}");
             }
         }
 

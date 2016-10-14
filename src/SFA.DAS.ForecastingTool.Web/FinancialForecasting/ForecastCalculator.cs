@@ -68,7 +68,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var startDate = new DateTime(2017, 5, 1);
 
             var monthlyFunding = fundingReceived / 12m;
-            var sunsetLimit = monthlyFunding * 18;
+            var sunsetLimit = monthlyFunding * _configurationProvider.SunsettingPeriod;
 
             var rollingBalance = 0m;
             var months = new MonthlyCashflow[duration];

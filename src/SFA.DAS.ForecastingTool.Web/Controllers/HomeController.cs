@@ -88,7 +88,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             model.LevyFundingReceived = forecastResult.FundingReceived;
             model.TopPercentageForDisplay = forecastResult.UserFriendlyTopupPercentage.ToString("0");
             model.Results = forecastResult.Breakdown;
-            model.CanAddPeriod = model.Duration < 36;
+            model.CanAddPeriod = model.Duration < _configurationProvider.ForecastDuration;
             model.NextPeriodUrl = Request?.Url?.GetUrlToSegment(4) + (model.Duration + 12);
 
             var years = model.Duration / 12;

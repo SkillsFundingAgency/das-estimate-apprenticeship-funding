@@ -157,11 +157,17 @@
             }
         }
 
-        $(document).ready(function () {
-            ga('set', 'metric1', @Model.Paybill);
-            ga('set', 'metric2', @Model.EnglishFraction);
-            ga('set', 'dimension1', '@cohorts.ToString()');
-            ga('send', 'pageview', '/Results');
-        });
+        $(document)
+            .ready(function() {
+
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'apprenticeship',
+                    eventLabel: '@(cohorts.ToString())',
+                    eventAction: '@($"{Model.Paybill}|{Model.EnglishFraction}|{Model.SelectedCohorts.Count}|{Model.SelectedCohorts.Sum(c => c.Qty)}")'
+                });
+
+                ga('send', 'pageview', null);
+            });
     </script>
 }

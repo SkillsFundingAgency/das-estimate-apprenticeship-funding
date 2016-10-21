@@ -6,10 +6,58 @@
     "Duration": 18
   },
   {
+    "Code": 45431,
+    "Name": "Accounting - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 45421,
+    "Name": "Accounting - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 454201,
+    "Name": "Accounting - Level 4",
+    "Price": 2500,
+    "Duration": 18
+  },
+  {
+    "Code": 46033,
+    "Name": "Activity Leadership - Coaching - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 46032,
+    "Name": "Activity Leadership - Exercise and Fitness - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 46034,
+    "Name": "Activity Leadership - Leadership - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 46031,
+    "Name": "Activity Leadership - Outdoors - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
     "Code": 17,
     "Name": "Actuarial Technician - Level 4",
     "Price": 15000,
     "Duration": 24
+  },
+  {
+    "Code": 119,
+    "Name": "Adult Care Worker - Level 2",
+    "Price": 3000,
+    "Duration": 12
   },
   {
     "Code": 37,
@@ -19,7 +67,7 @@
   },
   {
     "Code": 56,
-    "Name": "Aerospace Manufacturing Electrical, Mechanical  and Systems Fitter - Level 3",
+    "Name": "Aerospace Manufacturing Electrical, Mechanical and Systems Fitter - Level 3",
     "Price": 24000,
     "Duration": 42
   },
@@ -36,6 +84,24 @@
     "Duration": 48
   },
   {
+    "Code": 528202,
+    "Name": "Agriculture - Agricultural Business Management - Level 4",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 52831,
+    "Name": "Agriculture - Level 2",
+    "Price": 1500,
+    "Duration": 15
+  },
+  {
+    "Code": 52821,
+    "Name": "Agriculture - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
     "Code": 114,
     "Name": "Aircraft Maintenance Certifying Engineer - Level 4",
     "Price": 24000,
@@ -48,16 +114,46 @@
     "Duration": 36
   },
   {
+    "Code": 121,
+    "Name": "Airside Operator - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
     "Code": 115,
     "Name": "Airworthiness Planning, Quality and Safety Technician - Level 3",
     "Price": 24000,
     "Duration": 36
   },
   {
+    "Code": 43931,
+    "Name": "Animal Care - Level 2",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 43921,
+    "Name": "Animal Care - Level 3",
+    "Price": 2500,
+    "Duration": 24
+  },
+  {
+    "Code": 133,
+    "Name": "Assistant Accountant - Level 3",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
     "Code": 85,
     "Name": "Assistant Technical Director (visual effects) - Level 4",
     "Price": 9000,
     "Duration": 18
+  },
+  {
+    "Code": 128,
+    "Name": "Associate Project Manager - Level 4",
+    "Price": 9000,
+    "Duration": 24
   },
   {
     "Code": 87,
@@ -70,6 +166,72 @@
     "Name": "Aviation Ground Specialist - Level 3",
     "Price": 3000,
     "Duration": 18
+  },
+  {
+    "Code": 141,
+    "Name": "Aviation Maintenance Mechanic (Military) - Level 2",
+    "Price": 12000,
+    "Duration": 18
+  },
+  {
+    "Code": 123,
+    "Name": "Aviation Operations Manager - Level 4",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 40531,
+    "Name": "Aviation Operations on the Ground - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 40521,
+    "Name": "Aviation Operations on the Ground - Level 3",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 50731,
+    "Name": "Barbering - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50721,
+    "Name": "Barbering - Level 3",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 42231,
+    "Name": "Beauty Therapy - Beauty Therapy General - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 42221,
+    "Name": "Beauty Therapy - Beauty Therapy General - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 42232,
+    "Name": "Beauty Therapy - Beauty Therapy Make-up - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 42222,
+    "Name": "Beauty Therapy - Beauty Therapy Make-up - Level 3",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 42223,
+    "Name": "Beauty Therapy - Beauty Therapy Massage - Level 3",
+    "Price": 2500,
+    "Duration": 12
   },
   {
     "Code": 72,
@@ -88,6 +250,78 @@
     "Name": "Broadcast Production Assistant - Level 3",
     "Price": 9000,
     "Duration": 12
+  },
+  {
+    "Code": 605221,
+    "Name": "Broadcast Technology Higher Apprenticeship - Broadcast Technology - Level 6",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 54322,
+    "Name": "Building Services Engineering Technology and Project Management - Design Technician - Level 3",
+    "Price": 12000,
+    "Duration": 42
+  },
+  {
+    "Code": 54321,
+    "Name": "Building Services Engineering Technology and Project Management - Technician - Level 3",
+    "Price": 12000,
+    "Duration": 42
+  },
+  {
+    "Code": 43133,
+    "Name": "Bus and Coach Engineering and Maintenance - Body - Level 2",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 43123,
+    "Name": "Bus and Coach Engineering and Maintenance - Body - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 43132,
+    "Name": "Bus and Coach Engineering and Maintenance - Electrical - Level 2",
+    "Price": 3500,
+    "Duration": 24
+  },
+  {
+    "Code": 43122,
+    "Name": "Bus and Coach Engineering and Maintenance - Electrical - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 43131,
+    "Name": "Bus and Coach Engineering and Maintenance - Mechanical - Level 2",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 43121,
+    "Name": "Bus and Coach Engineering and Maintenance - Mechanical - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 43124,
+    "Name": "Bus and Coach Engineering and Maintenance - Mechanical and Electrical - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 136,
+    "Name": "Bus and Coach Engineering Manager - Level 4",
+    "Price": 9000,
+    "Duration": 36
+  },
+  {
+    "Code": 134,
+    "Name": "Bus and Coach Engineering Technician - Level 3",
+    "Price": 18000,
+    "Duration": 36
   },
   {
     "Code": 49032,
@@ -124,6 +358,12 @@
     "Name": "Business and Administration - Medical Administration - Level 3",
     "Price": 2000,
     "Duration": 18
+  },
+  {
+    "Code": 620201,
+    "Name": "Business and Professional Administration - Level 4",
+    "Price": 4000,
+    "Duration": 24
   },
   {
     "Code": 54,
@@ -228,10 +468,88 @@
     "Duration": 20
   },
   {
+    "Code": 49831,
+    "Name": "Cleaning and Environmental Support Services - Cleaning and Support Services - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 49821,
+    "Name": "Cleaning and Environmental Support Services - Cleaning Supervision - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 49832,
+    "Name": "Cleaning and Environmental Support Services - Local Environmental Services - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 49833,
+    "Name": "Cleaning and Environmental Support Services - Pest Management - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 56131,
+    "Name": "Coaching - Coaching Swimming - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 56132,
+    "Name": "Coaching - Coaching Tennis - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 56121,
+    "Name": "Coaching - Coaching Tennis - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
     "Code": 93,
     "Name": "Commis Chef - Level 2",
     "Price": 9000,
     "Duration": 12
+  },
+  {
+    "Code": 49231,
+    "Name": "Community Arts - Community Arts Administration - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 49221,
+    "Name": "Community Arts - Community Arts Management - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 61731,
+    "Name": "Community Safety - Community Fire Safety - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 143,
+    "Name": "Compliance / Risk Officer - Level 3",
+    "Price": 9000,
+    "Duration": 15
+  },
+  {
+    "Code": 59631,
+    "Name": "Composite Engineering - Level 2",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 59621,
+    "Name": "Composite Engineering - Level 3",
+    "Price": 9000,
+    "Duration": 18
   },
   {
     "Code": 52223,
@@ -243,19 +561,19 @@
     "Code": 52231,
     "Name": "Construction Building - Decorative Finishing and Industrial Painting - Level 2",
     "Price": 6000,
-    "Duration": 12
+    "Duration": 18
   },
   {
     "Code": 52232,
     "Name": "Construction Building - Maintenance Operations - Level 2",
     "Price": 5000,
-    "Duration": 12
+    "Duration": 18
   },
   {
     "Code": 52233,
     "Name": "Construction Building - Trowel Occupations - Level 2",
     "Price": 5000,
-    "Duration": 12
+    "Duration": 18
   },
   {
     "Code": 52221,
@@ -264,22 +582,334 @@
     "Duration": 30
   },
   {
-    "Code": 52235,
-    "Name": "Construction Building - Wood Machining - Level 2",
-    "Price": 6000,
-    "Duration": 12
-  },
-  {
     "Code": 52234,
     "Name": "Construction Building - Wood Occupations - Level 2",
     "Price": 6000,
-    "Duration": 12
+    "Duration": 18
   },
   {
     "Code": 52222,
     "Name": "Construction Building - Wood Occupations - Level 3",
     "Price": 9000,
     "Duration": 30
+  },
+  {
+    "Code": 52235,
+    "Name": "Construction Building - Woodmachining - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 52031,
+    "Name": "Construction Civil Engineering - Construction Operations - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 52032,
+    "Name": "Construction Civil Engineering - Formwork Occupations - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 52033,
+    "Name": "Construction Civil Engineering - Highways Maintenance - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 52034,
+    "Name": "Construction Civil Engineering - Plant Maintenance - Level 2",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
+    "Code": 52021,
+    "Name": "Construction Civil Engineering - Plant Maintenance - Level 3",
+    "Price": 12000,
+    "Duration": 30
+  },
+  {
+    "Code": 52035,
+    "Name": "Construction Civil Engineering - Plant Operations - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 52038,
+    "Name": "Construction Civil Engineering - Roadbuilding - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 52037,
+    "Name": "Construction Civil Engineering - Specialist Concrete Occupations - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 52039,
+    "Name": "Construction Civil Engineering - Steelfixing - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 520310,
+    "Name": "Construction Civil Engineering - Steelfixing Occupations Major Projects - Level 2",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
+    "Code": 52036,
+    "Name": "Construction Civil Engineering - Tunnelling Operations - Level 2",
+    "Price": 5000,
+    "Duration": 23
+  },
+  {
+    "Code": 612201,
+    "Name": "Construction Management - Construction and Building Services Management and Supervision (Sustainability) - Level 4",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 612221,
+    "Name": "Construction Management - Construction Site Management - Level 6",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 612202,
+    "Name": "Construction Management - Construction Site Supervision - Level 4",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 612213,
+    "Name": "Construction Management - Foundation Degree in Architecture - Level 5",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 612214,
+    "Name": "Construction Management - Foundation Degree in Built Environment - Level 5",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 612215,
+    "Name": "Construction Management - Foundation Degree in Civil Engineering - Level 5",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 612211,
+    "Name": "Construction Management - Foundation Degree Professional Practice in Construction Operations Management - Level 5",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 612222,
+    "Name": "Construction Management - Management Quantity Surveying and Commercial Management - Level 6",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 612212,
+    "Name": "Construction Management - Sustainability - Level 5",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 51931,
+    "Name": "Construction Specialist - Accessing and Rigging - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 51932,
+    "Name": "Construction Specialist - Applied Waterproof Membranes - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 51933,
+    "Name": "Construction Specialist - Cladding Occupations - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 51935,
+    "Name": "Construction Specialist - Fitted Interiors - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 51936,
+    "Name": "Construction Specialist - Floorcovering - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 51925,
+    "Name": "Construction Specialist - Heritage Skills - Level 3",
+    "Price": 6000,
+    "Duration": 30
+  },
+  {
+    "Code": 519312,
+    "Name": "Construction Specialist - Insulation and Building Treatments - Level 2",
+    "Price": 3500,
+    "Duration": 12
+  },
+  {
+    "Code": 51937,
+    "Name": "Construction Specialist - Interior Systems - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 51938,
+    "Name": "Construction Specialist - Mastic Asphalting - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 51926,
+    "Name": "Construction Specialist - Mastic Asphalting - Level 3",
+    "Price": 9000,
+    "Duration": 30
+  },
+  {
+    "Code": 51939,
+    "Name": "Construction Specialist - Plastering - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 51921,
+    "Name": "Construction Specialist - Plastering - Level 3",
+    "Price": 6000,
+    "Duration": 30
+  },
+  {
+    "Code": 519310,
+    "Name": "Construction Specialist - Roofing Occupations - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 51922,
+    "Name": "Construction Specialist - Roofing Occupations - Level 3",
+    "Price": 12000,
+    "Duration": 30
+  },
+  {
+    "Code": 519311,
+    "Name": "Construction Specialist - Stonemasonry - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 51923,
+    "Name": "Construction Specialist - Stonemasonry - Level 3",
+    "Price": 9000,
+    "Duration": 30
+  },
+  {
+    "Code": 519313,
+    "Name": "Construction Specialist - Thermal Insulation - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 51927,
+    "Name": "Construction Specialist - Thermal Insulation - Level 3",
+    "Price": 6000,
+    "Duration": 30
+  },
+  {
+    "Code": 51934,
+    "Name": "Construction Specialist - Wall and Floor Tiling - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 51924,
+    "Name": "Construction Specialist - Wall and Floor Tiling - Level 3",
+    "Price": 9000,
+    "Duration": 30
+  },
+  {
+    "Code": 52126,
+    "Name": "Construction Technical and Professional - Building Control - Level 3",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
+    "Code": 52121,
+    "Name": "Construction Technical and Professional - Built Environment and Design - Level 3",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 52124,
+    "Name": "Construction Technical and Professional - Civil Engineering for Technicians - Level 3",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
+    "Code": 52122,
+    "Name": "Construction Technical and Professional - Construction Contracting Operations - Level 3",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
+    "Code": 52127,
+    "Name": "Construction Technical and Professional - Geomatics Data Analysis - Level 3",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
+    "Code": 52125,
+    "Name": "Construction Technical and Professional - Occupational Work Supervision - Level 3",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 52128,
+    "Name": "Construction Technical and Professional - Town Planning Technical Support - Level 3",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
+    "Code": 58731,
+    "Name": "Consumer Electrical and Electronic Products - Delivering and Installing - Level 2",
+    "Price": 2000,
+    "Duration": 24
+  },
+  {
+    "Code": 58721,
+    "Name": "Consumer Electrical and Electronic Products - Repairing Component Faults - Level 3",
+    "Price": 3500,
+    "Duration": 24
+  },
+  {
+    "Code": 58732,
+    "Name": "Consumer Electrical and Electronic Products - Repairing Module Faults - Level 2",
+    "Price": 3000,
+    "Duration": 24
+  },
+  {
+    "Code": 48931,
+    "Name": "Contact Centre Operations - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 48921,
+    "Name": "Contact Centre Operations - Level 3",
+    "Price": 2000,
+    "Duration": 12
   },
   {
     "Code": 9,
@@ -294,9 +924,69 @@
     "Duration": 12
   },
   {
+    "Code": 40631,
+    "Name": "Court, Tribunal and Prosecution Operations - Court and Tribunal Administration - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40621,
+    "Name": "Court, Tribunal and Prosecution Operations - Court and Tribunal Administration - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 449201,
+    "Name": "Creative and Digital Media - Interactive Design and Development - Level 4",
+    "Price": 2500,
+    "Duration": 15
+  },
+  {
+    "Code": 44921,
+    "Name": "Creative and Digital Media - Level 3",
+    "Price": 4000,
+    "Duration": 15
+  },
+  {
     "Code": 77,
     "Name": "Credit Controller/Collector - Level 2",
     "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 49531,
+    "Name": "Cultural and Heritage Venue Operations - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 49532,
+    "Name": "Cultural and Heritage Venue Operations - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 49521,
+    "Name": "Cultural and Heritage Venue Operations - Level 3",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 49522,
+    "Name": "Cultural and Heritage Venue Operations - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 41031,
+    "Name": "Custodial Care - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 41021,
+    "Name": "Custodial Care - Level 3",
+    "Price": 2000,
     "Duration": 12
   },
   {
@@ -309,6 +999,12 @@
     "Code": 48821,
     "Name": "Customer Service - Level 3",
     "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 122,
+    "Name": "Customer Service Practitoner - Level 2",
+    "Price": 4000,
     "Duration": 12
   },
   {
@@ -354,6 +1050,30 @@
     "Duration": 36
   },
   {
+    "Code": 49731,
+    "Name": "Design - Design Support - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 49721,
+    "Name": "Design - Level 3",
+    "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 63621,
+    "Name": "Digital Learning Design - Level 3",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 636201,
+    "Name": "Digital Learning Design - Level 4",
+    "Price": 2000,
+    "Duration": 24
+  },
+  {
     "Code": 78,
     "Name": "Digital Marketer - Level 3",
     "Price": 9000,
@@ -366,10 +1086,100 @@
     "Duration": 36
   },
   {
+    "Code": 51622,
+    "Name": "Domestic Heating - Gas-Fired Warm Air Appliances - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 51623,
+    "Name": "Domestic Heating - Gas-Fired Water and Central Heating Appliances - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 51631,
+    "Name": "Domestic Heating - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 51621,
+    "Name": "Domestic Heating - Oil-Fired, Solid Fuel or Environmental Options - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 44134,
+    "Name": "Driving Goods Vehicles - Articulated / Drawbar Driver - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 44123,
+    "Name": "Driving Goods Vehicles - Articulated / Drawbar Driver - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 44131,
+    "Name": "Driving Goods Vehicles - Motorcycle / Cycle Courier - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 44133,
+    "Name": "Driving Goods Vehicles - Rigid Vehicle Driver - Level 2",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 44122,
+    "Name": "Driving Goods Vehicles - Rigid Vehicle Driver - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 44126,
+    "Name": "Driving Goods Vehicles - Transporting Freight by Road (Articulated / Drawbar) - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 44125,
+    "Name": "Driving Goods Vehicles - Transporting Freight by Road (Rigid) - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 44124,
+    "Name": "Driving Goods Vehicles - Transporting Freight by Road (Van) - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 44132,
+    "Name": "Driving Goods Vehicles - Van Driver - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 44121,
+    "Name": "Driving Goods Vehicles - Van Driver - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
     "Code": 26,
     "Name": "Dual Fuel Smart Meter Installer - Level 2",
     "Price": 12000,
     "Duration": 14
+  },
+  {
+    "Code": 127,
+    "Name": "Electrical Power Protection and Plant Commissioning Engineer - Level 4",
+    "Price": 27000,
+    "Duration": 36
   },
   {
     "Code": 10,
@@ -378,9 +1188,135 @@
     "Duration": 60
   },
   {
+    "Code": 51321,
+    "Name": "Electrotechnical - Electrical Installation - Level 3",
+    "Price": 12000,
+    "Duration": 42
+  },
+  {
+    "Code": 51322,
+    "Name": "Electrotechnical - Electrical Maintenance - Level 3",
+    "Price": 12000,
+    "Duration": 42
+  },
+  {
+    "Code": 51324,
+    "Name": "Electrotechnical - Highway Electrical Systems Commissioning - Level 3",
+    "Price": 6000,
+    "Duration": 42
+  },
+  {
+    "Code": 51323,
+    "Name": "Electrotechnical - Highway Electrical Systems Service and Maintenance - Level 3",
+    "Price": 6000,
+    "Duration": 42
+  },
+  {
     "Code": 107,
     "Name": "Embedded Electronic Systems Design and Development Engineer  - Level 6",
-    "Price": 24000,
+    "Price": 27000,
+    "Duration": 36
+  },
+  {
+    "Code": 53621,
+    "Name": "Employment Related Services - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 517216,
+    "Name": "Engineering Construction - Construction and Completions Control - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 517213,
+    "Name": "Engineering Construction - Design and Draughting - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 51728,
+    "Name": "Engineering Construction - Electrical Installation - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 517211,
+    "Name": "Engineering Construction - Electrical Maintenance - Level 3",
+    "Price": 12000,
+    "Duration": 42
+  },
+  {
+    "Code": 517210,
+    "Name": "Engineering Construction - Instrument and Control - Level 3",
+    "Price": 9000,
+    "Duration": 42
+  },
+  {
+    "Code": 517215,
+    "Name": "Engineering Construction - Instrument Pipefitting - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 51722,
+    "Name": "Engineering Construction - Mechanical Fitting - Level 3",
+    "Price": 9000,
+    "Duration": 36
+  },
+  {
+    "Code": 517212,
+    "Name": "Engineering Construction - Mechanical Maintenance - Level 3",
+    "Price": 12000,
+    "Duration": 42
+  },
+  {
+    "Code": 51729,
+    "Name": "Engineering Construction - Non Destructive Testing - Level 3",
+    "Price": 6000,
+    "Duration": 36
+  },
+  {
+    "Code": 51721,
+    "Name": "Engineering Construction - Pipefitting - Level 3",
+    "Price": 9000,
+    "Duration": 36
+  },
+  {
+    "Code": 51725,
+    "Name": "Engineering Construction - Plating - Level 3",
+    "Price": 9000,
+    "Duration": 36
+  },
+  {
+    "Code": 517214,
+    "Name": "Engineering Construction - Project Control - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 51727,
+    "Name": "Engineering Construction - Rigging (Moving Loads) - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 51726,
+    "Name": "Engineering Construction - Steel Erecting - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 51723,
+    "Name": "Engineering Construction - Welding (Pipework) - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 51724,
+    "Name": "Engineering Construction - Welding (Plate) - Level 3",
+    "Price": 9000,
     "Duration": 36
   },
   {
@@ -398,25 +1334,25 @@
   {
     "Code": 53921,
     "Name": "Engineering Manufacture - Aerospace - Level 3",
-    "Price": 9000,
+    "Price": 12000,
     "Duration": 42
   },
   {
     "Code": 539212,
     "Name": "Engineering Manufacture - Automotive - Level 3",
-    "Price": 9000,
+    "Price": 12000,
     "Duration": 42
   },
   {
     "Code": 53929,
     "Name": "Engineering Manufacture - Electrical and Electronic Engineering - Level 3",
-    "Price": 9000,
+    "Price": 12000,
     "Duration": 42
   },
   {
     "Code": 539214,
     "Name": "Engineering Manufacture - Engineering Leadership - Level 3",
-    "Price": 9000,
+    "Price": 12000,
     "Duration": 42
   },
   {
@@ -427,7 +1363,7 @@
   },
   {
     "Code": 53934,
-    "Name": "Engineering Manufacture - Engineering Maintenance and Installation - Level 2",
+    "Name": "Engineering Manufacture - Engineering Maintenance and Installation  - Level 2",
     "Price": 4000,
     "Duration": 18
   },
@@ -457,7 +1393,7 @@
   },
   {
     "Code": 53935,
-    "Name": "Engineering Manufacture - Fabrication and Welding - Level 2",
+    "Name": "Engineering Manufacture - Fabrication and Welding  - Level 2",
     "Price": 5000,
     "Duration": 18
   },
@@ -481,7 +1417,7 @@
   },
   {
     "Code": 53932,
-    "Name": "Engineering Manufacture - Marine (Ship, Yacht, Boatbuilding, maintenance and repair) - Level 2",
+    "Name": "Engineering Manufacture - Marine (Ship, Yacht, Boatbuilding, Maintenance and Repair) - Level 2",
     "Price": 5000,
     "Duration": 18
   },
@@ -493,14 +1429,14 @@
   },
   {
     "Code": 53936,
-    "Name": "Engineering Manufacture - Materials Processing and Finishing - Level 2",
+    "Name": "Engineering Manufacture - Materials Processing and Finishing  - Level 2",
     "Price": 4000,
     "Duration": 18
   },
   {
     "Code": 53927,
     "Name": "Engineering Manufacture - Materials Processing and Finishing - Level 3",
-    "Price": 9000,
+    "Price": 12000,
     "Duration": 42
   },
   {
@@ -516,6 +1452,210 @@
     "Duration": 42
   },
   {
+    "Code": 52432,
+    "Name": "Environmental Conservation - Dry Stone Walling - Level 2",
+    "Price": 1500,
+    "Duration": 15
+  },
+  {
+    "Code": 52422,
+    "Name": "Environmental Conservation - Dry Stone Walling - Level 3",
+    "Price": 1500,
+    "Duration": 18
+  },
+  {
+    "Code": 52431,
+    "Name": "Environmental Conservation - Level 2",
+    "Price": 1500,
+    "Duration": 15
+  },
+  {
+    "Code": 52421,
+    "Name": "Environmental Conservation - Level 3",
+    "Price": 1500,
+    "Duration": 18
+  },
+  {
+    "Code": 51133,
+    "Name": "Equine - Harness Horse Care - Level 2",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 51123,
+    "Name": "Equine - Harness Horse Care and Management - Level 3",
+    "Price": 2500,
+    "Duration": 24
+  },
+  {
+    "Code": 51131,
+    "Name": "Equine - Horse Care - Level 2",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 51121,
+    "Name": "Equine - Horse Care and Management - Level 3",
+    "Price": 3000,
+    "Duration": 24
+  },
+  {
+    "Code": 51132,
+    "Name": "Equine - Racehorse Care - Level 2",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 51122,
+    "Name": "Equine - Racehorse Care and Management - Level 3",
+    "Price": 2500,
+    "Duration": 24
+  },
+  {
+    "Code": 46231,
+    "Name": "Exercise and Fitness - Level 2",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 46221,
+    "Name": "Exercise and Fitness - Personal Training - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 501212,
+    "Name": "Facilities Management - Building Services - Level 5",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 50131,
+    "Name": "Facilities Management - Facilities Services - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 501201,
+    "Name": "Facilities Management - Generic - Level 4",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 501211,
+    "Name": "Facilities Management - Generic - Level 5",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 50121,
+    "Name": "Facilities Management - Level 3",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 52621,
+    "Name": "Farriery - Level 3",
+    "Price": 9000,
+    "Duration": 50
+  },
+  {
+    "Code": 42332,
+    "Name": "Fashion and Textiles - Apparel - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 42322,
+    "Name": "Fashion and Textiles - Apparel - Level 3",
+    "Price": 12000,
+    "Duration": 24
+  },
+  {
+    "Code": 42336,
+    "Name": "Fashion and Textiles - Dry Cleaning - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 42334,
+    "Name": "Fashion and Textiles - Footwear - Level 2",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 42324,
+    "Name": "Fashion and Textiles - Footwear - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 42337,
+    "Name": "Fashion and Textiles - Laundry - Level 2",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 42333,
+    "Name": "Fashion and Textiles - Leather Goods - Level 2",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 42323,
+    "Name": "Fashion and Textiles - Leather Goods - Level 3",
+    "Price": 12000,
+    "Duration": 24
+  },
+  {
+    "Code": 42339,
+    "Name": "Fashion and Textiles - Leather Production - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 42327,
+    "Name": "Fashion and Textiles - Leather Production - Level 3",
+    "Price": 12000,
+    "Duration": 24
+  },
+  {
+    "Code": 42335,
+    "Name": "Fashion and Textiles - Saddlery - Level 2",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 42325,
+    "Name": "Fashion and Textiles - Saddlery - Level 3",
+    "Price": 12000,
+    "Duration": 24
+  },
+  {
+    "Code": 42326,
+    "Name": "Fashion and Textiles - Tailoring - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 42338,
+    "Name": "Fashion and Textiles - Textile Care Services (Laundry and Dry Cleaning) - Level 2",
+    "Price": 3500,
+    "Duration": 12
+  },
+  {
+    "Code": 42331,
+    "Name": "Fashion and Textiles - Textiles - Level 2",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 42321,
+    "Name": "Fashion and Textiles - Textiles - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
     "Code": 8,
     "Name": "Financial Services Administrator - Level 3",
     "Price": 12000,
@@ -528,10 +1668,280 @@
     "Duration": 12
   },
   {
-    "Code": 16,
-    "Name": "Food and Drink Maintenance Engineer - Level 3",
+    "Code": 126,
+    "Name": "Fire Emergency and Security Systems Technician - Level 3",
     "Price": 18000,
     "Duration": 36
+  },
+  {
+    "Code": 52331,
+    "Name": "Floristry - Level 2",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 52321,
+    "Name": "Floristry - Level 3",
+    "Price": 2500,
+    "Duration": 24
+  },
+  {
+    "Code": 40332,
+    "Name": "Food and Drink - Baking Industry Skills - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40322,
+    "Name": "Food and Drink - Baking Industry Skills - Level 3",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 40337,
+    "Name": "Food and Drink - Brewing Industry Skills - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40338,
+    "Name": "Food and Drink - Dairy Industry Skills - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 40336,
+    "Name": "Food and Drink - Fish and Shellfish Industry Skills - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40327,
+    "Name": "Food and Drink - Fish and Shellfish Industry Skills - Level 3",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 40334,
+    "Name": "Food and Drink - Food Industry Skills - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40323,
+    "Name": "Food and Drink - Food Industry Skills and Technical Management - Level 3",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 403311,
+    "Name": "Food and Drink - Food Industry Team Leading - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40335,
+    "Name": "Food and Drink - Food Manufacturing Excellence - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40324,
+    "Name": "Food and Drink - Food Manufacturing Excellence - Level 3",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 40339,
+    "Name": "Food and Drink - Fresh Produce Industry Skills - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40325,
+    "Name": "Food and Drink - Fresh Produce Industry Skills - Level 3",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 403310,
+    "Name": "Food and Drink - Livestock Market Droving Operations - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 40331,
+    "Name": "Food and Drink - Meat and Poultry Industry Skills - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40321,
+    "Name": "Food and Drink - Meat and Poultry Industry Skills - Level 3",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 40333,
+    "Name": "Food and Drink - Milling Industry Skills - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 129,
+    "Name": "Food and Drink Advanced Process Operator - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 130,
+    "Name": "Food and Drink Process Operator - Level 2",
+    "Price": 5000,
+    "Duration": 30
+  },
+  {
+    "Code": 131,
+    "Name": "Food Technologist - Level 3",
+    "Price": 18000,
+    "Duration": 36
+  },
+  {
+    "Code": 16,
+    "Name": "Food and Drink Maintenance Engineer - Level 3",
+    "Price": 27000,
+    "Duration": 36
+  },
+  {
+    "Code": 57831,
+    "Name": "Funeral Operations and Services - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 57821,
+    "Name": "Funeral Operations and Services - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 137,
+    "Name": "Furniture Manufacturer - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 55132,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Finishing Furniture  - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 55122,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Finishing Furniture  - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 55134,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Fitted Furniture and Interiors - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 55124,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Fitted Furniture and Interiors - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 55138,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Furniture and Wood Processing - CNC Machining - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 55137,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Furniture and Wood Processing - Level 2",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 55125,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Furniture Design - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 55131,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Furniture Making  - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 55121,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Furniture Making  - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 55133,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Restoring Furniture  - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 55123,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Restoring Furniture  - Level 3",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 55139,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Solid Surfaces - Level 2",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 55127,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Supervision in the Furniture, Furnishings and Interiors Industry - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 55135,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Upholstery and Soft Furnishings  - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 55126,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Upholstery and Soft Furnishings  - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 55136,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Wood Machining  - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 55128,
+    "Name": "Furniture, Furnishings and Interiors Manufacturing - Wood Machining  - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 43831,
+    "Name": "Game and Wildlife Management - Level 2",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 43821,
+    "Name": "Game and Wildlife Management - Level 3",
+    "Price": 2000,
+    "Duration": 24
   },
   {
     "Code": 74,
@@ -549,6 +1959,108 @@
     "Code": 58,
     "Name": "Gas Network Team Leader - Level 2",
     "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 50221,
+    "Name": "Glass Industry - Automotive Glazing - Level 3",
+    "Price": 3000,
+    "Duration": 24
+  },
+  {
+    "Code": 50231,
+    "Name": "Glass Industry - Curtain Wall Installation - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50232,
+    "Name": "Glass Industry - Domestic Fascia, Soffit and Bargeboard Installation - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50236,
+    "Name": "Glass Industry - Fabrication of Glass Supporting Structures - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50222,
+    "Name": "Glass Industry - Fabrication of Glass Supporting Structures - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 50235,
+    "Name": "Glass Industry - Fenestration Installation - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50224,
+    "Name": "Glass Industry - Fenestration Installation - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 50225,
+    "Name": "Glass Industry - Fenestration Surveyor - Level 3",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 50237,
+    "Name": "Glass Industry - Flat Glass Manufacture - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50228,
+    "Name": "Glass Industry - Glass Manufacturing  - Level 3",
+    "Price": 3500,
+    "Duration": 24
+  },
+  {
+    "Code": 50233,
+    "Name": "Glass Industry - Glass Processing - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50226,
+    "Name": "Glass Industry - Glass Processor - Level 3",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 502313,
+    "Name": "Glass Industry - Glass Related Distribution and Warehousing - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50227,
+    "Name": "Glass Industry - Glass Related Distribution and Warehousing - Level 3",
+    "Price": 3500,
+    "Duration": 24
+  },
+  {
+    "Code": 50239,
+    "Name": "Glass Industry - Glazing - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50223,
+    "Name": "Glass Industry - Glazing - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 502311,
+    "Name": "Glass Industry - Photovoltaics Installation - Level 2",
+    "Price": 3000,
     "Duration": 12
   },
   {
@@ -570,27 +2082,111 @@
     "Duration": 12
   },
   {
+    "Code": 47821,
+    "Name": "Health Allied Health Profession Support - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
     "Code": 44431,
-    "Name": "Health and Social Care - Adult Social Care - Level 2",
+    "Name": "Health and Social Care - Adult Social Care  - Level 2",
     "Price": 1500,
     "Duration": 12
   },
   {
     "Code": 44421,
-    "Name": "Health and Social Care - Adult Social Care - Level 3",
+    "Name": "Health and Social Care - Adult Social Care  - Level 3",
     "Price": 2000,
     "Duration": 18
   },
   {
     "Code": 44432,
-    "Name": "Health and Social Care - Health - Level 2",
+    "Name": "Health and Social Care - Health  - Level 2",
     "Price": 1500,
     "Duration": 12
   },
   {
     "Code": 44422,
-    "Name": "Health and Social Care - Health - Level 3",
+    "Name": "Health and Social Care - Health  - Level 3",
     "Price": 1500,
+    "Duration": 18
+  },
+  {
+    "Code": 602211,
+    "Name": "Health Assistant Practitioner - Level 5",
+    "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 47331,
+    "Name": "Health Clinical Healthcare Support - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 47321,
+    "Name": "Health Clinical Healthcare Support - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 47921,
+    "Name": "Health Dental Nursing - Level 3",
+    "Price": 2500,
+    "Duration": 18
+  },
+  {
+    "Code": 47631,
+    "Name": "Health Emergency Care - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 47431,
+    "Name": "Health Healthcare Support Services - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 47421,
+    "Name": "Health Healthcare Support Services - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 47521,
+    "Name": "Health Maternity and Paediatric Support - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 47131,
+    "Name": "Health Optical Retail - Level 2",
+    "Price": 2000,
+    "Duration": 15
+  },
+  {
+    "Code": 47121,
+    "Name": "Health Optical Retail - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 47721,
+    "Name": "Health Perioperative Support - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 48031,
+    "Name": "Health Pharmacy Services - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 48021,
+    "Name": "Health Pharmacy Services - Level 3",
+    "Price": 4000,
     "Duration": 18
   },
   {
@@ -612,10 +2208,82 @@
     "Duration": 12
   },
   {
+    "Code": 51531,
+    "Name": "Heating and Ventilating - Ductwork Systems - Level 2",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 51521,
+    "Name": "Heating and Ventilating - Ductwork Systems - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 51532,
+    "Name": "Heating and Ventilating - Pipework Systems - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 51522,
+    "Name": "Heating and Ventilating - Pipework Systems - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 51533,
+    "Name": "Heating and Ventilating - Servicing and Maintaining H and V Systems - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 51523,
+    "Name": "Heating and Ventilating - Servicing and Maintaining H and V Systems - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 135,
+    "Name": "Heavy Vehicle Service and Maintenance Technician - Level 3",
+    "Price": 18000,
+    "Duration": 36
+  },
+  {
+    "Code": 125,
+    "Name": "Highway Electrical Maintenance and Installation Operative - Level 2",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 124,
+    "Name": "Highway Electrician / Service Operative - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 53731,
+    "Name": "HM Forces - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
     "Code": 108,
     "Name": "HM Forces Serviceperson (Public Services) - Level 2",
     "Price": 2500,
     "Duration": 12
+  },
+  {
+    "Code": 52731,
+    "Name": "Horticulture - Level 2",
+    "Price": 2000,
+    "Duration": 20
+  },
+  {
+    "Code": 52721,
+    "Name": "Horticulture - Level 3",
+    "Price": 2500,
+    "Duration": 24
   },
   {
     "Code": 58332,
@@ -637,7 +2305,7 @@
   },
   {
     "Code": 58331,
-    "Name": "Hospitality - Hospitality Services - Level 2",
+    "Name": "Hospitality - Hospitality Services  - Level 2",
     "Price": 1500,
     "Duration": 12
   },
@@ -649,8 +2317,20 @@
   },
   {
     "Code": 58333,
-    "Name": "Hospitality - House Keeping - Level 2",
+    "Name": "Hospitality - House Keeping  - Level 2",
     "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 580201,
+    "Name": "Hospitality Management - Level 4",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 138,
+    "Name": "Hospitality Supervisor - Level 3",
+    "Price": 5000,
     "Duration": 12
   },
   {
@@ -660,15 +2340,33 @@
     "Duration": 12
   },
   {
+    "Code": 49931,
+    "Name": "Housing - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 49921,
+    "Name": "Housing - Level 3",
+    "Price": 2500,
+    "Duration": 18
+  },
+  {
     "Code": 65,
-    "Name": "Housing/property management - Level 3",
+    "Name": "Housing/Property Management - Level 3",
     "Price": 9000,
     "Duration": 18
   },
   {
     "Code": 64,
-    "Name": "Housing/property management assistant - Level 2",
+    "Name": "Housing/Property Management Assistant - Level 2",
     "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 574211,
+    "Name": "Human Resource Management - Level 5",
+    "Price": 2000,
     "Duration": 12
   },
   {
@@ -714,6 +2412,18 @@
     "Duration": 12
   },
   {
+    "Code": 637201,
+    "Name": "Intelligence Operations - Defence - Level 4",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 41331,
+    "Name": "International Trade and Logistics Operations - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
     "Code": 29,
     "Name": "Investment Operations Administrator - Level 2",
     "Price": 5000,
@@ -732,21 +2442,69 @@
     "Duration": 18
   },
   {
+    "Code": 41931,
+    "Name": "IT Application Specialist - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 41921,
+    "Name": "IT Application Specialist - Level 3",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 142,
+    "Name": "IT Technical Salesperson - Level 3",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
     "Code": 41831,
-    "Name": "IT, Software, Web & Telecoms Professionals - Level 2",
+    "Name": "IT, Software, Web and Telecoms Professionals - Level 2",
     "Price": 3500,
     "Duration": 12
   },
   {
     "Code": 41821,
-    "Name": "IT, Software, Web & Telecoms Professionals - Level 3",
+    "Name": "IT, Software, Web and Telecoms Professionals - Level 3",
     "Price": 9000,
     "Duration": 12
   },
   {
     "Code": 418201,
-    "Name": "IT, Software, Web & Telecoms Professionals - Level 4",
+    "Name": "IT, Software, Web and Telecoms Professionals - Level 4",
     "Price": 12000,
+    "Duration": 18
+  },
+  {
+    "Code": 54831,
+    "Name": "Jewellery, Silversmithing and Allied Trades - Jewellery Manufacturing - Level 2",
+    "Price": 3500,
+    "Duration": 15
+  },
+  {
+    "Code": 54821,
+    "Name": "Jewellery, Silversmithing and Allied Trades - Jewellery Manufacturing - Level 3",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 54823,
+    "Name": "Jewellery, Silversmithing and Allied Trades - Precious Metal CAD / CAM - Level 3",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 54822,
+    "Name": "Jewellery, Silversmithing and Allied Trades - Silversmithing - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 59921,
+    "Name": "Journalism - Level 3",
+    "Price": 2500,
     "Duration": 18
   },
   {
@@ -774,6 +2532,48 @@
     "Duration": 18
   },
   {
+    "Code": 50623,
+    "Name": "Laboratory and Science Technicians - Analytical and Process Science - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 50634,
+    "Name": "Laboratory and Science Technicians - Clinical Analysis - Level 2",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 50633,
+    "Name": "Laboratory and Science Technicians - Compound Analysis - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 50631,
+    "Name": "Laboratory and Science Technicians - Education Science - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 50621,
+    "Name": "Laboratory and Science Technicians - Education Science - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 50632,
+    "Name": "Laboratory and Science Technicians - Industrial Science - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 50622,
+    "Name": "Laboratory and Science Technicians - Industrial Science - Level 3",
+    "Price": 12000,
+    "Duration": 24
+  },
+  {
     "Code": 44,
     "Name": "Laboratory Scientist - Level 5",
     "Price": 27000,
@@ -784,6 +2584,18 @@
     "Name": "Laboratory Technician - Level 3",
     "Price": 21000,
     "Duration": 18
+  },
+  {
+    "Code": 52531,
+    "Name": "Land-based Engineering - Level 2",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 52521,
+    "Name": "Land-based Engineering - Level 3",
+    "Price": 4000,
+    "Duration": 15
   },
   {
     "Code": 69,
@@ -804,10 +2616,172 @@
     "Duration": 12
   },
   {
+    "Code": 118,
+    "Name": "Lead Adult Care Worker - Level 3",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 54121,
+    "Name": "Learning and Development - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 56522,
+    "Name": "Legal Services - Civil Litigation - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 565201,
+    "Name": "Legal Services - Commercial Litigation - Level 4",
+    "Price": 2000,
+    "Duration": 24
+  },
+  {
+    "Code": 56521,
+    "Name": "Legal Services - Criminal Prosecution - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 565202,
+    "Name": "Legal Services - Debt Recovery and Insolvency - Level 4",
+    "Price": 3500,
+    "Duration": 24
+  },
+  {
+    "Code": 56523,
+    "Name": "Legal Services - Employment Practice - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 56524,
+    "Name": "Legal Services - Family Practice - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 56527,
+    "Name": "Legal Services - Paralegal Practice - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 565203,
+    "Name": "Legal Services - Personal Injury - Level 4",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 56526,
+    "Name": "Legal Services - Private Client Practice - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 56525,
+    "Name": "Legal Services - Property - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 46321,
+    "Name": "Leisure Management - Level 3",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 46621,
+    "Name": "Leisure Operations and Leisure Management - Leisure Management - Level 3",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 46631,
+    "Name": "Leisure Operations and Leisure Management - Leisure Operations - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 40431,
+    "Name": "Licensed Hospitality - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 40421,
+    "Name": "Licensed Hospitality - Licensed Hospitality Management - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
     "Code": 40,
     "Name": "Licensed Conveyancer - Level 6",
     "Price": 9000,
     "Duration": 18
+  },
+  {
+    "Code": 563201,
+    "Name": "Life Science and Chemical Science Professionals - Chemical Science Technician  - Level 4",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 563211,
+    "Name": "Life Science and Chemical Science Professionals - Chemical Science Technologist - Level 5",
+    "Price": 12000,
+    "Duration": 24
+  },
+  {
+    "Code": 563216,
+    "Name": "Life Science and Chemical Science Professionals - Food Science Technologist  - Level 5",
+    "Price": 12000,
+    "Duration": 24
+  },
+  {
+    "Code": 563203,
+    "Name": "Life Science and Chemical Science Professionals - Healthcare Science Technician  - Level 4",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 563213,
+    "Name": "Life Science and Chemical Science Professionals - Healthcare Science Technologist - Level 5",
+    "Price": 12000,
+    "Duration": 24
+  },
+  {
+    "Code": 563202,
+    "Name": "Life Science and Chemical Science Professionals - Life Science Technician  - Level 4",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 563212,
+    "Name": "Life Science and Chemical Science Professionals - Life Science Technologist - Level 5",
+    "Price": 15000,
+    "Duration": 24
+  },
+  {
+    "Code": 563204,
+    "Name": "Life Science and Chemical Science Professionals - Process Development Technician  - Level 4",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 49131,
+    "Name": "Live Events and Promotion - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 49121,
+    "Name": "Live Events and Promotion - Level 3",
+    "Price": 2500,
+    "Duration": 12
   },
   {
     "Code": 71,
@@ -816,10 +2790,34 @@
     "Duration": 36
   },
   {
+    "Code": 44221,
+    "Name": "Logistics Operations - Logistics Operations Team Leader / Section Supervisor - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 44231,
+    "Name": "Logistics Operations - Logistics Operative - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 44232,
+    "Name": "Logistics Operations - Logistics Support Operative - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
     "Code": 97,
     "Name": "Machinist (Advanced Manufacturing Engineering) - Level 3",
-    "Price": 21000,
+    "Price": 24000,
     "Duration": 42
+  },
+  {
+    "Code": 146,
+    "Name": "Maintenance and Operations Engineering Technician - Level 3",
+    "Price": 27000,
+    "Duration": 36
   },
   {
     "Code": 487211,
@@ -852,10 +2850,166 @@
     "Duration": 18
   },
   {
+    "Code": 550201,
+    "Name": "Manufacturing Engineering - Aerospace - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 550207,
+    "Name": "Manufacturing Engineering - Automotive - Level 4",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 550205,
+    "Name": "Manufacturing Engineering - Electrical / Electronics (pway 5) - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 550206,
+    "Name": "Manufacturing Engineering - Electrical / Electronics (pway 6) - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 550208,
+    "Name": "Manufacturing Engineering - Maintenance - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 5502011,
+    "Name": "Manufacturing Engineering - Marine - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 550203,
+    "Name": "Manufacturing Engineering - Mechanical (pway 3) - Level 4",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 550204,
+    "Name": "Manufacturing Engineering - Mechanical (pway 4) - Level 4",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 550202,
+    "Name": "Manufacturing Engineering - Nuclear Related Technology - Level 4",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 5502013,
+    "Name": "Manufacturing Engineering - Rail Engineering - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 5502010,
+    "Name": "Manufacturing Engineering - Research and Development - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 5502012,
+    "Name": "Manufacturing Engineering - Space Engineering - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 550209,
+    "Name": "Manufacturing Engineering - Wind Generation - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
     "Code": 11,
     "Name": "Manufacturing Engineer - Level 6",
     "Price": 27000,
     "Duration": 60
+  },
+  {
+    "Code": 56033,
+    "Name": "Maritime Occupations - Able Seafarer / Tug Rating - Deck - Level 2",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 56034,
+    "Name": "Maritime Occupations - Able Seafarer / Tug Rating - Engine Room - Level 2",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 56037,
+    "Name": "Maritime Occupations - Marinas and Boatyards - Level 2",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 56021,
+    "Name": "Maritime Occupations - Merchant Navy (Deck) - Level 3",
+    "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 56022,
+    "Name": "Maritime Occupations - Merchant Navy (Engineering) - Level 3",
+    "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 56024,
+    "Name": "Maritime Occupations - Officer of the watch on merchant vessels of less than 3,000 gross tonnage - near coastal - Level 3",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 56023,
+    "Name": "Maritime Occupations - Officer of the watch on merchant vessels of less than 500 gross tonnage - near coastal - Level 3",
+    "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 56035,
+    "Name": "Maritime Occupations - Port Operations  - Level 2",
+    "Price": 3500,
+    "Duration": 15
+  },
+  {
+    "Code": 56031,
+    "Name": "Maritime Occupations - Rivers, inland waterways and limited distances to sea - Level 2",
+    "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 56032,
+    "Name": "Maritime Occupations - Sea Fishing - Level 2",
+    "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 56036,
+    "Name": "Maritime Occupations - Workboat Operation - Level 2",
+    "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 48631,
+    "Name": "Marketing - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 48621,
+    "Name": "Marketing - Level 3",
+    "Price": 2500,
+    "Duration": 18
   },
   {
     "Code": 4,
@@ -865,7 +3019,7 @@
   },
   {
     "Code": 62,
-    "Name": "Mortgage adviser - Level 3",
+    "Name": "Mortgage Adviser - Level 3",
     "Price": 9000,
     "Duration": 12
   },
@@ -876,10 +3030,28 @@
     "Duration": 36
   },
   {
+    "Code": 50931,
+    "Name": "Nail Services - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 50921,
+    "Name": "Nail Services - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
     "Code": 1,
     "Name": "Network Engineer - Level 4",
     "Price": 18000,
     "Duration": 24
+  },
+  {
+    "Code": 132,
+    "Name": "Non-destructive Testing (NDT) Operator  - Level 2",
+    "Price": 12000,
+    "Duration": 18
   },
   {
     "Code": 67,
@@ -906,10 +3078,28 @@
     "Duration": 48
   },
   {
+    "Code": 56931,
+    "Name": "Nursing Assistants in a Veterinary Environment - Level 2",
+    "Price": 2000,
+    "Duration": 15
+  },
+  {
+    "Code": 56221,
+    "Name": "Operations and Quality Improvement - Business-Improvement Techniques - Level 3",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
     "Code": 104,
     "Name": "Operations/Departmental Manager - Level 5",
     "Price": 9000,
     "Duration": 30
+  },
+  {
+    "Code": 46421,
+    "Name": "Outdoor Programmes - Level 3",
+    "Price": 2000,
+    "Duration": 18
   },
   {
     "Code": 75,
@@ -936,10 +3126,154 @@
     "Duration": 24
   },
   {
+    "Code": 43031,
+    "Name": "Passenger Carrying Vehicle Driving (Bus and Coach) - Bus and Coach - Level 2",
+    "Price": 3500,
+    "Duration": 12
+  },
+  {
+    "Code": 44821,
+    "Name": "Photo Imaging - Level 3",
+    "Price": 3500,
+    "Duration": 12
+  },
+  {
+    "Code": 45631,
+    "Name": "Playwork - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 45621,
+    "Name": "Playwork - Level 3",
+    "Price": 2500,
+    "Duration": 18
+  },
+  {
+    "Code": 51222,
+    "Name": "Plumbing and Heating - Domestic Plumbing and Heating Gas-Fired Warm Air Appliance - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 51223,
+    "Name": "Plumbing and Heating - Domestic Plumbing and Heating Gas-Fired Water and Central Heating Appliances - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 51221,
+    "Name": "Plumbing and Heating - Domestic Plumbing and Heating Oil-Fired, Solid Fuel or Environmental options - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 51231,
+    "Name": "Plumbing and Heating - Plumbing - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 40721,
+    "Name": "Policing - Defence Policing - Level 3",
+    "Price": 2500,
+    "Duration": 14
+  },
+  {
     "Code": 6,
     "Name": "Power Network Craftsperson - Level 3",
-    "Price": 24000,
+    "Price": 27000,
     "Duration": 30
+  },
+  {
+    "Code": 54225,
+    "Name": "Print and Printed Packaging - Carton Manufacture - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 54221,
+    "Name": "Print and Printed Packaging - Digital Pre-Press - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 54232,
+    "Name": "Print and Printed Packaging - Machine Printing - Level 2",
+    "Price": 3500,
+    "Duration": 12
+  },
+  {
+    "Code": 54222,
+    "Name": "Print and Printed Packaging - Machine Printing - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 54231,
+    "Name": "Print and Printed Packaging - Pre-Press - Level 2",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 54234,
+    "Name": "Print and Printed Packaging - Print Administration  - Level 2",
+    "Price": 3500,
+    "Duration": 12
+  },
+  {
+    "Code": 54224,
+    "Name": "Print and Printed Packaging - Print Administration and Management - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 54233,
+    "Name": "Print and Printed Packaging - Print Finishing - Level 2",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 54223,
+    "Name": "Print and Printed Packaging - Print Finishing - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 54235,
+    "Name": "Print and Printed Packaging - Reprographics  - Level 2",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 42523,
+    "Name": "Process Manufacturing - Downstream Operations  - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 42532,
+    "Name": "Process Manufacturing - Process Engineering Maintenance - Level 2",
+    "Price": 6000,
+    "Duration": 15
+  },
+  {
+    "Code": 42522,
+    "Name": "Process Manufacturing - Process Engineering Maintenance - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 42531,
+    "Name": "Process Manufacturing - Process Operations  - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 42521,
+    "Name": "Process Manufacturing - Process Operator / Technician  - Level 3",
+    "Price": 12000,
+    "Duration": 24
   },
   {
     "Code": 12,
@@ -954,9 +3288,189 @@
     "Duration": 36
   },
   {
+    "Code": 117,
+    "Name": "Professional Accounting Taxation Technician - Level 4",
+    "Price": 9000,
+    "Duration": 18
+  },
+  {
+    "Code": 591201,
+    "Name": "Professional Development for Work Based Learning Practitioners - Workbased Learning Practitioners - Level 4",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 591211,
+    "Name": "Professional Development for Work Based Learning Practitioners - Workbased Learning Practitioners - Level 5",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 575201,
+    "Name": "Professional Services - Audit - Level 4",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 575204,
+    "Name": "Professional Services - Management Accounting - Level 4",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 575203,
+    "Name": "Professional Services - Management Consulting - Level 4",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 575202,
+    "Name": "Professional Services - Tax - Level 4",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 573201,
+    "Name": "Project Management - Level 4",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 50032,
+    "Name": "Property Services - Residential Letting and Management - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 50022,
+    "Name": "Property Services - Residential Letting and Management - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 50031,
+    "Name": "Property Services - Sale of Residential Property - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 50021,
+    "Name": "Property Services - Sale of Residential Property - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
     "Code": 23,
     "Name": "Property Maintenance Operative - Level 2",
     "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 45535,
+    "Name": "Providing Financial Services - Administration for Mortgage and / or Financial Planning Intermediaries - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 45525,
+    "Name": "Providing Financial Services - Administration for Mortgage and / or Financial Planning Intermediaries - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 45532,
+    "Name": "Providing Financial Services - Banking - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 45522,
+    "Name": "Providing Financial Services - Banking - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 45537,
+    "Name": "Providing Financial Services - Customer Payments for Financial Products and Services - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 45529,
+    "Name": "Providing Financial Services - Customer Payments for Financial Products and Services - Level 3",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 45538,
+    "Name": "Providing Financial Services - Debt Collections - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 45528,
+    "Name": "Providing Financial Services - Debt Collections - Level 3",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 45534,
+    "Name": "Providing Financial Services - Financing and Credit - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 45524,
+    "Name": "Providing Financial Services - Financing and Credit - Level 3",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 45531,
+    "Name": "Providing Financial Services - General Insurance - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 45521,
+    "Name": "Providing Financial Services - General Insurance - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 45536,
+    "Name": "Providing Financial Services - Investment Operations - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 45526,
+    "Name": "Providing Financial Services - Investment Operations - Level 3",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 45533,
+    "Name": "Providing Financial Services - Life, Pensions and Investments - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 45523,
+    "Name": "Providing Financial Services - Life, Pensions and Investments - Level 3",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 45527,
+    "Name": "Providing Financial Services - Pensions Administration - Level 3",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 44031,
+    "Name": "Providing Security Services - Level 2",
+    "Price": 1500,
     "Duration": 12
   },
   {
@@ -974,7 +3488,7 @@
   {
     "Code": 88,
     "Name": "Rail Engineering Advanced Technician - Level 4",
-    "Price": 18000,
+    "Price": 27000,
     "Duration": 48
   },
   {
@@ -986,7 +3500,91 @@
   {
     "Code": 89,
     "Name": "Rail Engineering Technician - Level 3",
-    "Price": 18000,
+    "Price": 27000,
+    "Duration": 36
+  },
+  {
+    "Code": 54524,
+    "Name": "Rail Infrastructure Engineering - Electrification - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 54532,
+    "Name": "Rail Infrastructure Engineering - Electrification Maintenance - Level 2",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 54521,
+    "Name": "Rail Infrastructure Engineering - Signalling - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 54523,
+    "Name": "Rail Infrastructure Engineering - Telecoms - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 54522,
+    "Name": "Rail Infrastructure Engineering - Track - Level 3",
+    "Price": 12000,
+    "Duration": 36
+  },
+  {
+    "Code": 54531,
+    "Name": "Rail Infrastructure Engineering - Track Maintenance - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 42935,
+    "Name": "Rail Services - Control Room Operations - Level 2",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 42932,
+    "Name": "Rail Services - Driving - Level 2",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 42931,
+    "Name": "Rail Services - Passenger Services - Level 2",
+    "Price": 3500,
+    "Duration": 12
+  },
+  {
+    "Code": 42921,
+    "Name": "Rail Services - Rail Supervision - Level 3",
+    "Price": 1500,
+    "Duration": 18
+  },
+  {
+    "Code": 42934,
+    "Name": "Rail Services - Shunting  - Level 2",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 42933,
+    "Name": "Rail Services - Signal Operations - Level 2",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 54431,
+    "Name": "Rail Traction and Rolling Stock Engineering - Traction and Rolling Stock - Level 2",
+    "Price": 3500,
+    "Duration": 18
+  },
+  {
+    "Code": 54421,
+    "Name": "Rail Traction and Rolling Stock Engineering - Traction and Rolling Stock - Level 3",
+    "Price": 12000,
     "Duration": 36
   },
   {
@@ -994,6 +3592,60 @@
     "Name": "Railway Engineering Design Technician - Level 3",
     "Price": 18000,
     "Duration": 36
+  },
+  {
+    "Code": 59421,
+    "Name": "Recruitment - Level 3",
+    "Price": 1500,
+    "Duration": 18
+  },
+  {
+    "Code": 594201,
+    "Name": "Recruitment - Level 4",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 59431,
+    "Name": "Recruitment - Recruitment Resourcing - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 51432,
+    "Name": "Refrigeration and Air Conditioning - Air Conditioning - Level 2",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 51423,
+    "Name": "Refrigeration and Air Conditioning - Air Conditioning - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 51424,
+    "Name": "Refrigeration and Air Conditioning - Air Conditioning Service and Maintenance - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 51431,
+    "Name": "Refrigeration and Air Conditioning - Refrigeration - Level 2",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 51421,
+    "Name": "Refrigeration and Air Conditioning - Refrigeration - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 51422,
+    "Name": "Refrigeration and Air Conditioning - Refrigeration Service and Maintenance - Level 3",
+    "Price": 6000,
+    "Duration": 24
   },
   {
     "Code": 49,
@@ -1015,7 +3667,7 @@
   },
   {
     "Code": 44323,
-    "Name": "Retail - Management - Level 3",
+    "Name": "Retail - Management  - Level 3",
     "Price": 1500,
     "Duration": 15
   },
@@ -1039,15 +3691,39 @@
   },
   {
     "Code": 44322,
-    "Name": "Retail - Visual Merchandising - Level 3",
+    "Name": "Retail - Visual Merchandising  - Level 3",
     "Price": 1500,
     "Duration": 15
+  },
+  {
+    "Code": 147,
+    "Name": "Retail Manager - Level 4",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 140,
+    "Name": "Retail Team Leader - Level 3",
+    "Price": 5000,
+    "Duration": 12
   },
   {
     "Code": 101,
     "Name": "Retailer - Level 2",
     "Price": 5000,
     "Duration": 12
+  },
+  {
+    "Code": 48531,
+    "Name": "Sales and Telesales - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 48521,
+    "Name": "Sales and Telesales - Level 3",
+    "Price": 2500,
+    "Duration": 18
   },
   {
     "Code": 45,
@@ -1062,8 +3738,32 @@
     "Duration": 18
   },
   {
+    "Code": 42131,
+    "Name": "Security Systems - Level 2",
+    "Price": 2500,
+    "Duration": 24
+  },
+  {
+    "Code": 42121,
+    "Name": "Security Systems - Level 3",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 139,
+    "Name": "Senior Chef Production Cooking - Level 3",
+    "Price": 5000,
+    "Duration": 12
+  },
+  {
+    "Code": 144,
+    "Name": "Senior Compliance / Risk Specialist - Level 6",
+    "Price": 27000,
+    "Duration": 36
+  },
+  {
     "Code": 66,
-    "Name": "Senior housing/property management - Level 4",
+    "Name": "Senior Housing/Property Management - Level 4",
     "Price": 9000,
     "Duration": 18
   },
@@ -1072,6 +3772,42 @@
     "Name": "Senior Financial Services Customer Adviser - Level 3",
     "Price": 9000,
     "Duration": 12
+  },
+  {
+    "Code": 41631,
+    "Name": "Signmaking - Signmaker / Installer - Level 2",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 41621,
+    "Name": "Signmaking - Signmaker / Technician - Level 3",
+    "Price": 12000,
+    "Duration": 24
+  },
+  {
+    "Code": 57031,
+    "Name": "Smart Meter Installations (Dual Fuel) - Dual Fuel - Level 2",
+    "Price": 3500,
+    "Duration": 12
+  },
+  {
+    "Code": 57922,
+    "Name": "Social Media and Digital Marketing - Digital Marketing - Level 3",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 579201,
+    "Name": "Social Media and Digital Marketing - Digital Marketing - Level 4",
+    "Price": 4000,
+    "Duration": 12
+  },
+  {
+    "Code": 57921,
+    "Name": "Social Media and Digital Marketing - Social Media - Level 3",
+    "Price": 3000,
+    "Duration": 18
   },
   {
     "Code": 91,
@@ -1092,6 +3828,66 @@
     "Duration": 60
   },
   {
+    "Code": 45821,
+    "Name": "Spectator Safety - Advanced Spectator Safety - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 45831,
+    "Name": "Spectator Safety - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 46521,
+    "Name": "Sporting Excellence - Sporting Excellence Pathway One - Level 3",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 46522,
+    "Name": "Sporting Excellence - Sporting Excellence Pathway Two - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 46721,
+    "Name": "Sports Development - Level 3",
+    "Price": 2000,
+    "Duration": 18
+  },
+  {
+    "Code": 145,
+    "Name": "Sports Turf Operative - Level 2",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 566212,
+    "Name": "Supply Chain Management - International Supply Chain Manager - Level 5",
+    "Price": 6000,
+    "Duration": 12
+  },
+  {
+    "Code": 56621,
+    "Name": "Supply Chain Management - Level 3",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 56631,
+    "Name": "Supply Chain Management - Supply Chain Operations - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 566211,
+    "Name": "Supply Chain Management - Supply Chain Specialist - Level 5",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
     "Code": 109,
     "Name": "Supply Chain Operator - Level 2",
     "Price": 3000,
@@ -1102,6 +3898,30 @@
     "Name": "Supply Chain Warehouse Operative - Level 2",
     "Price": 3000,
     "Duration": 12
+  },
+  {
+    "Code": 61321,
+    "Name": "Supporting Teaching and Learning in Physical Education and School Sport - Level 3",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 42021,
+    "Name": "Supporting Teaching and Learning in Schools - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 42031,
+    "Name": "Supporting Teaching and Learning in Schools - Supporting Teaching and Learning in Schools  - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 53221,
+    "Name": "Surveying - Level 3",
+    "Price": 6000,
+    "Duration": 24
   },
   {
     "Code": 51,
@@ -1116,6 +3936,18 @@
     "Duration": 36
   },
   {
+    "Code": 50531,
+    "Name": "Sustainable Resource Management - Level 2",
+    "Price": 1500,
+    "Duration": 22
+  },
+  {
+    "Code": 50521,
+    "Name": "Sustainable Resource Management - Level 3",
+    "Price": 2000,
+    "Duration": 30
+  },
+  {
     "Code": 52,
     "Name": "Systems Engineering Masters Level - Level 7",
     "Price": 27000,
@@ -1128,10 +3960,190 @@
     "Duration": 12
   },
   {
+    "Code": 49431,
+    "Name": "Technical Theatre, Lighting, Sound and Stage - Lighting - Level 2",
+    "Price": 2000,
+    "Duration": 15
+  },
+  {
+    "Code": 49421,
+    "Name": "Technical Theatre, Lighting, Sound and Stage - Lighting - Level 3",
+    "Price": 2500,
+    "Duration": 18
+  },
+  {
+    "Code": 49432,
+    "Name": "Technical Theatre, Lighting, Sound and Stage - Sound - Level 2",
+    "Price": 2000,
+    "Duration": 15
+  },
+  {
+    "Code": 49422,
+    "Name": "Technical Theatre, Lighting, Sound and Stage - Sound - Level 3",
+    "Price": 2500,
+    "Duration": 18
+  },
+  {
+    "Code": 49433,
+    "Name": "Technical Theatre, Lighting, Sound and Stage - Stage - Level 2",
+    "Price": 2000,
+    "Duration": 15
+  },
+  {
+    "Code": 49423,
+    "Name": "Technical Theatre, Lighting, Sound and Stage - Stage - Level 3",
+    "Price": 2500,
+    "Duration": 18
+  },
+  {
+    "Code": 44621,
+    "Name": "The Gas Industry - Gas Fired Wet Central Heating - Level 3",
+    "Price": 9000,
+    "Duration": 24
+  },
+  {
+    "Code": 44622,
+    "Name": "The Gas Industry - Gas Heating and Energy Efficiency - Level 3",
+    "Price": 12000,
+    "Duration": 12
+  },
+  {
+    "Code": 44631,
+    "Name": "The Gas Industry - Network Construction Operations (Gas) - Level 2",
+    "Price": 3500,
+    "Duration": 12
+  },
+  {
+    "Code": 42722,
+    "Name": "The Power Sector - Power Generation - Level 3",
+    "Price": 12000,
+    "Duration": 42
+  },
+  {
+    "Code": 42731,
+    "Name": "The Power Sector - Power Transmission and Distribution - Level 2",
+    "Price": 6000,
+    "Duration": 30
+  },
+  {
+    "Code": 42723,
+    "Name": "The Power Sector - Power Transmission and Distribution - Level 3",
+    "Price": 9000,
+    "Duration": 42
+  },
+  {
+    "Code": 42721,
+    "Name": "The Power Sector - Wind Turbine Installation and Commissioning - Level 3",
+    "Price": 12000,
+    "Duration": 42
+  },
+  {
+    "Code": 42724,
+    "Name": "The Power Sector - Wind Turbine Operations and Maintenance - Level 3",
+    "Price": 12000,
+    "Duration": 42
+  },
+  {
+    "Code": 53532,
+    "Name": "The Water Industry - Sewerage Operations and Maintenance  - Level 2",
+    "Price": 3000,
+    "Duration": 24
+  },
+  {
+    "Code": 535201,
+    "Name": "The Water Industry - Utilities Network Planning and Management - Level 4",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 53531,
+    "Name": "The Water Industry - Water Industry  - Level 2",
+    "Price": 3500,
+    "Duration": 16
+  },
+  {
+    "Code": 53521,
+    "Name": "The Water Industry - Water Industry - Level 3",
+    "Price": 12000,
+    "Duration": 20
+  },
+  {
+    "Code": 61631,
+    "Name": "Trade Business Services - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 41231,
+    "Name": "Traffic Office - Traffic Office Clerk - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 41221,
+    "Name": "Traffic Office - Traffic Office Manager - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
     "Code": 100,
     "Name": "Transport Planning Technician - Level 3",
     "Price": 12000,
     "Duration": 36
+  },
+  {
+    "Code": 120,
+    "Name": "Travel Consultant - Level 3",
+    "Price": 9000,
+    "Duration": 12
+  },
+  {
+    "Code": 40831,
+    "Name": "Travel Services - Leisure and Business - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 40821,
+    "Name": "Travel Services - Leisure and Business - Level 3",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 40833,
+    "Name": "Travel Services - Tour Operators - Field Staff - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 40823,
+    "Name": "Travel Services - Tour Operators - Field Staff - Level 3",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 40832,
+    "Name": "Travel Services - Tour Operators - Head Office - Level 2",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 40822,
+    "Name": "Travel Services - Tour Operators - Head Office - Level 3",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 53131,
+    "Name": "Trees and Timber - Level 2",
+    "Price": 1500,
+    "Duration": 18
+  },
+  {
+    "Code": 53121,
+    "Name": "Trees and Timber - Level 3",
+    "Price": 1500,
+    "Duration": 20
   },
   {
     "Code": 81,
@@ -1146,16 +4158,100 @@
     "Duration": 48
   },
   {
-    "Code": 43624,
-    "Name": "Vehicle Maintenance and Repair - Auto Electrical and Mobile Electrical Installation - Level 3",
+    "Code": 43435,
+    "Name": "Vehicle Body and Paint - Automotive Glazing - Level 2",
+    "Price": 3000,
+    "Duration": 18
+  },
+  {
+    "Code": 43432,
+    "Name": "Vehicle Body and Paint - Body Building - Level 2",
+    "Price": 4000,
+    "Duration": 24
+  },
+  {
+    "Code": 43422,
+    "Name": "Vehicle Body and Paint - Body Building - Level 3",
     "Price": 6000,
     "Duration": 18
   },
   {
-    "Code": 43634,
-    "Name": "Vehicle Maintenance and Repair - Auto Electrics/Mobile Electrics - Level 2",
+    "Code": 43434,
+    "Name": "Vehicle Body and Paint - Body Refinishing - Level 2",
     "Price": 5000,
     "Duration": 24
+  },
+  {
+    "Code": 43424,
+    "Name": "Vehicle Body and Paint - Body Refinishing - Level 3",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 43433,
+    "Name": "Vehicle Body and Paint - Body Repair - Level 2",
+    "Price": 6000,
+    "Duration": 24
+  },
+  {
+    "Code": 43423,
+    "Name": "Vehicle Body and Paint - Body Repair - Level 3",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 43431,
+    "Name": "Vehicle Body and Paint - Mechanical, Electrical and Trim - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 43421,
+    "Name": "Vehicle Body and Paint - Mechanical, Electrical and Trim - Level 3",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 43425,
+    "Name": "Vehicle Body and Paint - Vehicle Damage Assessment - Level 3",
+    "Price": 2500,
+    "Duration": 12
+  },
+  {
+    "Code": 43436,
+    "Name": "Vehicle Body and Paint - Windscreen Repair - Level 2",
+    "Price": 3000,
+    "Duration": 12
+  },
+  {
+    "Code": 43731,
+    "Name": "Vehicle Fitting - Fast Fit - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 43721,
+    "Name": "Vehicle Fitting - Fast Fit - Level 3",
+    "Price": 5000,
+    "Duration": 18
+  },
+  {
+    "Code": 43732,
+    "Name": "Vehicle Fitting - Specialist Tyre Fitting - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 43634,
+    "Name": "Vehicle Maintenance and Repair - Auto Electrics / Mobile Electrics - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 43624,
+    "Name": "Vehicle Maintenance and Repair - Auto Electrics / Mobile Electrics - Level 3",
+    "Price": 6000,
+    "Duration": 18
   },
   {
     "Code": 43637,
@@ -1224,6 +4320,66 @@
     "Duration": 18
   },
   {
+    "Code": 43331,
+    "Name": "Vehicle Parts - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 43321,
+    "Name": "Vehicle Parts - Level 3",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 63431,
+    "Name": "Vehicle Restoration - Level 2",
+    "Price": 5000,
+    "Duration": 24
+  },
+  {
+    "Code": 63421,
+    "Name": "Vehicle Restoration - Level 3",
+    "Price": 6000,
+    "Duration": 18
+  },
+  {
+    "Code": 43531,
+    "Name": "Vehicle Sales - Level 2",
+    "Price": 3000,
+    "Duration": 24
+  },
+  {
+    "Code": 43521,
+    "Name": "Vehicle Sales - Level 3",
+    "Price": 4000,
+    "Duration": 18
+  },
+  {
+    "Code": 52922,
+    "Name": "Veterinary Nursing - Equine - Level 3",
+    "Price": 5000,
+    "Duration": 36
+  },
+  {
+    "Code": 52921,
+    "Name": "Veterinary Nursing - Small Animal - Level 3",
+    "Price": 6000,
+    "Duration": 36
+  },
+  {
+    "Code": 41421,
+    "Name": "Warehousing and Storage - Senior Warehouse Person / Team Leader - Level 3",
+    "Price": 2000,
+    "Duration": 12
+  },
+  {
+    "Code": 41431,
+    "Name": "Warehousing and Storage - Warehouse Operative - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
     "Code": 27,
     "Name": "Water Process Technician - Level 3",
     "Price": 12000,
@@ -1246,5 +4402,17 @@
     "Name": "Workplace Pensions (Administrator or Consultant) - Level 3",
     "Price": 9000,
     "Duration": 18
+  },
+  {
+    "Code": 44731,
+    "Name": "Youth Work - Level 2",
+    "Price": 1500,
+    "Duration": 12
+  },
+  {
+    "Code": 44721,
+    "Name": "Youth Work - Level 3",
+    "Price": 2500,
+    "Duration": 12
   }
 ]

@@ -91,6 +91,8 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             model.CanAddPeriod = model.Duration < _configurationProvider.ForecastDuration;
             model.NextPeriodUrl = Request?.Url?.GetUrlToSegment(4) + (model.Duration + 12);
 
+            model.SunsetPeriod = _configurationProvider.SunsettingPeriod;
+
             var years = model.Duration / 12;
             model.TrainingCostForDuration = model.Results.Sum(x => x.TrainingOut);
             model.LevyFundingReceivedForDuration = model.LevyFundingReceived * years;

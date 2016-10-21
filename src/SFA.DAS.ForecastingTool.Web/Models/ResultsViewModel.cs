@@ -19,5 +19,6 @@ namespace SFA.DAS.ForecastingTool.Web.Models
         public decimal MonthlyLevyPaid { get; set; }
         public decimal LevyPercentage { get; set; }
         public int Allowance { get; set; }
+        public int SunsetPeriod { get; set; }
     }
 }

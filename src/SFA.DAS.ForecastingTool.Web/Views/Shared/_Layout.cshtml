@@ -24,76 +24,91 @@
         ga('create', 'UA-79722673-1', 'auto');
 
     </script>
-    
+    <!-- Google Tag Manager -->
+    <script type="text/javascript">
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5ZP52S');
+    </script>
+    <!-- End Google Tag Manager -->
 </head>
 <body>
-    @Html.CookieWarning()
-    <header role="banner" id="global-header" class="with-proposition">
-        <div class="header-wrapper">
-            <div class="header-global">
-                <div class="header-logo">
-                    <a href="https://www.gov.uk/government/organisations/skills-funding-agency" class="content" id="logo">Skills Funding Agency</a>
-                </div>
-                <div class="header-proposition">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5ZP52S"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+        
+@Html.CookieWarning()
+<header role="banner" id="global-header" class="with-proposition">
+    <div class="header-wrapper">
+        <div class="header-global">
+            <div class="header-logo">
+                <a href="https://www.gov.uk/government/organisations/skills-funding-agency" class="content" id="logo">Skills Funding Agency</a>
+            </div>
+            <div class="header-proposition">
 
-                    <div id="proposition-name">
-                        Estimate my Apprenticeship Funding
-                    </div>
+                <div id="proposition-name">
+                    Estimate my Apprenticeship Funding
                 </div>
             </div>
         </div>
-    </header>
-    <div id="global-header-bar"></div>
+    </div>
+</header>
+<div id="global-header-bar"></div>
 
 
-    <main class="elements-index" id="content" role="main">
+<main class="elements-index" id="content" role="main">
 
-        <div class="phase-banner-alpha">
-            <p>
-                <strong class="phase-tag">ALPHA</strong>
- 
-                <span>This is a new service – your <a href="https://www.surveymonkey.co.uk/r/VRPG2W2" target="_blank">feedback</a> will help us to improve it.</span>
-            </p>
-        </div>
+    <div class="phase-banner-alpha">
+        <p>
+            <strong class="phase-tag">ALPHA</strong>
 
-        @RenderBody()
-    </main><!-- / #content -->
+            <span>This is a new service – your <a href="https://www.surveymonkey.co.uk/r/VRPG2W2" target="_blank">feedback</a> will help us to improve it.</span>
+        </p>
+    </div>
 
-    <footer class="group js-footer" id="footer" role="contentinfo">
+    @RenderBody()
+</main><!-- / #content -->
 
-        <div class="footer-wrapper">
+<footer class="group js-footer" id="footer" role="contentinfo">
 
-            <div class="footer-meta">
-                <div class="footer-meta-inner">
-                    <ul class="footer-nav">
-                        <li class="footer-link">
-                            <a href="@Url.RouteUrl("Privacy")">Privacy and cookies</a>
-                        </li>
-                        
-                    </ul>
-                    <div class="open-government-licence">
-                        <p class="logo">
-                            <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
-                        </p>
+    <div class="footer-wrapper">
 
-                        <p>
-                            All content is available under the <a href='https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/' rel='license'>Open Government Licence v3.0</a>, except where otherwise stated
-                        </p>
+        <div class="footer-meta">
+            <div class="footer-meta-inner">
+                <ul class="footer-nav">
+                    <li class="footer-link">
+                        <a href="@Url.RouteUrl("Privacy")">Privacy and cookies</a>
+                    </li>
 
-                    </div>
+                </ul>
+                <div class="open-government-licence">
+                    <p class="logo">
+                        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
+                    </p>
+
+                    <p>
+                        All content is available under the <a href='https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/' rel='license'>Open Government Licence v3.0</a>, except where otherwise stated
+                    </p>
+
                 </div>
-
             </div>
 
-
-
         </div>
-    </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/scripts")
-    
-    @RenderSection("scripts", required: false)
+
+
+    </div>
+</footer>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/scripts")
+
+@RenderSection("scripts", required: false)
 
 </body>
 </html>

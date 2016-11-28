@@ -66,7 +66,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Forecast adds numbers correctly")]
-        [NUnit.Framework.TestCaseAttribute("200000", "75", "36000", "3600", "32400", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("10000000", "100", "36000", "3600", "32400", new string[0])]
         [NUnit.Framework.TestCaseAttribute("3100000", "75", "36000", "3504", "31680", new string[0])]
         public virtual void ForecastAddsNumbersCorrectly(string paybill, string english_Fraction, string total_Cost, string total_Employer_Contribution, string total_Goverment_Pays, string[] exampleTags)
         {
@@ -81,14 +81,89 @@ this.ScenarioSetup(scenarioInfo);
                         "Qty",
                         "start_date"});
             table1.AddRow(new string[] {
-                        "Actuarial Technician",
-                        "2",
+                        "Aerospace Engineer",
+                        "1",
                         "2017-05-01"});
 #line 8
  testRunner.When("I Have the following apprenticeships:", ((string)(null)), table1, "When ");
 #line 12
  testRunner.Then(string.Format("the total cost should be {0}, total employer contribution {1} and total goverment" +
                         " pays {2}", total_Cost, total_Employer_Contribution, total_Goverment_Pays), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment")]
+        [NUnit.Framework.TestCaseAttribute("5000000", "100", "11004", "917", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("13000000", "77", "42348", "3529", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("5000000", "50", "5508", "459", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("5000000", "10", "1104", "92", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("5000000", "1", "120", "10", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("7000567", "100", "21996", "1833", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3000500", "100", "24", "2", new string[0])]
+        public virtual void ForecastingLevyPayment(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment", exampleTags);
+#line 21
+this.ScenarioSetup(scenarioInfo);
+#line 23
+ testRunner.Given(string.Format("I have a paybill of {0} and my English Fraction is {1}", paybill, english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 27
+ testRunner.Then(string.Format("the annual levy cost should be {0} and mothly levy cost should be {1}", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with a selected Apprenticeship")]
+        [NUnit.Framework.TestCaseAttribute("5000000", "100", "11004", "917", "12000", "8000", "£3200", new string[0])]
+        public virtual void ForecastingLevyPaymentWithASelectedApprenticeship(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with a selected Apprenticeship", exampleTags);
+#line 45
+this.ScenarioSetup(scenarioInfo);
+#line 47
+ testRunner.Given(string.Format("I have a paybill of {0} and my English Fraction is {1}", paybill, english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "AppName",
+                        "AppCost",
+                        "AppDuration",
+                        "AppStartDate",
+                        "NumberOfApprentices"});
+            table2.AddRow(new string[] {
+                        "Financial Services Administrator",
+                        "12000",
+                        "12",
+                        "2017-05-01",
+                        "1"});
+#line 49
+  testRunner.When("I Have the following apprenticeships:", ((string)(null)), table2, "When ");
+#line 53
+ testRunner.Then(string.Format("the annual levy cost should be {0} and mothly levy cost should be {1}", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 55
+ testRunner.Then(string.Format("the total annual cost of the apprnticeship should be {0} and the monthly cost sho" +
+                        "uld be {1} and the final month achievement cost should be {2}", appr_Totalcost, app_Monthly_Cost, final_MonthAchievemnt_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Forecasting Non Levy Payment")]
+        [NUnit.Framework.TestCaseAttribute("3000000", "100", "0", "0", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("2000000", "0", "0", "0", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("700000", "0", "0", "0", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("27659", "0", "0", "0", new string[0])]
+        public virtual void ForecastingNonLevyPayment(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Non Levy Payment", exampleTags);
+#line 74
+ this.ScenarioSetup(scenarioInfo);
+#line 76
+ testRunner.Given(string.Format("I have a paybill of {0} and my English Fraction is {1}", paybill, english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 80
+ testRunner.Then(string.Format("the annual levy cost should be {0} and mothly levy cost should be {1}", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

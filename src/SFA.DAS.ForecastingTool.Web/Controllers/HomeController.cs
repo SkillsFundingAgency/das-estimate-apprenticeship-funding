@@ -43,7 +43,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
 
         public ActionResult Welcome()
         {
-            _tc.TrackPageView("Weclome");
+            _tc.TrackPageView("Welcome");
 
             return View(new ForecastQuestionsModel());
         }

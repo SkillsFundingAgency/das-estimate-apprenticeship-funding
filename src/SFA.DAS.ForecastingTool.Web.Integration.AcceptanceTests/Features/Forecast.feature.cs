@@ -94,36 +94,15 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment")]
-        [NUnit.Framework.TestCaseAttribute("5000000", "100", "11004", "917", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("13000000", "77", "42348", "3529", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("5000000", "50", "5508", "459", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("5000000", "10", "1104", "92", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("5000000", "1", "120", "10", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("7000567", "100", "21996", "1833", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("3000500", "100", "24", "2", new string[0])]
-        public virtual void ForecastingLevyPayment(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with a large pot")]
+        [NUnit.Framework.TestCaseAttribute("13000000", "25", "13752", "1146", "24000", "1600", "6400", "45", "409", "525", "4729", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("13000000", "100", "54996", "4583", "24000", "1600", "6400", "0", "0", "0", "0", new string[0])]
+        public virtual void ForecastingLevyPaymentWithALargePot(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string your_Monthly_Share, string government_Monthly_Share, string your_Final_Month_Share, string government_Final_Month_Share, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment", exampleTags);
-#line 21
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with a large pot", exampleTags);
 #line 23
- testRunner.Given(string.Format("I have a paybill of {0} and my English Fraction is {1}", paybill, english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 27
- testRunner.Then(string.Format("the annual levy cost should be {0} and mothly levy cost should be {1}", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with a selected Apprenticeship")]
-        [NUnit.Framework.TestCaseAttribute("5000000", "100", "11004", "917", "12000", "8000", "£3200", new string[0])]
-        public virtual void ForecastingLevyPaymentWithASelectedApprenticeship(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string[] exampleTags)
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with a selected Apprenticeship", exampleTags);
-#line 45
 this.ScenarioSetup(scenarioInfo);
-#line 47
+#line 25
  testRunner.Given(string.Format("I have a paybill of {0} and my English Fraction is {1}", paybill, english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -137,33 +116,134 @@ this.ScenarioSetup(scenarioInfo);
                         "12000",
                         "12",
                         "2017-05-01",
-                        "1"});
-#line 49
+                        "2"});
+#line 27
   testRunner.When("I Have the following apprenticeships:", ((string)(null)), table2, "When ");
-#line 53
+#line 32
+ testRunner.When(string.Format("My annual levy cost {0} and mothly levy cost {1} calculation are correct", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
  testRunner.Then(string.Format("the annual levy cost should be {0} and mothly levy cost should be {1}", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 55
- testRunner.Then(string.Format("the total annual cost of the apprnticeship should be {0} and the monthly cost sho" +
-                        "uld be {1} and the final month achievement cost should be {2}", appr_Totalcost, app_Monthly_Cost, final_MonthAchievemnt_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 36
+ testRunner.When(string.Format("my monthly cost {0} and final month cost {1} and employer share cost {2} and gove" +
+                        "rnment share cost {3} and emploer final month share cost {4} and government fina" +
+                        "l month share cost {5} calcuation is correct", app_Monthly_Cost, final_MonthAchievemnt_Cost, your_Monthly_Share, government_Monthly_Share, your_Final_Month_Share, government_Final_Month_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 38
+ testRunner.Then(string.Format("the total annual cost of the apprenticeship should be {0}", appr_Totalcost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 39
+ testRunner.Then(string.Format("the apprenticeship monthly cost should be {0}", app_Monthly_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 40
+ testRunner.Then(string.Format("the final month achievement cost should be {0}", final_MonthAchievemnt_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 41
+ testRunner.Then(string.Format("the employer monthly contribution cost should be {0}", your_Monthly_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 42
+ testRunner.Then(string.Format("the government monthly contribution cost should be {0}", government_Monthly_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 43
+ testRunner.Then(string.Format("the employer final month contribution cost should be {0}", your_Final_Month_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 44
+ testRunner.Then(string.Format("the government final month contribution cost should be {0}", government_Final_Month_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Forecasting Non Levy Payment")]
-        [NUnit.Framework.TestCaseAttribute("3000000", "100", "0", "0", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("2000000", "0", "0", "0", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("700000", "0", "0", "0", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("27659", "0", "0", "0", new string[0])]
-        public virtual void ForecastingNonLevyPayment(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with small pot")]
+        [NUnit.Framework.TestCaseAttribute("5000000", "50", "5508", "459", "12000", "800", "3200", "34", "307", "274", "2467", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("7000000", "40", "8808", "734", "12000", "800", "3200", "6", "60", "246", "2220", new string[0])]
+        public virtual void ForecastingLevyPaymentWithSmallPot(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string your_Monthly_Share, string government_Monthly_Share, string your_Final_Month_Share, string government_Final_Month_Share, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Non Levy Payment", exampleTags);
-#line 74
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with small pot", exampleTags);
+#line 57
  this.ScenarioSetup(scenarioInfo);
-#line 76
+#line 59
  testRunner.Given(string.Format("I have a paybill of {0} and my English Fraction is {1}", paybill, english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 80
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "AppName",
+                        "AppCost",
+                        "AppDuration",
+                        "AppStartDate",
+                        "NumberOfApprentices"});
+            table3.AddRow(new string[] {
+                        "Financial Services Administrator",
+                        "12000",
+                        "12",
+                        "2017-05-01",
+                        "1"});
+#line 61
+  testRunner.When("I Have the following apprenticeships:", ((string)(null)), table3, "When ");
+#line 66
+ testRunner.When(string.Format("My annual levy cost {0} and mothly levy cost {1} calculation are correct", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 68
  testRunner.Then(string.Format("the annual levy cost should be {0} and mothly levy cost should be {1}", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 70
+ testRunner.When(string.Format("my monthly cost {0} and final month cost {1} and employer share cost {2} and gove" +
+                        "rnment share cost {3} and emploer final month share cost {4} and government fina" +
+                        "l month share cost {5} calcuation is correct", app_Monthly_Cost, final_MonthAchievemnt_Cost, your_Monthly_Share, government_Monthly_Share, your_Final_Month_Share, government_Final_Month_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 72
+ testRunner.Then(string.Format("the total annual cost of the apprenticeship should be {0}", appr_Totalcost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 73
+ testRunner.Then(string.Format("the apprenticeship monthly cost should be {0}", app_Monthly_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 74
+ testRunner.Then(string.Format("the final month achievement cost should be {0}", final_MonthAchievemnt_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 75
+ testRunner.Then(string.Format("the employer monthly contribution cost should be {0}", your_Monthly_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 76
+ testRunner.Then(string.Format("the government monthly contribution cost should be {0}", government_Monthly_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 77
+ testRunner.Then(string.Format("the employer final month contribution cost should be {0}", your_Final_Month_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 78
+ testRunner.Then(string.Format("the government final month contribution cost should be {0}", government_Final_Month_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with no pot")]
+        [NUnit.Framework.TestCaseAttribute("3000000", "50", "0", "0", "12000", "800", "3200", "80", "720", "320", "2880", new string[0])]
+        public virtual void ForecastingLevyPaymentWithNoPot(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string your_Monthly_Share, string government_Monthly_Share, string your_Final_Month_Share, string government_Final_Month_Share, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with no pot", exampleTags);
+#line 88
+this.ScenarioSetup(scenarioInfo);
+#line 90
+ testRunner.Given(string.Format("I have a paybill of {0} and my English Fraction is {1}", paybill, english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "AppName",
+                        "AppCost",
+                        "AppDuration",
+                        "AppStartDate",
+                        "NumberOfApprentices"});
+            table4.AddRow(new string[] {
+                        "Financial Services Administrator",
+                        "12000",
+                        "12",
+                        "2017-05-01",
+                        "1"});
+#line 92
+  testRunner.When("I Have the following apprenticeships:", ((string)(null)), table4, "When ");
+#line 97
+ testRunner.When(string.Format("My annual levy cost {0} and mothly levy cost {1} calculation are correct", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 99
+ testRunner.Then(string.Format("the annual levy cost should be {0} and mothly levy cost should be {1}", annual_Levy_Cost, monthly_Levy_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 101
+ testRunner.When(string.Format("my monthly cost {0} and final month cost {1} and employer share cost {2} and gove" +
+                        "rnment share cost {3} and emploer final month share cost {4} and government fina" +
+                        "l month share cost {5} calcuation is correct", app_Monthly_Cost, final_MonthAchievemnt_Cost, your_Monthly_Share, government_Monthly_Share, your_Final_Month_Share, government_Final_Month_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 103
+ testRunner.Then(string.Format("the total annual cost of the apprenticeship should be {0}", appr_Totalcost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 104
+ testRunner.Then(string.Format("the apprenticeship monthly cost should be {0}", app_Monthly_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 105
+ testRunner.Then(string.Format("the final month achievement cost should be {0}", final_MonthAchievemnt_Cost), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 106
+ testRunner.Then(string.Format("the employer monthly contribution cost should be {0}", your_Monthly_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 107
+ testRunner.Then(string.Format("the government monthly contribution cost should be {0}", government_Monthly_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 108
+ testRunner.Then(string.Format("the employer final month contribution cost should be {0}", your_Final_Month_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 109
+ testRunner.Then(string.Format("the government final month contribution cost should be {0}", government_Final_Month_Share), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

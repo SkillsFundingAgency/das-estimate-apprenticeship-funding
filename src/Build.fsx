@@ -121,7 +121,7 @@ Target "Update Assembly Info Version Numbers"(fun _ ->
                 {p with
                     AssemblyFileVersion = versionNumber + ".0"
                     AssemblyVersion = versionNumber + ".0"
-					AssemblyInformationalVersion = versionNumber
+                    AssemblyInformationalVersion = versionNumber
                     })
 )
 

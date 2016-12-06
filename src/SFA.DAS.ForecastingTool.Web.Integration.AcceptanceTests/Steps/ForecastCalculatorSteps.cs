@@ -26,7 +26,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         [BeforeScenario]
         public void Arrange()
         {
-            _container = new Infrastructure.DependencyResolution.ContainerBuilder().Build();
+            _container = new Infrastructure.DependencyResolution.WebRegistry().Build();
 
             _standardsRepository = _container.GetInstance<IStandardsRepository>();
 

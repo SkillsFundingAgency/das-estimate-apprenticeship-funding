@@ -9,7 +9,7 @@ namespace SFA.DAS.ForecastingTool.Web
     {
         public static Container RegisterDependencies()
         {
-            var container = new ContainerBuilder().Build();
+            var container = new WebRegistry().Build();
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
 

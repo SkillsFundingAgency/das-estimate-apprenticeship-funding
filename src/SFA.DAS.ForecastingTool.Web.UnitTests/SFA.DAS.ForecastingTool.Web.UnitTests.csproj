@@ -94,10 +94,8 @@
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\CachedStandardsRepositoryTestsBase.cs" />
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingAll.cs" />
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingByCode.cs" />
-    <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingByName.cs" />
     <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingAll.cs" />
     <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingByCode.cs" />
-    <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingByName.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

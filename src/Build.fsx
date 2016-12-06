@@ -119,8 +119,9 @@ Target "Update Assembly Info Version Numbers"(fun _ ->
         trace "Update Assembly Info Version Numbers"
         BulkReplaceAssemblyInfoVersions(currentDirectory) (fun p ->
                 {p with
-                    AssemblyFileVersion = versionNumber 
-                    AssemblyVersion = versionNumber 
+                    AssemblyFileVersion = versionNumber.0 
+                    AssemblyVersion = versionNumber.0
+					AssemblyInformationalVersion = versionNumber
                     })
 )
 

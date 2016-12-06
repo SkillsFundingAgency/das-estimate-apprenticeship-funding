@@ -46,7 +46,7 @@ Target "Set version number" (fun _ ->
         if testDirectory.ToLower() = "release" then
             versionNumber <- buildVersion
             if versionNumber.ToLower() <> "localbuild" then
-                versionNumber <- sprintf  @"%s.%s.0.%s" assemblyMajorNumber assemblyMinorNumber buildVersion
+                versionNumber <- buildVersion
             else
                 versionNumber <- "1.0.0.0"
 

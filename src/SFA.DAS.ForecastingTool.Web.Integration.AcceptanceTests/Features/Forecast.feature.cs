@@ -95,11 +95,18 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with a large pot")]
+        [NUnit.Framework.CategoryAttribute("BackEndTests")]
         [NUnit.Framework.TestCaseAttribute("13000000", "25", "13752", "1146", "24000", "1600", "6400", "45", "409", "525", "4729", new string[0])]
         [NUnit.Framework.TestCaseAttribute("13000000", "100", "54996", "4583", "24000", "1600", "6400", "0", "0", "0", "0", new string[0])]
         public virtual void ForecastingLevyPaymentWithALargePot(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string your_Monthly_Share, string government_Monthly_Share, string your_Final_Month_Share, string government_Final_Month_Share, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with a large pot", exampleTags);
+            string[] @__tags = new string[] {
+                    "BackEndTests"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with a large pot", @__tags);
 #line 23
 this.ScenarioSetup(scenarioInfo);
 #line 25
@@ -147,13 +154,20 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with small pot")]
+        [NUnit.Framework.CategoryAttribute("BackEndTests")]
         [NUnit.Framework.TestCaseAttribute("5000000", "50", "5508", "459", "12000", "800", "3200", "34", "307", "274", "2467", new string[0])]
         [NUnit.Framework.TestCaseAttribute("7000000", "40", "8808", "734", "12000", "800", "3200", "6", "60", "246", "2220", new string[0])]
         public virtual void ForecastingLevyPaymentWithSmallPot(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string your_Monthly_Share, string government_Monthly_Share, string your_Final_Month_Share, string government_Final_Month_Share, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with small pot", exampleTags);
+            string[] @__tags = new string[] {
+                    "BackEndTests"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with small pot", @__tags);
 #line 57
- this.ScenarioSetup(scenarioInfo);
+this.ScenarioSetup(scenarioInfo);
 #line 59
  testRunner.Given(string.Format("I have a paybill of {0} and my English Fraction is {1}", paybill, english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
@@ -199,10 +213,17 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with no pot")]
+        [NUnit.Framework.CategoryAttribute("BackEndTests")]
         [NUnit.Framework.TestCaseAttribute("3000000", "50", "0", "0", "12000", "800", "3200", "80", "720", "320", "2880", new string[0])]
         public virtual void ForecastingLevyPaymentWithNoPot(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string your_Monthly_Share, string government_Monthly_Share, string your_Final_Month_Share, string government_Final_Month_Share, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with no pot", exampleTags);
+            string[] @__tags = new string[] {
+                    "BackEndTests"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecasting Levy Payment with no pot", @__tags);
 #line 88
 this.ScenarioSetup(scenarioInfo);
 #line 90

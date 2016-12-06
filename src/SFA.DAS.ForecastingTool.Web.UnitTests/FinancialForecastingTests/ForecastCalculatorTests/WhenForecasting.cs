@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
-using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
 using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -24,7 +24,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
 
         private Mock<IStandardsRepository> _standardsRepository;
         private ForecastCalculator _calculator;
-        private Mock<IConfigurationProvider> _configurationProvider;
+        private Mock<ICalculatorSettings> _configurationProvider;
         private List<CohortModel> _myStandards;
         private List<CohortModel> _myMultipleStandards;
 
@@ -67,7 +67,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                 Duration = 12
             }));
 
-            _configurationProvider = new Mock<IConfigurationProvider>();
+            _configurationProvider = new Mock<ICalculatorSettings>();
             _configurationProvider.Setup(cp => cp.LevyPercentage).Returns(0.005m);
             _configurationProvider.Setup(cp => cp.LevyAllowance).Returns(15000);
             _configurationProvider.Setup(cp => cp.LevyTopupPercentage).Returns(1.1m);

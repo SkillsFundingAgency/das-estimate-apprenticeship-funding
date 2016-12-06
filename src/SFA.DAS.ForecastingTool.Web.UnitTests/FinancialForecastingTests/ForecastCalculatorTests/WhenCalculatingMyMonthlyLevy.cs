@@ -2,19 +2,19 @@
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
-using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
 
 namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.ForecastCalculatorTests
 {
     public class WhenCalculatingMyMonthlyLevy
     {
         private ForecastCalculator _forecastCalculator;
-        private Mock<IConfigurationProvider> _configurationProvider;
+        private Mock<ICalculatorSettings> _configurationProvider;
 
         [SetUp]
         public void Arrange()
         {
-            _configurationProvider = new Mock<IConfigurationProvider>();
+            _configurationProvider = new Mock<ICalculatorSettings>();
             _configurationProvider.Setup(x => x.LevyPercentage).Returns(0.005m);
             _configurationProvider.Setup(x => x.LevyAllowance).Returns(15000);
             _configurationProvider.Setup(x => x.LevyTopupPercentage).Returns(1.1m);

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using NUnit.Framework;
 using SFA.DAS.ForecastingTool.Web.Controllers;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
-using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
 using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 using SimpleInjector;
@@ -30,7 +30,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
 
             _standardsRepository = _container.GetInstance<IStandardsRepository>();
 
-            _homeController = new HomeController(_standardsRepository, _container.GetInstance<IForecastCalculator>(), _container.GetInstance<IConfigurationProvider>());
+            _homeController = new HomeController(_standardsRepository, _container.GetInstance<IForecastCalculator>(), _container.GetInstance<ICalculatorSettings>());
 
             _resultsViewModel = new ResultsViewModel();
         }

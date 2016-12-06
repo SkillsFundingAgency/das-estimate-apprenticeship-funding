@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
 namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
@@ -12,12 +12,12 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         private const long MaxPaybill = 512409557603043100;
 
         private readonly IStandardsRepository _standardsRepository;
-        private readonly IConfigurationProvider _configurationProvider;
+        private readonly ICalculatorSettings _calculatorSettings;
 
-        public UrlParser(IStandardsRepository standardsRepository, IConfigurationProvider configurationProvider)
+        public UrlParser(IStandardsRepository standardsRepository, ICalculatorSettings calculatorSettings)
         {
             _standardsRepository = standardsRepository;
-            _configurationProvider = configurationProvider;
+            _calculatorSettings = calculatorSettings;
         }
 
         public ParsedUrl Parse(string url, string queryString)
@@ -154,9 +154,9 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             {
                 duration = 12;
             }
-            if (duration > _configurationProvider.ForecastDuration)
+            if (duration > _calculatorSettings.ForecastDuration)
             {
-                duration = _configurationProvider.ForecastDuration;
+                duration = _calculatorSettings.ForecastDuration;
             }
 
             result.ActionName = "Results";

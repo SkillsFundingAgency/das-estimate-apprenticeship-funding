@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
 using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -9,19 +9,19 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
     public class ForecastCalculator : IForecastCalculator
     {
         private readonly IStandardsRepository _standardsRepository;
-        private readonly IConfigurationProvider _configurationProvider;
+        private readonly ICalculatorSettings _calculatorSettings;
 
 
-        public ForecastCalculator(IStandardsRepository standardsRepository, IConfigurationProvider configurationProvider)
+        public ForecastCalculator(IStandardsRepository standardsRepository, ICalculatorSettings calculatorSettings)
         {
             _standardsRepository = standardsRepository;
-            _configurationProvider = configurationProvider;
+            _calculatorSettings = calculatorSettings;
         }
 
 
         public async Task<ForecastResult> ForecastAsync(long paybill, int englishFraction)
         {
-            var monthlyLevyPaid = Math.Floor(((paybill * _configurationProvider.LevyPercentage) - _configurationProvider.LevyAllowance) / 12);
+            var monthlyLevyPaid = Math.Floor(((paybill * _calculatorSettings.LevyPercentage) - _calculatorSettings.LevyAllowance) / 12);
             if (monthlyLevyPaid < 0) // Non-levy payer
             {
                 monthlyLevyPaid = 0;
@@ -34,14 +34,14 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var levyPaid = monthlyLevyPaid * 12;
 
             var decimalEnglishFraction = englishFraction / 100m;
-            var fundingReceived = Math.Ceiling((monthlyLevyPaid * decimalEnglishFraction) * _configurationProvider.LevyTopupPercentage) * 12;
+            var fundingReceived = Math.Ceiling((monthlyLevyPaid * decimalEnglishFraction) * _calculatorSettings.LevyTopupPercentage) * 12;
 
             return new ForecastResult
             {
                 MonthlyLevyPaid = monthlyLevyPaid,
                 FundingReceived = fundingReceived,
                 LevyPaid = levyPaid,
-                UserFriendlyTopupPercentage = (int)Math.Round((_configurationProvider.LevyTopupPercentage - 1) * 100, 0)
+                UserFriendlyTopupPercentage = (int)Math.Round((_calculatorSettings.LevyTopupPercentage - 1) * 100, 0)
             };
         }
         public async Task<DetailedForecastResult> DetailedForecastAsync(long paybill, int englishFraction, CohortModel[] cohorts, int duration)
@@ -55,7 +55,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 MonthlyLevyPaid = forecastResult.MonthlyLevyPaid,
                 FundingReceived = forecastResult.FundingReceived,
                 LevyPaid = forecastResult.LevyPaid,
-                UserFriendlyTopupPercentage = (int)Math.Round((_configurationProvider.LevyTopupPercentage - 1) * 100, 0),
+                UserFriendlyTopupPercentage = (int)Math.Round((_calculatorSettings.LevyTopupPercentage - 1) * 100, 0),
                 Breakdown = breakdown
             };
         }
@@ -68,7 +68,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var startDate = new DateTime(2017, 5, 1);
 
             var monthlyFunding = fundingReceived / 12m;
-            var sunsetLimit = monthlyFunding * _configurationProvider.SunsettingPeriod;
+            var sunsetLimit = monthlyFunding * _calculatorSettings.SunsettingPeriod;
 
             var rollingBalance = 0m;
             var months = new MonthlyCashflow[duration];
@@ -102,7 +102,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 }
 
                 var shortfall = rollingBalance < 0 ? rollingBalance * -1 : 0;
-                var employerContribution = Math.Floor(shortfall*_configurationProvider.CopaymentPercentage);
+                var employerContribution = Math.Floor(shortfall*_calculatorSettings.CopaymentPercentage);
                 var governmentContribution = shortfall - employerContribution;
 
                 months[i] = new MonthlyCashflow
@@ -132,7 +132,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             for (var i = 0; i < cohorts.Length; i++)
             {
                 standards[i] = new BreakdownStandard(await _standardsRepository.GetByCodeAsync(cohorts[i].Code),
-                    cohorts[i].Qty, cohorts[i].StartDate, _configurationProvider.FinalTrainingPaymentPercentage);
+                    cohorts[i].Qty, cohorts[i].StartDate, _calculatorSettings.FinalTrainingPaymentPercentage);
             }
             return standards;
         }

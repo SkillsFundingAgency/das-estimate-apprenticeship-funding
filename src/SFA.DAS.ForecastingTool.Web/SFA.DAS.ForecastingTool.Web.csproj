@@ -242,6 +242,7 @@
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="FinancialForecasting\ForecastCalculator.cs" />
     <Compile Include="FinancialForecasting\DetailedForecastResult.cs" />
     <Compile Include="FinancialForecasting\IForecastCalculator.cs" />
@@ -254,8 +255,8 @@
     <Compile Include="Infrastructure\Caching\CacheKeys.cs" />
     <Compile Include="Infrastructure\Caching\ICacheProvider.cs" />
     <Compile Include="Infrastructure\Caching\InProcessCacheProvider.cs" />
-    <Compile Include="Infrastructure\Configuration\AppSettingsConfigurationProvider.cs" />
-    <Compile Include="Infrastructure\Configuration\IConfigurationProvider.cs" />
+    <Compile Include="Infrastructure\Settings\CalculatorSettings.cs" />
+    <Compile Include="Infrastructure\Settings\ICalculatorSettings.cs" />
     <Compile Include="Infrastructure\DependencyResolution\WebRegistry.cs" />
     <Compile Include="Infrastructure\EuCookieMessage\EuCookieMessageManager.cs" />
     <Compile Include="Infrastructure\FileSystem\DiskFileInfo.cs" />

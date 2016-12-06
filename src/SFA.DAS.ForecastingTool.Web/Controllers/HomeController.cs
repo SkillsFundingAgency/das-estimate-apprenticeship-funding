@@ -3,8 +3,9 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.ApplicationInsights;
 using NLog;
+using SFA.DAS.ForecastingTool.Web.Extensions;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
-using SFA.DAS.ForecastingTool.Web.Infrastructure.Configuration;
+using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
 using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -16,18 +17,18 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
 
         private readonly IStandardsRepository _standardsRepository;
         private readonly IForecastCalculator _forecastCalculator;
-        private readonly IConfigurationProvider _configurationProvider;
+        private readonly ICalculatorSettings _calculatorSettings;
 
         private readonly TelemetryClient _tc;
 
         public HomeController(
             IStandardsRepository standardsRepository,
             IForecastCalculator forecastCalculator,
-            IConfigurationProvider configurationProvider)
+            ICalculatorSettings calculatorSettings)
         {
             _standardsRepository = standardsRepository;
             _forecastCalculator = forecastCalculator;
-            _configurationProvider = configurationProvider;
+            _calculatorSettings = calculatorSettings;
 
             _tc = new TelemetryClient();
         }
@@ -88,17 +89,17 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             model.LevyFundingReceived = forecastResult.FundingReceived;
             model.TopPercentageForDisplay = forecastResult.UserFriendlyTopupPercentage.ToString("0");
             model.Results = forecastResult.Breakdown;
-            model.CanAddPeriod = model.Duration < _configurationProvider.ForecastDuration;
+            model.CanAddPeriod = model.Duration < _calculatorSettings.ForecastDuration;
             model.NextPeriodUrl = Request?.Url?.GetUrlToSegment(4) + (model.Duration + 12);
 
-            model.SunsetPeriod = _configurationProvider.SunsettingPeriod;
+            model.SunsetPeriod = _calculatorSettings.SunsettingPeriod;
 
             var years = model.Duration / 12;
             model.TrainingCostForDuration = model.Results.Sum(x => x.TrainingOut);
             model.LevyFundingReceivedForDuration = model.LevyFundingReceived * years;
             model.FundingShortfallForDuration = model.Results.Sum(x => x.CoPaymentEmployer + x.CoPaymentGovernment);
-            model.Allowance = _configurationProvider.LevyAllowance;
-            model.LevyPercentage = _configurationProvider.LevyPercentage;
+            model.Allowance = _calculatorSettings.LevyAllowance;
+            model.LevyPercentage = _calculatorSettings.LevyPercentage;
             return View(model);
         }
 

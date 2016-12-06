@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using FluentAutomation;
-using OpenQA.Selenium;
 using SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.PageObjects;
 using TechTalk.SpecFlow;
 

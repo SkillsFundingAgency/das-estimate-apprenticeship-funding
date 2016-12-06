@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using NLog;
+using SFA.DAS.ForecastingTool.Web.Extensions;
 
 namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 {

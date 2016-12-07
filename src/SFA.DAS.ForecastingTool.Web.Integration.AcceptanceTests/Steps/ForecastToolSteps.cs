@@ -20,7 +20,9 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         [BeforeScenario]
         public void Arrange()
         {
-            SeleniumWebDriver.Bootstrap(SeleniumWebDriver.Browser.Chrome);
+            SeleniumWebDriver.Bootstrap(SeleniumWebDriver.Browser.PhantomJs);
+        }
+
         [AfterScenario]
         public void TearDown()
         {
@@ -86,8 +88,5 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         {
             _scenarioContextResultsPage.I.Assert.Not.Exists(".results-table");
         }
-
     }
-
-
 }

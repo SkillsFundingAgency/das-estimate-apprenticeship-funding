@@ -66,7 +66,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Non Levy Payer is not shown english fraction screen")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.CategoryAttribute("explicit")]
         [NUnit.Framework.TestCaseAttribute("3", "NA", new string[0])]
         [NUnit.Framework.TestCaseAttribute("2999999", "NA", new string[0])]
         [NUnit.Framework.TestCaseAttribute("3000000", "100", new string[0])]
@@ -74,7 +74,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Features
         public virtual void NonLevyPayerIsNotShownEnglishFractionScreen(string payroll, string english_Fraction, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "ignore"};
+                    "explicit"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -92,11 +92,11 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Non levy payer with no cohorts is shown empty results grid")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.CategoryAttribute("explicit")]
         public virtual void NonLevyPayerWithNoCohortsIsShownEmptyResultsGrid()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Non levy payer with no cohorts is shown empty results grid", new string[] {
-                        "ignore"});
+                        "explicit"});
 #line 18
 this.ScenarioSetup(scenarioInfo);
 #line 19

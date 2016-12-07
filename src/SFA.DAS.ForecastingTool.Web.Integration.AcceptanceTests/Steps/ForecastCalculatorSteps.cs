@@ -52,9 +52,11 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
 
             foreach (var apprenticeship in apprenticeships)
             {
-                var standard = _standardsRepository.GetAllAsync().Result.SingleOrDefault(x => x.Name == apprenticeship.AppName);
+                Assert.IsNotEmpty(apprenticeship?.AppName, "The apprenticeship name was empty");
 
-                Assert.IsNotNull(standard, $"The apprenticeship name {apprenticeship.AppName} could not be found in the list of apprenticeship");
+                var standard = _standardsRepository.GetAllAsync().Result.SingleOrDefault(x => x.Name == apprenticeship?.AppName);
+
+                Assert.IsNotNull(standard, $"The apprenticeship name {apprenticeship?.AppName} could not be found in the list of apprenticeship");
 
                 //Overide the price with 12000 as the data is incorrect when compared to website data
 

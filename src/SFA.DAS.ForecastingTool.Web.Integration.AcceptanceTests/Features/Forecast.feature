@@ -2,12 +2,12 @@
 	In order to forecast the cost of my apprenticeship funding
 	I want to be shown figures that show the affordability
 
-
+@ignore
 Scenario Outline: Forecast adds numbers correctly
 	Given I have a paybill of <paybill> and my English Fraction is <english_fraction>
 	When I Have the following apprenticeships:
-		| Name                    | Qty | start_date |
-		| Aerospace Engineer	  | 1   | 2017-05-01 |
+		| AppName            | NumberOfApprentices | AppStartDate |
+		| Aerospace Engineer | 1                   | 2017-05-01   |
 	
 	Then the total cost should be <total_cost>, total employer contribution <total_employer_contribution> and total goverment pays <total_goverment_pays>
 Examples: 

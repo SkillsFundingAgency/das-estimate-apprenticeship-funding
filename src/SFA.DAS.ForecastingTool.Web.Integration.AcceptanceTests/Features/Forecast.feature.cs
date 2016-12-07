@@ -66,20 +66,27 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Forecast adds numbers correctly")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.TestCaseAttribute("10000000", "100", "36000", "3600", "32400", new string[0])]
         [NUnit.Framework.TestCaseAttribute("3100000", "75", "36000", "3504", "31680", new string[0])]
         public virtual void ForecastAddsNumbersCorrectly(string paybill, string english_Fraction, string total_Cost, string total_Employer_Contribution, string total_Goverment_Pays, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecast adds numbers correctly", exampleTags);
+            string[] @__tags = new string[] {
+                    "ignore"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecast adds numbers correctly", @__tags);
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.Given(string.Format("I have a paybill of {0} and my English Fraction is {1}", paybill, english_Fraction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Qty",
-                        "start_date"});
+                        "AppName",
+                        "NumberOfApprentices",
+                        "AppStartDate"});
             table1.AddRow(new string[] {
                         "Aerospace Engineer",
                         "1",

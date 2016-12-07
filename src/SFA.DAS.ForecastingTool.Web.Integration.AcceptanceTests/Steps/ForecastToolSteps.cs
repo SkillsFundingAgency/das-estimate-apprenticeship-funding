@@ -21,7 +21,15 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         public void Arrange()
         {
             SeleniumWebDriver.Bootstrap(SeleniumWebDriver.Browser.Chrome);
+        [AfterScenario]
+        public void TearDown()
+        {
+            if (_scenarioContextResultsPage != null)
+            {
+                _scenarioContextResultsPage.I.Dispose();
+            }
 
+            I.Dispose();
         }
 
         [Given(@"I am a non levy payer")]

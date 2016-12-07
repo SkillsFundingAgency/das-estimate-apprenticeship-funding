@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Web.Configuration;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -17,6 +18,7 @@ namespace SFA.DAS.ForecastingTool.Web
 
             var container = DependencyConfig.RegisterDependencies();
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes, container);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

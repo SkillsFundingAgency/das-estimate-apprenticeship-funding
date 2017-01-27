@@ -12,7 +12,10 @@ namespace SFA.DAS.ForecastingTool.Web
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                 "~/Scripts/details.polyfill.js",
-                "~/scripts/govuk-template.js"));
+                "~/Scripts/govuk-template.js",
+                "~/Scripts/select2.min.js",
+                "~/Scripts/app.js"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/training-course").Include(
                 "~/Scripts/forecasting-number-extension-1.0.js",

@@ -45,7 +45,7 @@
 
                             <div class="form-group">
                                 <label class="form-label-bold" for="standard@(i)">Type of apprenticeship training</label>
-                                <select name="standard" id="standard@(i)" class="form-control training-standard" aria-label="Training standard">
+                                <select name="standard" id="standard@(i)" class="form-control training-standard select2-control" aria-label="Training standard">
                                     @foreach (var standard in Model.Standards)
                                     {
                                         if (standard.Code == cohort.Code)
@@ -99,7 +99,7 @@
 
                         <div class="form-group">
                             <label class="form-label-bold" for="standardNew">Type of apprenticeship training</label>
-                            <select name="standard" id="standardNew" class="form-control training-standard" aria-label="Training standard">
+                            <select name="standard" id="standardNew" class="form-control training-standard select2-control" aria-label="Training standard">
                                 <option value="noselection">Please choose...</option>
                                 @foreach (var standard in Model.Standards)
                                 {

@@ -1,5 +1,5 @@
 ﻿$(function () {
-    if ($('#standardNew').length > 0) {
-        $('#standardNew').select2();
+    if ($('select.select2-control').length > 0) {
+        $('select.select2-control').select2();
     }
 });

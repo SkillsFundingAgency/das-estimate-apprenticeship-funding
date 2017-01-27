@@ -372,6 +372,7 @@ button:focus,
     #global-header.with-proposition .header-wrapper .header-proposition {
         float: left;
         width: 100%;
+        box-sizing:border-box;
         padding: 0px 15px;
     }
     #global-header .header-wrapper {

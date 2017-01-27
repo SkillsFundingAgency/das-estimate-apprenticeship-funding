@@ -21,6 +21,10 @@ input.pull-link-left {
     width: 100%;
 }
 
+.select2-container--focus {
+    outline: 3px solid #ffbf47;
+}
+
 .select2-container {
   box-sizing: border-box;
   display: inline-block;

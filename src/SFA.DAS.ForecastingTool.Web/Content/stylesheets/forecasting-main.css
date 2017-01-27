@@ -485,7 +485,7 @@ main {
 }
 
 .bold-medium {
-    font-family: "nta", Arial, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 700;
@@ -1729,6 +1729,7 @@ input[type=number] {
     .error .error-message {
         color: #b10e1e;
         font-weight: bold;
+        font-family: 'Source Sans Pro', sans-serif;
     }
 
 .warning {

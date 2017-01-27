@@ -1,3 +1,5 @@
 ﻿$(function () {
-    alert(121);
+    if ($('#standardNew').length > 0) {
+        $('#standardNew').select2();
+    }
 });

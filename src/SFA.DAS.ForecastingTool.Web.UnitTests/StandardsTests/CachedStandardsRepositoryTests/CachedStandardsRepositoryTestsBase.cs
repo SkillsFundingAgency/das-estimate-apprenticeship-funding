@@ -23,7 +23,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
             _innerRepo = new Mock<IStandardsRepository>();
             _innerRepo.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(new[]
             {
-                new Standard {Code = 10, Name = "Inner 1", Price = 10000, Duration = 12}
+                new Standard {Code = "10", Name = "Inner 1", Price = 10000, Duration = 12}
             }));
 
             _cacheProvider = new Mock<ICacheProvider>();

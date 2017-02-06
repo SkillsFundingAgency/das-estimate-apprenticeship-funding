@@ -16,7 +16,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
             // Arrange
             _cacheProvider.Setup(c => c.Get<Standard[]>(CacheKeys.Standards)).Returns(new[]
             {
-                new Standard {Code = 20, Name = "Cache 1", Price = 200000, Duration = 24}
+                new Standard {Code = "20", Name = "Cache 1", Price = 200000, Duration = 24}
             });
 
             // Act

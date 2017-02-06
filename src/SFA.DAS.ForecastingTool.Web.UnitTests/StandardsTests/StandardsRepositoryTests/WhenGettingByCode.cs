@@ -30,9 +30,9 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
             _repo = new StandardsRepository(_fileSystem.Object);
         }
 
-        [TestCase(11, "Standard 11", 24000, 12)]
-        [TestCase(22, "Standard 22", 12000, 6)]
-        public async Task ThenItShouldReturnCorrectStandard(int code, string name, int price, int duration)
+        [TestCase("11", "Standard 11", 24000, 12)]
+        [TestCase("22", "Standard 22", 12000, 6)]
+        public async Task ThenItShouldReturnCorrectStandard(string code, string name, int price, int duration)
         {
             // Act
             var actual = await _repo.GetByCodeAsync(code);
@@ -49,7 +49,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
         public async Task ThenItShouldReturnNullIfNoStandardWithCode()
         {
             // Act
-            var actual = await _repo.GetByCodeAsync(33);
+            var actual = await _repo.GetByCodeAsync("33");
 
             // Assert
             Assert.IsNull(actual);
@@ -62,7 +62,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
             _standardsFileInfo.Setup(i => i.Exists).Returns(false);
 
             // Act + Assert
-            var ex = Assert.ThrowsAsync<FileNotFoundException>(async () => await _repo.GetByCodeAsync(11));
+            var ex = Assert.ThrowsAsync<FileNotFoundException>(async () => await _repo.GetByCodeAsync("11"));
             Assert.AreEqual("Could not find Standards file", ex.Message);
         }
 
@@ -73,7 +73,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
             _standardsFileInfo.Setup(i => i.OpenRead(It.IsAny<FileShare>())).Returns(new MemoryStream(Encoding.UTF8.GetBytes("<Notjson>")));
 
             // Act + Assert
-            var ex = Assert.ThrowsAsync<InvalidDataException>(async () => await _repo.GetByCodeAsync(11));
+            var ex = Assert.ThrowsAsync<InvalidDataException>(async () => await _repo.GetByCodeAsync("11"));
             Assert.AreEqual("Standards data is corrupt", ex.Message);
             Assert.IsInstanceOf<JsonReaderException>(ex.InnerException);
         }

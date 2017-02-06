@@ -23,8 +23,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
         {
             _standards = new[]
             {
-                new Standard {Code = 1, Name = "Standard B"},
-                new Standard {Code = 2, Name = "Standard A"}
+                new Standard {Code = "1", Name = "Standard B"},
+                new Standard {Code = "2", Name = "Standard A"}
             };
 
             _standardsRepository = new Mock<IStandardsRepository>();

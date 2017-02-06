@@ -133,7 +133,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var standards = new BreakdownStandard[cohorts.Length];
             for (var i = 0; i < cohorts.Length; i++)
             {
-                standards[i] = new BreakdownStandard(await _standardsRepository.GetByCodeAsync(cohorts[i].Code),
+                standards[i] = new BreakdownStandard(await _standardsRepository.GetByCodeAsync(cohorts[i].Code.ToString()),
                     cohorts[i].Qty, cohorts[i].StartDate, _calculatorSettings.FinalTrainingPaymentPercentage);
             }
             return standards;

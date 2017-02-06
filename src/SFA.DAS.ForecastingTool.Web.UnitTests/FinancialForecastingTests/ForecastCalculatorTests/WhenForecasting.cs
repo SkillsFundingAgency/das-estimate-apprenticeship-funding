@@ -16,7 +16,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         private const int CoPayPaybill = 4000000;
         private const int NonLevyPaybill = 1000000;
         private const int EnglishFraction = 100;
-        private int[] StandardCode = { 1, 2 };
+        private string[] StandardCode = { "1", "2" };
         private int[] StandardQty = { 1, 1 };
         private readonly DateTime[] StandardStartDate = { new DateTime(2017, 5, 1), new DateTime(2017, 5, 1) };
         public const int Duration = 12;
@@ -55,12 +55,12 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
 
 
             _standardsRepository = new Mock<IStandardsRepository>();
-            _standardsRepository.Setup(r => r.GetByCodeAsync(1)).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync("1")).Returns(Task.FromResult(new Standard
             {
                 Price = 6000,
                 Duration = 12
             }));
-            _standardsRepository.Setup(r => r.GetByCodeAsync(2)).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync("2")).Returns(Task.FromResult(new Standard
             {
                 Price = 1400,
                 Duration = 12

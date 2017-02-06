@@ -183,12 +183,12 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             {
                 var standardMatch = Regex.Match(standards[i], @"^(\d+)x(\d+)-(\d{2})(\d{2})$");
                 DateTime standardStartDate;
-                int standardCode;
+                string standardCode;
                 int standardQty;
                 if (standardMatch.Success)
                 {
                     
-                    standardCode = int.Parse(standardMatch.Groups[2].Value);
+                    standardCode = standardMatch.Groups[2].Value;
                     try
                     {
                         standardStartDate = new DateTime(2000 + int.Parse(standardMatch.Groups[4].Value),
@@ -228,8 +228,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     result.ActionName = "TrainingCourse";
                     return;
                 }
-
-                if (standardCode > 0 && standardQty == 0)
+                // TODO: review
+                if (/*standardCode > 0 && */standardQty == 0)
                 {
                     result.IsErrored = true;
                     result.RouteValues.Add("ErrorMessage", errorMessage);
@@ -238,7 +238,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 }
 
                 Standard standard = null;
-                if (standardQty > 0 || standardCode > 0)
+                // TODO: review
+                if (standardQty > 0/* || standardCode > 0*/)
                 {
                     standard = _standardsRepository.GetByCodeAsync(standardCode).Result;
                     if (standard == null)

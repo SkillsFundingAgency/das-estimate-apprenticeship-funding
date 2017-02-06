@@ -50,13 +50,13 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
             // Assert
             Assert.AreEqual(2, actual.Length);
 
-            var expectedItem1 = actual.SingleOrDefault(s => s.Code == 11);
+            var expectedItem1 = actual.SingleOrDefault(s => s.Code == "11");
             Assert.IsNotNull(expectedItem1, "Standard 11 is not in result");
             Assert.AreEqual("Standard 11", expectedItem1.Name);
             Assert.AreEqual(12, expectedItem1.Duration);
             Assert.AreEqual(24000, expectedItem1.Price);
 
-            var expectedItem2 = actual.SingleOrDefault(s => s.Code == 22);
+            var expectedItem2 = actual.SingleOrDefault(s => s.Code == "22");
             Assert.IsNotNull(expectedItem2, "Standard 11 is not in result");
             Assert.AreEqual("Standard 22", expectedItem2.Name);
             Assert.AreEqual(6, expectedItem2.Duration);

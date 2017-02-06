@@ -21,9 +21,9 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ModelsTests.ForecastQuestionsMod
             //Arrange
             _model.SelectedCohorts = new List<CohortModel> {new CohortModel
             {
-                Code=1,
-                Name ="test",
-                Qty =4,
+                Code = "1",
+                Name = "test",
+                Qty = 4,
                 StartDate = new DateTime(2018,05,03)
             } };
             
@@ -43,16 +43,16 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ModelsTests.ForecastQuestionsMod
             {
                 new CohortModel
                 {
-                    Code=1,
-                    Name ="test",
-                    Qty =4,
+                    Code = "1",
+                    Name = "test",
+                    Qty = 4,
                     StartDate = new DateTime(2018,05,03)
                 },
                 new CohortModel
                 {
-                    Code=2,
-                    Name ="test2",
-                    Qty =5,
+                    Code = "2",
+                    Name = "test2",
+                    Qty = 5,
                     StartDate = new DateTime(2019,10,03)
                 }
             };

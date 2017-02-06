@@ -9,7 +9,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
         public async Task ThenItShouldReturnCorrectStandard()
         {
             // Act
-            var actual = await _repo.GetByCodeAsync(10);
+            var actual = await _repo.GetByCodeAsync("10");
 
             // Assert
             Assert.NotNull(actual);
@@ -23,7 +23,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
         public async Task ThenItShouldReturnNullIfNoStandardWithCode()
         {
             // Act
-            var actual = await _repo.GetByCodeAsync(33);
+            var actual = await _repo.GetByCodeAsync("33");
 
             // Assert
             Assert.IsNull(actual);

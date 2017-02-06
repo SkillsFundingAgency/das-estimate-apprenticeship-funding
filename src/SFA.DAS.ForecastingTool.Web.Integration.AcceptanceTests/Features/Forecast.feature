@@ -19,7 +19,7 @@ Examples:
 
 
 
-@BackEndTests
+@ignore @BackEndTests
 Scenario Outline: Forecasting Levy Payment with a large pot
 
 	Given I have a paybill of <paybill> and my English Fraction is <english_fraction>
@@ -53,7 +53,7 @@ Scenario Outline: Forecasting Levy Payment with a large pot
 	
 
 
-@BackEndTests
+@ignore @BackEndTests
 Scenario Outline: Forecasting Levy Payment with small pot
 
 	Given I have a paybill of <paybill> and my English Fraction is <english_fraction>
@@ -84,7 +84,7 @@ Scenario Outline: Forecasting Levy Payment with small pot
 	
 
 
-@BackEndTests
+@ignore @BackEndTests
 Scenario Outline: Forecasting Levy Payment with no pot
 
 	Given I have a paybill of <paybill> and my English Fraction is <english_fraction>

@@ -52,7 +52,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
             {
                 Assert.IsNotEmpty(apprenticeship?.AppName, "The apprenticeship name was empty");
 
-                var standard = _standardsRepository.GetAllAsync().Result.SingleOrDefault(x => x.Name == apprenticeship?.AppName);
+                var standard = new Standard { Name = apprenticeship?.AppName };
 
                 Assert.IsNotNull(standard, $"The apprenticeship name {apprenticeship?.AppName} could not be found in the list of apprenticeship");
 

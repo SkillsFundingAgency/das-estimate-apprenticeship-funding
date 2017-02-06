@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
+﻿using SFA.DAS.ForecastingTool.Core.Models.FinancialForecasting;
 
 namespace SFA.DAS.ForecastingTool.Web.Models
 {

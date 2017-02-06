@@ -261,10 +261,7 @@
     <Compile Include="Controllers\VersionController.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="FinancialForecasting\ForecastCalculator.cs" />
-    <Compile Include="FinancialForecasting\DetailedForecastResult.cs" />
     <Compile Include="FinancialForecasting\IForecastCalculator.cs" />
-    <Compile Include="FinancialForecasting\ForecastResult.cs" />
-    <Compile Include="FinancialForecasting\MonthlyCashflow.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -331,6 +328,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SFA.DAS.ForecastingTool.Core\SFA.DAS.ForecastingTool.Core.csproj">
+      <Project>{07b8dea5-b7e3-4105-b582-57666518629a}</Project>
+      <Name>SFA.DAS.ForecastingTool.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

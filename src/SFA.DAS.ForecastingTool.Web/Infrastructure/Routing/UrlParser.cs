@@ -181,7 +181,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             
             for (var i = 0; i < standards.Length; i++)
             {
-                var standardMatch = Regex.Match(standards[i], @"^(\d+)x(\d+)-(\d{2})(\d{2})$");
+                var standardMatch = Regex.Match(standards[i], @"^(\d+)x([0-9-]+)x(\d{2})(\d{2})$");
                 DateTime standardStartDate;
                 string standardCode;
                 int standardQty;

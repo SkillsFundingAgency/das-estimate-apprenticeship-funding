@@ -21,32 +21,6 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
         public async Task<Standard[]> GetAllAsync()
         {
             return GetApprenticeships();
-            var standardsFile = _fileSystem.GetFile("~/App_Data/Standards.json");
-            if (!standardsFile.Exists)
-            {
-                throw new FileNotFoundException("Could not find Standards file");
-            }
-
-            using (var stream = standardsFile.OpenRead(FileShare.ReadWrite))
-            using (var reader = new StreamReader(stream))
-            {
-                try
-                {
-                    var json = await reader.ReadToEndAsync();
-                    try
-                    {
-                        return JsonConvert.DeserializeObject<Standard[]>(json);
-                    }
-                    catch (JsonReaderException ex)
-                    {
-                        throw new InvalidDataException("Standards data is corrupt", ex);
-                    }
-                }
-                finally
-                {
-                    reader.Close();
-                }
-            }
         }
 
         public async Task<Standard> GetByCodeAsync(string code)

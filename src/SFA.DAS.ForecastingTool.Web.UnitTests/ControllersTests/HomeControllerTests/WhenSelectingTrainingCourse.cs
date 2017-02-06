@@ -2,10 +2,10 @@
 using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
+using SFA.DAS.ForecastingTool.Core.Models;
 using SFA.DAS.ForecastingTool.Core.Models.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Controllers;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
-using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
 namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerTests

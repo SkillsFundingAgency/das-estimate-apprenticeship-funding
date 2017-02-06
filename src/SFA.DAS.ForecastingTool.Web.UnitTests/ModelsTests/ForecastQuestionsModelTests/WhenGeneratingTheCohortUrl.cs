@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using SFA.DAS.ForecastingTool.Web.Models;
+using SFA.DAS.ForecastingTool.Core.Models;
 
 namespace SFA.DAS.ForecastingTool.Web.UnitTests.ModelsTests.ForecastQuestionsModelTests
 {

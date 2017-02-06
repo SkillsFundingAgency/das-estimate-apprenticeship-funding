@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
+using SFA.DAS.ForecastingTool.Core.Models;
 using SFA.DAS.ForecastingTool.Core.Models.FinancialForecasting;
-using SFA.DAS.ForecastingTool.Web.Models;
 
 namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 {

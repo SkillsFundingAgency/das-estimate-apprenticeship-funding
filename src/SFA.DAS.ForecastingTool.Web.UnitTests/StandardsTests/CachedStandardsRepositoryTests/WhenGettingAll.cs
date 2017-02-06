@@ -25,7 +25,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
             // Assert
             Assert.NotNull(actual);
             Assert.AreEqual(1, actual.Length);
-            Assert.AreEqual(20, actual[0].Code);
+            Assert.AreEqual("20", actual[0].Code);
             Assert.AreEqual("Cache 1", actual[0].Name);
             Assert.AreEqual(200000, actual[0].Price);
             Assert.AreEqual(24, actual[0].Duration);
@@ -40,7 +40,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
             // Assert
             Assert.NotNull(actual);
             Assert.AreEqual(1, actual.Length);
-            Assert.AreEqual(10, actual[0].Code);
+            Assert.AreEqual("10", actual[0].Code);
             Assert.AreEqual("Inner 1", actual[0].Name);
             Assert.AreEqual(10000, actual[0].Price);
             Assert.AreEqual(12, actual[0].Duration);

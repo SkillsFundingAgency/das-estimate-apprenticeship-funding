@@ -336,6 +336,10 @@
       <Project>{07b8dea5-b7e3-4105-b582-57666518629a}</Project>
       <Name>SFA.DAS.ForecastingTool.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SFA.DAS.ForecastingTool.Infrastructure\SFA.DAS.ForecastingTool.Infrastructure.csproj">
+      <Project>{256cdba0-b97e-4f36-8498-2c1141c7eedb}</Project>
+      <Name>SFA.DAS.ForecastingTool.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

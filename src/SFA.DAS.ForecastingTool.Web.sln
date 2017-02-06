@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ForecastingTool.Web
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ForecastingTool.Core", "SFA.DAS.ForecastingTool.Core\SFA.DAS.ForecastingTool.Core.csproj", "{07B8DEA5-B7E3-4105-B582-57666518629A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ForecastingTool.Infrastructure", "SFA.DAS.ForecastingTool.Infrastructure\SFA.DAS.ForecastingTool.Infrastructure.csproj", "{256CDBA0-B97E-4F36-8498-2C1141C7EEDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{07B8DEA5-B7E3-4105-B582-57666518629A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07B8DEA5-B7E3-4105-B582-57666518629A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07B8DEA5-B7E3-4105-B582-57666518629A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{256CDBA0-B97E-4F36-8498-2C1141C7EEDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{256CDBA0-B97E-4F36-8498-2C1141C7EEDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{256CDBA0-B97E-4F36-8498-2C1141C7EEDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{256CDBA0-B97E-4F36-8498-2C1141C7EEDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

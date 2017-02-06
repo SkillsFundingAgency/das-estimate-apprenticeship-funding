@@ -1,9 +1,12 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using SFA.DAS.ForecastingTool.Core.Models;
+using SFA.DAS.ForecastingTool.Infrastructure.Services;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.FileSystem;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -14,20 +17,31 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
         private Mock<IFileInfo> _standardsFileInfo;
         private Mock<IFileSystem> _fileSystem;
         private StandardsRepository _repo;
+        private Mock<IGetStandards> _getStandard;
 
         [SetUp]
         public void Arrange()
         {
-            var data = "[{\"Code\":11,\"Name\":\"Standard 11\",\"Price\":24000,\"Duration\":12},{\"Code\":22,\"Name\":\"Standard 22\",\"Price\":12000,\"Duration\":6}]";
-            _standardsFileInfo = new Mock<IFileInfo>();
-            _standardsFileInfo.Setup(i => i.Exists).Returns(true);
-            _standardsFileInfo.Setup(i => i.OpenRead(It.IsAny<FileShare>())).Returns(new MemoryStream(Encoding.UTF8.GetBytes(data)));
+            var firstStandard = new Standard
+            {
+                Code = "11",
+                Name = "Standard 11",
+                Price = 24000,
+                Duration = 12
+            };
+            var secondStandard = new Standard
+            {
+                Code = "22",
+                Name = "Standard 22",
+                Price = 12000,
+                Duration = 6
+            };
 
-            _fileSystem = new Mock<IFileSystem>();
-            _fileSystem.Setup(fs => fs.GetFile("~/App_Data/Standards.json"))
-                .Returns(_standardsFileInfo.Object);
+            _getStandard = new Mock<IGetStandards>();
+            _getStandard.Setup(x => x.GetByCode("11")).Returns(firstStandard);
+            _getStandard.Setup(x => x.GetByCode("22")).Returns(secondStandard);
 
-            _repo = new StandardsRepository(_fileSystem.Object);
+            _repo = new StandardsRepository(_getStandard.Object);
         }
 
         [TestCase("11", "Standard 11", 24000, 12)]
@@ -53,29 +67,6 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
 
             // Assert
             Assert.IsNull(actual);
-        }
-
-        [Test]
-        public void ThenItShouldThrowFileNotFoundExceptionIfFileInfoExistsIsFalse()
-        {
-            // Arrange
-            _standardsFileInfo.Setup(i => i.Exists).Returns(false);
-
-            // Act + Assert
-            var ex = Assert.ThrowsAsync<FileNotFoundException>(async () => await _repo.GetByCodeAsync("11"));
-            Assert.AreEqual("Could not find Standards file", ex.Message);
-        }
-
-        [Test]
-        public void ThenItShouldThrowInvalidDataExceptionIfFileContentIsCorrupt()
-        {
-            // Arrange
-            _standardsFileInfo.Setup(i => i.OpenRead(It.IsAny<FileShare>())).Returns(new MemoryStream(Encoding.UTF8.GetBytes("<Notjson>")));
-
-            // Act + Assert
-            var ex = Assert.ThrowsAsync<InvalidDataException>(async () => await _repo.GetByCodeAsync("11"));
-            Assert.AreEqual("Standards data is corrupt", ex.Message);
-            Assert.IsInstanceOf<JsonReaderException>(ex.InnerException);
         }
     }
 }

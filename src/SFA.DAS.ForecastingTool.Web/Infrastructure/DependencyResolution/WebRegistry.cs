@@ -1,4 +1,5 @@
-﻿using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
+﻿using SFA.DAS.ForecastingTool.Infrastructure.Services;
+using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Caching;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.FileSystem;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
@@ -16,6 +17,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.DependencyResolution
             container.Register<ICacheProvider, InProcessCacheProvider>(Lifestyle.Singleton);
             container.Register<ICalculatorSettings, CalculatorSettings>(Lifestyle.Singleton);
             container.Register<IFileSystem, DiskFileSystem>(Lifestyle.Singleton);
+            container.Register<IGetStandards, GetStandards>(Lifestyle.Singleton);
 
             container.Register<IStandardsRepository>(() =>
             {

@@ -1,13 +1,13 @@
 ﻿using SFA.DAS.Apprenticeships.Api.Types;
-using Standard = SFA.DAS.ForecastingTool.Core.Models.Standard;
+using SFA.DAS.ForecastingTool.Core.Models;
 
 namespace SFA.DAS.ForecastingTool.Core.Mapping
 {
     public class ApprenticeshipMapper
     {
-        public Standard MapStandardToApprenticeship(StandardSummary standardSummary)
+        public Apprenticeship MapStandardToApprenticeship(StandardSummary standardSummary)
         {
-            return new Standard
+            return new Apprenticeship
             {
                 Code = standardSummary.Id,
                 Duration = standardSummary.Duration,
@@ -16,9 +16,9 @@ namespace SFA.DAS.ForecastingTool.Core.Mapping
             };
         }
 
-        public Standard MapFrameworkToApprenticeship(FrameworkSummary frameworkSummary)
+        public Apprenticeship MapFrameworkToApprenticeship(FrameworkSummary frameworkSummary)
         {
-            return new Standard
+            return new Apprenticeship
             {
                 Code = frameworkSummary.Id,
                 Duration = frameworkSummary.Duration,

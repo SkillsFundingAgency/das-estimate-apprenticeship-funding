@@ -23,19 +23,19 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
         [SetUp]
         public void Arrange()
         {
-            var data = new List<Standard>
+            var data = new List<Apprenticeship>
             {
-                new Standard
+                new Apprenticeship
                 {
                     Code = "11",
-                    Name = "Standard 11",
+                    Name = "Apprenticeship 11",
                     Price = 24000,
                     Duration = 12
                 },
-                new Standard
+                new Apprenticeship
                 {
                     Code = "22",
-                    Name = "Standard 22",
+                    Name = "Apprenticeship 22",
                     Price = 12000,
                     Duration = 6
                 }
@@ -66,14 +66,14 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
             Assert.AreEqual(2, actual.Length);
 
             var expectedItem1 = actual.SingleOrDefault(s => s.Code == "11");
-            Assert.IsNotNull(expectedItem1, "Standard 11 is not in result");
-            Assert.AreEqual("Standard 11", expectedItem1.Name);
+            Assert.IsNotNull(expectedItem1, "Apprenticeship 11 is not in result");
+            Assert.AreEqual("Apprenticeship 11", expectedItem1.Name);
             Assert.AreEqual(12, expectedItem1.Duration);
             Assert.AreEqual(24000, expectedItem1.Price);
 
             var expectedItem2 = actual.SingleOrDefault(s => s.Code == "22");
-            Assert.IsNotNull(expectedItem2, "Standard 11 is not in result");
-            Assert.AreEqual("Standard 22", expectedItem2.Name);
+            Assert.IsNotNull(expectedItem2, "Apprenticeship 11 is not in result");
+            Assert.AreEqual("Apprenticeship 22", expectedItem2.Name);
             Assert.AreEqual(6, expectedItem2.Duration);
             Assert.AreEqual(12000, expectedItem2.Price);
         }

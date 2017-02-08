@@ -87,7 +87,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Execute the next function on the queue for the matched element.</summary>
     ///   <param name="element" type="Element">A DOM element from which to remove and execute a queued function.</param>
-    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
+    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the apprenticeship effects queue.</param>
     /// </signature>
   },
   'each': function() {
@@ -362,14 +362,14 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Manipulate the queue of functions to be executed on the matched element.</summary>
     ///   <param name="element" type="Element">A DOM element where the array of queued functions is attached.</param>
-    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
+    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the apprenticeship effects queue.</param>
     ///   <param name="newQueue" type="Array">An array of functions to replace the current queue contents.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Manipulate the queue of functions to be executed on the matched element.</summary>
     ///   <param name="element" type="Element">A DOM element on which to add a queued function.</param>
-    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
+    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the apprenticeship effects queue.</param>
     ///   <param name="callback()" type="Function">The new function to add to the queue.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1031,7 +1031,7 @@ intellisense.annotate(jQuery.fn, {
   'clearQueue': function() {
     /// <signature>
     ///   <summary>Remove from the queue all items that have not yet been run.</summary>
-    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
+    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the apprenticeship effects queue.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1147,7 +1147,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Set a timer to delay execution of subsequent items in the queue.</summary>
     ///   <param name="duration" type="Number">An integer indicating the number of milliseconds to delay execution of the next item in the queue.</param>
-    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
+    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the apprenticeship effects queue.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1177,7 +1177,7 @@ intellisense.annotate(jQuery.fn, {
   'dequeue': function() {
     /// <signature>
     ///   <summary>Execute the next function on the queue for the matched elements.</summary>
-    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
+    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the apprenticeship effects queue.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2139,13 +2139,13 @@ intellisense.annotate(jQuery.fn, {
   'queue': function() {
     /// <signature>
     ///   <summary>Manipulate the queue of functions to be executed, once for each matched element.</summary>
-    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
+    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the apprenticeship effects queue.</param>
     ///   <param name="newQueue" type="Array">An array of functions to replace the current queue contents.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Manipulate the queue of functions to be executed, once for each matched element.</summary>
-    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
+    ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the apprenticeship effects queue.</param>
     ///   <param name="callback( next )" type="Function">The new function to add to the queue, with a function to call that will dequeue the next item.</param>
     ///   <returns type="jQuery" />
     /// </signature>

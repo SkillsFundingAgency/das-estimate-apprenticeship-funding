@@ -68,7 +68,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             _tc.TrackPageView("Training Course");
 
             var standards = await _standardsRepository.GetAllAsync();
-            model.Standards = standards.OrderBy(s => s.Name).Select(s => new StandardModel(s)).ToArray();
+            model.Apprenticeships = standards.OrderBy(s => s.Name).Select(s => new ApprenticeshipModel(s)).ToArray();
 
             var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction);
             model.LevyFundingReceived = forecastResult.FundingReceived;

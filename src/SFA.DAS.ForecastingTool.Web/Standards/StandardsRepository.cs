@@ -19,12 +19,12 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
             _getStandards = getStandards;
         }
 
-        public async Task<Standard[]> GetAllAsync()
+        public async Task<Apprenticeship[]> GetAllAsync()
         {
             return _getStandards.GetAll();
         }
 
-        public async Task<Standard> GetByCodeAsync(string code)
+        public async Task<Apprenticeship> GetByCodeAsync(string code)
         {
             return _getStandards.GetByCode(code);
         }

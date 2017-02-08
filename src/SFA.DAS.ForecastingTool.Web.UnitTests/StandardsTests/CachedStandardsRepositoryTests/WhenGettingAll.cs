@@ -14,9 +14,9 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
         public async Task ThenItShouldReturnCachedResultsIfPresent()
         {
             // Arrange
-            _cacheProvider.Setup(c => c.Get<Standard[]>(CacheKeys.Standards)).Returns(new[]
+            _cacheProvider.Setup(c => c.Get<Apprenticeship[]>(CacheKeys.Standards)).Returns(new[]
             {
-                new Standard {Code = "20", Name = "Cache 1", Price = 200000, Duration = 24}
+                new Apprenticeship {Code = "20", Name = "Cache 1", Price = 200000, Duration = 24}
             });
 
             // Act
@@ -53,21 +53,21 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
             await _repo.GetAllAsync();
 
             // Assert
-            _cacheProvider.Verify(c=>c.Set(CacheKeys.Standards, It.IsAny<Standard[]>(), It.Is<TimeSpan>(ts => ts.Hours == 6)), Times.Once());
+            _cacheProvider.Verify(c=>c.Set(CacheKeys.Standards, It.IsAny<Apprenticeship[]>(), It.Is<TimeSpan>(ts => ts.Hours == 6)), Times.Once());
         }
 
         [Test]
         public async Task ThenItShouldNotStoreDataFromInnerRepositoryInCacheIfItDoesNotContainRecords()
         {
             // Arrange
-            _innerRepo.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(new Standard[0]));
+            _innerRepo.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(new Apprenticeship[0]));
 
             // Act
             await _repo.GetAllAsync();
 
             // Assert
-            _cacheProvider.Verify(c => c.Set(CacheKeys.Standards, It.IsAny<Standard[]>(), It.IsAny<TimeSpan>()), Times.Never());
-            _cacheProvider.Verify(c => c.Set(CacheKeys.Standards, It.IsAny<Standard[]>(), It.IsAny<DateTimeOffset>()), Times.Never());
+            _cacheProvider.Verify(c => c.Set(CacheKeys.Standards, It.IsAny<Apprenticeship[]>(), It.IsAny<TimeSpan>()), Times.Never());
+            _cacheProvider.Verify(c => c.Set(CacheKeys.Standards, It.IsAny<Apprenticeship[]>(), It.IsAny<DateTimeOffset>()), Times.Never());
         }
     }
 }

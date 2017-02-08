@@ -21,7 +21,7 @@ namespace SFA.DAS.ForecastingTool.Infrastructure.Services
             _frameworkClient = new FrameworkApiClient();
         }
 
-        public Standard[] GetAll()
+        public Apprenticeship[] GetAll()
         {
             var standards = _standardClient.FindAll().ToList();
             var frameworks = _frameworkClient.FindAll().ToList();
@@ -32,7 +32,7 @@ namespace SFA.DAS.ForecastingTool.Infrastructure.Services
             return result.ToArray();
         }
 
-        public Standard GetByCode(string code)
+        public Apprenticeship GetByCode(string code)
         {
             var standards = _standardClient.FindAll().ToList();
             var frameworks = _frameworkClient.FindAll().ToList();

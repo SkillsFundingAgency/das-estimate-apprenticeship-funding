@@ -1,16 +1,16 @@
 ﻿namespace SFA.DAS.ForecastingTool.Core.Models
 {
-    public class StandardModel
+    public class ApprenticeshipModel
     {
-        public StandardModel()
+        public ApprenticeshipModel()
         {
         }
-        public StandardModel(Standard standard)
+        public ApprenticeshipModel(Apprenticeship apprenticeship)
         {
-            Code = standard.Code;
-            Name = standard.Name;
-            Price = standard.Price;
-            Duration = standard.Duration;
+            Code = apprenticeship.Code;
+            Name = apprenticeship.Name;
+            Price = apprenticeship.Price;
+            Duration = apprenticeship.Duration;
         }
 
         public string Code { get; set; }

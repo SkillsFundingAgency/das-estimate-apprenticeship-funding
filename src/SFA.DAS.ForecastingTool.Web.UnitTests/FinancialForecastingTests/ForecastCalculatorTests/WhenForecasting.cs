@@ -55,12 +55,12 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
 
 
             _standardsRepository = new Mock<IStandardsRepository>();
-            _standardsRepository.Setup(r => r.GetByCodeAsync("1")).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync("1")).Returns(Task.FromResult(new Apprenticeship
             {
                 Price = 6000,
                 Duration = 12
             }));
-            _standardsRepository.Setup(r => r.GetByCodeAsync("2")).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync("2")).Returns(Task.FromResult(new Apprenticeship
             {
                 Price = 1400,
                 Duration = 12
@@ -190,7 +190,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldReturnTrainingOutAsTheCostOfTrainingLessFinalPaymentEvenlySpreadOverCourseDuration(int courseDuration, decimal expectedMonthlyCost)
         {
             // Arrange
-            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Apprenticeship
             {
                 Price = 6000,
                 Duration = courseDuration
@@ -214,7 +214,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldReturnTrainingOutAsOneMonthsTrainingPlusFinalPaymentAmountOnFinalMonthOfTraining()
         {
             // Arrange
-            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Apprenticeship
             {
                 Price = 6000,
                 Duration = 12
@@ -234,12 +234,12 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         public async Task ThenItShouldReturnEveryMonthsTrainingOutAsEvenProportionOfTrainingCostForDurationWithMultipleStandards(int courseDuration, decimal expectedMonthlyCost)
         {
             // Arrange
-            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Apprenticeship
             {
                 Price = 6000,
                 Duration = courseDuration
             }));
-            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[1])).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[1])).Returns(Task.FromResult(new Apprenticeship
             {
                 Price = 1500,
                 Duration = courseDuration
@@ -275,12 +275,12 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
                     StartDate = StandardStartDate[i]
                 });
             }
-            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Apprenticeship
             {
                 Price = 6000,
                 Duration = 12
             }));
-            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[1])).Returns(Task.FromResult(new Standard
+            _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[1])).Returns(Task.FromResult(new Apprenticeship
             {
                 Price = 1500,
                 Duration = 12

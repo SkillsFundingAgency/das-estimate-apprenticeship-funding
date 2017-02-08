@@ -237,15 +237,15 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     return;
                 }
 
-                Standard standard = null;
+                Apprenticeship apprenticeship = null;
                 // TODO: review
                 if (standardQty > 0/* || standardCode > 0*/)
                 {
-                    standard = _standardsRepository.GetByCodeAsync(standardCode).Result;
-                    if (standard == null)
+                    apprenticeship = _standardsRepository.GetByCodeAsync(standardCode).Result;
+                    if (apprenticeship == null)
                     {
                         result.IsErrored = true;
-                        result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
+                        result.RouteValues.Add("ErrorMessage", "Number of apprentices, training apprenticeship or start date invalid");
                         result.ActionName = "TrainingCourse";
                         return;
                     }
@@ -254,7 +254,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 
                 result.RouteValues.Add($"SelectedCohorts[{i}].Qty", standardQty);
                 result.RouteValues.Add($"SelectedCohorts[{i}].Code", standardCode);
-                result.RouteValues.Add($"SelectedCohorts[{i}].Name", standard?.Name);
+                result.RouteValues.Add($"SelectedCohorts[{i}].Name", apprenticeship?.Name);
                 result.RouteValues.Add($"SelectedCohorts[{i}].StartDate", standardStartDate);
             }
         }

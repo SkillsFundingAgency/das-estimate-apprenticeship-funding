@@ -32,9 +32,9 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             _configurationProvider.Setup(x => x.ForecastDuration).Returns(36);
 
             _standardsRepo = new Mock<IStandardsRepository>();
-            _standardsRepo.Setup(r => r.GetByCodeAsync("34")).Returns(Task.FromResult(new Standard { Name = "Unit tester" }));
-            _standardsRepo.Setup(r => r.GetByCodeAsync("43621")).Returns(Task.FromResult(new Standard { Name = "Unit tester" }));
-            _standardsRepo.Setup(r => r.GetByCodeAsync("12")).Returns(Task.FromResult(new Standard { Name = "Unit tester" }));
+            _standardsRepo.Setup(r => r.GetByCodeAsync("34")).Returns(Task.FromResult(new Apprenticeship { Name = "Unit tester" }));
+            _standardsRepo.Setup(r => r.GetByCodeAsync("43621")).Returns(Task.FromResult(new Apprenticeship { Name = "Unit tester" }));
+            _standardsRepo.Setup(r => r.GetByCodeAsync("12")).Returns(Task.FromResult(new Apprenticeship { Name = "Unit tester" }));
 
             _parser = new UrlParser(_standardsRepo.Object, _configurationProvider.Object);
         }

@@ -5,7 +5,7 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
 {
     public interface IStandardsRepository
     {
-        Task<Standard[]> GetAllAsync();
-        Task<Standard> GetByCodeAsync(string code);
+        Task<Apprenticeship[]> GetAllAsync();
+        Task<Apprenticeship> GetByCodeAsync(string code);
     }
 }

@@ -170,7 +170,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         private string GetCohortsUrlSegment(NameValueCollection form)
         {
             var cohortsEntry = GetFormValue(form, "cohorts", "0").Split(',');
-            var standardSelection = GetFormValue(form, "standard", "0").Split(',');
+            var standardSelection = GetFormValue(form, "apprenticeship", "0").Split(',');
             var startDateMonthEntry = GetFormValue(form, "startDateMonth", "05").Split(',');
             var startDateYearEntry = GetFormValue(form, "startDateYear", "17").Split(',');
 

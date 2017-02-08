@@ -17,9 +17,9 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
             _cacheProvider = cacheProvider;
         }
 
-        public async Task<Standard[]> GetAllAsync()
+        public async Task<Apprenticeship[]> GetAllAsync()
         {
-            var standards = _cacheProvider.Get<Standard[]>(CacheKeys.Standards);
+            var standards = _cacheProvider.Get<Apprenticeship[]>(CacheKeys.Standards);
             if (standards == null)
             {
                 standards = await _innerRepository.GetAllAsync();
@@ -31,7 +31,7 @@ namespace SFA.DAS.ForecastingTool.Web.Standards
             return standards;
         }
 
-        public async Task<Standard> GetByCodeAsync(string code)
+        public async Task<Apprenticeship> GetByCodeAsync(string code)
         {
             var standards = await GetAllAsync();
             return standards.SingleOrDefault(s => s.Code == code);

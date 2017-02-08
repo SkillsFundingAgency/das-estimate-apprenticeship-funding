@@ -22,17 +22,17 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
         [SetUp]
         public void Arrange()
         {
-            var firstStandard = new Standard
+            var firstStandard = new Apprenticeship
             {
                 Code = "11",
-                Name = "Standard 11",
+                Name = "Apprenticeship 11",
                 Price = 24000,
                 Duration = 12
             };
-            var secondStandard = new Standard
+            var secondStandard = new Apprenticeship
             {
                 Code = "22",
-                Name = "Standard 22",
+                Name = "Apprenticeship 22",
                 Price = 12000,
                 Duration = 6
             };
@@ -44,8 +44,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
             _repo = new StandardsRepository(_getStandard.Object);
         }
 
-        [TestCase("11", "Standard 11", 24000, 12)]
-        [TestCase("22", "Standard 22", 12000, 6)]
+        [TestCase("11", "Apprenticeship 11", 24000, 12)]
+        [TestCase("22", "Apprenticeship 22", 12000, 6)]
         public async Task ThenItShouldReturnCorrectStandard(string code, string name, int price, int duration)
         {
             // Act

@@ -12,7 +12,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
 {
     public class WhenSelectingTrainingCourse
     {
-        private Standard[] _standards;
+        private Apprenticeship[] _apprenticeships;
         private Mock<IStandardsRepository> _standardsRepository;
         private Mock<IForecastCalculator> _forecastCalculator;
         private HomeController _controller;
@@ -21,14 +21,14 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
         [SetUp]
         public void Arrange()
         {
-            _standards = new[]
+            _apprenticeships = new[]
             {
-                new Standard {Code = "1", Name = "Standard B"},
-                new Standard {Code = "2", Name = "Standard A"}
+                new Apprenticeship {Code = "1", Name = "Apprenticeship B"},
+                new Apprenticeship {Code = "2", Name = "Apprenticeship A"}
             };
 
             _standardsRepository = new Mock<IStandardsRepository>();
-            _standardsRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(_standards));
+            _standardsRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(_apprenticeships));
 
             _forecastCalculator = new Mock<IForecastCalculator>();
             _forecastCalculator.Setup(c => c.ForecastAsync(12345678, 100))
@@ -73,10 +73,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
 
             // Assert
             var model = (actual as ViewResult)?.Model as TrainingCourseViewModel;
-            Assert.IsNotNull(model.Standards);
-            Assert.AreEqual(2, model.Standards.Length);
-            Assert.AreEqual(_standards[1].Code, model.Standards[0].Code);
-            Assert.AreEqual(_standards[0].Code, model.Standards[1].Code);
+            Assert.IsNotNull(model.Apprenticeships);
+            Assert.AreEqual(2, model.Apprenticeships.Length);
+            Assert.AreEqual(_apprenticeships[1].Code, model.Apprenticeships[0].Code);
+            Assert.AreEqual(_apprenticeships[0].Code, model.Apprenticeships[1].Code);
         }
     }
 }

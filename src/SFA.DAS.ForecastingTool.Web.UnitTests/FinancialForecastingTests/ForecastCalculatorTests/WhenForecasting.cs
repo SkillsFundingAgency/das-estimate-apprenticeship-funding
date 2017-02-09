@@ -21,7 +21,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
         private readonly DateTime[] StandardStartDate = { new DateTime(2017, 5, 1), new DateTime(2017, 5, 1) };
         public const int Duration = 12;
 
-        private Mock<IStandardsRepository> _standardsRepository;
+        private Mock<IApprenticeshipRepository> _standardsRepository;
         private ForecastCalculator _calculator;
         private Mock<ICalculatorSettings> _configurationProvider;
         private List<CohortModel> _myStandards;
@@ -54,7 +54,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             }
 
 
-            _standardsRepository = new Mock<IStandardsRepository>();
+            _standardsRepository = new Mock<IApprenticeshipRepository>();
             _standardsRepository.Setup(r => r.GetByCodeAsync("1")).Returns(Task.FromResult(new Apprenticeship
             {
                 Price = 6000,

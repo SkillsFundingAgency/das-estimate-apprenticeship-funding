@@ -21,7 +21,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
         private const string StandardStartDateRouteValueKey = "SelectedCohorts[{0}].StartDate";
         private const string DurationRouteValueKey = "Duration";
 
-        private Mock<IStandardsRepository> _standardsRepo;
+        private Mock<IApprenticeshipRepository> _standardsRepo;
         private Mock<ICalculatorSettings> _configurationProvider;
         private UrlParser _parser;
 
@@ -31,7 +31,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.InfrastructureTests.RoutingTests
             _configurationProvider = new Mock<ICalculatorSettings>();
             _configurationProvider.Setup(x => x.ForecastDuration).Returns(36);
 
-            _standardsRepo = new Mock<IStandardsRepository>();
+            _standardsRepo = new Mock<IApprenticeshipRepository>();
             _standardsRepo.Setup(r => r.GetByCodeAsync("34")).Returns(Task.FromResult(new Apprenticeship { Name = "Unit tester" }));
             _standardsRepo.Setup(r => r.GetByCodeAsync("43621")).Returns(Task.FromResult(new Apprenticeship { Name = "Unit tester" }));
             _standardsRepo.Setup(r => r.GetByCodeAsync("12")).Returns(Task.FromResult(new Apprenticeship { Name = "Unit tester" }));

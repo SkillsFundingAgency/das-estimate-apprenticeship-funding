@@ -16,8 +16,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
     {
         private Mock<IFileInfo> _standardsFileInfo;
         private Mock<IFileSystem> _fileSystem;
-        private StandardsRepository _repo;
-        private Mock<IGetStandards> _getStandard;
+        private ApprenticeshipRepository _repo;
+        private Mock<IGetApprenticeship> _getStandard;
 
         [SetUp]
         public void Arrange()
@@ -37,11 +37,11 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
                 Duration = 6
             };
 
-            _getStandard = new Mock<IGetStandards>();
+            _getStandard = new Mock<IGetApprenticeship>();
             _getStandard.Setup(x => x.GetByCode("11")).Returns(firstStandard);
             _getStandard.Setup(x => x.GetByCode("22")).Returns(secondStandard);
 
-            _repo = new StandardsRepository(_getStandard.Object);
+            _repo = new ApprenticeshipRepository(_getStandard.Object);
         }
 
         [TestCase("11", "Apprenticeship 11", 24000, 12)]

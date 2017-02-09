@@ -12,12 +12,12 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
     {
         private const long MaxPaybill = 512409557603043100;
 
-        private readonly IStandardsRepository _standardsRepository;
+        private readonly IApprenticeshipRepository _apprenticeshipRepository;
         private readonly ICalculatorSettings _calculatorSettings;
 
-        public UrlParser(IStandardsRepository standardsRepository, ICalculatorSettings calculatorSettings)
+        public UrlParser(IApprenticeshipRepository apprenticeshipRepository, ICalculatorSettings calculatorSettings)
         {
-            _standardsRepository = standardsRepository;
+            _apprenticeshipRepository = apprenticeshipRepository;
             _calculatorSettings = calculatorSettings;
         }
 
@@ -241,7 +241,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 // TODO: review
                 if (standardQty > 0/* || standardCode > 0*/)
                 {
-                    apprenticeship = _standardsRepository.GetByCodeAsync(standardCode).Result;
+                    apprenticeship = _apprenticeshipRepository.GetByCodeAsync(standardCode).Result;
                     if (apprenticeship == null)
                     {
                         result.IsErrored = true;

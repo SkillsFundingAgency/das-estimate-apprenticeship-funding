@@ -17,8 +17,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
     {
         private Mock<IFileInfo> _standardsFileInfo;
         private Mock<IFileSystem> _fileSystem;
-        private StandardsRepository _repo;
-        private Mock<IGetStandards> _getStandard;
+        private ApprenticeshipRepository _repo;
+        private Mock<IGetApprenticeship> _getStandard;
 
         [SetUp]
         public void Arrange()
@@ -41,9 +41,9 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.StandardsReposito
                 }
             };
 
-            _getStandard = new Mock<IGetStandards>();
+            _getStandard = new Mock<IGetApprenticeship>();
             _getStandard.Setup(x => x.GetAll()).Returns(data.ToArray);
-            _repo = new StandardsRepository(_getStandard.Object);
+            _repo = new ApprenticeshipRepository(_getStandard.Object);
         }
 
         [Test]

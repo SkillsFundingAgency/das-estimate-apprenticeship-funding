@@ -293,9 +293,9 @@
     <Compile Include="Infrastructure\Routing\PostToUrlRedirectHandler.cs" />
     <Compile Include="Infrastructure\Routing\UrlParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Standards\CachedStandardsRepository.cs" />
-    <Compile Include="Standards\IStandardsRepository.cs" />
-    <Compile Include="Standards\StandardsRepository.cs" />
+    <Compile Include="Standards\CachedApprenticeshipRepository.cs" />
+    <Compile Include="Standards\IApprenticeshipRepository.cs" />
+    <Compile Include="Standards\ApprenticeshipRepository.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

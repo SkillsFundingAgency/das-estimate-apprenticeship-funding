@@ -15,18 +15,18 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
     {
         private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
 
-        private readonly IStandardsRepository _standardsRepository;
+        private readonly IApprenticeshipRepository _apprenticeshipRepository;
         private readonly IForecastCalculator _forecastCalculator;
         private readonly ICalculatorSettings _calculatorSettings;
 
         private readonly TelemetryClient _tc;
 
         public HomeController(
-            IStandardsRepository standardsRepository,
+            IApprenticeshipRepository apprenticeshipRepository,
             IForecastCalculator forecastCalculator,
             ICalculatorSettings calculatorSettings)
         {
-            _standardsRepository = standardsRepository;
+            _apprenticeshipRepository = apprenticeshipRepository;
             _forecastCalculator = forecastCalculator;
             _calculatorSettings = calculatorSettings;
 
@@ -67,7 +67,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
         {
             _tc.TrackPageView("Training Course");
 
-            var standards = await _standardsRepository.GetAllAsync();
+            var standards = await _apprenticeshipRepository.GetAllAsync();
             model.Apprenticeships = standards.OrderBy(s => s.Name).Select(s => new ApprenticeshipModel(s)).ToArray();
 
             var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction);

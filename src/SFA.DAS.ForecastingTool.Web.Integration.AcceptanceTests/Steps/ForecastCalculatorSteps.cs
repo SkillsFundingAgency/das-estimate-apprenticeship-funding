@@ -19,16 +19,16 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         private Container _container;
         private HomeController _homeController;
         private ResultsViewModel _resultsViewModel;
-        private IStandardsRepository _standardsRepository;
+        private IApprenticeshipRepository _apprenticeshipRepository;
 
         [BeforeScenario]
         public void Arrange()
         {
             _container = new Infrastructure.DependencyResolution.WebRegistry().Build();
 
-            _standardsRepository = _container.GetInstance<IStandardsRepository>();
+            _apprenticeshipRepository = _container.GetInstance<IApprenticeshipRepository>();
 
-            _homeController = new HomeController(_standardsRepository, _container.GetInstance<IForecastCalculator>(), _container.GetInstance<ICalculatorSettings>());
+            _homeController = new HomeController(_apprenticeshipRepository, _container.GetInstance<IForecastCalculator>(), _container.GetInstance<ICalculatorSettings>());
 
             _resultsViewModel = new ResultsViewModel();
         }

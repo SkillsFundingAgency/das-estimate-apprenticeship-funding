@@ -13,23 +13,23 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
 {
     public abstract class CachedStandardsRepositoryTestsBase
     {
-        protected Mock<IStandardsRepository> _innerRepo;
+        protected Mock<IApprenticeshipRepository> _innerRepo;
         protected Mock<ICacheProvider> _cacheProvider;
-        protected CachedStandardsRepository _repo;
+        protected CachedApprenticeshipRepository _repo;
 
         [SetUp]
         public void Arrange()
         {
-            _innerRepo = new Mock<IStandardsRepository>();
+            _innerRepo = new Mock<IApprenticeshipRepository>();
             _innerRepo.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(new[]
             {
                 new Apprenticeship {Code = "10", Name = "Inner 1", Price = 10000, Duration = 12}
             }));
 
             _cacheProvider = new Mock<ICacheProvider>();
-            _cacheProvider.Setup(c => c.Get<Apprenticeship[]>(CacheKeys.Standards)).Returns<Apprenticeship[]>(null);
+            _cacheProvider.Setup(c => c.Get<Apprenticeship[]>(CacheKeys.Apprenticeships)).Returns<Apprenticeship[]>(null);
 
-            _repo = new CachedStandardsRepository(_innerRepo.Object, _cacheProvider.Object);
+            _repo = new CachedApprenticeshipRepository(_innerRepo.Object, _cacheProvider.Object);
         }
     }
 }

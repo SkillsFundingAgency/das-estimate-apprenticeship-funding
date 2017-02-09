@@ -6,14 +6,14 @@ using SFA.DAS.ForecastingTool.Core.Models;
 
 namespace SFA.DAS.ForecastingTool.Infrastructure.Services
 {
-    public class GetStandards : IGetStandards
+    public class GetApprenticeship : IGetApprenticeship
     {
         readonly ApprenticeshipMapper _mapper;
 
         readonly StandardApiClient _standardClient;
         readonly FrameworkApiClient _frameworkClient;
 
-        public GetStandards()
+        public GetApprenticeship()
         {
             _mapper = new ApprenticeshipMapper();
 

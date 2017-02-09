@@ -14,7 +14,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
         public async Task ThenItShouldReturnCachedResultsIfPresent()
         {
             // Arrange
-            _cacheProvider.Setup(c => c.Get<Apprenticeship[]>(CacheKeys.Standards)).Returns(new[]
+            _cacheProvider.Setup(c => c.Get<Apprenticeship[]>(CacheKeys.Apprenticeships)).Returns(new[]
             {
                 new Apprenticeship {Code = "20", Name = "Cache 1", Price = 200000, Duration = 24}
             });
@@ -53,7 +53,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
             await _repo.GetAllAsync();
 
             // Assert
-            _cacheProvider.Verify(c=>c.Set(CacheKeys.Standards, It.IsAny<Apprenticeship[]>(), It.Is<TimeSpan>(ts => ts.Hours == 6)), Times.Once());
+            _cacheProvider.Verify(c=>c.Set(CacheKeys.Apprenticeships, It.IsAny<Apprenticeship[]>(), It.Is<TimeSpan>(ts => ts.Hours == 6)), Times.Once());
         }
 
         [Test]
@@ -66,8 +66,8 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
             await _repo.GetAllAsync();
 
             // Assert
-            _cacheProvider.Verify(c => c.Set(CacheKeys.Standards, It.IsAny<Apprenticeship[]>(), It.IsAny<TimeSpan>()), Times.Never());
-            _cacheProvider.Verify(c => c.Set(CacheKeys.Standards, It.IsAny<Apprenticeship[]>(), It.IsAny<DateTimeOffset>()), Times.Never());
+            _cacheProvider.Verify(c => c.Set(CacheKeys.Apprenticeships, It.IsAny<Apprenticeship[]>(), It.IsAny<TimeSpan>()), Times.Never());
+            _cacheProvider.Verify(c => c.Set(CacheKeys.Apprenticeships, It.IsAny<Apprenticeship[]>(), It.IsAny<DateTimeOffset>()), Times.Never());
         }
     }
 }

@@ -53,8 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\GetStandards.cs" />
-    <Compile Include="Services\IGetStandards.cs" />
+    <Compile Include="Services\GetApprenticeship.cs" />
+    <Compile Include="Services\IGetApprenticeship.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SFA.DAS.ForecastingTool.Core\SFA.DAS.ForecastingTool.Core.csproj">

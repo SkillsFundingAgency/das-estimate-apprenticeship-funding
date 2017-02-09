@@ -13,7 +13,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
     public class WhenSelectingTrainingCourse
     {
         private Apprenticeship[] _apprenticeships;
-        private Mock<IStandardsRepository> _standardsRepository;
+        private Mock<IApprenticeshipRepository> _standardsRepository;
         private Mock<IForecastCalculator> _forecastCalculator;
         private HomeController _controller;
         private TrainingCourseViewModel _model;
@@ -27,7 +27,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
                 new Apprenticeship {Code = "2", Name = "Apprenticeship A"}
             };
 
-            _standardsRepository = new Mock<IStandardsRepository>();
+            _standardsRepository = new Mock<IApprenticeshipRepository>();
             _standardsRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(_apprenticeships));
 
             _forecastCalculator = new Mock<IForecastCalculator>();

@@ -9,13 +9,13 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 {
     public class ForecastCalculator : IForecastCalculator
     {
-        private readonly IStandardsRepository _standardsRepository;
+        private readonly IApprenticeshipRepository _apprenticeshipRepository;
         private readonly ICalculatorSettings _calculatorSettings;
 
 
-        public ForecastCalculator(IStandardsRepository standardsRepository, ICalculatorSettings calculatorSettings)
+        public ForecastCalculator(IApprenticeshipRepository apprenticeshipRepository, ICalculatorSettings calculatorSettings)
         {
-            _standardsRepository = standardsRepository;
+            _apprenticeshipRepository = apprenticeshipRepository;
             _calculatorSettings = calculatorSettings;
         }
 
@@ -132,7 +132,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var standards = new BreakdownStandard[cohorts.Length];
             for (var i = 0; i < cohorts.Length; i++)
             {
-                standards[i] = new BreakdownStandard(await _standardsRepository.GetByCodeAsync(cohorts[i].Code.ToString()),
+                standards[i] = new BreakdownStandard(await _apprenticeshipRepository.GetByCodeAsync(cohorts[i].Code.ToString()),
                     cohorts[i].Qty, cohorts[i].StartDate, _calculatorSettings.FinalTrainingPaymentPercentage);
             }
             return standards;

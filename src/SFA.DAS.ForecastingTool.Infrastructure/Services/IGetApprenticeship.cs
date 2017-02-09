@@ -2,7 +2,7 @@
 
 namespace SFA.DAS.ForecastingTool.Infrastructure.Services
 {
-    public interface IGetStandards
+    public interface IGetApprenticeship
     {
         Apprenticeship[] GetAll();
         Apprenticeship GetByCode(string code);

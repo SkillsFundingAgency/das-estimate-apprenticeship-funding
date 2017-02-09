@@ -17,13 +17,13 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.DependencyResolution
             container.Register<ICacheProvider, InProcessCacheProvider>(Lifestyle.Singleton);
             container.Register<ICalculatorSettings, CalculatorSettings>(Lifestyle.Singleton);
             container.Register<IFileSystem, DiskFileSystem>(Lifestyle.Singleton);
-            container.Register<IGetStandards, GetStandards>(Lifestyle.Singleton);
+            container.Register<IGetApprenticeship, GetApprenticeship>(Lifestyle.Singleton);
 
-            container.Register<IStandardsRepository>(() =>
+            container.Register<IApprenticeshipRepository>(() =>
             {
                 var cacheProvider = container.GetInstance<ICacheProvider>();
-                var innerRepo = container.GetInstance<StandardsRepository>();
-                return new CachedStandardsRepository(innerRepo, cacheProvider);
+                var innerRepo = container.GetInstance<ApprenticeshipRepository>();
+                return new CachedApprenticeshipRepository(innerRepo, cacheProvider);
             }, Lifestyle.Singleton);
 
             container.Register<IForecastCalculator, ForecastCalculator>(Lifestyle.Singleton);

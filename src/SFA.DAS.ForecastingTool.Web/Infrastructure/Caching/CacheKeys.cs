@@ -7,6 +7,6 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Caching
 {
     public static class CacheKeys
     {
-        public const string Standards = "STANDARDS";
+        public const string Apprenticeships = "STANDARDS";
     }
 }

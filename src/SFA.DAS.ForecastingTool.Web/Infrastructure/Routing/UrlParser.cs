@@ -228,8 +228,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     result.ActionName = "TrainingCourse";
                     return;
                 }
-                // TODO: review
-                if (/*standardCode > 0 && */standardQty == 0)
+
+                if (standardQty == 0)
                 {
                     result.IsErrored = true;
                     result.RouteValues.Add("ErrorMessage", errorMessage);
@@ -238,8 +238,8 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                 }
 
                 Apprenticeship apprenticeship = null;
-                // TODO: review
-                if (standardQty > 0/* || standardCode > 0*/)
+
+                if (standardQty > 0)
                 {
                     apprenticeship = _apprenticeshipRepository.GetByCodeAsync(standardCode).Result;
                     if (apprenticeship == null)

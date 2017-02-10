@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapping\ApprenticeshipMapper.cs" />
+    <Compile Include="Mapping\IApprenticeshipMapper.cs" />
     <Compile Include="Models\CohortModel.cs" />
     <Compile Include="Models\FinancialForecasting\DetailedForecastResult.cs" />
     <Compile Include="Models\FinancialForecasting\ForecastResult.cs" />

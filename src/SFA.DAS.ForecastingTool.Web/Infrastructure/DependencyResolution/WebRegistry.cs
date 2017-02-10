@@ -1,4 +1,7 @@
-﻿using SFA.DAS.ForecastingTool.Infrastructure.Services;
+﻿using System;
+using SFA.DAS.Apprenticeships.Api.Client;
+using SFA.DAS.ForecastingTool.Core.Mapping;
+using SFA.DAS.ForecastingTool.Infrastructure.Services;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Caching;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.FileSystem;
@@ -17,7 +20,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.DependencyResolution
             container.Register<ICacheProvider, InProcessCacheProvider>(Lifestyle.Singleton);
             container.Register<ICalculatorSettings, CalculatorSettings>(Lifestyle.Singleton);
             container.Register<IFileSystem, DiskFileSystem>(Lifestyle.Singleton);
-            container.Register<IGetApprenticeship, GetApprenticeship>(Lifestyle.Singleton);
+            container.Register<IGetApprenticeship, GetApprenticeship>(Lifestyle.Transient);
 
             container.Register<IApprenticeshipRepository>(() =>
             {
@@ -27,6 +30,10 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.DependencyResolution
             }, Lifestyle.Singleton);
 
             container.Register<IForecastCalculator, ForecastCalculator>(Lifestyle.Singleton);
+
+            container.Register<IStandardApiClient>(() => new StandardApiClient(), Lifestyle.Transient);
+            container.Register<IFrameworkApiClient>(() => new FrameworkApiClient(), Lifestyle.Transient);
+            container.Register<IApprenticeshipMapper, ApprenticeshipMapper>();
 
             return container;
         }

@@ -1,4 +1,4 @@
-﻿@model SFA.DAS.ForecastingTool.Web.Models.ForecastQuestionsModel
+﻿@model SFA.DAS.ForecastingTool.Core.Models.ForecastQuestionsModel
 
 <h3 class="heading-medium no-margin-bottom results-heading">Previous answers</h3>
 <div>
@@ -20,7 +20,7 @@
                 <td><a href="@Url.Content($"~/forecast/{Model.Paybill}?previousAnswer={Model.EnglishFraction}")">Change</a></td>
             </tr>
         }
-        @if (Model is SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel)
+        @if (Model is SFA.DAS.ForecastingTool.Core.Models.ResultsViewModel)
         {
             <tr>
                 <td>

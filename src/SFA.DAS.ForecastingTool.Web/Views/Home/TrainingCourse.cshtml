@@ -1,5 +1,5 @@
 ﻿@using System.Web.Optimization
-@model SFA.DAS.ForecastingTool.Web.Models.TrainingCourseViewModel
+@model SFA.DAS.ForecastingTool.Core.Models.TrainingCourseViewModel
 
 <div class="training-course">
     <div class="grid-row">
@@ -44,9 +44,9 @@
                             <h3 class="heading-medium no-top-margin">Apprenticeship @(i + 1)</h3>
 
                             <div class="form-group">
-                                <label class="form-label-bold" for="standard@(i)">Type of apprenticeship training</label>
-                                <select name="standard" id="standard@(i)" class="form-control training-standard select2-control" aria-label="Training standard">
-                                    @foreach (var standard in Model.Standards)
+                                <label class="form-label-bold" for="apprenticeship@(i)">Type of apprenticeship training</label>
+                                <select name="apprenticeship" id="standard@(i)" class="form-control training-standard select2-control" aria-label="Training apprenticeship">
+                                    @foreach (var standard in Model.Apprenticeships)
                                     {
                                         if (standard.Code == cohort.Code)
                                         {
@@ -99,9 +99,9 @@
 
                         <div class="form-group">
                             <label class="form-label-bold" for="standardNew">Type of apprenticeship training</label>
-                            <select name="standard" id="standardNew" class="form-control training-standard select2-control" aria-label="Training standard">
+                            <select name="apprenticeship" id="standardNew" class="form-control training-standard select2-control" aria-label="Training apprenticeship">
                                 <option value="noselection">Please choose...</option>
-                                @foreach (var standard in Model.Standards)
+                                @foreach (var standard in Model.Apprenticeships)
                                 {
                                     <option value="@standard.Code" data-price="@standard.Price" data-duration="@standard.Duration">@standard.Name</option>
                                 }

@@ -4333,7 +4333,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 			} else {
 				tmp = tmp || fragment.appendChild( context.createElement( "div" ) );
 
-				// Deserialize a standard representation
+				// Deserialize a apprenticeship representation
 				tag = ( rtagName.exec( elem ) || [ "", "" ] )[ 1 ].toLowerCase();
 				wrap = wrapMap[ tag ] || wrapMap._default;
 				tmp.innerHTML = wrap[ 1 ] + jQuery.htmlPrefilter( elem ) + wrap[ 2 ];
@@ -6481,7 +6481,7 @@ function createFxNow() {
 	return ( fxNow = jQuery.now() );
 }
 
-// Generate parameters to create a standard animation
+// Generate parameters to create a apprenticeship animation
 function genFx( type, includeWidth ) {
 	var which,
 		i = 0,

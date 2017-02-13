@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using SFA.DAS.ForecastingTool.Core.Models;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -11,12 +12,12 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
     {
         private const long MaxPaybill = 512409557603043100;
 
-        private readonly IStandardsRepository _standardsRepository;
+        private readonly IApprenticeshipRepository _apprenticeshipRepository;
         private readonly ICalculatorSettings _calculatorSettings;
 
-        public UrlParser(IStandardsRepository standardsRepository, ICalculatorSettings calculatorSettings)
+        public UrlParser(IApprenticeshipRepository apprenticeshipRepository, ICalculatorSettings calculatorSettings)
         {
-            _standardsRepository = standardsRepository;
+            _apprenticeshipRepository = apprenticeshipRepository;
             _calculatorSettings = calculatorSettings;
         }
 
@@ -180,14 +181,14 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
             
             for (var i = 0; i < standards.Length; i++)
             {
-                var standardMatch = Regex.Match(standards[i], @"^(\d+)x(\d+)-(\d{2})(\d{2})$");
+                var standardMatch = Regex.Match(standards[i], @"^(\d+)x([0-9-]+)x(\d{2})(\d{2})$");
                 DateTime standardStartDate;
-                int standardCode;
+                string standardCode;
                 int standardQty;
                 if (standardMatch.Success)
                 {
                     
-                    standardCode = int.Parse(standardMatch.Groups[2].Value);
+                    standardCode = standardMatch.Groups[2].Value;
                     try
                     {
                         standardStartDate = new DateTime(2000 + int.Parse(standardMatch.Groups[4].Value),
@@ -228,7 +229,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     return;
                 }
 
-                if (standardCode > 0 && standardQty == 0)
+                if (standardQty == 0)
                 {
                     result.IsErrored = true;
                     result.RouteValues.Add("ErrorMessage", errorMessage);
@@ -236,14 +237,15 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     return;
                 }
 
-                Standard standard = null;
-                if (standardQty > 0 || standardCode > 0)
+                Apprenticeship apprenticeship = null;
+
+                if (standardQty > 0)
                 {
-                    standard = _standardsRepository.GetByCodeAsync(standardCode).Result;
-                    if (standard == null)
+                    apprenticeship = _apprenticeshipRepository.GetByCodeAsync(standardCode).Result;
+                    if (apprenticeship == null)
                     {
                         result.IsErrored = true;
-                        result.RouteValues.Add("ErrorMessage", "Number of apprentices, training standard or start date invalid");
+                        result.RouteValues.Add("ErrorMessage", "Training apprenticeship invalid");
                         result.ActionName = "TrainingCourse";
                         return;
                     }
@@ -252,7 +254,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
 
                 result.RouteValues.Add($"SelectedCohorts[{i}].Qty", standardQty);
                 result.RouteValues.Add($"SelectedCohorts[{i}].Code", standardCode);
-                result.RouteValues.Add($"SelectedCohorts[{i}].Name", standard?.Name);
+                result.RouteValues.Add($"SelectedCohorts[{i}].Name", apprenticeship?.Name);
                 result.RouteValues.Add($"SelectedCohorts[{i}].StartDate", standardStartDate);
             }
         }

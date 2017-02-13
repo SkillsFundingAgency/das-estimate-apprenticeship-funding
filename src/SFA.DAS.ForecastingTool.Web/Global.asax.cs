@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
+using System.Web;
 using System.Web.Configuration;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -21,6 +23,16 @@ namespace SFA.DAS.ForecastingTool.Web
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes, container);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError().GetBaseException();
+
+            if (ex is HttpException)
+            {
+                var error = ex;
+            }
         }
 
         protected void Application_BeginRequest()

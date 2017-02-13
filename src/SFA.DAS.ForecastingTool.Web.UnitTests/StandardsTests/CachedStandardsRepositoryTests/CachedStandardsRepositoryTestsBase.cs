@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
+using SFA.DAS.ForecastingTool.Core.Models;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Caching;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
@@ -12,23 +13,23 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.StandardsTests.CachedStandardsRe
 {
     public abstract class CachedStandardsRepositoryTestsBase
     {
-        protected Mock<IStandardsRepository> _innerRepo;
+        protected Mock<IApprenticeshipRepository> _innerRepo;
         protected Mock<ICacheProvider> _cacheProvider;
-        protected CachedStandardsRepository _repo;
+        protected CachedApprenticeshipRepository _repo;
 
         [SetUp]
         public void Arrange()
         {
-            _innerRepo = new Mock<IStandardsRepository>();
+            _innerRepo = new Mock<IApprenticeshipRepository>();
             _innerRepo.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(new[]
             {
-                new Standard {Code = 10, Name = "Inner 1", Price = 10000, Duration = 12}
+                new Apprenticeship {Code = "10", Name = "Inner 1", Price = 10000, Duration = 12}
             }));
 
             _cacheProvider = new Mock<ICacheProvider>();
-            _cacheProvider.Setup(c => c.Get<Standard[]>(CacheKeys.Standards)).Returns<Standard[]>(null);
+            _cacheProvider.Setup(c => c.Get<Apprenticeship[]>(CacheKeys.Apprenticeships)).Returns<Apprenticeship[]>(null);
 
-            _repo = new CachedStandardsRepository(_innerRepo.Object, _cacheProvider.Object);
+            _repo = new CachedApprenticeshipRepository(_innerRepo.Object, _cacheProvider.Object);
         }
     }
 }

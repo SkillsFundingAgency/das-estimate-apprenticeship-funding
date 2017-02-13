@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
+using SFA.DAS.ForecastingTool.Core.Models;
+using SFA.DAS.ForecastingTool.Core.Models.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
-using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
 namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 {
     public class ForecastCalculator : IForecastCalculator
     {
-        private readonly IStandardsRepository _standardsRepository;
+        private readonly IApprenticeshipRepository _apprenticeshipRepository;
         private readonly ICalculatorSettings _calculatorSettings;
 
 
-        public ForecastCalculator(IStandardsRepository standardsRepository, ICalculatorSettings calculatorSettings)
+        public ForecastCalculator(IApprenticeshipRepository apprenticeshipRepository, ICalculatorSettings calculatorSettings)
         {
-            _standardsRepository = standardsRepository;
+            _apprenticeshipRepository = apprenticeshipRepository;
             _calculatorSettings = calculatorSettings;
         }
 
@@ -83,7 +84,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                 foreach (var standard in standards)
                 {
                     var trainingStartDate = new DateTime(standard.StartDate.Year, standard.StartDate.Month, 1);
-                    var trainingEndDate = trainingStartDate.AddMonths(standard.Standard.Duration - 1);
+                    var trainingEndDate = trainingStartDate.AddMonths(standard.Apprenticeship.Duration - 1);
                     var trainingHasStarted = monthDate.CompareTo(trainingStartDate) >= 0;
                     var trainingHasFinished = monthDate.CompareTo(trainingEndDate) > 0;
                     trainingCostForMonth += trainingHasStarted && !trainingHasFinished ? standard.MonthlyTrainingFraction : 0;
@@ -131,7 +132,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
             var standards = new BreakdownStandard[cohorts.Length];
             for (var i = 0; i < cohorts.Length; i++)
             {
-                standards[i] = new BreakdownStandard(await _standardsRepository.GetByCodeAsync(cohorts[i].Code),
+                standards[i] = new BreakdownStandard(await _apprenticeshipRepository.GetByCodeAsync(cohorts[i].Code.ToString()),
                     cohorts[i].Qty, cohorts[i].StartDate, _calculatorSettings.FinalTrainingPaymentPercentage);
             }
             return standards;
@@ -141,19 +142,19 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
 
         private class BreakdownStandard
         {
-            public BreakdownStandard(Standard standard, int qty, DateTime startDate, decimal finalPaymentPercentage)
+            public BreakdownStandard(Apprenticeship apprenticeship, int qty, DateTime startDate, decimal finalPaymentPercentage)
             {
-                Standard = standard;
+                Apprenticeship = apprenticeship;
                 Qty = qty;
                 StartDate = startDate;
 
-                var totalCost = standard.Price * qty;
-                MonthlyTrainingFraction = Math.Floor((totalCost - (totalCost * finalPaymentPercentage)) / standard.Duration);
-                FinalPaymentAmount = totalCost - (MonthlyTrainingFraction * standard.Duration);
+                var totalCost = apprenticeship.Price * qty;
+                MonthlyTrainingFraction = Math.Floor((totalCost - (totalCost * finalPaymentPercentage)) / apprenticeship.Duration);
+                FinalPaymentAmount = totalCost - (MonthlyTrainingFraction * apprenticeship.Duration);
             }
 
 
-            public Standard Standard { get; }
+            public Apprenticeship Apprenticeship { get; }
             public int Qty { get; }
             public DateTime StartDate { get; }
             public decimal MonthlyTrainingFraction { get; }

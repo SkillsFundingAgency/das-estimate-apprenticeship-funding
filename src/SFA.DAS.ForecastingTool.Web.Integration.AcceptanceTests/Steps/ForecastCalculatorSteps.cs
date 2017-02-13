@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web.Mvc;
 using NUnit.Framework;
+using SFA.DAS.ForecastingTool.Core.Mapping;
+using SFA.DAS.ForecastingTool.Core.Models;
 using SFA.DAS.ForecastingTool.Web.Controllers;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
-using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 using SimpleInjector;
 using TechTalk.SpecFlow;
@@ -21,16 +20,16 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
         private Container _container;
         private HomeController _homeController;
         private ResultsViewModel _resultsViewModel;
-        private IStandardsRepository _standardsRepository;
+        private IApprenticeshipRepository _apprenticeshipRepository;
 
         [BeforeScenario]
         public void Arrange()
         {
             _container = new Infrastructure.DependencyResolution.WebRegistry().Build();
 
-            _standardsRepository = _container.GetInstance<IStandardsRepository>();
+            _apprenticeshipRepository = _container.GetInstance<IApprenticeshipRepository>();
 
-            _homeController = new HomeController(_standardsRepository, _container.GetInstance<IForecastCalculator>(), _container.GetInstance<ICalculatorSettings>());
+            _homeController = new HomeController(_apprenticeshipRepository, _container.GetInstance<IForecastCalculator>(), _container.GetInstance<ICalculatorSettings>(), _container.GetInstance<IApprenticeshipModelMapper>());
 
             _resultsViewModel = new ResultsViewModel();
         }
@@ -54,7 +53,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
             {
                 Assert.IsNotEmpty(apprenticeship?.AppName, "The apprenticeship name was empty");
 
-                var standard = _standardsRepository.GetAllAsync().Result.SingleOrDefault(x => x.Name == apprenticeship?.AppName);
+                var standard = new Core.Models.Apprenticeship { Name = apprenticeship?.AppName };
 
                 Assert.IsNotNull(standard, $"The apprenticeship name {apprenticeship?.AppName} could not be found in the list of apprenticeship");
 

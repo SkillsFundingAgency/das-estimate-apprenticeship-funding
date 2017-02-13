@@ -23,7 +23,7 @@
     }
 
     function attachHandlers($container) {
-        $container.find('select[name=standard]').change(inputChangedHandler);
+        $container.find('select[name=apprenticeship]').change(inputChangedHandler);
         $container.find('input[name=cohorts]').on('input', inputChangedHandler);
     }
 
@@ -74,7 +74,7 @@
             startDate: ''
         };
 
-        var selectedStandardSelector = $container.find('select[name=standard] > option:selected');
+        var selectedStandardSelector = $container.find('select[name=apprenticeship] > option:selected');
         if (selectedStandardSelector.length > 0) {
             var selectedStandard = $(selectedStandardSelector[0]);
             details.code = selectedStandard.val();

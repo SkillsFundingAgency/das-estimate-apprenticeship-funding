@@ -102,12 +102,14 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with a large pot")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("BackEndTests")]
         [NUnit.Framework.TestCaseAttribute("13000000", "25", "13752", "1146", "24000", "1600", "6400", "45", "409", "525", "4729", new string[0])]
         [NUnit.Framework.TestCaseAttribute("13000000", "100", "54996", "4583", "24000", "1600", "6400", "0", "0", "0", "0", new string[0])]
         public virtual void ForecastingLevyPaymentWithALargePot(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string your_Monthly_Share, string government_Monthly_Share, string your_Final_Month_Share, string government_Final_Month_Share, string[] exampleTags)
         {
             string[] @__tags = new string[] {
+                    "ignore",
                     "BackEndTests"};
             if ((exampleTags != null))
             {
@@ -161,12 +163,14 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with small pot")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("BackEndTests")]
         [NUnit.Framework.TestCaseAttribute("5000000", "50", "5508", "459", "12000", "800", "3200", "34", "307", "274", "2467", new string[0])]
         [NUnit.Framework.TestCaseAttribute("7000000", "40", "8808", "734", "12000", "800", "3200", "6", "60", "246", "2220", new string[0])]
         public virtual void ForecastingLevyPaymentWithSmallPot(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string your_Monthly_Share, string government_Monthly_Share, string your_Final_Month_Share, string government_Final_Month_Share, string[] exampleTags)
         {
             string[] @__tags = new string[] {
+                    "ignore",
                     "BackEndTests"};
             if ((exampleTags != null))
             {
@@ -220,11 +224,13 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Forecasting Levy Payment with no pot")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("BackEndTests")]
         [NUnit.Framework.TestCaseAttribute("3000000", "50", "0", "0", "12000", "800", "3200", "80", "720", "320", "2880", new string[0])]
         public virtual void ForecastingLevyPaymentWithNoPot(string paybill, string english_Fraction, string annual_Levy_Cost, string monthly_Levy_Cost, string appr_Totalcost, string app_Monthly_Cost, string final_MonthAchievemnt_Cost, string your_Monthly_Share, string government_Monthly_Share, string your_Final_Month_Share, string government_Final_Month_Share, string[] exampleTags)
         {
             string[] @__tags = new string[] {
+                    "ignore",
                     "BackEndTests"};
             if ((exampleTags != null))
             {

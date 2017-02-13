@@ -170,15 +170,15 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
         private string GetCohortsUrlSegment(NameValueCollection form)
         {
             var cohortsEntry = GetFormValue(form, "cohorts", "0").Split(',');
-            var standardSelection = GetFormValue(form, "standard", "0").Split(',');
+            var apprenticeshipSelection = GetFormValue(form, "apprenticeship", "0").Split(',');
             var startDateMonthEntry = GetFormValue(form, "startDateMonth", "05").Split(',');
             var startDateYearEntry = GetFormValue(form, "startDateYear", "17").Split(',');
 
             var segmentbuilder = new StringBuilder();
 
-            for (var i = 0; i < standardSelection.Length; i++)
+            for (var i = 0; i < apprenticeshipSelection.Length; i++)
             {
-                if (standardSelection[i] == "noselection" && string.IsNullOrEmpty(cohortsEntry[i]) && string.IsNullOrEmpty(startDateMonthEntry[i]) && string.IsNullOrEmpty(startDateYearEntry[i]))
+                if (apprenticeshipSelection[i] == "noselection" && string.IsNullOrEmpty(cohortsEntry[i]) && string.IsNullOrEmpty(startDateMonthEntry[i]) && string.IsNullOrEmpty(startDateYearEntry[i]))
                 {
                     continue;
                 }
@@ -187,7 +187,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     segmentbuilder.Append("_");
                 }
 
-                segmentbuilder.Append($"{cohortsEntry[i]}x{standardSelection[i]}-{startDateMonthEntry[i].PadLeft(2, '0')}{startDateYearEntry[i]}");
+                segmentbuilder.Append($"{cohortsEntry[i]}x{apprenticeshipSelection[i]}x{startDateMonthEntry[i].PadLeft(2, '0')}{startDateYearEntry[i]}");
             }
 
             return segmentbuilder.ToString();

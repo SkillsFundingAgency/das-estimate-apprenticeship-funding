@@ -1,6 +1,6 @@
 ﻿@using System.Text
 @using SFA.DAS.ForecastingTool.Web.Extensions
-@model SFA.DAS.ForecastingTool.Web.Models.ResultsViewModel
+@model SFA.DAS.ForecastingTool.Core.Models.ResultsViewModel
 
 
 @{
@@ -148,13 +148,13 @@
         @{ var cohorts = new StringBuilder(); }
         @if (Model.SelectedCohorts.Any())
         {
-            foreach (var standard in Model.SelectedCohorts)
+            foreach (var apprenticeship in Model.SelectedCohorts)
             {
                 if (cohorts.Length != 0)
                 {
                     cohorts.Append(",");
                 }
-                cohorts.Append("[" + standard.Qty + " apprentices on " + standard.Name + " training course starting on " + standard.StartDate + "]");
+                cohorts.Append("[" + apprenticeship.Qty + " apprentices on " + apprenticeship.Name + " training course starting on " + apprenticeship.StartDate + "]");
             }
         }
 

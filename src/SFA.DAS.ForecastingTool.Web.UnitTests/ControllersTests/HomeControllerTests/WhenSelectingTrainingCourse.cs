@@ -2,38 +2,44 @@
 using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
+using SFA.DAS.ForecastingTool.Core.Mapping;
+using SimpleInjector;
+using SFA.DAS.ForecastingTool.Core.Models;
+using SFA.DAS.ForecastingTool.Core.Models.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Controllers;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
-using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
 namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerTests
 {
     public class WhenSelectingTrainingCourse
     {
-        private Standard[] _standards;
-        private Mock<IStandardsRepository> _standardsRepository;
+        private Apprenticeship[] _apprenticeships;
+        private Mock<IApprenticeshipRepository> _standardsRepository;
         private Mock<IForecastCalculator> _forecastCalculator;
         private HomeController _controller;
         private TrainingCourseViewModel _model;
+        private Container _container;
 
         [SetUp]
         public void Arrange()
         {
-            _standards = new[]
+            _container = new Infrastructure.DependencyResolution.WebRegistry().Build();
+
+            _apprenticeships = new[]
             {
-                new Standard {Code = 1, Name = "Standard B"},
-                new Standard {Code = 2, Name = "Standard A"}
+                new Apprenticeship {Code = "1", Name = "Apprenticeship B"},
+                new Apprenticeship {Code = "2", Name = "Apprenticeship A"}
             };
 
-            _standardsRepository = new Mock<IStandardsRepository>();
-            _standardsRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(_standards));
+            _standardsRepository = new Mock<IApprenticeshipRepository>();
+            _standardsRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult(_apprenticeships));
 
             _forecastCalculator = new Mock<IForecastCalculator>();
             _forecastCalculator.Setup(c => c.ForecastAsync(12345678, 100))
                 .Returns(Task.FromResult(new ForecastResult {FundingReceived = 987654}));
 
-            _controller = new HomeController(_standardsRepository.Object, _forecastCalculator.Object, null);
+            _controller = new HomeController(_standardsRepository.Object, _forecastCalculator.Object, null, _container.GetInstance<IApprenticeshipModelMapper>());
 
             _model = new TrainingCourseViewModel
             {
@@ -72,10 +78,10 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
 
             // Assert
             var model = (actual as ViewResult)?.Model as TrainingCourseViewModel;
-            Assert.IsNotNull(model.Standards);
-            Assert.AreEqual(2, model.Standards.Length);
-            Assert.AreEqual(_standards[1].Code, model.Standards[0].Code);
-            Assert.AreEqual(_standards[0].Code, model.Standards[1].Code);
+            Assert.IsNotNull(model.Apprenticeships);
+            Assert.AreEqual(2, model.Apprenticeships.Length);
+            Assert.AreEqual(_apprenticeships[1].Code, model.Apprenticeships[0].Code);
+            Assert.AreEqual(_apprenticeships[0].Code, model.Apprenticeships[1].Code);
         }
     }
 }

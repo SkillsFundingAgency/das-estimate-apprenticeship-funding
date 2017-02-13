@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.ApplicationInsights;
 using NLog;
+using SFA.DAS.ForecastingTool.Core.Mapping;
+using SFA.DAS.ForecastingTool.Core.Models;
 using SFA.DAS.ForecastingTool.Web.Extensions;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Infrastructure.Settings;
-using SFA.DAS.ForecastingTool.Web.Models;
 using SFA.DAS.ForecastingTool.Web.Standards;
 
 namespace SFA.DAS.ForecastingTool.Web.Controllers
@@ -15,20 +16,23 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
     {
         private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
 
-        private readonly IStandardsRepository _standardsRepository;
+        private readonly IApprenticeshipRepository _apprenticeshipRepository;
         private readonly IForecastCalculator _forecastCalculator;
         private readonly ICalculatorSettings _calculatorSettings;
+        private readonly IApprenticeshipModelMapper _apprenticeshipModelMapper;
 
         private readonly TelemetryClient _tc;
 
         public HomeController(
-            IStandardsRepository standardsRepository,
+            IApprenticeshipRepository apprenticeshipRepository,
             IForecastCalculator forecastCalculator,
-            ICalculatorSettings calculatorSettings)
+            ICalculatorSettings calculatorSettings,
+            IApprenticeshipModelMapper apprenticeshipModelMapper)
         {
-            _standardsRepository = standardsRepository;
+            _apprenticeshipRepository = apprenticeshipRepository;
             _forecastCalculator = forecastCalculator;
             _calculatorSettings = calculatorSettings;
+            _apprenticeshipModelMapper = apprenticeshipModelMapper;
 
             _tc = new TelemetryClient();
         }
@@ -67,8 +71,8 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
         {
             _tc.TrackPageView("Training Course");
 
-            var standards = await _standardsRepository.GetAllAsync();
-            model.Standards = standards.OrderBy(s => s.Name).Select(s => new StandardModel(s)).ToArray();
+            var standards = await _apprenticeshipRepository.GetAllAsync();
+            model.Apprenticeships = standards.OrderBy(s => s.Name).Select(s => _apprenticeshipModelMapper.MapApprenticeshipModel(s)).ToArray();
 
             var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction);
             model.LevyFundingReceived = forecastResult.FundingReceived;

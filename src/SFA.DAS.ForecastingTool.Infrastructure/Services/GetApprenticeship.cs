@@ -21,8 +21,8 @@ namespace SFA.DAS.ForecastingTool.Infrastructure.Services
 
         public Apprenticeship[] GetAll()
         {
-            var standards = _standardApiClient.FindAll().ToList();
-            var frameworks = _frameworkApiClient.FindAll().ToList();
+            var standards = _standardApiClient.FindAll();
+            var frameworks = _frameworkApiClient.FindAll();
 
             var result = standards.Select(standardSummary => _apprenticeshipMapper.MapStandardToApprenticeship(standardSummary)).ToList();
             result.AddRange(frameworks.Select(frameworkSummary => _apprenticeshipMapper.MapFrameworkToApprenticeship(frameworkSummary)));
@@ -32,8 +32,8 @@ namespace SFA.DAS.ForecastingTool.Infrastructure.Services
 
         public Apprenticeship GetByCode(string code)
         {
-            var standards = _standardApiClient.FindAll().ToList();
-            var frameworks = _frameworkApiClient.FindAll().ToList();
+            var standards = _standardApiClient.FindAll();
+            var frameworks = _frameworkApiClient.FindAll();
 
             var result = standards.Select(standardSummary => _apprenticeshipMapper.MapStandardToApprenticeship(standardSummary)).ToList();
             result.AddRange(frameworks.Select(frameworkSummary => _apprenticeshipMapper.MapFrameworkToApprenticeship(frameworkSummary)));

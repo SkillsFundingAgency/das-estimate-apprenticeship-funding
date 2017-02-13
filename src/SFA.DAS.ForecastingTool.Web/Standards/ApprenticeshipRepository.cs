@@ -1,26 +1,44 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using SFA.DAS.Apprenticeships.Api.Client;
+using SFA.DAS.ForecastingTool.Core.Mapping;
 using SFA.DAS.ForecastingTool.Core.Models;
-using SFA.DAS.ForecastingTool.Infrastructure.Services;
 
 namespace SFA.DAS.ForecastingTool.Web.Standards
 {
     public class ApprenticeshipRepository : IApprenticeshipRepository
     {
-        private readonly IGetApprenticeship _getApprenticeship;
+        private readonly IStandardApiClient _standardApiClient;
+        private readonly IFrameworkApiClient _frameworkApiClient;
+        private readonly IApprenticeshipMapper _apprenticeshipMapper;
 
-        public ApprenticeshipRepository(IGetApprenticeship getApprenticeship)
+        public ApprenticeshipRepository(IStandardApiClient standardApiClient, IFrameworkApiClient frameworkApiClient, IApprenticeshipMapper apprenticeshipMapper)
         {
-            _getApprenticeship = getApprenticeship;
+            _standardApiClient = standardApiClient;
+            _frameworkApiClient = frameworkApiClient;
+            _apprenticeshipMapper = apprenticeshipMapper;
         }
 
         public async Task<Apprenticeship[]> GetAllAsync()
         {
-            return _getApprenticeship.GetAll();
+            var standards = _standardApiClient.FindAll();
+            var frameworks = _frameworkApiClient.FindAll();
+
+            var result = standards.Select(standardSummary => _apprenticeshipMapper.MapStandardToApprenticeship(standardSummary)).ToList();
+            result.AddRange(frameworks.Select(frameworkSummary => _apprenticeshipMapper.MapFrameworkToApprenticeship(frameworkSummary)));
+
+            return result.ToArray();
         }
 
         public async Task<Apprenticeship> GetByCodeAsync(string code)
         {
-            return _getApprenticeship.GetByCode(code);
+            var standards = _standardApiClient.FindAll();
+            var frameworks = _frameworkApiClient.FindAll();
+
+            var result = standards.Select(standardSummary => _apprenticeshipMapper.MapStandardToApprenticeship(standardSummary)).ToList();
+            result.AddRange(frameworks.Select(frameworkSummary => _apprenticeshipMapper.MapFrameworkToApprenticeship(frameworkSummary)));
+
+            return result.SingleOrDefault(x => x.Code == code);
         }
     }
 }

@@ -245,7 +245,7 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.Routing
                     if (apprenticeship == null)
                     {
                         result.IsErrored = true;
-                        result.RouteValues.Add("ErrorMessage", "Number of apprentices, training apprenticeship or start date invalid");
+                        result.RouteValues.Add("ErrorMessage", "Training apprenticeship invalid");
                         result.ActionName = "TrainingCourse";
                         return;
                     }

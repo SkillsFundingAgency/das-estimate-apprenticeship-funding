@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using NUnit.Framework;
+using SFA.DAS.ForecastingTool.Core.Mapping;
 using SFA.DAS.ForecastingTool.Core.Models;
 using SFA.DAS.ForecastingTool.Web.Controllers;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
@@ -28,7 +29,7 @@ namespace SFA.DAS.ForecastingTool.Web.Integration.AcceptanceTests.Steps
 
             _apprenticeshipRepository = _container.GetInstance<IApprenticeshipRepository>();
 
-            _homeController = new HomeController(_apprenticeshipRepository, _container.GetInstance<IForecastCalculator>(), _container.GetInstance<ICalculatorSettings>());
+            _homeController = new HomeController(_apprenticeshipRepository, _container.GetInstance<IForecastCalculator>(), _container.GetInstance<ICalculatorSettings>(), _container.GetInstance<IApprenticeshipModelMapper>());
 
             _resultsViewModel = new ResultsViewModel();
         }

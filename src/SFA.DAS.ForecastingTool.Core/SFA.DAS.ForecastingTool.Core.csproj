@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapping\ApprenticeshipMapper.cs" />
+    <Compile Include="Mapping\ApprenticeshipModelMapper.cs" />
     <Compile Include="Mapping\IApprenticeshipMapper.cs" />
+    <Compile Include="Mapping\IApprenticeshipModelMapper.cs" />
     <Compile Include="Models\CohortModel.cs" />
     <Compile Include="Models\FinancialForecasting\DetailedForecastResult.cs" />
     <Compile Include="Models\FinancialForecasting\ForecastResult.cs" />
@@ -53,7 +55,7 @@
     <Compile Include="Models\ForecastQuestionsModel.cs" />
     <Compile Include="Models\ResultsViewModel.cs" />
     <Compile Include="Models\Standard.cs" />
-    <Compile Include="Models\StandardModel.cs" />
+    <Compile Include="Models\ApprenticeshipModel.cs" />
     <Compile Include="Models\TrainingCourseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

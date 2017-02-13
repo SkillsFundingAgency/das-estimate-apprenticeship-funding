@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.ApplicationInsights;
 using NLog;
+using SFA.DAS.ForecastingTool.Core.Mapping;
 using SFA.DAS.ForecastingTool.Core.Models;
 using SFA.DAS.ForecastingTool.Web.Extensions;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
@@ -18,17 +19,20 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
         private readonly IApprenticeshipRepository _apprenticeshipRepository;
         private readonly IForecastCalculator _forecastCalculator;
         private readonly ICalculatorSettings _calculatorSettings;
+        private readonly IApprenticeshipModelMapper _apprenticeshipModelMapper;
 
         private readonly TelemetryClient _tc;
 
         public HomeController(
             IApprenticeshipRepository apprenticeshipRepository,
             IForecastCalculator forecastCalculator,
-            ICalculatorSettings calculatorSettings)
+            ICalculatorSettings calculatorSettings,
+            IApprenticeshipModelMapper apprenticeshipModelMapper)
         {
             _apprenticeshipRepository = apprenticeshipRepository;
             _forecastCalculator = forecastCalculator;
             _calculatorSettings = calculatorSettings;
+            _apprenticeshipModelMapper = apprenticeshipModelMapper;
 
             _tc = new TelemetryClient();
         }
@@ -68,7 +72,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             _tc.TrackPageView("Training Course");
 
             var standards = await _apprenticeshipRepository.GetAllAsync();
-            model.Apprenticeships = standards.OrderBy(s => s.Name).Select(s => new ApprenticeshipModel(s)).ToArray();
+            model.Apprenticeships = standards.OrderBy(s => s.Name).Select(s => _apprenticeshipModelMapper.MapApprenticeshipModel(s)).ToArray();
 
             var forecastResult = await _forecastCalculator.ForecastAsync(model.Paybill, model.EnglishFraction);
             model.LevyFundingReceived = forecastResult.FundingReceived;

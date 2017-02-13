@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
+using SFA.DAS.ForecastingTool.Core.Mapping;
+using SimpleInjector;
 using SFA.DAS.ForecastingTool.Core.Models;
 using SFA.DAS.ForecastingTool.Core.Models.FinancialForecasting;
 using SFA.DAS.ForecastingTool.Web.Controllers;
@@ -17,10 +19,13 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
         private Mock<IForecastCalculator> _forecastCalculator;
         private HomeController _controller;
         private TrainingCourseViewModel _model;
+        private Container _container;
 
         [SetUp]
         public void Arrange()
         {
+            _container = new Infrastructure.DependencyResolution.WebRegistry().Build();
+
             _apprenticeships = new[]
             {
                 new Apprenticeship {Code = "1", Name = "Apprenticeship B"},
@@ -34,7 +39,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.ControllersTests.HomeControllerT
             _forecastCalculator.Setup(c => c.ForecastAsync(12345678, 100))
                 .Returns(Task.FromResult(new ForecastResult {FundingReceived = 987654}));
 
-            _controller = new HomeController(_standardsRepository.Object, _forecastCalculator.Object, null);
+            _controller = new HomeController(_standardsRepository.Object, _forecastCalculator.Object, null, _container.GetInstance<IApprenticeshipModelMapper>());
 
             _model = new TrainingCourseViewModel
             {

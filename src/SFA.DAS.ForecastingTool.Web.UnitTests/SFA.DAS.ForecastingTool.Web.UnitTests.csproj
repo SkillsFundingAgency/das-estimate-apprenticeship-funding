@@ -51,6 +51,10 @@
       <HintPath>..\packages\NUnit.3.2.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SimpleInjector, Version=3.3.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.3.2\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -94,8 +98,6 @@
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\CachedStandardsRepositoryTestsBase.cs" />
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingAll.cs" />
     <Compile Include="StandardsTests\CachedStandardsRepositoryTests\WhenGettingByCode.cs" />
-    <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingAll.cs" />
-    <Compile Include="StandardsTests\StandardsRepositoryTests\WhenGettingByCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -108,10 +110,6 @@
     <ProjectReference Include="..\SFA.DAS.ForecastingTool.Core\SFA.DAS.ForecastingTool.Core.csproj">
       <Project>{07b8dea5-b7e3-4105-b582-57666518629a}</Project>
       <Name>SFA.DAS.ForecastingTool.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SFA.DAS.ForecastingTool.Infrastructure\SFA.DAS.ForecastingTool.Infrastructure.csproj">
-      <Project>{256cdba0-b97e-4f36-8498-2c1141c7eedb}</Project>
-      <Name>SFA.DAS.ForecastingTool.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\SFA.DAS.ForecastingTool.Web\SFA.DAS.ForecastingTool.Web.csproj">
       <Project>{a27065eb-f4ba-46ef-9799-2c4545d7d3ed}</Project>

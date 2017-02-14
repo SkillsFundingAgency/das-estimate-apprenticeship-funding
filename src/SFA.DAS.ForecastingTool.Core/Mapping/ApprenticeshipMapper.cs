@@ -12,7 +12,7 @@ namespace SFA.DAS.ForecastingTool.Core.Mapping
                 Code = standardSummary.Id,
                 Duration = standardSummary.Duration,
                 Price = standardSummary.MaxFunding,
-                Name = standardSummary.Title
+                Name = $"{standardSummary.Title} - Level {standardSummary.Level}"
             };
         }
 
@@ -23,7 +23,7 @@ namespace SFA.DAS.ForecastingTool.Core.Mapping
                 Code = frameworkSummary.Id,
                 Duration = frameworkSummary.Duration,
                 Price = frameworkSummary.MaxFunding,
-                Name = frameworkSummary.Title
+                Name = $"{frameworkSummary.Title} - Level {frameworkSummary.Level}"
             };
         }
     }

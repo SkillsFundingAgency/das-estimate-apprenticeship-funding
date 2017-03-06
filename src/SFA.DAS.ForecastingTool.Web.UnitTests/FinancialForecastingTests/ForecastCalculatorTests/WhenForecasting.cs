@@ -137,7 +137,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
 
             // Assert
             Assert.IsNotNull(actual);
-            Assert.AreEqual(duration, actual.Length);
+            Assert.AreEqual(duration + 1, actual.Length);
         }
 
         [Test]
@@ -225,7 +225,7 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             var actual = (await _calculator.DetailedForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(1050m, actual[11].TrainingOut);
+            Assert.AreEqual(600m, actual[12].TrainingOut);
         }
 
         [TestCase(12, 625)]

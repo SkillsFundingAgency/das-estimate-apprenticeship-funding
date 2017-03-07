@@ -49,7 +49,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
         {
             var forecastResult = await ForecastAsync(paybill, englishFraction);
 
-            var breakdown = await CalculateBreakdown(cohorts, forecastResult.FundingReceived, duration);
+            var breakdown = await CalculateBreakdown(cohorts, forecastResult.FundingReceived, duration + 1);
 
             return new DetailedForecastResult
             {
@@ -88,7 +88,7 @@ namespace SFA.DAS.ForecastingTool.Web.FinancialForecasting
                     var trainingHasStarted = monthDate.CompareTo(trainingStartDate) >= 0;
                     var trainingHasFinished = monthDate.CompareTo(trainingEndDate) > 0;
                     trainingCostForMonth += trainingHasStarted && !trainingHasFinished ? standard.MonthlyTrainingFraction : 0;
-                    if (monthDate.CompareTo(trainingEndDate) == 0)
+                    if (monthDate.CompareTo(trainingEndDate.AddMonths(1)) == 0)
                     {
                         trainingCostForMonth += standard.FinalPaymentAmount;
                         finalPaymentMade = true;

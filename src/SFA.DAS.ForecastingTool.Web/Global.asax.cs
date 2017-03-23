@@ -45,16 +45,6 @@ namespace SFA.DAS.ForecastingTool.Web
             }
         }
 
-        protected void Application_Error(object sender, EventArgs e)
-        {
-            Exception ex = Server.GetLastError().GetBaseException();
-
-            if (ex is HttpException)
-            {
-                var error = ex;
-            }
-        }
-
         protected void Application_BeginRequest()
         {
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-gb");

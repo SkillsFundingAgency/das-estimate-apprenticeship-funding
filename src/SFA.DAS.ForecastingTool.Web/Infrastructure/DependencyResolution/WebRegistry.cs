@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Web;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.ForecastingTool.Core.Mapping;
 using SFA.DAS.ForecastingTool.Web.FinancialForecasting;
@@ -21,7 +24,11 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.DependencyResolution
             container.Register<ICacheProvider, InProcessCacheProvider>(Lifestyle.Singleton);
             container.Register<ICalculatorSettings, CalculatorSettings>(Lifestyle.Singleton);
             container.Register<IFileSystem, DiskFileSystem>(Lifestyle.Singleton);
-            container.Register<ILog>(() => new NLogLogger(GetType(), new RequestContext(new HttpContextWrapper(HttpContext.Current))), Lifestyle.Singleton);
+            container.Register<ILog>(() => new NLogLogger(
+                GetType(), 
+                new RequestContext(new HttpContextWrapper(HttpContext.Current)),
+                GetProperties()
+                ), Lifestyle.Singleton);
 
             container.Register<IApprenticeshipRepository>(() =>
             {
@@ -38,6 +45,20 @@ namespace SFA.DAS.ForecastingTool.Web.Infrastructure.DependencyResolution
             container.Register<IApprenticeshipModelMapper, ApprenticeshipModelMapper>();
 
             return container;
+        }
+
+        private IDictionary<string, object> GetProperties()
+        {
+            var properties = new Dictionary<string, object>();
+            properties.Add("Version", GetVersion());
+            return properties;
+        }
+
+        private string GetVersion()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            return fileVersionInfo.ProductVersion;
         }
     }
 }

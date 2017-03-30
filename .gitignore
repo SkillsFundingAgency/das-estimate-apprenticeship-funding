@@ -235,3 +235,5 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 src/Tools/**/*.*
+src/SFA.DAS.ForecastingTool.Web.BrowserTests/chromedriver.exe
+/src/SFA.DAS.ForecastingTool.Web.BrowserTests/phantomjs-license.txt

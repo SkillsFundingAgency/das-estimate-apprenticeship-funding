@@ -113,7 +113,6 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Annual Payroll is Under Levy Limit And Skip Apprenticeship selection")]
         [NUnit.Framework.TestCaseAttribute("2000001", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("3000000", new string[0])]
         public virtual void AnnualPayrollIsUnderLevyLimitAndSkipApprenticeshipSelection(string levyLimit, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Annual Payroll is Under Levy Limit And Skip Apprenticeship selection", exampleTags);
@@ -136,17 +135,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AnnualPayrollIsUnderLevyLimitAndAddApprenticeship()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Annual Payroll is Under Levy Limit And Add Apprenticeship", ((string[])(null)));
-#line 34
-this.ScenarioSetup(scenarioInfo);
-#line 35
- testRunner.Given("My Annual Payroll is 1000001", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 36
- testRunner.When("I add 1 apprenticeship for 24 months starts on 05/17", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 37
- testRunner.Then("My Annual and Monthly Levy Credit are not shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("My Annual Payroll is 1000001", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 38
- testRunner.And("I should see that i wont have to pay levy", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I add 1 apprenticeship for 24 months starts on 05/17", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 39
+ testRunner.Then("My Annual and Monthly Levy Credit are not shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 40
+ testRunner.And("I should see that i wont have to pay levy", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 41
  testRunner.And("I should see my co-investment details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

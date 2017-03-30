@@ -237,3 +237,5 @@ _Pvt_Extensions
 src/Tools/**/*.*
 src/SFA.DAS.ForecastingTool.Web.BrowserTests/chromedriver.exe
 /src/SFA.DAS.ForecastingTool.Web.BrowserTests/phantomjs-license.txt
+/src/SFA.DAS.ForecastingTool.Browser.AcceptanceTests/phantomjs-license.txt
+/src/SFA.DAS.ForecastingTool.Browser.AcceptanceTests/chromedriver.exe

@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		RunBuild.bat = RunBuild.bat
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ForecastingTool.Browser.AcceptanceTests", "SFA.DAS.ForecastingTool.Web.BrowserTests\SFA.DAS.ForecastingTool.Browser.AcceptanceTests.csproj", "{0B5BC6AF-5521-4C23-800F-E38EB7B039DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ForecastingTool.Browser.AcceptanceTests", "SFA.DAS.ForecastingTool.Browser.AcceptanceTests\SFA.DAS.ForecastingTool.Browser.AcceptanceTests.csproj", "{0B5BC6AF-5521-4C23-800F-E38EB7B039DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.ForecastingTool.Core", "SFA.DAS.ForecastingTool.Core\SFA.DAS.ForecastingTool.Core.csproj", "{07B8DEA5-B7E3-4105-B582-57666518629A}"
 EndProject

@@ -210,22 +210,23 @@ namespace SFA.DAS.ForecastingTool.Web.UnitTests.FinancialForecastingTests.Foreca
             }
         }
 
-        [Test]
-        public async Task ThenItShouldReturnTrainingOutAsOneMonthsTrainingPlusFinalPaymentAmountOnFinalMonthOfTraining()
+        [TestCase(6000, 1200)]
+        [TestCase(2000, 404)] //As we ignore the decimal(133.33) in monthly cost we add it up in the final payment(comes as 404) and these tests are proof for that
+        public async Task ThenItShouldReturnTrainingOutAsOneMonthsTrainingPlusFinalPaymentAmountOnFinalMonthOfTraining(int trainingCost, int finalPayment)
         {
             // Arrange
             _standardsRepository.Setup(r => r.GetByCodeAsync(StandardCode[0])).Returns(Task.FromResult(new Apprenticeship
             {
-                Price = 6000,
+                Price = trainingCost,
                 Duration = 12
             }));
-            _configurationProvider.Setup(cp => cp.FinalTrainingPaymentPercentage).Returns(0.1m);
+            _configurationProvider.Setup(cp => cp.FinalTrainingPaymentPercentage).Returns(0.2m);
 
             // Act
             var actual = (await _calculator.DetailedForecastAsync(Paybill, EnglishFraction, _myStandards.ToArray(), Duration))?.Breakdown;
 
             // Assert
-            Assert.AreEqual(600m, actual[12].TrainingOut);
+            Assert.AreEqual((decimal)finalPayment, actual[12].TrainingOut);
         }
 
         [TestCase(12, 625)]

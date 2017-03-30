@@ -7,8 +7,8 @@
     <ProjectGuid>{0B5BC6AF-5521-4C23-800F-E38EB7B039DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SFA.DAS.ForecastingTool.Web.BrowserTests</RootNamespace>
-    <AssemblyName>SFA.DAS.ForecastingTool.Web.BrowserTests</AssemblyName>
+    <RootNamespace>SFA.DAS.ForecastingTool.Browser.AcceptanceTests</RootNamespace>
+    <AssemblyName>SFA.DAS.ForecastingTool.Browser.AcceptanceTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

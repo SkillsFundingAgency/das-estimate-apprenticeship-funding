@@ -14,8 +14,8 @@
             @Html.AntiForgeryToken()
             <div class="form-group">
                 <label class="form-label-bold">
-                    <span>Roughly what percentage of your employees live in England?</span>
-                    <div class="form-hint">If you're unsure, then enter 100</div>
+                    <span>What percentage of your pay bill goes to employees living in England?</span>
+                    <div class="form-hint">This only needs to be an estimate. Enter ‘100’ if you’re unsure</div>
                 </label>
                 <input name="englishFraction" type="number" class="form-control"
                        value="@(Model.EnglishFraction > 0 ? Model.EnglishFraction.ToString() : "")" min="1" max="100" style="width: 50px;"/>

@@ -5,6 +5,6 @@
     <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
         <p>The amount you have available to spend is calculated on a monthly basis as follows:</p>
         <p>Your levy is 0.5% of your gross annual payroll, less a @Model.Allowance.ToString("C0") allowance. The balance is then divided by 12 and rounded down to the nearest pound. This gives a monthly levy payment of @((Model.MonthlyLevyPaid).ToString("C0")) (rounded down).</p>
-        <p>@Model.EnglishFraction% of your employees live in England, so @((Model.MonthlyLevyPaid).ToString("C0")) is multiplied by @Model.EnglishFraction%. The government tops that up by @(Model.TopPercentageForDisplay)%, which gives you @((Model.LevyFundingReceived / 12).ToString("C0")) (rounded up) to spend each month.</p>
+        <p>@Model.EnglishFraction% of your pay bill goes to employees in England, so @((Model.MonthlyLevyPaid).ToString("C0")) is multiplied by @Model.EnglishFraction%. The government tops that up by @(Model.TopPercentageForDisplay)%, which gives you @((Model.LevyFundingReceived / 12).ToString("C0")) (rounded up) to spend each month.</p>
     </div>
 </details>

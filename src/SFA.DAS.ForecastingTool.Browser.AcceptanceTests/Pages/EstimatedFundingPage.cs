@@ -42,8 +42,7 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Pages
 
         public bool IsCoInvestmentDetailsDisplayed()
         {
-            return Regex.Match(resultTable.Text, "Co-investment").Success &&
-                Regex.Match(tableContent.ToList().Take(4).Last().Text, "£.+").Success &&
+            return Regex.Match(tableContent.ToList().Take(4).Last().Text, "£.+").Success &&
                 Regex.Match(tableContent.ToList().Take(5).Last().Text, "£.+").Success;
         }
 

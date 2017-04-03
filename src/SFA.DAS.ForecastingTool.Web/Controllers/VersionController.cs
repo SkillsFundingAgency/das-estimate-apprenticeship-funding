@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Diagnostics;
 using System.Reflection;
 using System.Web.Http;
@@ -27,6 +28,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             public string Version { get; set; }
 
             public string AssemblyVersion { get; set; }
+            public string Environment => ConfigurationManager.AppSettings["WorkerRole:EnvironmentName"];
         }
     }
 }

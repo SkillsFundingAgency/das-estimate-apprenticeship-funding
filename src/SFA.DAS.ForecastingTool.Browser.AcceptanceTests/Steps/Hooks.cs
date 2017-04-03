@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium;
-using SFA.DAS.ForecastingTool.Browser.AcceptanceTests.Driver;
 using System.IO;
 using System.Reflection;
 

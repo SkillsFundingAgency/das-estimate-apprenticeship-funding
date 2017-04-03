@@ -58,7 +58,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Driver\ChromeEmfWebDriver.cs" />
     <Compile Include="Driver\EmfUri.cs" />
     <Compile Include="Driver\PhantomJSEmfWebDriver.cs" />
     <Compile Include="Driver\ResolveAppConfig.cs" />
@@ -85,12 +84,16 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Features\LevyEmployer.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>LevyEmployer.feature.cs</LastGenOutput>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\packages\PhantomJS.2.1.1\tools\phantomjs\phantomjs.exe">

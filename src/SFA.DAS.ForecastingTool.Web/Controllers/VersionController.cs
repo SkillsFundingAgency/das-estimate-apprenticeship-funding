@@ -29,6 +29,7 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
 
             public string AssemblyVersion { get; set; }
             public string Environment => ConfigurationManager.AppSettings["WorkerRole:EnvironmentName"];
+            public string Test => ConfigurationManager.AppSettings["Test"];
         }
     }
 }

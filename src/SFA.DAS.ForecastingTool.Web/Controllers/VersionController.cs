@@ -17,8 +17,10 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             return new VersionInformation
             {
                 Version = assemblyInformationalVersion,
-                AssemblyVersion = version
-            };
+                AssemblyVersion = version,
+                Test = ConfigurationManager.AppSettings["Test"],
+                Environment = ConfigurationManager.AppSettings["WorkerRole:EnvironmentName"]
+        };
         }
 
         public class VersionInformation
@@ -28,8 +30,8 @@ namespace SFA.DAS.ForecastingTool.Web.Controllers
             public string Version { get; set; }
 
             public string AssemblyVersion { get; set; }
-            public string Environment => ConfigurationManager.AppSettings["WorkerRole:EnvironmentName"];
-            public string Test => ConfigurationManager.AppSettings["Test"];
+            public string Environment { get; set; }
+            public string Test { get; set; }
         }
     }
 }

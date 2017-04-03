@@ -15,5 +15,10 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
         {
             return ConfigurationManager.AppSettings["AUT.URL"];
         }
+
+        public static string GetBrowserStackUri()
+        {
+            return ConfigurationManager.AppSettings["BrowserStack.URI"];
+        }
     }
 }

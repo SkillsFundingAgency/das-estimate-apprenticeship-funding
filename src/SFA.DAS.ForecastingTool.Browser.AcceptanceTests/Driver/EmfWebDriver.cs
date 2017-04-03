@@ -10,24 +10,36 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
     {
         private readonly int _defaultTimeOutinSec;
 
-        public RemoteWebDriver WebDriver { get; set; }
+        public RemoteWebDriver webDriver { get; set; }
 
         public EmfWebDriver(RemoteWebDriver remoteWebDriver, int timeout)
         {
             _defaultTimeOutinSec = timeout;
-            remoteWebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(_defaultTimeOutinSec);
-            remoteWebDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(_defaultTimeOutinSec);
-            remoteWebDriver.Manage().Window.Maximize();
-            WebDriver = remoteWebDriver;
+            webDriver = remoteWebDriver;
+            ManageWebDriver();
         }
+        public EmfWebDriver(string uri, ICapabilities desiredCapability)
+        {
+            _defaultTimeOutinSec = 10;
+            webDriver = new RemoteWebDriver(new Uri(uri), desiredCapability);
+            ManageWebDriver();
+        }
+
+        private void ManageWebDriver()
+        {
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(_defaultTimeOutinSec);
+            webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(_defaultTimeOutinSec);
+            webDriver.Manage().Window.Maximize();
+        }
+
         public string BrowserName
         {
-            get { return WebDriver.Capabilities.BrowserName; }
+            get { return webDriver.Capabilities.BrowserName; }
         }
 
         public void GoToURL(string url)
         {
-            WebDriver.Navigate().GoToUrl(url);
+            webDriver.Navigate().GoToUrl(url);
         }
 
         public void Click(IWebElement webelement)
@@ -41,8 +53,8 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
         {
             try
             {
-                var shot = WebDriver.TakeScreenshot();
-                shot.SaveAsFile(filename, ScreenshotImageFormat.Png);
+                var shot = webDriver.TakeScreenshot();
+                shot.SaveAsFile(filename, ScreenshotImageFormat.Jpeg);
             }
             catch (Exception screenshotException)
             {
@@ -52,16 +64,16 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
 
         public void WaitUntilDocIsReady()
         {
-            var wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(_defaultTimeOutinSec));
+            var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(_defaultTimeOutinSec));
             wait.Until((webdriver) =>
                (webdriver as IJavaScriptExecutor).ExecuteScript("return document.readyState").Equals("complete")
             );
             return;
         }
 
-        private void WaitforElementTobeDisplayedAndEnabled(IWebElement webelement)
+        public void WaitforElementTobeDisplayedAndEnabled(IWebElement webelement)
         {
-            var webDriverWait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(_defaultTimeOutinSec));
+            var webDriverWait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(_defaultTimeOutinSec));
 
             webDriverWait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
 
@@ -77,7 +89,7 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
             {
                 if (disposing)
                 {
-                    WebDriver.Dispose();
+                    webDriver.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.

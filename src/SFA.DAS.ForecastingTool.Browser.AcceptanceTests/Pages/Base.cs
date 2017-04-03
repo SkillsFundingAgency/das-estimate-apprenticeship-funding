@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium;
 using SFA.DAS.ForecastingTool.Web.BrowserTests.Driver;
 using System.Text.RegularExpressions;
 
@@ -12,16 +13,26 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Pages
         public Base(IEmfWebDriver emfdriver)
         {
             Driver = emfdriver;
+            PageFactory.InitElements(Driver.webDriver, this);
             Driver.WaitUntilDocIsReady();
-            PageFactory.InitElements(Driver.WebDriver, this);
         }
-        internal bool AreWeOnRightPage()
+
+        internal bool AreWeOnRightPage(IWebElement webelement)
         {
-            return string.IsNullOrEmpty(heading) ? false : Regex.Match(Driver.WebDriver.PageSource, heading).Success;
+            return WaitAndAssertOnPage(webelement);
         }
-        internal bool AreWeOnRightPage(string actual)
+
+        private bool WaitAndAssertOnPage(IWebElement webelement)
         {
-            return string.IsNullOrEmpty(heading) ? false : Regex.Match(actual, heading).Success;
+            try
+            {
+                Driver.WaitforElementTobeDisplayedAndEnabled(webelement);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

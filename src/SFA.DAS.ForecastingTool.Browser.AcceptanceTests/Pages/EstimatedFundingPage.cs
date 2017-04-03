@@ -12,7 +12,6 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Pages
         public EstimatedFundingPage(IEmfWebDriver driver) : base(driver)
         {
             heading = "Your estimated apprenticeship funding";
-            if (AreWeOnRightPage() == false) throw new IllegalStateException(string.Format("This is not the '{0}' page", heading));
         }
 
         [FindsBy(How = How.Id, Using = "content")]

@@ -12,7 +12,7 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
         //
         // Summary:
         //      Get or Set the RemoteWebdriver instance.
-        RemoteWebDriver WebDriver { get; set; }
+        RemoteWebDriver webDriver { get; set; }
         //
         // Summary:
         //      Get runtime browser instance name.
@@ -29,6 +29,13 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
         // Summary:
         //      Wait until default timeout in seconds for the current document readyState to be completed.
         void WaitUntilDocIsReady();
+
+        //
+        // Summary:
+        //      Wait until default timeout in seconds for the element to be displayed and enabled.
+        //      On Timeout raise WebDriver Timeout Exception.
+        void WaitforElementTobeDisplayedAndEnabled(IWebElement webelement);
+
         //
         // Summary:
         //     Clicks this element.

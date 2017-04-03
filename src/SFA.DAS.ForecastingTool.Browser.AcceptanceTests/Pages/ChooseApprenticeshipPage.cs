@@ -13,7 +13,7 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Pages
         public ChooseApprenticeshipPage(IEmfWebDriver driver) :base(driver)
         {
             heading = "Choose apprenticeships";
-            if (AreWeOnRightPage() == false) throw new IllegalStateException(string.Format("This is not the '{0}' page", heading));
+            if (AreWeOnRightPage(lstapprenticeship) == false) throw new IllegalStateException(string.Format("This is not the '{0}' page", heading));
         }
 
         [FindsBy(How = How.Name, Using = "trainingCourseSkip")]

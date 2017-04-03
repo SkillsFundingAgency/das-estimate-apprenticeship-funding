@@ -10,7 +10,7 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Pages
         public EmfPage(IEmfWebDriver driver) : base(driver)
         {
             heading = "Estimate my apprenticeship funding";
-            if (AreWeOnRightPage() == false) throw new IllegalStateException(string.Format("This is not the '{0}' page", heading));
+            if (AreWeOnRightPage(btnStart) == false) throw new IllegalStateException(string.Format("This is not the '{0}' page", heading));
         }
         
         [FindsBy(How = How.CssSelector, Using = ".button-start")]

@@ -4,4 +4,9 @@
     {
         public string MainUrl { get; set; }
     }
+
+    internal class BrowserStackURi
+    {
+        public string RemoteDriverUri { get; set; }
+    }
 }

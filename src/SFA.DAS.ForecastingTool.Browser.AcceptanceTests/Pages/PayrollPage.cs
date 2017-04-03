@@ -10,7 +10,7 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Pages
         public PayrollPage(IEmfWebDriver driver) : base(driver)
         {
             heading = "Enter your organisation’s UK payroll";
-            if (AreWeOnRightPage() == false) throw new IllegalStateException(string.Format("This is not the '{0}' page", heading));
+            if (AreWeOnRightPage(btnSaveAndContinue) == false) throw new IllegalStateException(string.Format("This is not the '{0}' page", heading));
         }
 
         [FindsBy(How = How.Id, Using = "paybill")]

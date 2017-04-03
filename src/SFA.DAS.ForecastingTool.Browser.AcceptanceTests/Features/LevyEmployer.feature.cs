@@ -113,7 +113,6 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Annual Payroll is Under Levy Limit And Skip Apprenticeship selection")]
         [NUnit.Framework.TestCaseAttribute("2000001", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("3000000", new string[0])]
         public virtual void AnnualPayrollIsUnderLevyLimitAndSkipApprenticeshipSelection(string levyLimit, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Annual Payroll is Under Levy Limit And Skip Apprenticeship selection", exampleTags);

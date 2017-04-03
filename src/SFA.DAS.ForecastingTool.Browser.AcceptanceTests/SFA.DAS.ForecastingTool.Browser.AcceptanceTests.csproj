@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Driver\BrowserStackEmfWebDriver.cs" />
     <Compile Include="Driver\EmfUri.cs" />
     <Compile Include="Driver\PhantomJSEmfWebDriver.cs" />
     <Compile Include="Driver\ResolveAppConfig.cs" />
@@ -100,6 +101,9 @@
       <Link>phantomjs.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

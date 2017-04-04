@@ -14,6 +14,7 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
         private readonly ScenarioContext scenarioContext;
         private static string _url;
         public static string _RemoteDriverUri;
+        public static int _defaultTimeoutinSec;
 
         private string _assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public Hooks(ScenarioContext scenarioContext)
@@ -27,6 +28,7 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
         {
             _url = ResolveAppConfig.GetSiteUrl();
             _RemoteDriverUri = ResolveAppConfig.GetBrowserStackUri();
+            _defaultTimeoutinSec = ResolveAppConfig.GetDefaultTimeoutinSec();
         }
 
         //[BeforeScenario(Order = 1)]
@@ -57,7 +59,7 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
         {
 
             //var emfWebDriver = new BrowserStackEmfWebDriver(_RemoteDriverUri, scenarioContext.ScenarioContainer.Resolve<ICapabilities>());
-            var emfWebDriver = new PhantomJSEmfWebDriver(_assemblyFolder, 20);
+            var emfWebDriver = new PhantomJSEmfWebDriver(_assemblyFolder, _defaultTimeoutinSec);
             scenarioContext.ScenarioContainer.RegisterInstanceAs<IEmfWebDriver>(emfWebDriver);
             scenarioContext.ScenarioContainer.RegisterInstanceAs(new EmfUri { MainUrl = _url });
             emfWebDriver.webDriver.Navigate().GoToUrl(_url);

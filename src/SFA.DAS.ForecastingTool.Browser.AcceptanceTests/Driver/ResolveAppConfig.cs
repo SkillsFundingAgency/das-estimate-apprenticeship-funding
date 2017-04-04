@@ -1,4 +1,6 @@
-﻿using System.Configuration;
+﻿using System;
+using System.ComponentModel;
+using System.Configuration;
 
 
 namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
@@ -19,6 +21,11 @@ namespace SFA.DAS.ForecastingTool.Web.BrowserTests.Driver
         public static string GetBrowserStackUri()
         {
             return ConfigurationManager.AppSettings["BrowserStack.URI"];
+        }
+
+        public static int GetDefaultTimeoutinSec()
+        {
+           return (int)(TypeDescriptor.GetConverter(typeof(int))).ConvertFromString(ConfigurationManager.AppSettings["AUT.URL.DefaultTimeoutinSec"]);
         }
     }
 }

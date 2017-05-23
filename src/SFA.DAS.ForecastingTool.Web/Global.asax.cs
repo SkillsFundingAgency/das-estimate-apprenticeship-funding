@@ -13,15 +13,23 @@ namespace SFA.DAS.ForecastingTool.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        private ILog _logger;
+
+        public MvcApplication()
+        {
+            _logger = DependencyResolver.Current.GetService<ILog>();
+        }
+
         protected void Application_Start()
         {
+            _logger = DependencyResolver.Current.GetService<ILog>();
+
             MvcHandler.DisableMvcResponseHeader = true;
             var container = DependencyConfig.RegisterDependencies();
 
             TelemetryConfiguration.Active.InstrumentationKey = WebConfigurationManager.AppSettings["AppInsights:InstrumentationKey"];
-            var logger = DependencyResolver.Current.GetService<ILog>();
 
-            logger.Info("Starting Web Role");
+            _logger.Info("Starting Web Role");
 
             SetupApplicationInsights();
 
@@ -30,24 +38,34 @@ namespace SFA.DAS.ForecastingTool.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes, container);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            logger.Info("Web Role started");
+            _logger.Info("Web Role started");
         }
 
         protected void Application_Error(object sender, EventArgs e)
         {
             Exception ex = Server.GetLastError().GetBaseException();
-            var logger = DependencyResolver.Current.GetService<SFA.DAS.NLog.Logger.ILog>();
+
+            _logger = DependencyResolver.Current.GetService<ILog>();
 
             if (ex is HttpException
                 && ((HttpException)ex).GetHttpCode() != 404)
             {
-                logger.Error(ex, "App_Error");
+                _logger.Error(ex, "App_Error");
             }
         }
 
         protected void Application_BeginRequest()
         {
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-gb");
+
+            _logger = DependencyResolver.Current.GetService<ILog>();
+
+            HttpContext context = base.Context;
+
+            if (!context.Request.Path.StartsWith("/__browserlink"))
+            {
+                _logger.Info($"{context.Request.HttpMethod} {context.Request.Path}");
+            }
         }
 
         private void SetupApplicationInsights()

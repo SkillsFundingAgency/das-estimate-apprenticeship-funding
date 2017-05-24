@@ -22,12 +22,12 @@ namespace SFA.DAS.ForecastingTool.Web
 
         protected void Application_Start()
         {
-            _logger = DependencyResolver.Current.GetService<ILog>();
-
             MvcHandler.DisableMvcResponseHeader = true;
             var container = DependencyConfig.RegisterDependencies();
 
             TelemetryConfiguration.Active.InstrumentationKey = WebConfigurationManager.AppSettings["AppInsights:InstrumentationKey"];
+
+            _logger = DependencyResolver.Current.GetService<ILog>();
 
             _logger.Info("Starting Web Role");
 

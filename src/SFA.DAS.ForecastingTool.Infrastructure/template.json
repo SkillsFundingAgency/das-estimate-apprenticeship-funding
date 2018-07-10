@@ -24,10 +24,6 @@
                 "2"
             ],
             "defaultValue": "0"
-        },
-        "AppSvcName": {
-            "type": "string",
-            "minLength": 1
         }
     },
     "resources": [
@@ -46,26 +42,6 @@
                 "workerSize": "[parameters('ASPWorkerSize')]",
                 "numberOfWorkers": 1
             }
-        },
-        {
-            "name": "[variables('AppSvcName')]",
-            "type": "Microsoft.Web/sites",
-            "location": "[resourceGroup().location]",
-            "apiVersion": "2015-08-01",
-            "dependsOn": [
-                "[concat('Microsoft.Web/serverfarms/', parameters('ASPName'))]"
-            ],
-            "tags": {
-                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('ASPName'))]": "Resource",
-                "displayName": "AppSvc"
-            },
-            "properties": {
-                "name": "[variables('AppSvcName')]",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('ASPName'))]"
-            }
         }
-    ],
-    "variables": {
-        "AppSvcName": "[parameters('AppSvcName')]"
-    }
+    ]
 }

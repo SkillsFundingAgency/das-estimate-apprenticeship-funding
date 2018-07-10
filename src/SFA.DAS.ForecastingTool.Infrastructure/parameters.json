@@ -10,9 +10,6 @@
     },
     "ASPWorkerSize": {
       "value": "0"
-    },
-    "AppSvcName": {
-      "value": null
     }
   }
 }

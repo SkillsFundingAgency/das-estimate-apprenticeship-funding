@@ -24,6 +24,10 @@
                 "2"
             ],
             "defaultValue": "0"
+        },
+        "ASName": {
+            "type": "string",
+            "minLength": 1
         }
     },
     "resources": [
@@ -44,7 +48,7 @@
             }
         },
         {
-            "name": "[variables('ASName')]",
+            "name": "[parameters('ASName')]",
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
             "apiVersion": "2015-08-01",
@@ -56,12 +60,10 @@
                 "displayName": "AS"
             },
             "properties": {
-                "name": "[variables('ASName')]",
+                "name": "[parameters('ASName')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('ASPName'))]"
             }
         }
     ],
-    "variables": {
-        "ASName": "[concat('AS', uniqueString(resourceGroup().id))]"
-    }
+    "outputs": {}
 }

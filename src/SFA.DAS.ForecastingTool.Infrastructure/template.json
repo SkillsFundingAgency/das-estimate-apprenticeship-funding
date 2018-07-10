@@ -3,40 +3,43 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "ASPName": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "String"
         },
         "ASPSKU": {
-            "type": "string",
+            "defaultValue": "Free",
             "allowedValues": [
                 "Free",
                 "Shared",
                 "Basic",
                 "Standard"
             ],
-            "defaultValue": "Free"
+            "type": "String"
         },
         "ASPWorkerSize": {
-            "type": "string",
+            "defaultValue": "0",
             "allowedValues": [
                 "0",
                 "1",
                 "2"
             ],
-            "defaultValue": "0"
+            "type": "String"
         },
         "ASName": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "String"
+        },
+        "appInsightsName": {
+            "minLength": 1,
+            "type": "String"
         }
     },
     "resources": [
         {
-            "name": "[parameters('ASPName')]",
             "type": "Microsoft.Web/serverfarms",
-            "location": "[resourceGroup().location]",
+            "name": "[parameters('ASPName')]",
             "apiVersion": "2014-06-01",
-            "dependsOn": [],
+            "location": "[resourceGroup().location]",
             "tags": {
                 "displayName": "ASP"
             },
@@ -45,23 +48,44 @@
                 "sku": "[parameters('ASPSKU')]",
                 "workerSize": "[parameters('ASPWorkerSize')]",
                 "numberOfWorkers": 1
-            }
+            },
+            "dependsOn": []
         },
         {
-            "name": "[parameters('ASName')]",
             "type": "Microsoft.Web/sites",
-            "location": "[resourceGroup().location]",
+            "name": "[parameters('ASName')]",
             "apiVersion": "2015-08-01",
-            "dependsOn": [
-                "[concat('Microsoft.Web/serverfarms/', parameters('ASPName'))]"
-            ],
+            "location": "[resourceGroup().location]",
             "tags": {
                 "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('ASPName'))]": "Resource",
                 "displayName": "AS"
             },
             "properties": {
                 "name": "[parameters('ASName')]",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('ASPName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('ASPName'))]",
+                "appSettings": [
+                    {
+                        "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                        "value": "[reference(concat('microsoft.insights/components/', parameters('appInsightsName'))).InstrumentationKey]"
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('ASPName'))]",
+                "[resourceId('microsoft.insights/components/', parameters('appInsightsName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Insights/components",
+            "name": "[parameters('appInsightsName')]",
+            "apiVersion": "2014-04-01",
+            "location": "West Europe",
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('ASName'))]": "Resource",
+                "displayName": "AppInsightsComponent"
+            },
+            "properties": {
+                "applicationId": "[parameters('appInsightsName')]"
             }
         }
     ],

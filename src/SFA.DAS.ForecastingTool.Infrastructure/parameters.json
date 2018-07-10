@@ -1,32 +1,18 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "ASPName": {
-            "type": "string",
-            "minLength": 1
-        },
-        "ASPSKU": {
-            "type": "string",
-            "allowedValues": [
-                "Free",
-                "Shared",
-                "Basic",
-                "Standard"
-            ],
-            "defaultValue": "Free"
-        },
-        "ASPWorkerSize": {
-            "type": "string",
-            "allowedValues": [
-                "0",
-                "1",
-                "2"
-            ],
-            "defaultValue": "0"
-        },
-        "AppSvcName": {
-            "type": "string",
-            "minLength": 1
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ASPName": {
+      "value": null
     },
+    "ASPSKU": {
+      "value": "Free"
+    },
+    "ASPWorkerSize": {
+      "value": "0"
+    },
+    "AppSvcName": {
+      "value": null
+    }
+  }
+}

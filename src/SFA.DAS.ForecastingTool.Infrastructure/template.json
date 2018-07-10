@@ -42,6 +42,26 @@
                 "workerSize": "[parameters('ASPWorkerSize')]",
                 "numberOfWorkers": 1
             }
+        },
+        {
+            "name": "[variables('ASName')]",
+            "type": "Microsoft.Web/sites",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2015-08-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('ASPName'))]"
+            ],
+            "tags": {
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('ASPName'))]": "Resource",
+                "displayName": "AS"
+            },
+            "properties": {
+                "name": "[variables('ASName')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('ASPName'))]"
+            }
         }
-    ]
+    ],
+    "variables": {
+        "ASName": "[concat('AS', uniqueString(resourceGroup().id))]"
+    }
 }

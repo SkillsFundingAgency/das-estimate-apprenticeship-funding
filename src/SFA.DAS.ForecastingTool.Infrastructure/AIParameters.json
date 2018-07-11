@@ -11,7 +11,7 @@
     "tests": {
       "value": [
         {
-          "name": "Test1",
+          "name": "IsAppServiceUp",
           "url": "[parameters('URL')]",
           "expected": 200,
           "frequency_secs": 300,

@@ -18,7 +18,7 @@
           "timeout_secs": 30,
           "failedLocationCount": 1,
           "description": "a description for test1",
-          "guid": "cc1c4b95-0a39-48ce-9c7b-fa41f0fc0bee",
+          "guid": "GEN-GUID",
           "locations": [
                   {
         "Id": "emea-nl-ams-azr"

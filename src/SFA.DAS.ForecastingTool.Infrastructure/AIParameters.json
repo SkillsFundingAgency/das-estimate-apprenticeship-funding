@@ -8,7 +8,7 @@
     "tests": {
       "value": [
         {
-          "name": "testaftermidday",
+          "name": "Test1",
           "url": "http://www.microsoft.com",
           "expected": 200,
           "frequency_secs": 300,

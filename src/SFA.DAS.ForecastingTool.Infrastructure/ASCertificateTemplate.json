@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "SharedKeyVaultId": {
+            "type": "String",
+            "metadata": {
+                "description": "Resource Id of the shared Key Vault"
+            }
+        },
+        "SharedASP": {
+            "type": "String",
+            "metadata": {
+                "description": "Name of ASP"
+            }
+        },
+        "ASPCertificateNames": {
+            "defaultValue": [],
+            "type": "Array",
+            "metadata": {
+                "description": "List of certificates residing in KeyVault to be installed into the App Service Plan"
+            }
+        }
+    },
+    "variables": {
+        "CertificateArray": "[if(greater(length(parameters('ASPCertificateNames')), 0), parameters('ASPCertificateNames'), array('placeholder'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/certificates",
+            "name": "[variables('CertificateArray')[copyIndex()]]",
+            "apiVersion": "2016-03-01",
+            "location": "[resourceGroup().location]",
+            "copy": {
+                "name": "certCopy",
+                "count": "[if(equals(length(parameters('ASPCertificateNames')),0), 1, length(parameters('ASPCertificateNames')))]"
+            },
+            "properties": {
+                "keyVaultId": "[parameters('SharedKeyVaultId')]",
+                "keyVaultSecretName": "[variables('CertificateArray')[copyIndex()]]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('SharedASP'))]"
+            },
+            "dependsOn": [],
+            "condition": "[greater(length(parameters('ASPCertificateNames')), 0)]"
+        }
+    ],
+    "outputs": {}
+}

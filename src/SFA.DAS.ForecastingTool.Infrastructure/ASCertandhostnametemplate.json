@@ -33,9 +33,13 @@
             "metadata": {
                 "description": "Custom Domain Name"
             }
-        }        
-
-
+        },
+        "appServiceSSLThumbprint": {
+            "type": "String",
+            "metadata": {
+                "description": "Certificate Thumbprint "
+            }
+        }
     },
     "variables": {
         "CertificateArray": "[if(greater(length(parameters('ASPCertificateNames')), 0), parameters('ASPCertificateNames'), array('placeholder'))]"
@@ -59,17 +63,15 @@
             "condition": "[greater(length(parameters('ASPCertificateNames')), 0)]"
         },
         {
-    "type": "Microsoft.Web/sites/hostnameBindings",
-    "name": "[concat(parameters('appServiceName'), '/', parameters('customHostname'))]",
-    "apiVersion": "2016-03-01",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "sslState": "SniEnabled",
-        "thumbprint": "[reference(resourceId(parameters('appServicePlanResourceGroup'), 'Microsoft.Web/certificates', parameters('keyvaultCertificateName')), '2016-03-01').Thumbprint]"
-    }
-}
-
-
+            "type": "Microsoft.Web/sites/hostnameBindings",
+            "name": "[concat(parameters('ASName'), '/', parameters('customHostname'))]",
+            "apiVersion": "2016-03-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "sslState": "SniEnabled",
+                "thumbprint": "[parameters('appServiceSSLThumbprint')]"
+            }
+        }
     ],
     "outputs": {}
 }

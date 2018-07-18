@@ -14,13 +14,6 @@
                 "description": "Name of ASP"
             }
         },
-        "ASPCertificateNames": {
-            "defaultValue": [],
-            "type": "Array",
-            "metadata": {
-                "description": "List of certificates residing in KeyVault to be installed into the App Service Plan"
-            }
-        },
         "ASName": {
             "defaultValue": "",
             "type": "String",
@@ -34,33 +27,33 @@
                 "description": "Custom Domain Name"
             }
         },
-        "appServiceSSLThumbprint": {
+        "appServicePlanResourceGroup": {
             "type": "String",
             "metadata": {
-                "description": "Certificate Thumbprint "
+                "description": "AS RG"
+            }
+        },
+        "ASPCertificateName": {
+            "type": "String",
+            "metadata": {
+                "description": "AS Name as String"
             }
         }
     },
-    "variables": {
-        "CertificateArray": "[if(greater(length(parameters('ASPCertificateNames')), 0), parameters('ASPCertificateNames'), array('placeholder'))]"
-    },
+    "variables": {},
     "resources": [
         {
             "type": "Microsoft.Web/certificates",
-            "name": "[variables('CertificateArray')[copyIndex()]]",
+            "name": "[parameters('ASPCertificateName')]",
             "apiVersion": "2016-03-01",
             "location": "[resourceGroup().location]",
-            "copy": {
-                "name": "certCopy",
-                "count": "[if(equals(length(parameters('ASPCertificateNames')),0), 1, length(parameters('ASPCertificateNames')))]"
-            },
             "properties": {
                 "keyVaultId": "[parameters('SharedKeyVaultId')]",
-                "keyVaultSecretName": "[variables('CertificateArray')[copyIndex()]]",
+                "keyVaultSecretName": "[parameters('ASPCertificateName')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('SharedASP'))]"
             },
             "dependsOn": [],
-            "condition": "[greater(length(parameters('ASPCertificateNames')), 0)]"
+            "condition": "[greater(length(parameters('ASPCertificateName')), 0)]"
         },
         {
             "type": "Microsoft.Web/sites/hostnameBindings",
@@ -69,7 +62,7 @@
             "location": "[resourceGroup().location]",
             "properties": {
                 "sslState": "SniEnabled",
-                "thumbprint": "[parameters('appServiceSSLThumbprint')]"
+                "thumbprint": "[reference(resourceId(parameters('appServicePlanResourceGroup'), 'Microsoft.Web/certificates', parameters('ASPCertificateName')), '2016-03-01').Thumbprint]"
             }
         }
     ],

@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "SharedKeyVaultId": {
+        "SharedKeyVaultID": {
             "type": "String",
             "metadata": {
                 "description": "Resource Id of the shared Key Vault"
@@ -21,13 +21,13 @@
                 "description": "Name of the App Service"
             }
         },
-        "customHostname": {
+        "CustomHostName": {
             "type": "String",
             "metadata": {
                 "description": "Custom Domain Name"
             }
         },
-        "appServicePlanResourceGroup": {
+        "AppServicePlanResourceGroup": {
             "type": "String",
             "metadata": {
                 "description": "AS RG"

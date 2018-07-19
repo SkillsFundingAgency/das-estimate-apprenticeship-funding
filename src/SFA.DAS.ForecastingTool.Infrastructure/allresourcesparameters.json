@@ -10,7 +10,7 @@
           "frequency_secs": 300,
           "timeout_secs": 30,
           "failedLocationCount": 1,
-          "description": "a description for test1",
+          "description": "Is the App Service up ?",
           "guid": "cc1c4b95-0a39-48ce-9c7b-fa41f0fc0bee",
           "locations": [
             {
@@ -35,10 +35,10 @@
       "value": "West Europe"
     },
     "URL": {
-      "value": "http://appservice.url"
+      "value": ""
     },
     "ASPName": {
-      "value": "tst-das-dev-ftl-asp"
+      "value": ""
     },
     "ASPSKU": {
       "value": "Free"
@@ -47,10 +47,10 @@
       "value": "0"
     },
     "ASName": {
-      "value": "tst-das-dev-ftl-as"
+      "value": ""
     },
     "appInsightsName": {
-      "value": "tst-das-dev-ftl-ai"
+      "value": ""
     }
   }
 }

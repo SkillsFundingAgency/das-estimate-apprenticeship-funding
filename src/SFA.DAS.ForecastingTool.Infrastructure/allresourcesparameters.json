@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tests": {
+      "value": [
+        {
+          "name": "IsAppServiceUp",
+          "expected": 200,
+          "frequency_secs": 300,
+          "timeout_secs": 30,
+          "failedLocationCount": 1,
+          "description": "Is the App Service up ?",
+          "guid": "cc1c4b95-0a39-48ce-9c7b-fa41f0fc0bee",
+          "locations": [
+            {
+              "Id": "emea-nl-ams-azr"
+            },
+            {
+              "Id": "emea-gb-db3-azr"
+            },
+            {
+              "Id": "emea-fr-pra-edge"
+            }
+          ]
+        }
+      ]
+    },
+    "emails": {
+      "value": [
+        "Apprenticeshipsdevops@education.gov.uk"
+      ]
+    },
+    "location": {
+      "value": "West Europe"
+    },
+    "URL": {
+      "value": ""
+    },
+    "ASPName": {
+      "value": ""
+    },
+    "ASPSKU": {
+      "value": "Free"
+    },
+    "ASPWorkerSize": {
+      "value": "0"
+    },
+    "ASName": {
+      "value": ""
+    },
+    "appInsightsName": {
+      "value": ""
+    }
+  }
+}

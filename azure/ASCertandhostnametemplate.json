@@ -1,0 +1,70 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "SharedKeyVaultID": {
+            "type": "String",
+            "metadata": {
+                "description": "Resource Id of the shared Key Vault"
+            }
+        },
+        "SharedASP": {
+            "type": "String",
+            "metadata": {
+                "description": "Name of ASP"
+            }
+        },
+        "ASName": {
+            "defaultValue": "",
+            "type": "String",
+            "metadata": {
+                "description": "Name of the App Service"
+            }
+        },
+        "CustomHostName": {
+            "type": "String",
+            "metadata": {
+                "description": "Custom Domain Name"
+            }
+        },
+        "AppServicePlanResourceGroup": {
+            "type": "String",
+            "metadata": {
+                "description": "AS RG"
+            }
+        },
+        "ASPCertificateName": {
+            "type": "String",
+            "metadata": {
+                "description": "AS Name as String"
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/certificates",
+            "name": "[parameters('ASPCertificateName')]",
+            "apiVersion": "2016-03-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "keyVaultId": "[parameters('SharedKeyVaultId')]",
+                "keyVaultSecretName": "[parameters('ASPCertificateName')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('SharedASP'))]"
+            },
+            "dependsOn": [],
+            "condition": "[greater(length(parameters('ASPCertificateName')), 0)]"
+        },
+        {
+            "type": "Microsoft.Web/sites/hostnameBindings",
+            "name": "[concat(parameters('ASName'), '/', parameters('customHostname'))]",
+            "apiVersion": "2016-03-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "sslState": "SniEnabled",
+                "thumbprint": "[reference(resourceId(parameters('appServicePlanResourceGroup'), 'Microsoft.Web/certificates', parameters('ASPCertificateName')), '2016-03-01').Thumbprint]"
+            }
+        }
+    ],
+    "outputs": {}
+}

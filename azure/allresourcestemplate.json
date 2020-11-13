@@ -88,7 +88,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/app-service.json",
+                    "uri": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/app-service-v2.json",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -105,12 +105,14 @@
                         "value": "[parameters('deploystagingslot')]"
                     },
                     "appServiceAppSettings": {
-                        "value": [
-                            {
-                                "name": "ApplicationInsights:InstrumentationKey",
-                                "value": "[reference('UIAppInsights').outputs.InstrumentationKey.value]"
-                            }
-                        ]
+                        "value": {
+                            "array": [
+                                {
+                                    "name": "ApplicationInsights:InstrumentationKey",
+                                    "value": "[reference('UIAppInsights').outputs.InstrumentationKey.value]"
+                                }
+                            ]
+                        }
                     }
                 }
             },
